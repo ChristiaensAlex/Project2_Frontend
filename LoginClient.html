@@ -10,13 +10,14 @@
 		<link rel="stylesheet" href="screen.css" />
 
 		<!--FONTS-->
+		<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
 
 		<!--SCRIPT-->
 
 		<!--FAVICON-->
 	</head>
 	<body>
-		<section>
+		<section class="c-content">
 			<div class="o-header">
 				<div class="o-row">
 					<div class="c-logo">
@@ -30,32 +31,35 @@
 
 			<div class="o-row">
 				<div class="o-container">
-					<p class="c-title">Ik ben cliënt...</p>
-
-					<form class="c-form" action="#">
-						<p>
-							<label class="c-label" for="Username">Gebruikersnaam</label>
-							<input class="c-input" type="text" name="Username" />
-						</p>
-						<p>
-							<label class="c-label" for="Password">Wachtwoord</label>
-							<input class="c-input" type="password" name="Password" />
-						</p>
-						<button class="o-button-reset c-backbutton">
-							<svg class=" c-backbutton__arrow" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="36" height="36" viewBox="0 0 400.004 400.004" style="enable-background:new 0 0 400.004 400.004;" xml:space="preserve">
-								<path
-									d="M382.688,182.686H59.116l77.209-77.214c6.764-6.76,6.764-17.726,0-24.485c-6.764-6.764-17.73-6.764-24.484,0L5.073,187.757
+					<div class="c-card">
+						<form class="c-form" action="#">
+							<p class="c-title">Ik ben cliënt...</p>
+							<p>
+								<label class="c-label" for="Username">Gebruikersnaam</label>
+								<input class="c-input" type="text" name="Username" />
+							</p>
+							<p>
+								<label class="c-label" for="Password">Wachtwoord</label>
+								<input class="c-input" type="password" name="Password" />
+							</p>
+							<div class="c-buttonrow">
+								<button class="o-button-reset c-button c-backbutton">
+									<svg class=" c-backbutton__arrow" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="36" height="36" viewBox="0 0 400.004 400.004" style="enable-background:new 0 0 400.004 400.004;" xml:space="preserve">
+										<path
+											d="M382.688,182.686H59.116l77.209-77.214c6.764-6.76,6.764-17.726,0-24.485c-6.764-6.764-17.73-6.764-24.484,0L5.073,187.757
 			   c-6.764,6.76-6.764,17.727,0,24.485l106.768,106.775c3.381,3.383,7.812,5.072,12.242,5.072c4.43,0,8.861-1.689,12.242-5.072
 			   c6.764-6.76,6.764-17.726,0-24.484l-77.209-77.218h323.572c9.562,0,17.316-7.753,17.316-17.315
 			   C400.004,190.438,392.251,182.686,382.688,182.686z"
-								/>
-							</svg>
-							<div>
-								Terug
+										/>
+									</svg>
+									<div>
+										Terug
+									</div>
+								</button>
+								<button class="o-button-reset c-button c-submitbutton" type="submit">Start</button>
 							</div>
-						</button>
-						<button class="o-button-reset c-submitbutton" type="submit">Start</button>
-					</form>
+						</form>
+					</div>
 				</div>
 			</div>
 		</section>

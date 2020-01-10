@@ -87,10 +87,10 @@
 html {
 	font-size: var(--global-fontsize); /*16px*/
 	line-height: 1.5;
-	font-family: 'IBM Plex Sans', 'Inter Web', Helvetica, arial, sans-serif;
+	font-family: 'Poppins', Helvetica, arial, sans-serif;
 	font-weight: 400;
 	color: var(--global-color-omega);
-	background-color: var(--global-color-neutral-xx-light);
+	background-color: var(--global-color-neutral-xxxx-light);
 	box-sizing: border-box;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -250,8 +250,9 @@ body {
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	background-image: url(LoginClient.png);
-	background-repeat: no-repeat;
+
+	/* background-image: url(LoginClient.png);
+	background-repeat: no-repeat; */
 }
 
 /*------------------------------------*\
@@ -279,6 +280,7 @@ body {
 .o-container {
 	margin-left: auto;
 	margin-right: auto;
+
 	max-width: 800px; /* 79.5 * 16px = 1272 */
 	width: 100%;
 }
@@ -478,6 +480,12 @@ body {
 #COMPONENTS
 \*------------------------------------*/
 
+/*content*/
+
+.c-content {
+	margin: auto 0;
+}
+
 /*
     Component: Logo
     ---
@@ -516,6 +524,11 @@ body {
 	line-height: 40px;
 }
 
+.c-card {
+	display: flex;
+	justify-content: center;
+}
+
 /*
     Component: Forms
     ---
@@ -540,6 +553,7 @@ body {
 	color: var(--label-color, var(--global-color-omega));
 	display: flex;
 	justify-content: space-between;
+	padding-top: 16px;
 }
 
 /*
@@ -571,11 +585,25 @@ body {
 .c-input:active {
 	box-shadow: var(--input-focus-boxShadow, 0 0 0 3px var(--global-color-alpha-dark-x-transparent), 0 0 0 1px var(--global-color-alpha-dark-x));
 } */
+
+/**/
+.c-buttonrow {
+	display: flex;
+	justify-content: center;
+	padding-top: 48px;
+}
+
 /*
     Component: Backbutton
     ---
     Custom backbutton
 */
+
+.c-button {
+	border-radius: var(--global-borderRadius);
+
+	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
+}
 .c-backbutton {
 	border: var(--global-borderWidth) solid var(--global-color-alpha);
 	color: var(--global-color-alpha);
@@ -584,6 +612,7 @@ body {
 	display: flex;
 	justify-content: space-around;
 	font-size: 20px;
+	margin-right: 4px;
 }
 .c-backbutton__arrow {
 	width: 24px;
@@ -598,4 +627,6 @@ body {
 	width: 176px;
 	font-size: 20px;
 	display: flex;
+	justify-content: center;
+	margin-left: 4px;
 }
