@@ -554,12 +554,16 @@ body {
 	font-size: 20px;
 	margin-left: var(--global-whitespace-md);
 	color: var(--global-color-omega);
-	font-size: 48px;
 }
 
 @media (min-width: 768px) {
 	.c-logo {
 		margin: auto;
+	}
+
+	.c-logo__name {
+		margin: 0;
+		font-size: 48px;
 	}
 }
 
