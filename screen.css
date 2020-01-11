@@ -1,0 +1,719 @@
+/*------------------------------------*\
+#FONTS
+\*------------------------------------*/
+
+@font-face {
+	font-family: 'Inter Web';
+	font-weight: 400;
+	src: url('../fonts/Inter-Regular.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Inter Web';
+	font-weight: 600;
+	src: url('../fonts/Inter-SemiBold.woff2') format('woff2');
+}
+
+/*------------------------------------*\
+#Variables
+\*------------------------------------*/
+:root {
+	/*colors*/
+
+	--global-color-alpha-light: #ffb9a6;
+	--global-color-alpha: #fc8c71;
+	--global-color-alpha-dark: #fe7c5a;
+	--global-color-alpha-dark-x: #fe6740;
+	--global-color-alpha-dark-xx: #ff5d33;
+
+	--global-color-beta: #1c5c5c;
+	--global-color-omega: #27255f;
+
+	--global-color-neutral-xxxxx-light: white;
+	--global-color-neutral-xxxx-light: white;
+	--global-color-neutral-xxx-light: #fafaff;
+	--global-color-neutral-xx-light: #ececf0;
+	--global-color-neutral-x-light: #c8c8cc;
+	--global-color-neutral-light: #aaaab3;
+	--global-color-neutral: #8d8d99;
+	--global-color-neutral-dark: #757580;
+	--global-color-neutral-x-dark: #5d5d66;
+	--global-color-neutral-xx-dark: #3b3f40;
+	--global-color-neutral-xxx-dark: #17191a;
+	--global-color-neutral-xxxx-dark: #17171a;
+
+	/* border variables */
+	--global-borderRadius: 4px;
+	--global-borderWidth: 1px;
+
+	/* transitions */
+	--global-transitionTiming-alpha: 0.1s ease-out;
+
+	/* Baseline settings */
+	--global-baseline: 8px;
+	--global-whitespace: calc(var(--global-baseline) * 3); /* = 24px */
+
+	--global-whitespace-xs: calc(var(--global-baseline) / 2); /* = 4px */
+	--global-whitespace-sm: calc(var(--global-baseline) * 1); /*  = 8px */
+	--global-whitespace-md: calc(var(--global-baseline) * 2); /*  = 16px */
+	--global-whitespace-lg: calc(var(--global-baseline) * 4); /*  = 32px */
+	--global-whitespace-xl: calc(var(--global-whitespace) * 2); /*  = 48px */
+	--global-whitespace-xxl: calc(var(--global-whitespace) * 3); /*  = 72px */
+
+	/*fontsizes: modular scale met base 16px en ratio 1.25*/
+	--global-fontsize-xs: 10px;
+	--global-fontsize-sm: 13px;
+	--global-fontsize: 16px;
+	--global-fontsize-md: 20px;
+	--global-fontsize-lg: 25px;
+	--global-fontsize-xl: 31px;
+	--global-fontsize-xxl: 39px;
+	--global-fontsize-xxxl: 48px;
+
+	/*error*/
+
+	--global-color-error: #8c0015;
+	--global-input-error-boxShadowColor: #8c001580;
+	--input-border: none;
+}
+
+/*------------------------------------*\
+#GENERIC
+\*------------------------------------*/
+
+/*
+    Generic: Page
+    ---
+    Global page styles + universal box-sizing:
+*/
+
+html {
+	font-size: var(--global-fontsize); /*16px*/
+	line-height: 1.5;
+	font-family: 'Poppins', Helvetica, arial, sans-serif;
+	font-weight: 400;
+	color: var(--global-color-omega);
+	background-color: var(--global-color-neutral-xxxx-light);
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	height: 100%;
+}
+@media (prefers-color-scheme: dark) {
+	html {
+		color: var(--global-color-neutral-xx-light);
+		background-color: var(--global-color-neutral-xx-dark);
+	}
+}
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+::-moz-selection {
+	background: var(--global-color-selection);
+	color: var(--global-color-neutral-xxxxx-light);
+	text-shadow: none;
+}
+
+::selection {
+	background: var(--global-color-selection);
+	color: var(--global-color-neutral-xxxxx-light);
+	text-shadow: none;
+}
+/*------------------------------------*\
+#Elements
+\*------------------------------------*/
+
+/*
+Elements: Images
+---
+Default markup for images to make them responsive
+*/
+
+img {
+	max-width: 100%;
+	vertical-align: top;
+}
+
+/*
+    Elements: typography
+    ---
+    Default markup for typographic elements
+*/
+
+h1,
+h2,
+h3 {
+	font-weight: 700;
+}
+
+h1 {
+	font-size: var(--global-fontsize-xl);
+	line-height: calc(var(--global-baseline) * 6);
+	margin: 0 0 var(--global-whitespace);
+}
+
+h2 {
+	font-size: var(--global-fontsize-lg);
+	line-height: calc(var(--global-baseline) * 5);
+	margin: 0 0 var(--global-whitespace);
+}
+
+h3 {
+	font-size: var(--global-fontsize-md);
+	line-height: calc(var(--global-baseline) * 4);
+	margin: 0 0 var(--global-whitespace);
+}
+
+h4,
+h5,
+h6 {
+	font-size: var(--global-fontsize);
+	font-weight: 600;
+	line-height: calc(var(--global-baseline) * 3);
+	margin: 0 0 var(--global-whitespace);
+}
+
+p,
+ol,
+ul,
+dl,
+table,
+address,
+figure {
+	margin: 0 0 var(--global-whitespace);
+}
+
+ul,
+ol {
+	padding-left: var(--global-whitespace);
+}
+
+li ul,
+li ol {
+	margin-bottom: 0;
+}
+
+blockquote {
+	font-style: normal;
+	font-size: var(--global-fontsize-md);
+	line-height: calc(var(--global-baseline) * 6);
+	margin: 0 0 var(--global-whitespace);
+}
+
+blockquote * {
+	font-size: inherit;
+	line-height: inherit;
+}
+
+figcaption {
+	font-weight: 400;
+	font-size: var(--global-fontsize-sm);
+	line-height: calc(var(--global-baseline) * 2);
+	margin-top: var(--global-whitespace-xxs);
+}
+
+hr {
+	border: 0;
+	height: var(--global-borderWidth);
+	background: var(--global-color-neutral-x-light);
+	margin: 0 0 var(--global-whitespace);
+}
+
+a,
+a:visited {
+	transition: all var(--global-transitionTiming-alpha);
+	color: var(--global-color-alpha);
+	outline-color: var(--global-link-BoxShadowColor);
+	outline-width: medium;
+	outline-offset: 2px;
+	text-decoration: none;
+}
+
+a:hover,
+a:focus {
+	color: var(--global-color-alpha-light);
+}
+
+a:active {
+	color: var(--global-color-alpha-dark);
+}
+
+label,
+input {
+	display: block;
+}
+
+input::placeholder {
+	color: var(--color-placeholder, var(--global-color-neutral-x-light));
+}
+
+body {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+
+	/* background-image: url(LoginMentor.png);
+	background-repeat: no-repeat;  */
+}
+
+/*------------------------------------*\
+#OBJECTS
+\*------------------------------------*/
+
+/*
+    Objects: Row
+    ---
+    Creates a horizontal row that stretches the viewport and adds padding around children
+*/
+
+.o-row {
+	position: relative;
+
+	padding: 0 var(--global-whitespace);
+}
+
+/*
+    Objects: Container
+    ---
+    Creates a horizontal container that sets de global max-width
+*/
+
+.o-container {
+	margin-left: auto;
+	margin-right: auto;
+
+	max-width: 800px; /* 79.5 * 16px = 1272 */
+	width: 100%;
+}
+
+/*
+    Objects: section
+    ---
+    Creates vertical whitespace between adjacent sections inside a row
+*/
+
+.o-section {
+	position: relative;
+}
+
+.o-section + .o-section {
+	padding-top: var(--global-whitespace);
+}
+
+@media (min-width: 768px) {
+	.o-section--lg + .o-section--lg,
+	.o-section--xl + .o-section--xl {
+		padding-top: var(--global-whitespace-lg);
+	}
+	.o-section {
+		margin: auto;
+	}
+}
+
+@media (min-width: 992px) {
+	.o-section--xl + .o-section--xl {
+		padding-top: var(--global-whitespace-xxl);
+	}
+}
+/*
+    Objects: Row
+    ---
+    Creates a horizontal row that stretches the viewport and adds padding around children
+*/
+
+.o-header {
+	height: auto;
+}
+@media (min-width: 768px) {
+	.o-header {
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+/*
+    Objects: Layout
+    ---
+    The layout object provides us with a column-style layout system. This object
+    contains the basic structural elements, but classes should be complemented
+    with width utilities
+*/
+
+.o-layout {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.o-layout__item {
+	width: 100%;
+}
+
+/* gutter modifiers, these affect o-layout__item too */
+
+.o-layout--gutter {
+	margin: 0 -12px;
+}
+
+.o-layout--gutter > .o-layout__item {
+	padding: 0 12px;
+}
+
+.o-layout--gutter-sm {
+	margin: 0 -6px;
+}
+
+.o-layout--gutter-sm > .o-layout__item {
+	padding: 0 6px;
+}
+
+.o-layout--gutter-lg {
+	margin: 0 calc(var(--global-whitespace) * -1);
+}
+
+.o-layout--gutter-lg > .o-layout__item {
+	padding: 0 var(--global-whitespace);
+}
+
+.o-layout--gutter-xl {
+	margin: 0 calc(var(--global-whitespace-lg) * -1);
+}
+
+.o-layout--gutter-xl > .o-layout__item {
+	padding: 0 var(--global-whitespace-lg);
+}
+
+/* reverse horizontal row modifier */
+
+.o-layout--row-reverse {
+	flex-direction: row-reverse;
+}
+
+/* Horizontal alignment modifiers*/
+
+.o-layout--justify-start {
+	justify-content: flex-start;
+}
+
+.o-layout--justify-end {
+	justify-content: flex-end;
+}
+
+.o-layout--justify-center {
+	justify-content: center;
+}
+
+.o-layout--justify-space-around {
+	justify-content: space-around;
+}
+
+.o-layout--justify-space-evenly {
+	justify-content: space-evenly;
+}
+
+.o-layout--justify-space-between {
+	justify-content: space-between;
+}
+
+/* Vertical alignment modifiers */
+
+.o-layout--align-start {
+	align-items: flex-start;
+}
+
+.o-layout--align-end {
+	align-items: flex-end;
+}
+
+.o-layout--align-center {
+	align-items: center;
+}
+
+.o-layout--align-baseline {
+	align-items: baseline;
+}
+
+/* Vertical alignment modifiers that only work if there is one than one flex item */
+
+.o-layout--align-content-start {
+	align-content: start;
+}
+
+.o-layout--align-content-end {
+	align-content: end;
+}
+
+.o-layout--align-content-center {
+	align-content: center;
+}
+
+.o-layout--align-content-space-around {
+	align-content: space-around;
+}
+
+.o-layout--align-content-space-between {
+	align-content: space-between;
+}
+
+/*
+    Objects: List
+    ---
+    Small reusable object to remove default list styling from lists
+*/
+
+.o-list {
+	list-style: none;
+	padding: 0;
+}
+
+/*
+    Object: Button reset
+    ---
+    Small button reset object
+*/
+
+.o-button-reset {
+	border: none;
+	margin: 0;
+	padding: 0;
+	width: auto;
+	overflow: visible;
+	background: transparent;
+
+	/* inherit font & color from ancestor */
+	color: inherit;
+	font: inherit;
+
+	/* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+	line-height: normal;
+
+	/* Corrects font smoothing for webkit */
+	-webkit-font-smoothing: inherit;
+	-moz-osx-font-smoothing: inherit;
+
+	/* Corrects inability to style clickable `input` types in iOS */
+	-webkit-appearance: none;
+}
+/*------------------------------------*\
+#COMPONENTS
+\*------------------------------------*/
+
+/*content*/
+.c-content {
+	margin: auto;
+}
+
+@media (min-width: 768px) {
+	.c-content {
+		display: flex;
+		justify-content: center;
+	}
+}
+
+/* .c-welcome {
+	opacity: 0;
+	width: 0;
+}
+
+@media (min-width: 768px) {
+	.c-welcome {
+		opacity: 1;
+		width: auto;
+	}
+} */
+/*
+    Component: Logo
+    ---
+    Everything logo related here
+*/
+
+.c-logo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	margin-bottom: var(--global-whitespace-xl);
+
+	margin-bottom: 0;
+	padding: var(--global-whitespace-lg) var(--global-whitespace-md);
+}
+
+.c-logo__symbol {
+	background-color: var(--global-color-beta);
+	width: 20px;
+	height: 20px;
+	border: 2px solid var(--global-color-beta);
+}
+.c-logo__name {
+	font-size: 20px;
+	margin-left: var(--global-whitespace-md);
+	color: var(--global-color-omega);
+}
+
+@media (min-width: 768px) {
+	.c-logo {
+		margin: auto;
+		flex-direction: column;
+	}
+
+	.c-logo__name {
+		margin: 0;
+		font-size: 48px;
+	}
+}
+
+/*
+    Component: Title
+    ---
+    title of the page
+*/
+.c-title {
+	font-size: 27px;
+	line-height: 40px;
+}
+
+.c-card {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	transform: translateY(-94px);
+}
+
+@media (min-width: 768px) {
+	.c-card {
+		transform: translateY(0);
+	}
+}
+
+/*
+    Component: Forms
+    ---
+    Everything form related here. Including input, label and button
+*/
+
+.c-form {
+	max-width: 800px;
+	height: fit-content;
+	margin: auto;
+}
+/*makes sure that last paragraph of form__field has no margin bottom so "wachtwoord vergeten" can be close to the input field*/
+.c-form__field > *:last-child {
+	margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+	.c-form {
+		padding: 88px 80px;
+		border-radius: 14px;
+		/* border: var(--global-borderWidth) solid var(--global-color-alpha); */
+		box-shadow: 0 0 0 1px rgba(252, 140, 113, 0.05), 0 8px 8px rgba(252, 140, 113, 0.5);
+	}
+}
+/*
+    Component: Label
+    ---
+    Custom label
+*/
+.c-label {
+	margin-bottom: 0;
+	font-size: var(--global-fontsize-md);
+
+	padding: 0 0 var(--global-whitespace-xs);
+	line-height: calc(var(--global-fontsize-md) * 1.5);
+	color: var(--label-color, var(--global-color-omega));
+	display: flex;
+	justify-content: space-between;
+}
+
+/*
+    Component: Custom input
+    ---
+    Custom input
+*/
+.c-input {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 100%;
+	background-color: var(--global-color-neutral-xx-light);
+	font-family: inherit;
+	font-size: var(--global-fontsize-md);
+	line-height: var(--lineheight-input, calc(var(--global-fontsize-md) * 1.5)); /*24px*/
+	padding: 9px 8px;
+	outline: none;
+	transition: all var(--global-transitionTiming-alpha);
+	border-radius: var(--global-borderRadius);
+	border: var(--input-border);
+}
+
+/* .c-input:hover {
+	box-shadow: var(--input-hover-boxShadow, 0 0 0 1px var(--global-color-alpha-dark-x));
+}
+
+.c-input:focus,
+.c-input:active {
+	box-shadow: var(--input-focus-boxShadow, 0 0 0 3px var(--global-color-alpha-dark-x-transparent), 0 0 0 1px var(--global-color-alpha-dark-x));
+} */
+
+/**/
+.c-buttonrow {
+	display: flex;
+	justify-content: center;
+	padding-top: 48px;
+}
+
+/*
+    Component: Button
+    ---
+    Custom button
+*/
+
+.c-button {
+	border-radius: var(--global-borderRadius);
+
+	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
+	font-size: var(--global-fontsize-md);
+	line-height: calc(var(--global-fontsize-md) * 1.5);
+	display: flex;
+	align-items: center;
+}
+.c-backbutton {
+	border: var(--global-borderWidth) solid var(--global-color-alpha);
+	color: var(--global-color-alpha);
+	height: 48px;
+	width: 120px;
+
+	justify-content: space-around;
+	margin-right: 4px;
+}
+.c-backbutton__arrow {
+	width: 24px;
+	height: 24px;
+	fill: var(--global-color-alpha);
+}
+
+.c-submitbutton {
+	background-color: var(--global-color-alpha);
+	color: var(--global-color-neutral-xxx-light);
+	height: 48px;
+	width: 176px;
+
+	justify-content: center;
+	margin-left: 4px;
+}
+
+/*
+    Component: link
+    ---
+    Custom link
+*/
+.c-link {
+	text-decoration: underline;
+	text-align: end;
+}
