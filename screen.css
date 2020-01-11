@@ -723,7 +723,6 @@ body {
 	user can choose role*/
 
 .c-choices {
-	transform: translateY(94px);
 }
 .c-choice {
 	border-radius: var(--global-borderRadius);
