@@ -26,8 +26,8 @@
 	--global-color-alpha-dark-x: #fe6740;
 	--global-color-alpha-dark-xx: #ff5d33;
 
-	--global-color-beta: #27255f;
-	--global-color-omega: #1c5c5c;
+	--global-color-beta: #1c5c5c;
+	--global-color-omega: #27255f;
 
 	--global-color-neutral-xxxxx-light: white;
 	--global-color-neutral-xxxx-light: white;
@@ -42,9 +42,10 @@
 	--global-color-neutral-xxx-dark: #17191a;
 	--global-color-neutral-xxxx-dark: #17171a;
 
+	--global-color-neutral-x-light-transparent: #c8c8cc29;
 	/* border variables */
-	--global-borderRadius: 12px;
-	--global-borderWidth: 2px;
+	--global-borderRadius: 4px;
+	--global-borderWidth: 1px;
 
 	/* transitions */
 	--global-transitionTiming-alpha: 0.1s ease-out;
@@ -60,12 +61,15 @@
 	--global-whitespace-xl: calc(var(--global-whitespace) * 2); /*  = 48px */
 	--global-whitespace-xxl: calc(var(--global-whitespace) * 3); /*  = 72px */
 
-	/*fontsizes: modular scale met base 16px en ratio 1.5*/
-	--global-fontsize-sm: 12px;
+	/*fontsizes: modular scale met base 16px en ratio 1.25*/
+	--global-fontsize-xs: 10px;
+	--global-fontsize-sm: 13px;
 	--global-fontsize: 16px;
-	--global-fontsize-md: 24px;
-	--global-fontsize-lg: 36px;
-	--global-fontsize-xl: 54px;
+	--global-fontsize-md: 20px;
+	--global-fontsize-lg: 25px;
+	--global-fontsize-xl: 31px;
+	--global-fontsize-xxl: 39px;
+	--global-fontsize-xxxl: 48px;
 
 	/*error*/
 
@@ -87,10 +91,10 @@
 html {
 	font-size: var(--global-fontsize); /*16px*/
 	line-height: 1.5;
-	font-family: 'IBM Plex Sans', 'Inter Web', Helvetica, arial, sans-serif;
+	font-family: 'Poppins', Helvetica, arial, sans-serif;
 	font-weight: 400;
-	color: var(--global-color-neutral-xxx-dark);
-	background-color: var(--global-color-neutral-xx-light);
+	color: var(--global-color-omega);
+	background-color: var(--global-color-neutral-xxxx-light);
 	box-sizing: border-box;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -249,8 +253,11 @@ input::placeholder {
 body {
 	height: 100%;
 	display: flex;
-    flex-direction: column;
-    background-image: url();
+	flex-direction: column;
+	margin: 0px;
+
+	/* background-image: url(LoginMentor.png);
+	background-repeat: no-repeat;  */
 }
 
 /*------------------------------------*\
@@ -266,7 +273,7 @@ body {
 .o-row {
 	position: relative;
 
-	padding: var(--global-whitespace) var(--global-whitespace) 0;
+	padding: 0 var(--global-whitespace);
 }
 
 /*
@@ -278,6 +285,7 @@ body {
 .o-container {
 	margin-left: auto;
 	margin-right: auto;
+
 	max-width: 800px; /* 79.5 * 16px = 1272 */
 	width: 100%;
 }
@@ -301,11 +309,31 @@ body {
 	.o-section--xl + .o-section--xl {
 		padding-top: var(--global-whitespace-lg);
 	}
+	.o-section {
+		margin: auto;
+	}
 }
 
 @media (min-width: 992px) {
 	.o-section--xl + .o-section--xl {
 		padding-top: var(--global-whitespace-xxl);
+	}
+}
+/*
+    Objects: Row
+    ---
+    Creates a horizontal row that stretches the viewport and adds padding around children
+*/
+
+.o-header {
+	height: auto;
+}
+@media (min-width: 768px) {
+	.o-header {
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 }
 
@@ -432,4 +460,906 @@ body {
 
 .o-layout--align-content-space-between {
 	align-content: space-between;
+}
+
+/*
+    Objects: List
+    ---
+    Small reusable object to remove default list styling from lists
+*/
+
+.o-list {
+	list-style: none;
+	padding: 0;
+}
+
+/*
+    Object: Button reset
+    ---
+    Small button reset object
+*/
+
+.o-button-reset {
+	border: none;
+	margin: 0;
+	padding: 0;
+	width: auto;
+	overflow: visible;
+	background: transparent;
+
+	/* inherit font & color from ancestor */
+	color: inherit;
+	font: inherit;
+
+	/* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+	line-height: normal;
+
+	/* Corrects font smoothing for webkit */
+	-webkit-font-smoothing: inherit;
+	-moz-osx-font-smoothing: inherit;
+
+	/* Corrects inability to style clickable `input` types in iOS */
+	-webkit-appearance: none;
+}
+/*------------------------------------*\
+#COMPONENTS
+\*------------------------------------*/
+
+/*content*/
+.c-content {
+	margin: auto;
+}
+
+@media (min-width: 768px) {
+	.c-content {
+		display: flex;
+		justify-content: center;
+	}
+}
+
+/* .c-welcome {
+	opacity: 0;
+	width: 0;
+}
+
+@media (min-width: 768px) {
+	.c-welcome {
+		opacity: 1;
+		width: auto;
+	}
+} */
+/*
+    Component: Logo
+    ---
+    Everything logo related here
+*/
+
+.c-logo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	margin-bottom: var(--global-whitespace-xl);
+
+	margin-bottom: 0;
+	padding: var(--global-whitespace-lg) var(--global-whitespace-md);
+}
+
+.c-logo__symbol {
+	background-color: var(--global-color-beta);
+	width: 20px;
+	height: 20px;
+	border: 2px solid var(--global-color-beta);
+}
+.c-logo__name {
+	font-size: 20px;
+	margin-left: var(--global-whitespace-md);
+	color: var(--global-color-omega);
+}
+
+.c-logo__menu{
+	display: flex;
+	align-items: center;
+	justify-content: left;
+	margin-bottom: var(--global-whitespace-xl);
+	margin-left: var(--global-whitespace-lg);
+	margin-bottom: 0;
+	padding: var(--global-whitespace-lg) var(--global-whitespace-md);
+}
+
+@media (min-width: 768px) {
+	.c-logo {
+		margin: auto;
+		flex-direction: column;
+	}
+
+	.c-logo__name {
+		margin: 0;
+		font-size: 48px;
+	}
+}
+
+/*
+    Component: Title
+    ---
+    title of the page
+*/
+.c-title {
+	font-size: var(--global-fontsize-lg);
+}
+
+.c-title__menu{
+	display: flex;
+	font-size: var(--global-fontsize-md);
+	justify-content: space-between;
+	align-content: center;
+}
+
+.c-card {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	transform: translateY(-94px);
+}
+
+@media (min-width: 768px) {
+	.c-card {
+		transform: translateY(0);
+	}
+}
+
+/*
+    Component: Forms
+    ---
+    Everything form related here. Including input, label and button
+*/
+
+.c-form {
+	max-width: 640px;
+	height: fit-content;
+	margin: auto;
+}
+/*makes sure that last paragraph of form__field has no margin bottom so "wachtwoord vergeten" can be close to the input field*/
+.c-form__field > *:last-child {
+	margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+	.c-form {
+		padding: 88px 80px;
+		border-radius: 14px;
+		/* border: var(--global-borderWidth) solid var(--global-color-alpha); */
+		box-shadow: 0 0 0 1px rgba(252, 140, 113, 0.05), 0 8px 8px rgba(252, 140, 113, 0.5);
+	}
+}
+/*
+    Component: Label
+    ---
+    Custom label
+*/
+.c-label {
+	margin-bottom: 0;
+	font-size: var(--global-fontsize-md);
+
+	padding: 0 0 var(--global-whitespace-xs);
+	line-height: calc(var(--global-fontsize-md) * 1.5);
+	color: var(--label-color, var(--global-color-omega));
+	display: flex;
+	justify-content: space-between;
+}
+
+/*
+    Component: Custom input
+    ---
+    Custom input
+*/
+.c-input {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 100%;
+	background-color: var(--global-color-neutral-xx-light);
+	font-family: inherit;
+	font-size: var(--global-fontsize-md);
+	line-height: var(--lineheight-input, calc(var(--global-fontsize-md) * 1.5)); /*24px*/
+	padding: 9px 8px;
+	outline: none;
+	transition: all var(--global-transitionTiming-alpha);
+	border-radius: var(--global-borderRadius);
+	border: var(--input-border);
+}
+
+/* .c-input:hover {
+	box-shadow: var(--input-hover-boxShadow, 0 0 0 1px var(--global-color-alpha-dark-x));
+}
+
+.c-input:focus,
+.c-input:active {
+	box-shadow: var(--input-focus-boxShadow, 0 0 0 3px var(--global-color-alpha-dark-x-transparent), 0 0 0 1px var(--global-color-alpha-dark-x));
+} */
+
+/**/
+.c-buttonrow {
+	display: flex;
+	justify-content: center;
+	padding-top: var(--global-whitespace-lg);
+	margin-bottom: var(--global-whitespace);
+}
+
+/*
+    Component: Button
+    ---
+    Custom button
+*/
+
+.c-button {
+	border-radius: var(--global-borderRadius);
+
+	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
+	font-size: var(--global-fontsize-md);
+	line-height: calc(var(--global-fontsize-md) * 1.5);
+	display: flex;
+	align-items: center;
+}
+.c-backbutton {
+	border: var(--global-borderWidth) solid var(--global-color-alpha);
+	color: var(--global-color-alpha);
+	height: 48px;
+	width: 120px;
+
+	justify-content: space-around;
+	margin-right: 4px;
+}
+.c-backbutton__arrow {
+	width: 24px;
+	height: 24px;
+	fill: var(--global-color-alpha);
+}
+
+.c-submitbutton {
+	background-color: var(--global-color-alpha);
+	color: var(--global-color-neutral-xxx-light);
+	height: 48px;
+	width: 176px;
+
+	justify-content: center;
+	margin-left: 4px;
+}
+
+/*
+    Component: link
+    ---
+    Custom link
+*/
+.c-link {
+	text-decoration: underline;
+	text-align: end;
+}
+
+/* Component: choice
+    ---
+	user can choose role*/
+
+.c-choices {
+}
+.c-choice {
+	border-radius: var(--global-borderRadius);
+	box-shadow: 0 0 0 1px rgba(252, 140, 113, 0.05), 0 8px 8px rgba(252, 140, 113, 0.5);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+
+	height: 160px;
+	font-size: var(--global-fontsize-md);
+
+	margin: var(--global-whitespace-xl) 0;
+}
+
+/* Component: navigation client
+    ---
+	*/
+.c-navigationClient {
+	display: grid;
+	grid-template-columns: 56px 1fr 56px;
+
+	height: var(--global-whitespace-xl);
+	margin: var(--global-whitespace);
+}
+
+.c-userphoto {
+	justify-self: self-end;
+	height: 100%;
+}
+
+.c-icon {
+	height: 100%;
+}
+
+.c-logout {
+	justify-self: self-end;
+	font-size: var(--global-fontsize-xs);
+	height: 100%;
+}
+.c-logout__symbol {
+	height: 75%;
+}
+.c-logout a {
+	color: var(--global-color-omega);
+}
+
+/*Component: date
+ ---
+ picto representation of current date
+	*/
+
+.c-date {
+	display: flex;
+	justify-content: space-evenly;
+	margin: var(--global-whitespace);
+	/* border: var(--global-borderWidth) solid var(--global-color-beta);
+	border-radius: var(--global-borderRadius); */
+}
+
+/*Component: progressive Scheme
+ ---
+
+	*/
+
+.c-progressiveSchemes {
+}
+
+.c-progressiveSchemes .c-progressiveScheme {
+	background-color: var(--global-color-neutral-x-light-transparent);
+	height: 104px;
+	display: flex;
+	align-items: center;
+
+	/* display: grid;
+	grid-template-columns: 56px 1fr;
+	align-items: center;
+	justify-items: center; */
+	margin: var(--global-whitespace) 0;
+	padding: var(--global-baseline);
+}
+
+.c-progressiveScheme__mainPicto {
+	/* display: flex; */
+	justify-content: center;
+	align-items: center;
+	margin: var(--global-baseline);
+}
+
+.c-progressiveScheme__name {
+	display: flex;
+	align-self: center;
+	font-size: var(--global-fontsize-md);
+	margin: 0 var(--global-baseline);
+}
+/*Component: ClientListButton
+ Add clients to the clientlist
+
+	*/
+
+.c-button__addClient{
+	display: flex;
+	justify-content: space-between;
+	background-color: var(--global-color-neutral-x-light-transparent);
+	font-size: var(--global-fontsize-sm);
+	border-radius: calc(var(--global-borderRadius)*4);
+	line-height: var(--global-fontsize-sm);
+	padding: 8px 0;
+	height: 100%;;
+}
+
+.c-button__addClient-text{
+	padding: 0 14px;
+}
+
+.c-button__addClient-symbol{
+	padding-right: 8px;
+}
+
+
+/*Component: ClientList
+ A mentor has an overview of all his clients
+
+	*/
+
+.c-clients {
+}
+
+.c-clients .c-client {
+	background-color: var(--global-color-neutral-x-light-transparent);
+	height: 80px;
+	display: flex;
+	align-items: center;
+
+	/* display: grid;
+	grid-template-columns: 56px 1fr;
+	align-items: center;
+	justify-items: center; */
+	margin: var(--global-whitespace) 0;
+	padding: var(--global-baseline);
+}
+
+.c-client__userPhoto {
+	/* display: flex; */
+	justify-content: center;
+	align-items: center;
+	margin: var(--global-baseline);
+		height: 48px;
+	width: 48px;
+}
+
+.c-client__name{
+	display: flex;
+	align-self: center;
+	font-size: var(--global-fontsize-md);
+	margin: 0 var(--global-baseline);
+}
+
+.c-client__delete{
+	display: flex;
+	justify-content: flex-end;
+}
+
+/*Component: StepplansList
+ A mentor has an overview of all his stepplans
+
+	*/
+
+.c-stepplans {
+}
+
+.c-stepplans .c-stepplan {
+	background-color: var(--global-color-neutral-x-light-transparent);
+	height: 80px;
+display: flex;
+	margin: var(--global-whitespace) 0;
+	padding: var(--global-baseline);
+}
+
+.c-stepplan__picto{
+ display: flex;
+ align-content: center;
+ justify-content: flex-start;
+}
+
+.c-stepplan__name{
+	font-size: var(--global-fontsize-md);
+	margin: 0 var(--global-baseline);
+	display: flex;
+	align-items: center;
+}
+
+.c-stepplan__pencil{
+	display: flex;
+	justify-content: end;
+}
+
+.c-stepplan__delete{
+	display: flex;
+	justify-content: flex-end;
+}
+
+/* Component: profile mentor
+    ---
+	*/
+
+.c-mentor__logout {
+	display: grid;
+	grid-template-columns: 56px 1fr ;
+
+	height: var(--global-whitespace-xl);
+	margin: var(--global-whitespace);
+}
+
+.c-profile__picture{
+	padding-bottom: 40px;
+	margin-left: -10px;
+}
+
+.c-label__profile{
+	margin-bottom: 0;
+	font-size: var(--global-fontsize-sm);
+	font-weight: 600;
+	padding: 0 0 var(--global-whitespace-xs);
+	line-height: var(--global-fontsize-md);
+	color: var(--label-color, var(--global-color-omega));
+	display: flex;
+	justify-content: space-between;
+}
+
+.c-profile__info{
+	font-size: var(--global-fontsize-sm);
+}
+
+/*Component: phone button
+ ---
+client can get to contact list
+	*/
+
+.c-phonebutton {
+	background-color: var(--global-color-alpha);
+	border-radius: 23px;
+	height: 56px;
+	width: 104px;
+	display: flex;
+	justify-content: flex-end;
+
+	/*positioning telephone so that it stays in the same spot on the screen no matter how much you scroll*/
+	position: fixed;
+	top: 563;
+	left: -20;
+	padding-right: var(--global-whitespace-md);
+}
+
+/*SingleStepClient page*/
+/*Component: header in screen step of progressive scheme client
+ ---
+
+	*/
+.c-header__step {
+	display: flex;
+	justify-content: space-between;
+	margin: var(--global-whitespace) 0;
+}
+.c-progressiveScheme {
+	display: flex;
+}
+/*Component: step
+ ---
+the visualisation of 1 step for the client with picto, countsymbol and explanation
+	*/
+.c-step {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.c-step__countsymbol {
+	position: absolute;
+	top: -12px;
+	left: -12px;
+}
+.c-step__pictowrapper {
+	display: block;
+
+	position: relative;
+	height: 304px;
+	width: 256px;
+	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
+	border-radius: 14px;
+	padding: auto;
+	margin-bottom: var(--global-whitespace-xl);
+}
+
+.c-step__picto {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+.c-picto {
+}
+
+.c-step__explanation {
+	width: 256px;
+	text-align: center;
+}
+
+/*Component: footer
+ ---
+navigation footer for client with visualisation of progress, phonebutton and overview steps button
+	*/
+.c-topLeftLogo {
+	display: grid;
+	grid-template-columns: 56px 1fr 56px;
+
+	height: var(--global-whitespace-xl);
+	margin: var(--global-whitespace);
+}
+
+.c-footer {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	height: 64px;
+}
+.c-footer__navbarClient {
+	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 -5px 5px -5px rgba(170, 170, 179, 0.75);
+	position: relative;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 100%;
+}
+.c-footer__navbarClient .c-emergencycall {
+	position: absolute;
+	top: -32px;
+
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.c-footer__navbarClient .c-phonebutton {
+	border-radius: 100%;
+	height: 64px;
+	width: 64px;
+	display: flex;
+	justify-content: center;
+	position: static;
+	padding: 0;
+}
+.c-steps__progress {
+	width: 25%;
+	display: flex;
+	justify-content: flex-start;
+}
+
+.c-footer__steps-overview {
+	width: 25%;
+	display: flex;
+	justify-content: flex-end;
+}
+.c-stepsOverview__sybmol {
+	border: var(--global-borderWidth) solid var(--global-color-omega);
+	border-radius: 8px;
+	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
+	height: 40px;
+	width: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/*Component: footer
+ ---
+navigation footer for menu mentor
+	*/
+.c-footer__navbarMentor {
+	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 -5px 5px -5px rgba(170, 170, 179, 0.75);
+	background-color: white;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+}
+
+.c-footer__tabs{
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	margin-top: 10px;
+}
+
+	
+
+/*Registration page mentor part 1*/
+
+.c-progressRegistration {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: var(--global-whitespace-sm);
+}
+/*Registration page mentor part 2*/
+.c-button__addProfilePic {
+	margin-bottom: var(--global-whitespace-sm);
+}
+
+.c-addPhonenumber p {
+	margin-top: 8px;
+}
+.c-addContact {
+	display: flex;
+	justify-content: flex-end;
+}
+.c-button__addContact {
+	display: flex;
+	justify-content: space-around;
+	width: 178px;
+	font-size: var(--global-fontsize-sm);
+}
+/*overview steps of progressive scheme for client*/
+
+.c-overview__header {
+	margin-top: 24px;
+	height: 240px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	position: relative;
+}
+
+.c-overview__header .c-progressiveScheme__mainPicto {
+	height: 200px;
+	width: 200px;
+}
+.c-overview__header .c-progressiveScheme__mainPicto .c-icon {
+	height: 100%;
+	width: 100%;
+}
+.c-overview__header .c-progressiveScheme__name {
+	font-size: var(--global-fontsize-lg);
+	position: absolute;
+	bottom: -16px;
+	left: 0;
+}
+
+.c-overview__step {
+	margin: var(--global-whitespace) 0;
+	background-color: var(--global-color-neutral-xxx-light);
+	display: grid;
+	grid-template-columns: 56px 24px 1fr;
+	grid-template-rows: 1fr 1fr;
+	grid-column-gap: var(--global-baseline);
+	border-radius: 8px;
+	position: relative;
+	padding: var(--global-baseline);
+}
+
+.c-overview__step .c-step__countsymbol {
+	position: static;
+	align-self: center;
+}
+
+.c-overview__step .c-step__name {
+	align-self: center;
+}
+.c-overview__step .c-picto {
+	grid-row: span 2;
+	align-self: center;
+	width: 56px;
+	height: 56px;
+	border: var(--global-borderWidth) solid var(--global-color-omega);
+	border-radius: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.c-overview__step .c-picto img {
+	width: 80%;
+}
+.c-checkmark {
+	position: absolute;
+	top: -8px;
+	right: -8px;
+}
+
+.c-downwardsArrow {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/*finished progressive scheme screen --> congratulates the user*/
+
+/*Component: congrats
+--- 
+gives client feedback by congratulating them on finishing a progressive scheme and shows how their progress bar fills up
+*/
+.c-card__congrats {
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.c-congrats {
+	justify-self: center;
+	width: 100%;
+}
+
+.c-congrats__body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.c-congrats__text {
+	text-align: center;
+}
+
+.c-congrats__text > div {
+	font-size: var(--global-fontsize-lg);
+}
+.c-congrats__img {
+	width: 194px;
+	height: 156px;
+	margin-bottom: var(--global-whitespace-lg);
+}
+
+.c-congrats__bar {
+	position: relative;
+	width: 100%;
+	height: 24px;
+}
+
+.c-progressbar__front {
+	position: absolute;
+	left: 0;
+
+	height: 100%;
+}
+.c-progressbar__back {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/*conctactlist for client
+
+where client can see all their emergency contacts*/
+
+.c-navigation__close {
+	margin-top: var(--global-whitespace);
+	display: flex;
+	justify-content: flex-end;
+}
+
+
+.c-phone {
+	display: flex;
+	align-items: center;
+	border: hotpink;
+	width: 100%;
+	height: 64px;
+	margin-bottom: var(--global-whitespace);
+}
+.c-phone h1 {
+	margin-bottom: 0;
+	margin-left: var(--global-whitespace-md);
+}
+.c-phone__img {
+	width: 32px;
+	height: 100%;
+
+	border: hotpink;
+}
+
+.c-phone__img .c-icon {
+	fill: var(--global-color-omega);
+	border: red;
+	height: 100%;
+	width: 100%;
+}
+
+/*Component: contactlist*/
+.c-contactlist {
+	display: flex;
+	justify-content: center;
+}
+/*Component: contact
+--- 
+clients can call a contact by touching the contact
+each contact has a profile pic and name
+*/
+.c-contact {
+	display: flex;
+	align-items: center;
+	background-color: var(--global-color-neutral-x-light-transparent);
+	height: 104px;
+	width: 296px;
+	max-width: 640px;
+	margin-bottom: 24px;
+	border-radius: 8px;
+}
+
+.c-contact__profilepic {
+	height: 88px;
+	width: 88px;
+	margin: var(--global-baseline);
+}
+
+.c-contact__profilepic .c-icon {
+	height: 100%;
+	width: 100%;
+}
+
+.c-contact__name {
+	font-size: var(--global-fontsize-lg);
+	margin-left: var(--global-whitespace-lg);
 }
