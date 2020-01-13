@@ -871,25 +871,20 @@ body {
 }
 
 .c-clients .c-client {
+	display: grid;
+	grid-template-columns: 64px 1fr 20px;
+	grid-template-rows: auto auto;
 	background-color: var(--global-color-neutral-x-light-transparent);
-	height: 104px;
-	display: flex;
-	align-items: center;
-
-	/* display: grid;
-	grid-template-columns: 56px 1fr;
-	align-items: center;
-	justify-items: center; */
+	height: 80px;
 	margin: var(--global-whitespace) 0;
 	padding: var(--global-baseline);
 }
 
 .c-client__userPhoto {
-	/* display: flex; */
 	justify-content: center;
 	align-items: center;
 	margin: var(--global-baseline);
-		height: 48px;
+	height: 48px;
 	width: 48px;
 }
 
@@ -903,8 +898,126 @@ body {
 .c-client__delete{
 	display: flex;
 	justify-content: flex-end;
+	align-items: center;
 }
 
+@media (min-width: 992px){
+.c-clients {
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-template-rows: auto;
+	margin-left: calc(var(--global-baseline)*8);
+}
+
+.c-clients .c-client {
+	display: grid;
+	grid-template-columns: 64px 1fr 20px;
+	grid-template-rows: auto auto;
+	background-color: var(--global-color-neutral-x-light-transparent);
+	height: 80px;
+	width: 300px;
+	margin: var(--global-whitespace) 0;
+	padding: var(--global-baseline);
+}
+}
+
+/*Component: StepplansList
+ A mentor has an overview of all his stepplans
+
+	*/
+.c-stepplans {
+	
+}
+
+.c-stepplans .c-stepplan {
+	display: grid;
+	grid-template-columns: 64px 1fr 20px;
+	grid-template-rows: auto auto;
+	background-color: var(--global-color-neutral-x-light-transparent);
+	height: 80px;
+	margin: var(--global-whitespace) 0;
+	padding: var(--global-baseline);
+}
+
+
+
+.c-stepplan__picto{
+	grid-row: span 2;
+}
+
+.c-stepplan__name{
+	font-size: var(--global-fontsize);
+	margin: 0 var(--global-baseline);
+	grid-row: span 2;
+	grid-column: span 1;
+	display: flex;
+	align-items: center;
+}
+
+
+.c-stepplan__pencil{
+	display: flex;
+	align-items: center;
+}
+
+.c-stepplan__delete{
+	grid-column: 3;
+	display: flex;
+	align-items: center;
+}
+
+@media (min-width: 992px){
+
+.c-stepplans{
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-template-rows: auto;
+	margin-left: calc(var(--global-baseline)*8);
+}
+
+	.c-stepplans .c-stepplan {
+	display: grid;
+	grid-template-columns: 64px 1fr 20px;
+	grid-template-rows: auto auto;
+	background-color: var(--global-color-neutral-x-light-transparent);
+	height: 80px;
+	width: 300px;
+	margin: var(--global-whitespace) 0;
+	padding: var(--global-baseline);
+}
+}
+
+/* Component: profile mentor
+    ---
+	*/
+
+.c-mentor__logout {
+	display: grid;
+	grid-template-columns: 56px 1fr ;
+
+	height: var(--global-whitespace-xl);
+	margin: var(--global-whitespace);
+}
+
+.c-profile__picture{
+	padding-bottom: 40px;
+	margin-left: -10px;
+}
+
+.c-label__profile{
+	margin-bottom: 0;
+	font-size: var(--global-fontsize-sm);
+	font-weight: 600;
+	padding: 0 0 var(--global-whitespace-xs);
+	line-height: var(--global-fontsize-md);
+	color: var(--label-color, var(--global-color-omega));
+	display: flex;
+	justify-content: space-between;
+}
+
+.c-profile__info{
+	font-size: var(--global-fontsize-sm);
+}
 
 /*Component: phone button
  ---
@@ -986,7 +1099,6 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 	*/
 .c-topLeftLogo {
 	display: grid;
-	grid-template-columns: 56px 1fr 56px;
 
 	height: var(--global-whitespace-xl);
 	margin: var(--global-whitespace);
@@ -998,6 +1110,7 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 	bottom: 0;
 	height: 64px;
 }
+
 .c-footer__navbarClient {
 	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 -5px 5px -5px rgba(170, 170, 179, 0.75);
 	position: relative;
@@ -1050,7 +1163,15 @@ navigation footer for client with visualisation of progress, phonebutton and ove
  ---
 navigation footer for menu mentor
 	*/
-.c-footer__navbarMentor {
+.c-navbar {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	height: calc(var(--global-baseline)*8);
+}
+
+
+.c-navbar__mentor {
 	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 -5px 5px -5px rgba(170, 170, 179, 0.75);
 	background-color: white;
 	position: fixed;
@@ -1058,13 +1179,67 @@ navigation footer for menu mentor
 	width: 100%;
 }
 
-.c-footer__tabs{
+.c-navbar__tabs{
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
 	margin-top: 10px;
 }
 
+@media (min-width: 768px){
+.c-section_menu{ 
+	padding: 0 calc(var(--global-whitespace-xxl)*2);
+}
+}
+
+
+@media (min-width: 992px) {
+.c-topLeftLogo {
+	display: flex;
+	justify-content: center;
+
+	height: var(--global-whitespace-xl);
+	margin: var(--global-whitespace);
+}
+
+.c-section_menu{ 
+	padding: 0;
+}
+
+.c-title__menu{
+	margin-left: calc(var(--global-baseline)*8);
+}
+
+
+.c-tab{
+	padding: calc(var(--global-baseline)*3.5) 0;
+}
+
+.c-tab__text{
+	visibility: hidden;
+}
+
+.c-navbar {
+	height: 100%;
+	top: 0;
+	left: 0;
+	width: calc(var(--global-baseline)*8);
+}
+
+.c-navbar__mentor {
+	border:var(--global-borderWidth) solid var(--global-color-neutral-xx-light);
+    border-width: 0 var(--global-borderWidth) 0 0;
+	background-color: white;
+	height: 100%;
+	width: calc(var(--global-baseline)*8);
+}
+
+.c-navbar__tabs{
+	display: flex;
+	flex-direction: column;
+	margin-top: calc(var(--global-whitespace-xl)*2);
+}
+}
 	
 
 /*Registration page mentor part 1*/
