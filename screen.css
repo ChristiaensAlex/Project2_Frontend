@@ -819,14 +819,15 @@ Component: Spread
   padding: 8px;
 }
 
-/* .c-input:hover {
-box-shadow: var(--input-hover-boxShadow, 0 0 0 1px var(--global-color-alpha-dark-x));
+.c-input:hover {
+	box-shadow: var(--input-hover-boxShadow, 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75));
 }
 
 .c-input:focus,
 .c-input:active {
-box-shadow: var(--input-focus-boxShadow, 0 0 0 3px var(--global-color-alpha-dark-x-transparent), 0 0 0 1px var(--global-color-alpha-dark-x));
-} */
+	border: var(--input-border, 1px solid var(--global-color-omega));
+	box-shadow: var(--input-focus-boxShadow, 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75));
+}
 /**/
 .c-buttonrow {
   display: flex;
