@@ -542,7 +542,6 @@ body {
   margin-bottom: var(--global-whitespace-xl);
 
   margin-bottom: 0;
-  padding: var(--global-whitespace-lg) var(--global-whitespace-md);
 }
 
 .c-logo__symbol {
@@ -820,7 +819,6 @@ body {
 
 	*/
 
-
 .c-progressiveSchemes .c-progressiveScheme {
   background-color: var(--global-color-neutral-x-light-transparent);
   height: 104px;
@@ -936,7 +934,6 @@ the visualisation of 1 step for the client with picto, countsymbol and explanati
   padding-left: 16px;
   width: 100%;
 }
-
 
 .c-step__explanation {
   width: 256px;
