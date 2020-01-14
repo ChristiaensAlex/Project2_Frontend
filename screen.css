@@ -506,7 +506,7 @@ body {
 \*------------------------------------*/
 
 /*content*/
-.c-content {
+.content {
 	margin: auto;
 }
 
@@ -551,6 +551,13 @@ body {
 	height: 20px;
 	border: 2px solid var(--global-color-beta);
 }
+
+.c-logo__official {
+	width: 40px;
+	height: 40px;
+	margin-bottom: var(--global-baseline);
+}
+
 .c-logo__name {
 	font-size: 20px;
 	margin-left: var(--global-whitespace-md);
@@ -589,6 +596,13 @@ body {
 }
 
 .c-title__menu{
+	display: flex;
+	font-size: var(--global-fontsize-md);
+	justify-content: space-between;
+	align-content: center;
+}
+
+.c-title__menu-profile{
 	display: flex;
 	font-size: var(--global-fontsize-md);
 	justify-content: space-between;
@@ -871,25 +885,20 @@ body {
 }
 
 .c-clients .c-client {
+	display: grid;
+	grid-template-columns: 64px 1fr 20px;
+	grid-template-rows: auto auto;
 	background-color: var(--global-color-neutral-x-light-transparent);
 	height: 80px;
-	display: flex;
-	align-items: center;
-
-	/* display: grid;
-	grid-template-columns: 56px 1fr;
-	align-items: center;
-	justify-items: center; */
 	margin: var(--global-whitespace) 0;
 	padding: var(--global-baseline);
 }
 
 .c-client__userPhoto {
-	/* display: flex; */
 	justify-content: center;
 	align-items: center;
 	margin: var(--global-baseline);
-		height: 48px;
+	height: 48px;
 	width: 48px;
 }
 
@@ -903,45 +912,91 @@ body {
 .c-client__delete{
 	display: flex;
 	justify-content: flex-end;
+	align-items: center;
+}
+
+@media (min-width: 992px){
+.c-clients {
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-template-rows: auto;
+	margin-left: calc(var(--global-baseline)*8);
+}
+
+.c-clients .c-client {
+	display: grid;
+	grid-template-columns: 64px 1fr 20px;
+	grid-template-rows: auto auto;
+	background-color: var(--global-color-neutral-x-light-transparent);
+	height: 80px;
+	width: 300px;
+	margin: var(--global-whitespace) 0;
+	padding: var(--global-baseline);
+}
 }
 
 /*Component: StepplansList
  A mentor has an overview of all his stepplans
 
 	*/
-
 .c-stepplans {
+	
 }
 
 .c-stepplans .c-stepplan {
+	display: grid;
+	grid-template-columns: 64px 1fr 20px;
+	grid-template-rows: auto auto;
 	background-color: var(--global-color-neutral-x-light-transparent);
 	height: 80px;
-display: flex;
 	margin: var(--global-whitespace) 0;
 	padding: var(--global-baseline);
 }
 
 .c-stepplan__picto{
- display: flex;
- align-content: center;
- justify-content: flex-start;
+	grid-row: span 2;
 }
 
 .c-stepplan__name{
-	font-size: var(--global-fontsize-md);
+	font-size: var(--global-fontsize);
 	margin: 0 var(--global-baseline);
+	grid-row: span 2;
+	grid-column: span 1;
 	display: flex;
 	align-items: center;
 }
 
+
 .c-stepplan__pencil{
 	display: flex;
-	justify-content: end;
+	align-items: center;
 }
 
 .c-stepplan__delete{
+	grid-column: 3;
 	display: flex;
-	justify-content: flex-end;
+	align-items: center;
+}
+
+@media (min-width: 992px){
+
+.c-stepplans{
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-template-rows: auto;
+	margin-left: calc(var(--global-baseline)*8);
+}
+
+	.c-stepplans .c-stepplan {
+	display: grid;
+	grid-template-columns: 64px 1fr 20px;
+	grid-template-rows: auto auto;
+	background-color: var(--global-color-neutral-x-light-transparent);
+	height: 80px;
+	width: 300px;
+	margin: var(--global-whitespace) 0;
+	padding: var(--global-baseline);
+}
 }
 
 /* Component: profile mentor
@@ -950,10 +1005,27 @@ display: flex;
 
 .c-mentor__logout {
 	display: grid;
-	grid-template-columns: 56px 1fr ;
+	grid-template-columns: 1fr 56px  ;
 
 	height: var(--global-whitespace-xl);
-	margin: var(--global-whitespace);
+	margin: var(--global-whitespace) var(--global-whitespace)  var(--global-whitespace) 0;
+}
+
+.c-modify {
+	font-size: inherit;
+	color: var(--global-color-omega);
+	text-decoration: underline;
+}
+
+@media (min-width: 992px){
+
+.c-stepplans{
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-template-rows: auto;
+	margin-left: calc(var(--global-baseline)*8);
+}
+
 }
 
 .c-profile__picture{
@@ -1055,9 +1127,6 @@ the visualisation of 1 step for the client with picto, countsymbol and explanati
 navigation footer for client with visualisation of progress, phonebutton and overview steps button
 	*/
 .c-topLeftLogo {
-	display: grid;
-	grid-template-columns: 56px 1fr 56px;
-
 	height: var(--global-whitespace-xl);
 	margin: var(--global-whitespace);
 }
@@ -1068,6 +1137,7 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 	bottom: 0;
 	height: 64px;
 }
+
 .c-footer__navbarClient {
 	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 -5px 5px -5px rgba(170, 170, 179, 0.75);
 	position: relative;
@@ -1120,7 +1190,15 @@ navigation footer for client with visualisation of progress, phonebutton and ove
  ---
 navigation footer for menu mentor
 	*/
-.c-footer__navbarMentor {
+.c-navbar {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	height: calc(var(--global-baseline)*8);
+}
+
+
+.c-navbar__mentor {
 	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 -5px 5px -5px rgba(170, 170, 179, 0.75);
 	background-color: white;
 	position: fixed;
@@ -1128,13 +1206,84 @@ navigation footer for menu mentor
 	width: 100%;
 }
 
-.c-footer__tabs{
+.c-navbar__tabs{
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
 	margin-top: 10px;
 }
 
+@media (min-width: 768px){
+.c-section_menu{ 
+	padding: 0 calc(var(--global-whitespace-xxl)*2);
+}
+.c-section_menu-profile{
+	padding: 0 calc(var(--global-whitespace-xxl)*2);
+}
+}
+
+
+@media (min-width: 992px) {
+.c-topLeftLogo {
+	display: flex;
+	justify-content: center;
+	height: var(--global-whitespace-xl);
+	margin: var(--global-whitespace);
+}
+
+.c-section_menu{ 
+	padding: 0 calc(var(--global-whitespace-xxl)*4);
+}
+
+
+
+.c-title__menu{
+	margin-left: calc(var(--global-baseline)*8);
+}
+
+.c-title__menu-profile{
+	margin-left: none;
+}
+
+
+.c-tab{
+	padding: calc(var(--global-baseline)*3.5) 0;
+}
+
+.c-tab__text{
+	visibility: hidden;
+}
+
+.c-navbar {
+	height: 100%;
+	top: 0;
+	left: 0;
+	width: calc(var(--global-baseline)*8);
+}
+
+.c-navbar__mentor {
+	border:var(--global-borderWidth) solid var(--global-color-neutral-xx-light);
+    border-width: 0 var(--global-borderWidth) 0 0;
+	background-color: white;
+	height: 100%;
+	width: calc(var(--global-baseline)*8);
+}
+
+.c-navbar__tabs{
+	display: flex;
+	flex-direction: column;
+	margin-top: calc(var(--global-whitespace-xl)*2);
+}
+}
+
+@media (min-width: 1026px){
+	.c-section_menu{ 
+	padding: 0 calc(var(--global-whitespace-xxl)*6);
+}
+.c-section_menu-profile{
+	padding: 0 calc(var(--global-whitespace-xxl)*6);
+}
+}
 	
 
 /*Registration page mentor part 1*/
