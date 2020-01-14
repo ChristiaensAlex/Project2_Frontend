@@ -756,9 +756,6 @@ body {
 /* Component: choice
     ---
 	user can choose role*/
-
-.c-choices {
-}
 .c-choice {
   border-radius: var(--global-borderRadius);
   box-shadow: 0 0 0 1px rgba(252, 140, 113, 0.05), 0 8px 8px rgba(252, 140, 113, 0.5);
@@ -823,8 +820,6 @@ body {
 
 	*/
 
-.c-progressiveSchemes {
-}
 
 .c-progressiveSchemes .c-progressiveScheme {
   background-color: var(--global-color-neutral-x-light-transparent);
@@ -942,8 +937,6 @@ the visualisation of 1 step for the client with picto, countsymbol and explanati
   width: 100%;
 }
 
-.c-picto {
-}
 
 .c-step__explanation {
   width: 256px;
