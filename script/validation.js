@@ -67,7 +67,7 @@ const removeErrors = function(field) {
 const doubleCheckEmailAddress = function() {
 	if (isValidEmailAddress(mailInput.value)) {
 		// Stop met dit veld in de gaten te houden; het is in orde.
-		// mailInput.removeEventListener('input', doubleCheckEmailAddress);
+		mailInput.removeEventListener('input', doubleCheckEmailAddress);
 		removeErrors('email');
 		mailErrorMessage.innerText = 'Geldig e-mailadres.';
 	} else {
@@ -83,11 +83,12 @@ const doubleCheckEmailAddress = function() {
 
 const doubleCheckPassword = function() {
 	if (isValidPassword(passwordInput.value)) {
-		// passwordInput.removeEventListener('input', doubleCheckPassword);
+		passwordInput.removeEventListener('input', doubleCheckPassword);
 		removeErrors('password');
 		passwordErrormessage.innerText = 'Wachtwoord is voldoende lang.';
 		pw = passwordInput.value;
 		console.log(pw);
+		doubleCheckPasswordRepeat();
 	} else {
 		// Stuk herhalende code.
 		addErrors('password');
@@ -96,24 +97,16 @@ const doubleCheckPassword = function() {
 		} else {
 			passwordErrormessage.innerText = 'Het wachtwoord moet minstens 8 tekens lang zijn.';
 		}
-
-		// if (isSamePassword(passwordInput.value, passwordRepeatInput.value)) {
-		// 	passwordInput.removeEventListener('input', doubleCheckEmailAddress);
-		// 	removeErrors('password');
-		// 	passwordErrormessage.innerText = '';
-		// } else {
-		// 	if (isEmpty(passwordInput.vallue)) {
-		// 		passwordErrormessage.innerText = 'Dit veld is verplicht.';
-		// 	} else {
-		// 		passwordErrormessage.innerText = 'De wachtwoorden komen niet overeen.';
-		// 	}
 	}
 };
 
 const doubleCheckPasswordRepeat = function() {
 	if (isSamePassword(passwordInput.value, passwordRepeatInput.value)) {
+		passwordRepeatInput.removeEventListener('input', doubleCheckPasswordRepeat);
 		removeErrors('passwordRepeat');
+		removeErrors('password');
 		passwordRepeatErrormessage.innerText = 'Wachtwoorden komen overeen.';
+		passwordErrormessage.innerText = 'Wachtwoorden komen overeen.';
 	} else {
 		addErrors('passwordRepeat');
 		if (isEmpty(passwordRepeatInput.value)) {
@@ -166,6 +159,12 @@ const ListenToFocus = function() {
 				passwordInput.addEventListener('input', doubleCheckPassword);
 			}
 			console.log('niets te doen');
+		} else {
+			if (!isSamePassword(passwordInput.value, passwordRepeatInput.value)) {
+				passwordErrormessage.innerText = 'De wachtwoorden komen niet overeen.';
+				addErrors('password');
+				passwordInput.addEventListener('input', doubleCheckPassword);
+			}
 		}
 	});
 	passwordInput.addEventListener('blur', function() {
@@ -178,6 +177,12 @@ const ListenToFocus = function() {
 			}
 			addErrors('password');
 			passwordInput.addEventListener('input', doubleCheckPassword);
+		} else {
+			if (!isSamePassword(passwordInput.value, passwordRepeatInput.value)) {
+				passwordErrormessage.innerText = 'De wachtwoorden komen niet overeen.';
+				addErrors('password');
+				passwordInput.addEventListener('input', doubleCheckPassword);
+			}
 		}
 	});
 	passwordRepeatInput.addEventListener('focus', function() {
@@ -217,15 +222,49 @@ const ListenToButton = function(button) {
 			console.log('Form is good to go!');
 			form.submit();
 		} else {
-			// Stuk herhalende code...
+			if (!isValidEmailAddress(mailInput.value)) {
+				addErrors('email');
+				mailInput.addEventListener('input', doubleCheckEmailAddress);
+			}
+			if (!isValidPassword(passwordInput.value)) {
+				addErrors('password');
+				passwordInput.addEventListener('input', doubleCheckPassword);
+			}
+			if (!isSamePassword(passwordInput.value, passwordRepeatInput.value)) {
+				addErrors('passwordRepeat');
 
-			addErrors('email');
-			addErrors('password');
-			addErrors('passwordRepeat');
-			mailInput.addEventListener('input', doubleCheckEmailAddress);
-			passwordInput.addEventListener('input', doubleCheckPassword);
-			passwordRepeatInput.addEventListener('input', doubleCheckPasswordRepeat);
+				passwordRepeatInput.addEventListener('input', doubleCheckPasswordRepeat);
+			}
 		}
+
+		// if (isValidEmailAddress(mailInput.value)) {
+		// 	if (isValidPassword(passwordInput.value)) {
+		// 		if (isSamePassword(passwordInput.value, passwordRepeatInput.value)) {
+		// 			console.log('Form is good to go!');
+		// 			form.submit();
+		// 		} else {
+		// 			addErrors('passwordRepeat');
+
+		// 			passwordRepeatInput.addEventListener('input', doubleCheckPasswordRepeat);
+		// 		}
+		// 	} else {
+		// 		addErrors('password');
+		// 		passwordInput.addEventListener('input', doubleCheckPassword);
+		// 	}
+		// } else {
+		// 	addErrors('email');
+		// mailInput.addEventListener('input', doubleCheckEmailAddress);
+		// }
+
+		// if (isValidEmailAddress(mailInput.value) && isValidPassword(passwordInput.value) && isSamePassword(passwordInput.value, passwordRepeatInput.value)) {
+		// 	console.log('Form is good to go!');
+		// 	form.submit();
+		// } else {
+		// 	// Stuk herhalende code...
+
+		// 	addErrors('email');
+		// 	mailInput.addEventListener('input', doubleCheckEmailAddress);
+		// }
 	});
 };
 
