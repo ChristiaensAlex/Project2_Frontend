@@ -1471,7 +1471,6 @@ each contact has a profile pic and name
 	margin-bottom: var(--global-whitespace-xl);
 
 	margin-bottom: 0;
-	padding: var(--global-whitespace-lg) var(--global-whitespace-md);
 }
 
 .c-logo__symbol {
