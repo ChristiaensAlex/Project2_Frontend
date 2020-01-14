@@ -4,15 +4,19 @@ const isValidEmailAddress = function(emailAddress) {
 	// Basis manier om e-mailadres te checken.
 	return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailAddress);
 };
+
+const isValidPassword = function(password) {
+	return password.length >= 8;
+};
 const isEmpty = function(fieldValue) {
 	return !fieldValue || !fieldValue.length;
 };
 
-const isSamePassword = function(pw, repeatpw) {
-	result = pw == repeatpw;
-	console.log(result);
-	return result;
-};
+// const isSamePassword = function(pw, repeatpw) {
+// 	result = pw == repeatpw;
+// 	console.log(result);
+// 	return result;
+// };
 const addErrors = function(field) {
 	if (field == 'email') {
 		mailField.classList.add('s-has-error');
@@ -21,7 +25,7 @@ const addErrors = function(field) {
 		iconCorrect.classList.add('u-hide');
 		mailField.classList.remove('s-correct');
 	}
-	if ((field = 'password')) {
+	if (field == 'password') {
 		passwordField.classList.add('s-has-error');
 		passwordField.classList.remove('s-correct');
 		passwordError.classList.remove('u-hide');
@@ -37,7 +41,7 @@ const removeErrors = function(field) {
 		iconError.classList.add('u-hide');
 		iconCorrect.classList.remove('u-hide');
 	}
-	if ((field = 'password')) {
+	if (field == 'password') {
 		passwordField.classList.remove('s-has-error');
 		passwordField.classList.add('s-correct');
 		iconPasswordError.classList.add('u-hide');
@@ -49,12 +53,13 @@ const removeErrors = function(field) {
 const doubleCheckEmailAddress = function() {
 	if (isValidEmailAddress(mailInput.value)) {
 		// Stop met dit veld in de gaten te houden; het is in orde.
-		mailInput.removeEventListener('input', doubleCheckEmailAddress);
+		// mailInput.removeEventListener('input', doubleCheckEmailAddress);
 		removeErrors('email');
 		mailErrorMessage.innerText = 'Geldig e-mailadres.';
 	} else {
 		// Stuk herhalende code.
-		if (mailInput.value == '') {
+		if (isEmpty(mailInput.value)) {
+			addErrors('email');
 			mailErrorMessage.innerText = 'Dit veld is verplicht.';
 		} else {
 			mailErrorMessage.innerText = 'Ongeldig e-mailadres.';
@@ -63,16 +68,29 @@ const doubleCheckEmailAddress = function() {
 };
 
 const doubleCheckPassword = function() {
-	if (isSamePassword(passwordInput.value, passwordRepeatInput.value)) {
-		passwordInput.removeEventListener('input', doubleCheckEmailAddress);
+	if (isValidPassword(passwordInput.value)) {
+		// passwordInput.removeEventListener('input', doubleCheckPassword);
 		removeErrors('password');
-		passwordErrormessage.innerText = '';
+		passwordErrormessage.innerText = 'Wachtwoord is voldoende lang.';
 	} else {
-		if (isEmpty(passwordInput.vallue)) {
+		// Stuk herhalende code.
+		addErrors('password');
+		if (isEmpty(passwordInput.value)) {
 			passwordErrormessage.innerText = 'Dit veld is verplicht.';
 		} else {
-			passwordErrormessage.innerText = 'De wachtwoorden komen niet overeen.';
+			passwordErrormessage.innerText = 'Het wachtwoord moet minstens 8 tekens lang zijn.';
 		}
+
+		// if (isSamePassword(passwordInput.value, passwordRepeatInput.value)) {
+		// 	passwordInput.removeEventListener('input', doubleCheckEmailAddress);
+		// 	removeErrors('password');
+		// 	passwordErrormessage.innerText = '';
+		// } else {
+		// 	if (isEmpty(passwordInput.vallue)) {
+		// 		passwordErrormessage.innerText = 'Dit veld is verplicht.';
+		// 	} else {
+		// 		passwordErrormessage.innerText = 'De wachtwoorden komen niet overeen.';
+		// 	}
 	}
 };
 
@@ -82,11 +100,14 @@ const ListenToFocus = function() {
 		if (!isValidEmailAddress(mailInput.value)) {
 			if (isEmpty(mailInput.value)) {
 				mailErrorMessage.innerText = 'Dit veld is verplicht.';
+				console.log('email verplicht');
 			} else {
 				console.log(mailInput.value);
 				mailErrorMessage.innerText = 'Ongeldig e-mailadres.';
+				console.log('email invalid');
 			}
 			addErrors('email');
+			console.log('voeg errors mail toe');
 			mailInput.addEventListener('input', doubleCheckEmailAddress);
 		}
 	});
@@ -105,23 +126,40 @@ const ListenToFocus = function() {
 			mailInput.addEventListener('input', doubleCheckEmailAddress);
 		}
 	});
-	passwordInput.addEventListener('blur', function() {
-		if (isEmpty(passwordInput.value)) {
-			passwordErrormessage.innerText = 'Dit veld is verplicht.';
-		} else {
-			if (!isSamePassword(passwordInput.value, passwordRepeatInput.value)) {
-				passwordErrormessage.innerText = 'De wachtwoorden komen niet overeen.';
+	passwordInput.addEventListener('focus', function() {
+		if (!isValidPassword(passwordInput.value)) {
+			console.log('password niet lang genoeg');
+			if (!isEmpty(passwordInput.value)) {
+				passwordErrormessage.innerText = 'Het wachtwoord moet minstens 8 tekens lang zijn.';
+				addErrors('password');
+				console.log("als 't niet leeg is en niet valid is 't tekort é ja");
+				passwordInput.addEventListener('input', doubleCheckPassword);
 			}
-			// if (isEmpty(passwordRepeatInput.value)) {
-			// 	passwordErrormessage.innerText = 'Dit veld is verplicht';
-			// }
-
-			// passwordInputRepeat.addEventListener('input', doubleCheckPassword);
-
-			// Gebruik een named function (doubleCheckPassword), om die er weer af te kunnen halen. Dit vermijd ook het dubbel toevoegen ervan.
+			console.log('niets te doen');
 		}
-		addErrors('password');
-		passwordInput.addEventListener('input', doubleCheckPassword);
+	});
+	passwordInput.addEventListener('blur', function() {
+		if (!isValidPassword(passwordInput.value)) {
+			if (isEmpty(passwordInput.value)) {
+				passwordErrormessage.innerText = 'Dit veld is verplicht.';
+			} else {
+				console.log(passwordInput.value);
+				passwordErrormessage.innerText = 'Het wachtwoord moet minstens 8 tekens lang zijn.';
+			}
+			addErrors('password');
+			passwordInput.addEventListener('input', doubleCheckPassword);
+		}
+
+		// if (!isSamePassword(passwordInput.value, passwordRepeatInput.value)) {
+		// 	passwordErrormessage.innerText = 'De wachtwoorden komen niet overeen.';
+		// }
+		// if (isEmpty(passwordRepeatInput.value)) {
+		// 	passwordErrormessage.innerText = 'Dit veld is verplicht';
+		// }
+
+		// passwordInput.addEventListener('input', doubleCheckPassword);
+
+		// Gebruik een named function (doubleCheckPassword), om die er weer af te kunnen halen. Dit vermijd ook het dubbel toevoegen ervan.
 	});
 };
 
@@ -154,15 +192,19 @@ const GetDomElements = function() {
 	iconError = document.querySelector('.js-icon-error');
 	//password and matching password
 	passwordInput = document.querySelector('.js-password');
-	passwordRepeatInput = document.querySelector('.js-password-repeat');
 	passwordField = document.querySelector('.js-password-field');
-	passwordRepeatField = document.querySelector('.js-password-repeat-field');
 	passwordErrormessage = document.querySelector('.js-password-errormessage');
-	passwordRepeatErrormessage = document.querySelector('.js-password-repeat-errormessage');
+
 	passwordError = document.querySelector('.js-password-error');
 	iconPasswordError = document.querySelector('.js-icon-password-error');
 	iconPasswordCorrect = document.querySelector('.js-icon-password');
 
+	passwordRepeatInput = document.querySelector('.js-password-repeat');
+	passwordRepeatField = document.querySelector('.js-password-repeat-field');
+	passwordRepeatErrormessage = document.querySelector('.js-password-repeat-errormessage');
+	passwordRepeatError = document.querySelector('.js-password-repeat-error');
+	iconPasswordRepeatError = document.querySelector('.js-icon-password-repeat-error');
+	iconPasswordRepeatCorrect = document.querySelector('.js-icon-password-repeat');
 	// button
 	submitButton = document.querySelector('.js-submitbutton');
 
