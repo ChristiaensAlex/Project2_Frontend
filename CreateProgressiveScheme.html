@@ -12,7 +12,7 @@
     <!--FONTS-->
 
     <!--SCRIPT-->
-    <script src="script/app.js"></script>
+    <script src="script/addComponent.js"></script>
     <!--FAVICON-->
     <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png" />
     <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png" />
@@ -41,7 +41,7 @@
     </div>
       <div class="o-row">
         <div class="o-container">
-            <form class="c-form-addStep" action="#">
+            <form class="c-form-addStep js-form-addStep" action="#">
                     <h1 class="c-title ">
                             Stappenplan aanmaken
                     </h1>
@@ -78,7 +78,9 @@
                         </svg>
                     </button>
             <p class="c-label c-input-steps">Plan</p>
-                <div class="c-new-step">
+            <div class="js-all-steps">
+                <div class="js-single-step" data-number=1>
+                <div class="c-new-step js-new-step">
                     <div class="c-button_addStepImage">
                         <button class="o-button-reset">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" viewBox="0 0 96 99">
@@ -110,9 +112,9 @@
                         <div class="c-step-description">
                                 <span><svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
                                     <circle id="Ellipse_19" data-name="Ellipse 19" cx="4" cy="4" r="4" fill="#27255F" />
-                                </svg></span> Stap <span>1</span>
-                                <label for="description">Beschrijving</label>
-                                <textarea rows=3 name="description" class="c-input c-input-description"></textarea>
+                                </svg></span> Stap <span class="js-step-number" data-number=1>1</span>
+                                <label for="stepDescription">Beschrijving</label>
+                                <textarea rows=3 name="stepDescription" class="c-input c-input-description"></textarea>
                         </div>
                 </div>
                 <div class="c-add-step c-downwardArrowAdd">
@@ -137,7 +139,8 @@
                         </svg>
                 </button>
                 </div>
-
+            </div>
+            </div>
                 <button class="o-button-reset c-button__addStep js-button-addStep">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                             <g id="Group_1007" data-name="Group 1007" transform="translate(-181 -1013)">
@@ -146,6 +149,7 @@
                             </g>
                         </svg>
                 </button>
+            
                 <div class="c-buttonrow">
                         <button class="o-button-reset c-button c-backbutton">
                             <svg class=" c-backbutton__arrow" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="36" height="36" viewBox="0 0 400.004 400.004" style="enable-background:new 0 0 400.004 400.004;" xml:space="preserve">
