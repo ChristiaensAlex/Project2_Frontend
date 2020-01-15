@@ -628,6 +628,10 @@ width: 0;
   padding-right: 32px;
 }
 
+.c-form-AddClient {
+  padding: 0 40px;
+}
+
 @media (min-width: 768px) {
   .c-form-AddStep {
     padding-left: 24px;
@@ -755,7 +759,7 @@ box-shadow: var(--input-focus-boxShadow, 0 0 0 3px var(--global-color-alpha-dark
   background-color: var(--global-color-alpha);
   color: var(--global-color-neutral-xxx-light);
   height: 48px;
-  width: 176px;
+  width: 100%;
   justify-content: center;
   margin-left: 4px;
 }
