@@ -935,9 +935,19 @@ the visualisation of 1 step for the client with picto, countsymbol and explanati
   width: 100%;
 }
 
+.c-step-description--header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .c-step__explanation {
   width: 256px;
   text-align: center;
+}
+
+.c-single-step {
+  margin-bottom: calc(var(--global-baseline) * 3);
 }
 
 /*Component: footer

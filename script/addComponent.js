@@ -1,15 +1,15 @@
-let form, buttonAddStep, inputStep;
+let form, buttonAddStep, buttonAddStepBetween, inputStep, inputStepDescription;
 
 const getFormElements = function() {
   form = document.querySelector('.js-form-addStep');
   form.noValidate = true; //input is not validated when submitted
   // form.addEventListener('submit', onFormSubmit);
-
   buttonAddStep = document.querySelector('.js-button-addStep');
-  inputStep = document.querySelector('.js-single-step');
   buttonAddStep.addEventListener('click', onHandlerClickAdd);
-
+  inputStep = document.querySelector('.js-single-step');
   numberStep = document.querySelector('.js-step-number');
+  allSteps = document.querySelector('.js-all-steps');
+  inputStepDescription = document.querySelector('.js-input-description');
 };
 
 const onHandlerClickAdd = function(e) {
@@ -17,10 +17,9 @@ const onHandlerClickAdd = function(e) {
   let inpStep = inputStep.cloneNode(true);
   let count = document.getElementsByName('stepDescription');
   inpStep.dataset.number = count.length + 1;
-  document.querySelector('.js-all-steps').appendChild(inpStep);
-  console.log(numberStep);
-  numberStep.innerHTML = inpStep.dataset.number;
-  console.log('Lengte: ' + inpStep.dataset.number);
+  inpStep.querySelector('.js-step-number').innerHTML = inpStep.dataset.number;
+  inpStep.querySelector('.js-input-description').value = '';
+  allSteps.appendChild(inpStep);
 };
 
 document.addEventListener('DOMContentLoaded', function() {
