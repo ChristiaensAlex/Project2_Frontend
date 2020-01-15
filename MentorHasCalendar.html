@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
     <!--SCRIPT-->
     <link rel="stylesheet" href="vanillaCalendar.css" />
+    <script src="script/popup.js"></script>
     <!--FAVICON-->
     <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png" />
     <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png" />
@@ -36,6 +37,7 @@
 </head>
 
 <body>
+    <div class="js-background-popup">
     <section class="c-section_menu">
         <div class="c-topLeftLogo">
             <div>
@@ -215,7 +217,7 @@
                                 </g>
                             </svg>
                         </div>
-                        <div class="c-planning__delete">
+                        <div class="c-planning__delete js-calendar-delete">
                             <svg xmlns="http://www.w3.org/2000/svg" width="19.492" height="24" viewBox="0 0 19.492 24">
                                 <g id="bin" transform="translate(0.003 0.001)">
                                     <path id="Path_316" data-name="Path 316"
@@ -510,6 +512,18 @@
             </div>
         </div>
     </div>
+</div>
+    <div class="c-popup-form">
+            <form action="#" class="c-form c-popup-form--card">
+              <p>Je staat op het punt Hond uitlaten van Chloe Devriese te verwijderen? </p>
+              <p>Waar mag dit weg?</p>
+              <div class="c-buttonrow">
+              <button class="o-button-reset c-button c-submitbutton">Op deze dag</button>
+              <button class="o-button-reset c-button c-submitbutton">Altijd</button>
+            </div>
+              <button class="o-button-reset c-button c-backbutton js-cancel">Annuleer</button>
+            </form>
+          </div>
 </body>
 
 <script src="vanillaCalendar.js" type="text/javascript"></script>
