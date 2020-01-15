@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie-edhge" />
     <title>Trek Je Plan - Stappenplannen Overzicht</title>
     <meta name="description" content="Een overzicht van alle cliënten van 1 begeleider" />
-    <meta name="viewport" content="width-device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!--STYLE-->
     <link rel="stylesheet" href="screen.css" />
@@ -14,8 +14,26 @@
     <!--FONTS-->
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
     <!--SCRIPT-->
-
+    <script src="script/popup.js"></script>
     <!--FAVICON-->
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png" />
+<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png" />
+<link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png" />
+<link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png" />
+<link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png" />
+<link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png" />
+<link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png" />
+<link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
+<link rel="manifest" href="favicon/manifest.json" />
+<meta name="msapplication-TileColor" content="#1C5C5C" />
+<meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png" />
+<meta name="theme-color" content="#1C5C5C" />
+
 </head>
 
 <body>
@@ -26,9 +44,26 @@
             </div>
         </div>
     </section> -->
+    <div >
     <section class="c-section_menu">
         <div class="c-topLeftLogo">
-            <div>logo</div>
+              
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 266.5 269.03" height="64" width="64">
+                            <defs>
+                                <style>
+                                    .cls-1 {
+                                        fill: #1d5c5d;
+                                    }
+                                </style>
+                            </defs>
+                            <title>LogoV4-T</title>
+                            <g id="Layer_27_copy" data-name="Layer 27 copy">
+                                <path class="cls-1" d="M165.65,91.31a1.2,1.2,0,0,0-1.69,0l-7.7,7.85-3.42-3.49,0,0a1.2,1.2,0,0,0-1.69,0,1.25,1.25,0,0,0,0,1.74l4.28,4.36a1.17,1.17,0,0,0,.86.37,1.15,1.15,0,0,0,.85-.37l8.56-8.72a1.25,1.25,0,0,0,0-1.74Z" />
+                                <path class="cls-1"
+                                    d="M197.38,56.73H69.12A11.45,11.45,0,0,0,57.67,68.17V200.86A11.45,11.45,0,0,0,69.12,212.3H197.38a11.44,11.44,0,0,0,11.44-11.44V68.17A11.44,11.44,0,0,0,197.38,56.73ZM141.57,85.36v99.73h-17V107.9H96.22V85.22h45.35Zm17.19,22.54a11.34,11.34,0,1,1,11.52-11.34A11.43,11.43,0,0,1,158.76,107.9Z" />
+                            </g>
+                        </svg>
+                  
         </div>
         </div>
         <div class="o-row">
@@ -74,7 +109,7 @@
 
                         </div>
 
-                        <div class="c-stepplan__delete">
+                        <div class="c-stepplan__delete js-progressivescheme-delete">
                             <svg xmlns="http://www.w3.org/2000/svg" width="19.492" height="24" viewBox="0 0 19.492 24">
                                 <g id="bin" transform="translate(0.003 0.001)">
                                     <path id="Path_316" data-name="Path 316"
@@ -376,7 +411,18 @@
                 </div>
             </div>
         </div>
+        
     </div>
+</div>
+<div class="c-popup-form">
+        <form action="#" class="c-form c-popup-form--card">
+          <p>Je staat op het punt de client <span>Chloë Devriese</span> te verwijderen.</p>
+          <p>
+            Je kan dit niet meer ongedaan maken.
+          </p>
+          <button class="o-button-reset c-button c-submitbutton">Verwijderen</button>
+          <button class="o-button-reset c-button c-backbutton js-cancel">Annuleer</button>
+        </form>
+      </div>
 </body>
-
 </html>
