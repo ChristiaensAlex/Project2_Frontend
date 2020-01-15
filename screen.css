@@ -194,6 +194,10 @@ li ol {
   margin-bottom: 0;
 }
 
+ul{
+  list-style-type: none;
+}
+
 blockquote {
   font-style: normal;
   font-size: var(--global-fontsize-md);
@@ -952,6 +956,75 @@ justify-items: center; */
 	padding-right: 8px;
 }
 
+/*Component: Calendar
+ A mentor has an overview of all his clients
+
+  */
+  
+.c-calendar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.c-calendar__arrow{
+  width: 9px;
+  height: 16px;
+}
+
+.c-time__month{
+  text-align: center;
+}
+
+.c-time__month ul {
+  margin: 0;
+  padding: 0;
+}
+
+.c-time__month .prev{
+  float: left;
+  padding-top: 10px;
+}
+
+.c-time__month .next{
+  float: right;
+  padding-top: 10px;
+}
+
+.c-time__week {
+  margin: 0;
+  padding: 10px 0;
+  color: var(--global-color-neutral-x-light);
+}
+
+.c-time__week li {
+  display: inline-block;
+  width: 13.6%;
+  text-align: center;
+}
+
+.c-time__days {
+  padding: 10px 0;
+  margin: 0;
+}
+
+.c-time__days li {
+  list-style-type: none;
+  display: inline-block;
+  width: 13.6%;
+  text-align: center;
+  margin-bottom: 5px;
+  font-size:12px;
+  color: #777;
+}
+
+/* Highlight the "current" day */
+.c-time__days li .active {
+  padding: 5px;
+  background: var(--global-color-alpha);
+  color: white !important
+}
 
 /*Component: ClientList
  A mentor has an overview of all his clients
@@ -1011,6 +1084,95 @@ justify-items: center; */
 	padding: var(--global-baseline);
 }
 }
+
+/*Component: PlanningList
+ A mentor has an overview of the planning of today
+
+  */
+.c-hour{
+  font-size: var(--global-fontsize);
+}
+
+
+.c-plannings {
+	
+}
+
+.c-plannings .c-planning {
+	display: grid;
+	grid-template-columns: 64px 1fr 20px;
+	grid-template-rows: auto auto;
+	background-color: var(--global-color-neutral-x-light-transparent);
+	height: 80px;
+	margin: var(--global-whitespace) 0;
+	padding: var(--global-baseline);
+}
+
+
+
+.c-planning__userPhoto {
+	grid-row: span 2;
+}
+.c-planning__username{
+  font-size: var(--global-fontsize);
+	margin: 0 var(--global-baseline);
+	grid-row:  1;
+  grid-column: 2;
+  	display: flex;
+	align-items: center;
+}
+
+
+.c-planning__name{
+	font-size: var(--global-fontsize-sm);
+	margin: 0 var(--global-baseline);
+	grid-row: 2;
+	grid-column: 2;
+	display: flex;
+	align-items: center;
+}
+
+.c-planning__check {
+  top: 0;
+  transform: translate(15px, -15px);
+  opacity: 0.1;
+}
+
+.c-planning__check.c-planning__checked {
+  transform: translate(15px, -15px);
+  opacity: 1;
+}
+
+.c-planning__delete{
+  grid-column: 3;
+  grid-row: 2;
+    transform: translatey(-15px);
+	display: flex;
+  align-items: center;
+}
+
+@media (min-width: 992px){
+
+.c-plannings{
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-template-rows: auto;
+	margin-left: calc(var(--global-baseline)*8);
+}
+
+	.c-plannings .c-planning {
+	display: grid;
+	grid-template-columns: 64px 1fr 20px;
+	grid-template-rows: auto auto;
+	background-color: var(--global-color-neutral-x-light-transparent);
+	height: 80px;
+	width: 300px;
+	margin: var(--global-whitespace) 0;
+	padding: var(--global-baseline);
+}
+}
+
+
 
 /*Component: StepplansList
  A mentor has an overview of all his stepplans
@@ -1315,13 +1477,20 @@ navigation footer for menu mentor
 	margin-top: 10px;
 }
 
+ .c-section_menu{ 
+		padding: 0 0 calc(var(--global-whitespace-xxl)) 0;
+	}
+
+
 @media (min-width: 768px){
 .c-section_menu{ 
-	padding: 0 calc(var(--global-whitespace-xxl)*2);
+	padding: 0 calc(var(--global-whitespace-xxl)*2) var(--global-whitespace-xxl) calc(var(--global-whitespace-xxl)*2);
 }
+
 .c-section_menu-profile{
 	padding: 0 calc(var(--global-whitespace-xxl)*2);
 }
+
 }
 
 
@@ -1335,7 +1504,7 @@ navigation footer for menu mentor
 
 /*niet veranderen!!!!*/
  .c-section_menu{ 
-		padding: 0 ;
+		padding: 0 0 calc(var(--global-whitespace-xxl)) 0;
 	}
 
 	.c-title__menu{
@@ -1344,7 +1513,7 @@ navigation footer for menu mentor
 
 	.c-title__menu-profile{
 		margin-left: none;
-	}
+  }
 
 
 	.c-tab{
@@ -1385,7 +1554,10 @@ navigation footer for menu mentor
 .c-section_menu-profile{
 	padding: 0 calc(var(--global-whitespace-xxl)*6);
 }
+
 }
+
+
 
 /*Registration page mentor part 1*/
 .c-progressRegistration {
