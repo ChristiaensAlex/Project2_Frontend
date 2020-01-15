@@ -642,7 +642,7 @@ Component: Spread
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   background-color: var(--global-color-alpha-x-light);
 }
 
@@ -760,6 +760,9 @@ box-shadow: var(--input-focus-boxShadow, 0 0 0 3px var(--global-color-alpha-dark
   margin-left: 4px;
 }
 
+.c-submitbutton-long {
+  width: 100%;
+}
 .c-button__mainStepImage {
   display: flex;
   margin-bottom: 24px;
