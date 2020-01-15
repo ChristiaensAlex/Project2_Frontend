@@ -18,16 +18,14 @@
 \*------------------------------------*/
 :root {
   /*colors*/
-
+  --global-color-alpha-x-light: #fcf1ef;
   --global-color-alpha-light: #ffb9a6;
   --global-color-alpha: #fc8c71;
   --global-color-alpha-dark: #fe7c5a;
   --global-color-alpha-dark-x: #fe6740;
   --global-color-alpha-dark-xx: #ff5d33;
-
   --global-color-beta: #1c5c5c;
   --global-color-omega: #27255f;
-
   --global-color-neutral-xxxxx-light: white;
   --global-color-neutral-xxxx-light: white;
   --global-color-neutral-xxx-light: #fafaff;
@@ -40,26 +38,28 @@
   --global-color-neutral-xx-dark: #3b3f40;
   --global-color-neutral-xxx-dark: #17191a;
   --global-color-neutral-xxxx-dark: #17171a;
-
   --global-color-neutral-x-light-transparent: #c8c8cc29;
   /* border variables */
   --global-borderRadius: 4px;
   --global-borderWidth: 1px;
-
   /* transitions */
   --global-transitionTiming-alpha: 0.1s ease-out;
-
   /* Baseline settings */
   --global-baseline: 8px;
-  --global-whitespace: calc(var(--global-baseline) * 3); /* = 24px */
-
-  --global-whitespace-xs: calc(var(--global-baseline) / 2); /* = 4px */
-  --global-whitespace-sm: calc(var(--global-baseline) * 1); /*  = 8px */
-  --global-whitespace-md: calc(var(--global-baseline) * 2); /*  = 16px */
-  --global-whitespace-lg: calc(var(--global-baseline) * 4); /*  = 32px */
-  --global-whitespace-xl: calc(var(--global-whitespace) * 2); /*  = 48px */
-  --global-whitespace-xxl: calc(var(--global-whitespace) * 3); /*  = 72px */
-
+  --global-whitespace: calc(var(--global-baseline) * 3);
+  /* = 24px */
+  --global-whitespace-xs: calc(var(--global-baseline) / 2);
+  /* = 4px */
+  --global-whitespace-sm: calc(var(--global-baseline) * 1);
+  /*  = 8px */
+  --global-whitespace-md: calc(var(--global-baseline) * 2);
+  /*  = 16px */
+  --global-whitespace-lg: calc(var(--global-baseline) * 4);
+  /*  = 32px */
+  --global-whitespace-xl: calc(var(--global-whitespace) * 2);
+  /*  = 48px */
+  --global-whitespace-xxl: calc(var(--global-whitespace) * 3);
+  /*  = 72px */
   /*fontsizes: modular scale met base 16px en ratio 1.25*/
   --global-fontsize-xs: 10px;
   --global-fontsize-sm: 13px;
@@ -69,11 +69,9 @@
   --global-fontsize-xl: 31px;
   --global-fontsize-xxl: 39px;
   --global-fontsize-xxxl: 48px;
-
   /*error*/
-
-  --global-color-error: #fe5e33;
-  --global-input-error-boxShadowColor: #fe5e33;
+  --global-color-error: #8c0015;
+  --global-input-error-boxShadowColor: #8c001580;
   --input-border: none;
 }
 
@@ -86,7 +84,8 @@
   Global page styles + universal box-sizing:
 */
 html {
-  font-size: var(--global-fontsize); /*16px*/
+  font-size: var(--global-fontsize);
+  /*16px*/
   line-height: 1.5;
   font-family: 'Poppins', Helvetica, arial, sans-serif;
   font-weight: 400;
@@ -112,8 +111,8 @@ html {
 }
 
 ::-moz-selection {
-  background: var(--global-color-alpha-light);
-  color: inherit;
+  background: var(--global-color-selection);
+  color: var(--global-color-neutral-xxxxx-light);
   text-shadow: none;
 }
 
@@ -253,9 +252,8 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0px;
-
   /* background-image: url(LoginMentor.png);
-	background-repeat: no-repeat;  */
+background-repeat: no-repeat;  */
 }
 
 /*------------------------------------*\
@@ -268,7 +266,6 @@ body {
 */
 .o-row {
   position: relative;
-
   padding: 0 var(--global-whitespace);
 }
 
@@ -280,8 +277,8 @@ body {
 .o-container {
   margin-left: auto;
   margin-right: auto;
-
-  max-width: 800px; /* 79.5 * 16px = 1272 */
+  max-width: 800px;
+  /* 79.5 * 16px = 1272 */
   width: 100%;
 }
 
@@ -303,6 +300,7 @@ body {
   .o-section--xl + .o-section--xl {
     padding-top: var(--global-whitespace-lg);
   }
+
   .o-section {
     margin: auto;
   }
@@ -311,23 +309,6 @@ body {
 @media (min-width: 992px) {
   .o-section--xl + .o-section--xl {
     padding-top: var(--global-whitespace-xxl);
-  }
-}
-/*
-    Objects: Row
-    ---
-    Creates a horizontal row that stretches the viewport and adds padding around children
-*/
-
-.o-header {
-  height: auto;
-}
-@media (min-width: 768px) {
-  .o-header {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }
 
@@ -555,16 +536,6 @@ width: 0;
   color: var(--global-color-omega);
 }
 
-.c-logo__menu {
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  margin-bottom: var(--global-whitespace-xl);
-  margin-left: var(--global-whitespace-lg);
-  margin-bottom: 0;
-  padding: var(--global-whitespace-lg) var(--global-whitespace-md);
-}
-
 @media (min-width: 768px) {
   .c-logo {
     margin: auto;
@@ -608,20 +579,6 @@ width: 0;
   font-size: var(--global-fontsize-lg);
 }
 
-.c-title__menu {
-  display: flex;
-  font-size: var(--global-fontsize-md);
-  justify-content: space-between;
-  align-content: center;
-}
-
-.c-title__menu-profile {
-  display: flex;
-  font-size: var(--global-fontsize-md);
-  justify-content: space-between;
-  align-content: center;
-}
-
 .c-card {
   display: flex;
   justify-content: center;
@@ -644,7 +601,7 @@ width: 0;
 .c-form {
   max-width: 640px;
   height: fit-content;
-  margin: auto;
+  margin: 32px auto 80px auto;
 }
 
 /*makes sure that last paragraph of form__field has no margin bottom so "wachtwoord vergeten" can be close to the input field*/
@@ -657,7 +614,7 @@ width: 0;
     padding: 88px 80px;
     border-radius: 14px;
     /* border: var(--global-borderWidth) solid var(--global-color-alpha); */
-    box-shadow: 0 0 0 1px rgba(252, 140, 113, 0.05), 0 8px 8px rgba(252, 140, 113, 0.5);
+    box-shadow: 0 0 0 1px rgba(252, 140, 113, 0.05);
   }
 }
 
@@ -669,6 +626,10 @@ width: 0;
 .c-form-card {
   padding-left: 16px;
   padding-right: 32px;
+}
+
+.c-form-AddClient {
+  padding: 0 40px;
 }
 
 @media (min-width: 768px) {
@@ -704,20 +665,8 @@ Component: Spread
   justify-content: space-between;
 }
 
-.c-label-profilePic {
+.c-label-ProfilePic {
   font-size: 20px;
-}
-
-.c-error {
-  margin-top: var(--global-whitespace-xs);
-  font-size: var(--global-fontsize-sm);
-  display: flex;
-  align-items: center;
-  color: var(--global-color-error);
-}
-
-.c-error .c-icon {
-  margin-right: 8px;
 }
 /*
   Component: Custom input
@@ -739,7 +688,6 @@ Component: Spread
   transition: all var(--global-transitionTiming-alpha);
   border-radius: var(--global-borderRadius);
   border: var(--input-border);
-  margin-bottom: 36px;
 }
 
 .c-input-steps {
@@ -753,15 +701,18 @@ Component: Spread
   padding: 8px;
 }
 
-.c-input:hover {
-  box-shadow: var(--input-hover-boxShadow, 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75));
+.c-input-client {
+  margin-bottom: 32px;
+}
+
+/* .c-input:hover {
+box-shadow: var(--input-hover-boxShadow, 0 0 0 1px var(--global-color-alpha-dark-x));
 }
 
 .c-input:focus,
 .c-input:active {
-  border: var(--input-border, 1px solid var(--global-color-omega));
-  box-shadow: var(--input-focus-boxShadow, 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75));
-}
+box-shadow: var(--input-focus-boxShadow, 0 0 0 3px var(--global-color-alpha-dark-x-transparent), 0 0 0 1px var(--global-color-alpha-dark-x));
+} */
 /**/
 .c-buttonrow {
   display: flex;
@@ -815,7 +766,7 @@ Component: Spread
   background-color: var(--global-color-alpha);
   color: var(--global-color-neutral-xxx-light);
   height: 48px;
-  width: 80%;
+  width: 100%;
   justify-content: center;
   margin-left: 4px;
 }
@@ -932,198 +883,6 @@ justify-items: center; */
   margin: 0 var(--global-baseline);
 }
 
-/*Anja until phone button*/
-/*Component: ClientListButton
- Add clients to the clientlist
-
-	*/
-
-.c-button__addClient {
-  display: flex;
-  justify-content: space-between;
-  background-color: var(--global-color-neutral-x-light-transparent);
-  font-size: var(--global-fontsize-sm);
-  border-radius: calc(var(--global-borderRadius) * 4);
-  line-height: var(--global-fontsize-sm);
-  padding: 8px 0;
-  height: 100%;
-}
-
-.c-button__addClient-text {
-  padding: 0 14px;
-}
-
-.c-button__addClient-symbol {
-  padding-right: 8px;
-}
-
-/*Component: ClientList
- A mentor has an overview of all his clients
-
-	*/
-
-.c-clients {
-}
-
-.c-clients .c-client {
-  display: grid;
-  grid-template-columns: 64px 1fr 20px;
-  grid-template-rows: auto auto;
-  background-color: var(--global-color-neutral-x-light-transparent);
-  height: 80px;
-  margin: var(--global-whitespace) 0;
-  padding: var(--global-baseline);
-}
-
-.c-client__userPhoto {
-  justify-content: center;
-  align-items: center;
-  margin: var(--global-baseline);
-  height: 48px;
-  width: 48px;
-}
-
-.c-client__name {
-  display: flex;
-  align-self: center;
-  font-size: var(--global-fontsize-md);
-  margin: 0 var(--global-baseline);
-}
-
-.c-client__delete {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-@media (min-width: 992px) {
-  .c-clients {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto;
-    margin-left: calc(var(--global-baseline) * 8);
-  }
-
-  .c-clients .c-client {
-    display: grid;
-    grid-template-columns: 64px 1fr 20px;
-    grid-template-rows: auto auto;
-    background-color: var(--global-color-neutral-x-light-transparent);
-    height: 80px;
-    width: 300px;
-    margin: var(--global-whitespace) 0;
-    padding: var(--global-baseline);
-  }
-}
-
-/*Component: StepplansList
- A mentor has an overview of all his stepplans
-
-	*/
-.c-stepplans {
-}
-
-.c-stepplans .c-stepplan {
-  display: grid;
-  grid-template-columns: 64px 1fr 20px;
-  grid-template-rows: auto auto;
-  background-color: var(--global-color-neutral-x-light-transparent);
-  height: 80px;
-  margin: var(--global-whitespace) 0;
-  padding: var(--global-baseline);
-}
-
-.c-stepplan__picto {
-  grid-row: span 2;
-}
-
-.c-stepplan__name {
-  font-size: var(--global-fontsize);
-  margin: 0 var(--global-baseline);
-  grid-row: span 2;
-  grid-column: span 1;
-  display: flex;
-  align-items: center;
-}
-
-.c-stepplan__pencil {
-  display: flex;
-  align-items: center;
-}
-
-.c-stepplan__delete {
-  grid-column: 3;
-  display: flex;
-  align-items: center;
-}
-
-@media (min-width: 992px) {
-  .c-stepplans {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto;
-    margin-left: calc(var(--global-baseline) * 8);
-  }
-
-  .c-stepplans .c-stepplan {
-    display: grid;
-    grid-template-columns: 64px 1fr 20px;
-    grid-template-rows: auto auto;
-    background-color: var(--global-color-neutral-x-light-transparent);
-    height: 80px;
-    width: 300px;
-    margin: var(--global-whitespace) 0;
-    padding: var(--global-baseline);
-  }
-}
-
-/* Component: profile mentor
-    ---
-	*/
-
-.c-mentor__logout {
-  display: grid;
-  grid-template-columns: 1fr 56px;
-
-  height: var(--global-whitespace-xl);
-  margin: var(--global-whitespace) var(--global-whitespace) var(--global-whitespace) 0;
-}
-
-.c-modify {
-  font-size: inherit;
-  color: var(--global-color-omega);
-  text-decoration: underline;
-}
-
-@media (min-width: 992px) {
-  .c-stepplans {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto;
-    margin-left: calc(var(--global-baseline) * 8);
-  }
-}
-
-.c-profile__picture {
-  padding-bottom: 40px;
-  margin-left: -10px;
-}
-
-.c-label__profile {
-  margin-bottom: 0;
-  font-size: var(--global-fontsize-sm);
-  font-weight: 600;
-  padding: 0 0 var(--global-whitespace-xs);
-  line-height: var(--global-fontsize-md);
-  color: var(--label-color, var(--global-color-omega));
-  display: flex;
-  justify-content: space-between;
-}
-
-.c-profile__info {
-  font-size: var(--global-fontsize-sm);
-}
-
 /*Component: phone button
 ---
 client can get to contact list
@@ -1220,11 +979,6 @@ the visualisation of 1 step for the client with picto, countsymbol and explanati
   text-align: center;
 }
 
-.c-topLeftLogo {
-  height: var(--global-whitespace-xl);
-  margin: var(--global-whitespace);
-}
-
 /*Component: footer
 ---
 navigation footer for client with visualisation of progress, phonebutton and overview steps button
@@ -1284,102 +1038,6 @@ navigation footer for client with visualisation of progress, phonebutton and ove
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-/*Component: footer
- ---
-navigation footer for menu mentor
-	*/
-.c-navbar {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  height: calc(var(--global-baseline) * 8);
-}
-
-.c-navbar__mentor {
-  box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 -5px 5px -5px rgba(170, 170, 179, 0.75);
-  background-color: white;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-}
-
-.c-navbar__tabs {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-top: 10px;
-}
-
-@media (min-width: 768px) {
-  .c-section_menu {
-    padding: 0 calc(var(--global-whitespace-xxl) * 2);
-  }
-  .c-section_menu-profile {
-    padding: 0 calc(var(--global-whitespace-xxl) * 2);
-  }
-}
-
-@media (min-width: 992px) {
-  .c-topLeftLogo {
-    display: flex;
-    justify-content: center;
-    height: var(--global-whitespace-xl);
-    margin: var(--global-whitespace);
-  }
-
-  /*niet veranderen!!!!*/
-  .c-section_menu {
-    padding: 0;
-  }
-
-  .c-title__menu {
-    margin-left: calc(var(--global-baseline) * 8);
-  }
-
-  .c-title__menu-profile {
-    margin-left: none;
-  }
-
-  .c-tab {
-    padding: calc(var(--global-baseline) * 3.5) 0;
-  }
-
-  .c-tab__text {
-    visibility: hidden;
-  }
-
-  .c-navbar {
-    height: 100%;
-    top: 0;
-    left: 0;
-    width: calc(var(--global-baseline) * 8);
-  }
-
-  .c-navbar__mentor {
-    border: var(--global-borderWidth) solid var(--global-color-neutral-xx-light);
-    border-width: 0 var(--global-borderWidth) 0 0;
-    background-color: white;
-    height: 100%;
-    width: calc(var(--global-baseline) * 8);
-  }
-
-  .c-navbar__tabs {
-    display: flex;
-    flex-direction: column;
-    margin-top: calc(var(--global-whitespace-xl) * 2);
-  }
-}
-
-@media (min-width: 1026px) {
-  /* .c-section_menu{ 
-	padding: 0 calc(var(--global-whitespace-xxl)*6);
-	mag hier niet staan of fuck-up andere schermen
-} */
-  .c-section_menu-profile {
-    padding: 0 calc(var(--global-whitespace-xxl) * 6);
-  }
 }
 
 /*Registration page mentor part 1*/
@@ -1628,425 +1286,4 @@ each contact has a profile pic and name
 .c-contact__name {
   font-size: var(--global-fontsize-lg);
   margin-left: var(--global-whitespace-lg);
-}
-
-/*begin double*/
-
-/* einde double*/
-/*
-    Utilities: spacing
-    ---
-    Utility classes to put specific margins and paddings onto elements
-*/
-
-.u-pt-clear {
-  padding-top: 0 !important;
-}
-
-.u-mb-clear {
-  margin-bottom: 0 !important;
-}
-
-.u-mb-xs {
-  margin-bottom: var(--global-whitespace-xs) !important;
-}
-
-.u-mb-sm {
-  margin-bottom: var(--global-whitespace-sm) !important;
-}
-
-.u-mb-md {
-  margin-bottom: var(--global-whitespace-md) !important;
-}
-
-.u-mb-lg {
-  margin-bottom: var(--global-whitespace-lg) !important;
-}
-
-.u-mb-xl {
-  margin-bottom: var(--global-whitespace-xl) !important;
-}
-
-.u-mb-xl {
-  margin-bottom: var(--global-whitespace-xl) !important;
-}
-
-/*
-    Utilities: max-width
-    ---
-    Utility classes to put specific max widths onto elements
-*/
-
-.u-max-width-xs {
-  max-width: 27em !important;
-}
-
-.u-max-width-sm {
-  max-width: 39em !important;
-}
-
-.u-max-width-md {
-  max-width: 50em !important;
-}
-
-.u-max-width-lg {
-  max-width: 63.5em !important;
-}
-
-.u-max-width-none {
-  max-width: none !important;
-}
-
-/*
-    Utilities: align
-    ---
-    Utility classes align text or components
-*/
-
-.u-align-text-center {
-  text-align: center;
-}
-
-.u-align-center {
-  margin: 0 auto;
-}
-
-/*
-    Utilities: text
-    Utility classes to create smaller or bigger test
-*/
-
-.u-text-sm {
-  font-size: 14px;
-}
-
-/*
-    Utility: Widths
-    ---
-    Utility classes to put specific widths onto elements
-    Will be mostly used on o-layout__item
-*/
-
-.u-width-auto {
-  width: auto !important;
-}
-
-.u-1-of-2 {
-  width: 50% !important;
-}
-
-.u-1-of-3 {
-  width: 33.3333333333% !important;
-}
-
-.u-2-of-3 {
-  width: 66.6666666667% !important;
-}
-
-.u-1-of-4 {
-  width: 25% !important;
-}
-
-.u-3-of-4 {
-  width: 75% !important;
-}
-
-.u-1-of-5 {
-  width: 20% !important;
-}
-
-.u-2-of-5 {
-  width: 40% !important;
-}
-
-.u-3-of-5 {
-  width: 60% !important;
-}
-
-.u-4-of-5 {
-  width: 80% !important;
-}
-
-.u-1-of-6 {
-  width: 16.6666666667% !important;
-}
-
-.u-5-of-6 {
-  width: 83.3333333333% !important;
-}
-
-@media (min-width: 576px) {
-  .u-1-of-2-bp1 {
-    width: 50% !important;
-  }
-  .u-1-of-3-bp1 {
-    width: 33.3333333333% !important;
-  }
-  .u-2-of-3-bp1 {
-    width: 66.6666666667% !important;
-  }
-  .u-1-of-4-bp1 {
-    width: 25% !important;
-  }
-  .u-3-of-4-bp1 {
-    width: 75% !important;
-  }
-  .u-1-of-5-bp1 {
-    width: 20% !important;
-  }
-  .u-2-of-5-bp1 {
-    width: 40% !important;
-  }
-  .u-3-of-5-bp1 {
-    width: 60% !important;
-  }
-  .u-4-of-5-bp1 {
-    width: 80% !important;
-  }
-  .u-1-of-6-bp1 {
-    width: 16.6666666667% !important;
-  }
-  .u-5-of-6-bp1 {
-    width: 83.3333333333% !important;
-  }
-}
-
-@media (min-width: 768px) {
-  .u-1-of-2-bp2 {
-    width: 50% !important;
-  }
-  .u-1-of-3-bp2 {
-    width: 33.3333333333% !important;
-  }
-  .u-2-of-3-bp2 {
-    width: 66.6666666667% !important;
-  }
-  .u-1-of-4-bp2 {
-    width: 25% !important;
-  }
-  .u-3-of-4-bp2 {
-    width: 75% !important;
-  }
-  .u-1-of-5-bp2 {
-    width: 20% !important;
-  }
-  .u-2-of-5-bp2 {
-    width: 40% !important;
-  }
-  .u-3-of-5-bp2 {
-    width: 60% !important;
-  }
-  .u-4-of-5-bp2 {
-    width: 80% !important;
-  }
-  .u-1-of-6-bp2 {
-    width: 16.6666666667% !important;
-  }
-  .u-5-of-6-bp2 {
-    width: 83.3333333333% !important;
-  }
-}
-
-@media (min-width: 992px) {
-  .u-1-of-2-bp3 {
-    width: 50% !important;
-  }
-  .u-1-of-3-bp3 {
-    width: 33.3333333333% !important;
-  }
-  .u-2-of-3-bp3 {
-    width: 66.6666666667% !important;
-  }
-  .u-1-of-4-bp3 {
-    width: 25% !important;
-  }
-  .u-3-of-4-bp3 {
-    width: 75% !important;
-  }
-  .u-1-of-5-bp3 {
-    width: 20% !important;
-  }
-  .u-2-of-5-bp3 {
-    width: 40% !important;
-  }
-  .u-3-of-5-bp3 {
-    width: 60% !important;
-  }
-  .u-4-of-5-bp3 {
-    width: 80% !important;
-  }
-  .u-1-of-6-bp3 {
-    width: 16.6666666667% !important;
-  }
-  .u-5-of-6-bp3 {
-    width: 83.3333333333% !important;
-  }
-}
-
-@media (min-width: 1200px) {
-  .u-1-of-2-bp4 {
-    width: 50% !important;
-  }
-  .u-1-of-3-bp4 {
-    width: 33.3333333333% !important;
-  }
-  .u-2-of-3-bp4 {
-    width: 66.6666666667% !important;
-  }
-  .u-1-of-4-bp4 {
-    width: 25% !important;
-  }
-  .u-3-of-4-bp4 {
-    width: 75% !important;
-  }
-  .u-1-of-5-bp4 {
-    width: 20% !important;
-  }
-  .u-2-of-5-bp4 {
-    width: 40% !important;
-  }
-  .u-3-of-5-bp4 {
-    width: 60% !important;
-  }
-  .u-4-of-5-bp4 {
-    width: 80% !important;
-  }
-  .u-1-of-6-bp4 {
-    width: 16.6666666667% !important;
-  }
-  .u-5-of-6-bp4 {
-    width: 83.3333333333% !important;
-  }
-}
-
-/*
-    Utility: Grid
-    ---
-   Utility classes to put specific column or row spans onto elements
-   
-*/
-
-/*
-    Utility: Colors
-    ---
-   Utility classes to change specific colors based on javascript 
-   
-*/
-
-.s-has-error {
-  --label-color: var(--global-color-error);
-  --input-border: var(--global-borderWidth) solid var(--global-color-error);
-
-  --input-hover-boxShadow: 0 0 0 1px rgba(254, 94, 51, 0.05), 0 4px 4px rgba(254, 94, 51, 0.75);
-  --input-focus-boxShadow: 0 0 0 1px rgba(254, 94, 51, 0.05), 0 4px 4px rgba(254, 94, 51, 0.75);
-}
-
-@media (prefers-color-scheme: dark) {
-  .s-has-error {
-    --input-border: 1px solid var(--global-color-error);
-  }
-}
-.s-correct {
-  --global-color-error: var(--global-color-beta);
-}
-.u-hide {
-  display: none;
-}
-/*------------------------------------*\
-#MEDIA
-\*------------------------------------*/
-
-/*
-    Media Queries
-    ---
-    EXAMPLE Media Queries for Responsive Design.
-    These examples override the primary ('mobile first') styles.
-    USE THEM INLINE!
-*/
-
-/* Extra small devices (portrait phones, less than 576px)
-No media query since this is the default in mobile first design
-*/
-
-/* Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {}
-*/
-
-/* Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {}
-*/
-
-/* Large devices (landscape tablets, desktops, 992px and up)
-@media (min-width: 992px) {}
-*/
-
-/* Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {}
-*/
-
-/*
-    Print styles.
-    ---
-    Inlined to avoid the additional HTTP request:
-    http://www.phpied.com/delay-loading-your-print-css/
-*/
-
-@media print {
-  *,
-  *:before,
-  *:after {
-    background: transparent !important;
-    color: #000 !important;
-    /* Black prints faster:
-        http://www.sanbeiji.com/archives/953 */
-    box-shadow: none !important;
-    text-shadow: none !important;
-  }
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
-  a[href]:after {
-    content: ' (' attr(href) ')';
-  }
-  abbr[title]:after {
-    content: ' (' attr(title) ')';
-  }
-  /*
-    * Don't show links that are fragment identifiers,
-    * or use the `javascript:` pseudo protocol
-    */
-  a[href^='#']:after,
-  a[href^='javascript:']:after {
-    content: '';
-  }
-  pre {
-    white-space: pre-wrap !important;
-  }
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
-  }
-  /*
-    * Printing Tables:
-    * http://css-discuss.incutio.com/wiki/Printing_Tables
-    */
-  thead {
-    display: table-header-group;
-  }
-  tr,
-  img {
-    page-break-inside: avoid;
-  }
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
-  h2,
-  h3 {
-    page-break-after: avoid;
-  }
 }
