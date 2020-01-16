@@ -121,17 +121,13 @@ const ListenToFocus = function() {
 	mailInput.addEventListener('focus', function() {
 		console.log('we zijn gefocused');
 		if (!isValidEmailAddress(mailInput.value)) {
-			if (isEmpty(mailInput.value)) {
-				mailErrorMessage.innerText = 'Dit veld is verplicht.';
-				console.log('email verplicht');
-			} else {
-				console.log(mailInput.value);
+			if (!isEmpty(mailInput.value)) {
 				mailErrorMessage.innerText = 'Ongeldig e-mailadres.';
 				console.log('email invalid');
+				addErrors('email');
+				console.log('voeg errors mail toe');
+				mailInput.addEventListener('input', doubleCheckEmailAddress);
 			}
-			addErrors('email');
-			console.log('voeg errors mail toe');
-			mailInput.addEventListener('input', doubleCheckEmailAddress);
 		}
 	});
 	mailInput.addEventListener('blur', function() {
