@@ -874,6 +874,9 @@ body {
   fill: var(--global-color-alpha);
 }
 
+.c-backbutton__arrow > .c-backbutton-long {
+  fill: white;
+}
 .c-submitbutton {
   background-color: var(--global-color-alpha);
   color: var(--global-color-neutral-xxx-light);
