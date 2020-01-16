@@ -331,12 +331,27 @@ body {
 .o-header {
   height: auto;
 }
+
+.c-spreadPage > .o-header {
+  height: 20vh;
+}
+
+.c-spreadPage-noIcon > .o-header {
+  height: 15vh;
+}
+
 @media (min-width: 768px) {
   .o-header {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .c-spreadPage > .o-header {
+    height: 30vh;
+  }
+  .c-spreadPage-noIcon > .o-header {
+    height: 25vh;
   }
 }
 
@@ -605,6 +620,10 @@ body {
   padding-bottom: calc(var(--global-baseline) * 5);
 }
 
+.c-reset-description{
+  font-size: var(--global-fontsize-md);
+}
+
 /*
     Component: Title
     ---
@@ -695,7 +714,8 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
   background-color: var(--global-color-alpha-x-light);
 }
 
@@ -874,7 +894,7 @@ body {
   fill: var(--global-color-alpha);
 }
 
-.c-backbutton__arrow > .c-backbutton-long {
+.c-backbutton-long > .c-backbutton__arrow {
   fill: white;
 }
 .c-submitbutton {
@@ -884,6 +904,10 @@ body {
   width: 176px;
   justify-content: center;
   margin-left: var(--global-whitespace-xs);
+}
+
+.c-submitbutton-long {
+  width: 100%;
 }
 
 .c-button__mainStepImage {
