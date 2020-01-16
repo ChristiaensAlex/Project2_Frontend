@@ -2,7 +2,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="x-ua-compatible" content="ie-edhge" />
-		<title>Trek Je Plan - Log in cliënt</title>
+		<title>Trek Je Plan - Login Begeleider</title>
 		<meta name="description" content="Log in voor cliënt, begeleider wordt geacht reeds een account aangemaakt te hebben." />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -37,7 +37,7 @@
 									<p class="js-email-field ">
 										<label class="c-label js-email-label" for="E-mail">E-mail </label>
 										<input class="c-input js-email" type="email" name="E-mail" placeholder="john.doe@gmail.be" required />
-										<span class=" c-error js-error u-hide">
+										<span class=" c-error js-email-error u-hide">
 											<svg class="c-icon js-icon-error u-hide" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
 												<g id="Group_1123" data-name="Group 1123" transform="translate(-36 -411)">
 													<circle id="Ellipse_128" data-name="Ellipse 128" cx="10" cy="10" r="10" transform="translate(36 411)" fill="#fe5e33" />
@@ -55,9 +55,26 @@
 											</span>
 										</span>
 									</p>
-									<p>
-										<label class="c-label" for="Password">Wachtwoord</label>
-										<input class="c-input" type="password" name="Password" required />
+									<p class="js-pw-field">
+										<label class="c-label js-password-label" for="Password">Wachtwoord</label>
+										<input class="c-input js-password" type="password" name="Password" required />
+										<span class=" c-error js-password-error u-hide">
+											<svg class="c-icon js-icon-password-error u-hide" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+												<g id="Group_1123" data-name="Group 1123" transform="translate(-36 -411)">
+													<circle id="Ellipse_128" data-name="Ellipse 128" cx="10" cy="10" r="10" transform="translate(36 411)" fill="#fe5e33" />
+													<path id="Path_273" data-name="Path 273" d="M831,2272.4l-2.4-2.4-3.6,3.6-3.6-3.6-2.4,2.4,3.6,3.6-3.6,3.6,2.4,2.4,3.6-3.6,3.6,3.6,2.4-2.4-3.6-3.6Z" transform="translate(-779 -1855)" fill="#f9f6f6" stroke="#fd5f33" stroke-width="1" />
+												</g>
+											</svg>
+											<svg class="c-icon js-icon-password u-hide" xmlns="http://www.w3.org/2000/svg" width="20.278" height="19.963" viewBox="0 0 20.278 19.963">
+												<g id="Group_1089" data-name="Group 1089" transform="translate(-340.12 -355)">
+													<ellipse id="Ellipse_128" data-name="Ellipse 128" cx="10.139" cy="9.981" rx="10.139" ry="9.981" transform="translate(340.12 355)" fill="#1c5c5c" />
+													<path id="Fill_1" data-name="Fill 1" d="M4.251,8.665a.925.925,0,0,1-.663-.28L.275,5.008a.968.968,0,0,1,0-1.351.925.925,0,0,1,1.326,0l2.651,2.7L10.216.28a.925.925,0,0,1,1.325,0,.968.968,0,0,1,0,1.351L4.914,8.385a.926.926,0,0,1-.663.28" transform="translate(343.828 360.29)" fill="#fff" />
+												</g>
+											</svg>
+											<span class="c-label__errormessage js-password-errormessage">
+												This field is required.
+											</span>
+										</span>
 									</p>
 								</div>
 								<div class="c-link">Wachtwoord vergeten?</div>
@@ -75,7 +92,7 @@
 											Terug
 										</div>
 									</button>
-									<button class="o-button-reset c-button c-submitbutton js-submitbutton" type="submit">Start</button>
+									<button class="o-button-reset c-button c-submitbutton js-startbutton" type="submit">Start</button>
 								</div>
 							</form>
 						</div>
