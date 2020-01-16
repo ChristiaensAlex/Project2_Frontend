@@ -1123,6 +1123,15 @@ body {
 
 .c-report-scheme {
   margin-bottom: var(--global-whitespace-lg);
+  margin-left: var(--global-whitespace-lg);
+}
+
+@media (min-width: 992px) {
+  .c-report-schemes {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+  }
 }
 
 .c-clients {
