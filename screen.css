@@ -554,7 +554,7 @@ body {
 	height: 36px;
 }
 .c-logo__name {
-	font-size: 20px;
+	font-size: var(--global-fontsize-md);
 	margin-left: var(--global-whitespace-md);
 	color: var(--global-color-omega);
 }
@@ -578,7 +578,7 @@ body {
 
 	.c-logo__name {
 		margin: 0;
-		font-size: calc(var(--global-fontsize-xxxl));
+		font-size: var(--global-fontsize-xxxl);
 	}
 
 	.c-logo__symbol {
