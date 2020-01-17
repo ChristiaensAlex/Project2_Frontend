@@ -227,7 +227,7 @@ hr {
 a,
 a:visited {
 	transition: all var(--global-transitionTiming-alpha);
-	color: var(--global-color-alpha);
+	color: var(--global-color-omega);
 	outline-color: var(--global-link-BoxShadowColor);
 	outline-width: medium;
 	outline-offset: 2px;
@@ -331,7 +331,7 @@ body {
 	height: auto;
 	margin-top: 56px;
 }
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
 	.o-header {
 		height: 100vh;
 		display: flex;
@@ -510,16 +510,17 @@ body {
 	height: 100vh;
 }
 
-@media (min-width: 768px) {
-	.c-content {
+/* @media (min-width: 768px) {
+	/* .c-content {
 		display: flex;
 		justify-content: space-around;
 		width: 704px;
-	}
-}
-@media (min-width: 992px) {
+	} 
+} */
+@media (min-width: 1200px) {
 	.c-content {
-		width: 800px;
+		width: 1000px;
+		display: flex;
 		justify-content: space-between;
 	}
 }
@@ -569,10 +570,10 @@ body {
 	padding: var(--global-whitespace-lg) var(--global-whitespace-md);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
 	.c-logo {
 		margin: auto;
-
+		padding: var(--global-whitespace);
 		flex-direction: column;
 	}
 
@@ -678,7 +679,7 @@ body {
 		padding: calc(var(--global-baseline) * 11) calc(var(--global-baseline) * 10);
 		border-radius: var(--global-borderRadius-lg);
 		/* border: var(--global-borderWidth) solid var(--global-color-alpha); */
-		box-shadow: 0 0 0 1px rgba(252, 140, 113, 0.05), 0 8px 8px rgba(252, 140, 113, 0.5);
+		box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
 	}
 }
 
@@ -870,6 +871,10 @@ body {
 	justify-content: space-around;
 	margin-right: var(--global-whitespace-xs);
 }
+
+.c-backbutton__text{
+	color: color: var(--global-color-alpha);
+}
 .c-backbutton-long {
 	width: 100%;
 	padding-right: 88px;
@@ -926,7 +931,10 @@ body {
 	font-size: var(--global-fontsize-md);
 	margin: var(--global-whitespace-xl) 0;
 }
-
+.c-symbol__choice {
+	display: flex;
+	justify-content: center;
+}
 /* Component: navigation client
     ---
 	*/
@@ -1227,17 +1235,6 @@ body {
 		grid-template-columns: auto auto;
 		grid-template-rows: auto;
 		margin-left: calc(var(--global-baseline) * 8);
-	}
-
-	.c-plannings .c-planning {
-		display: grid;
-		grid-template-columns: 64px 1fr 20px;
-		grid-template-rows: auto auto;
-		background-color: var(--global-color-neutral-x-light-transparent);
-		height: 80px;
-		width: 300px;
-		margin: var(--global-whitespace) 0;
-		padding: var(--global-baseline);
 	}
 }
 
@@ -1594,7 +1591,7 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 	}
 }
 
-@media (min-width: 1026px) {
+@media (min-width: 1200px) {
 	/* .c-section_menu{ 
     padding: 0 calc(var(--global-whitespace-xxl)*6);
     mag hier niet staan of fuck-up andere schermen
@@ -1919,7 +1916,7 @@ mentor can see detail info of client and can choose between calendar, profile in
 	right: 12.5%;
 	width: 25%;
 }
-.c-planning {
+.c-planningClient {
 	position: absolute;
 	width: 25%;
 	bottom: 12.5%;

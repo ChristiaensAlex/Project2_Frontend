@@ -131,7 +131,7 @@ const doubleCheckPasswordRepeat = function() {
 };
 
 const doubleCheckPw = function() {
-	console.log("double");
+	console.log('double');
 	if (!isEmpty(pwInput.value)) {
 		pwInput.removeEventListener('input', doubleCheckPw);
 		removeErrors('pw');
@@ -283,7 +283,6 @@ const ListenToButton = function(button) {
 					mailInput.addEventListener('input', doubleCheckEmailAddress);
 				}
 				if (isEmpty(pwInput.value)) {
-					console.log('email valid but pw empty');
 					addErrors('pw');
 					pwInput.addEventListener('input', doubleCheckPw);
 				}
