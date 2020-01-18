@@ -14,6 +14,7 @@ const getAPI = function(url) {
 			}
 		})
 		.then(function(jsonObject) {
+			sessionStorage.Client = jsonObject;
 			showClient(jsonObject);
 			console.log(jsonObject);
 		})
@@ -21,15 +22,9 @@ const getAPI = function(url) {
 			console.error(`Problem to process json ${error} `);
 		});
 };
-const ListenToButtons = function() {
-	profiel.addEventListener('click', function(event) {
-		window.location.href = 'EditClient.html';
-	});
-};
 
 document.addEventListener('DOMContentLoaded', function() {
 	console.log('DOM loaded');
 	profiel = document.querySelector('.c-profile');
 	getAPI(`https://localhost:44374/api/client/${sessionStorage.clientId}`);
-	ListenToButtons();
 });
