@@ -1,4 +1,4 @@
-let form, mailErrorMessage, mailField, mailInput, mailLabel, mailError, iconCorrect, iconError, passwordInput, passwordError, passwordField, iconPasswordCorrect, iconPasswordError, pw, passwordRepeatInput, passwordRepeatError, passwordRepeatField, iconPasswordRepeatCorrect, iconPasswordRepeatError;
+let form, mailErrorMessage, mailField, mailInput, mailLabel, mailError, iconCorrect, iconError, passwordInput, passwordError, passwordField, iconPasswordCorrect, iconPasswordError, pw, passwordRepeatInput, passwordRepeatError, passwordRepeatField, iconPasswordRepeatCorrect, iconPasswordRepeatError, pwInput, pwError, pwErrormessage, iconPwCorrect, iconPwError;
 
 const isValidEmailAddress = function(emailAddress) {
 	// Basis manier om e-mailadres te checken.
@@ -40,6 +40,13 @@ const addErrors = function(field) {
 		iconPasswordRepeatError.classList.remove('u-hide');
 		iconPasswordRepeatCorrect.classList.add('u-hide');
 	}
+	if (field == 'pw') {
+		pwField.classList.add('s-has-error');
+		pwField.classList.remove('s-correct');
+		pwError.classList.remove('u-hide');
+		iconPwError.classList.remove('u-hide');
+		iconPwCorrect.classList.add('u-hide');
+	}
 };
 
 const removeErrors = function(field) {
@@ -60,6 +67,12 @@ const removeErrors = function(field) {
 		passwordRepeatField.classList.add('s-correct');
 		iconPasswordRepeatError.classList.add('u-hide');
 		iconPasswordRepeatCorrect.classList.remove('u-hide');
+	}
+	if (field == 'pw') {
+		pwField.classList.remove('s-has-error');
+		pwField.classList.add('s-correct');
+		iconPwError.classList.add('u-hide');
+		iconPwCorrect.classList.remove('u-hide');
 	}
 };
 
@@ -117,7 +130,20 @@ const doubleCheckPasswordRepeat = function() {
 	}
 };
 
-const ListenToFocus = function() {
+const doubleCheckPw = function() {
+	console.log('double');
+	if (!isEmpty(pwInput.value)) {
+		pwInput.removeEventListener('input', doubleCheckPw);
+		removeErrors('pw');
+		pwErrormessage.innerText = 'Dit veld is verplicht.';
+	} else {
+		addErrors('pw');
+		pwErrormessage.innerText = 'Dit veld is verplicht.';
+		console.log('double check empty');
+	}
+};
+
+const ListenToMail = function() {
 	mailInput.addEventListener('focus', function() {
 		console.log('we zijn gefocused');
 		if (!isValidEmailAddress(mailInput.value)) {
@@ -145,6 +171,9 @@ const ListenToFocus = function() {
 			mailInput.addEventListener('input', doubleCheckEmailAddress);
 		}
 	});
+};
+
+const ListenToPassword = function() {
 	passwordInput.addEventListener('focus', function() {
 		if (!isValidPassword(passwordInput.value)) {
 			console.log('password niet lang genoeg');
@@ -181,6 +210,9 @@ const ListenToFocus = function() {
 			}
 		}
 	});
+};
+
+const ListenToPasswordRepeat = function() {
 	passwordRepeatInput.addEventListener('focus', function() {
 		if (!isSamePassword(passwordInput.value, passwordRepeatInput.value)) {
 			if (!isEmpty(passwordRepeatInput.value)) {
@@ -209,58 +241,53 @@ const ListenToFocus = function() {
 	});
 };
 
+const ListenToSinglePw = function() {
+	pwInput.addEventListener('blur', function() {
+		if (isEmpty(pwInput.value)) {
+			pwErrormessage.innerText = 'Dit veld is verplicht.';
+			addErrors('pw');
+			pwInput.addEventListener('input', doubleCheckPw);
+		}
+	});
+};
+
 const ListenToButton = function(button) {
 	button.addEventListener('click', function(event) {
 		// We gaan de form zelf versturen wanneer nodig.
 		event.preventDefault();
+		if (button == submitButton) {
+			if (isValidEmailAddress(mailInput.value) && isValidPassword(passwordInput.value) && isSamePassword(passwordInput.value, passwordRepeatInput.value)) {
+				console.log('Form is good to go!');
+				form.submit();
+			} else {
+				if (!isValidEmailAddress(mailInput.value)) {
+					addErrors('email');
+					mailInput.addEventListener('input', doubleCheckEmailAddress);
+				}
+				if (!isValidPassword(passwordInput.value)) {
+					addErrors('password');
+					passwordInput.addEventListener('input', doubleCheckPassword);
+				}
+				if (!isSamePassword(passwordInput.value, passwordRepeatInput.value)) {
+					addErrors('passwordRepeat');
 
-		if (isValidEmailAddress(mailInput.value) && isValidPassword(passwordInput.value) && isSamePassword(passwordInput.value, passwordRepeatInput.value)) {
-			console.log('Form is good to go!');
-			form.submit();
-		} else {
-			if (!isValidEmailAddress(mailInput.value)) {
-				addErrors('email');
-				mailInput.addEventListener('input', doubleCheckEmailAddress);
+					passwordRepeatInput.addEventListener('input', doubleCheckPasswordRepeat);
+				}
 			}
-			if (!isValidPassword(passwordInput.value)) {
-				addErrors('password');
-				passwordInput.addEventListener('input', doubleCheckPassword);
-			}
-			if (!isSamePassword(passwordInput.value, passwordRepeatInput.value)) {
-				addErrors('passwordRepeat');
-
-				passwordRepeatInput.addEventListener('input', doubleCheckPasswordRepeat);
+		} else if (button == startButton) {
+			if (isValidEmailAddress(mailInput.value) && !isEmpty(pwInput.value)) {
+				form.submit();
+			} else {
+				if (!isValidEmailAddress(mailInput.value)) {
+					addErrors('email');
+					mailInput.addEventListener('input', doubleCheckEmailAddress);
+				}
+				if (isEmpty(pwInput.value)) {
+					addErrors('pw');
+					pwInput.addEventListener('input', doubleCheckPw);
+				}
 			}
 		}
-
-		// if (isValidEmailAddress(mailInput.value)) {
-		// 	if (isValidPassword(passwordInput.value)) {
-		// 		if (isSamePassword(passwordInput.value, passwordRepeatInput.value)) {
-		// 			console.log('Form is good to go!');
-		// 			form.submit();
-		// 		} else {
-		// 			addErrors('passwordRepeat');
-
-		// 			passwordRepeatInput.addEventListener('input', doubleCheckPasswordRepeat);
-		// 		}
-		// 	} else {
-		// 		addErrors('password');
-		// 		passwordInput.addEventListener('input', doubleCheckPassword);
-		// 	}
-		// } else {
-		// 	addErrors('email');
-		// mailInput.addEventListener('input', doubleCheckEmailAddress);
-		// }
-
-		// if (isValidEmailAddress(mailInput.value) && isValidPassword(passwordInput.value) && isSamePassword(passwordInput.value, passwordRepeatInput.value)) {
-		// 	console.log('Form is good to go!');
-		// 	form.submit();
-		// } else {
-		// 	// Stuk herhalende code...
-
-		// 	addErrors('email');
-		// 	mailInput.addEventListener('input', doubleCheckEmailAddress);
-		// }
 	});
 };
 
@@ -289,13 +316,41 @@ const GetDomElements = function() {
 	passwordRepeatError = document.querySelector('.js-password-repeat-error');
 	iconPasswordRepeatError = document.querySelector('.js-icon-password-repeat-error');
 	iconPasswordRepeatCorrect = document.querySelector('.js-icon-password-repeat');
+
+	//single password
+
+	pwField = document.querySelector('.js-pw-field');
+
 	// button
 	submitButton = document.querySelector('.js-submitbutton');
+	startButton = document.querySelector('.js-startbutton');
 
 	console.log(mailField, mailLabel, mailInput, mailErrorMessage);
-
-	ListenToFocus();
-	ListenToButton(submitButton);
+	if (mailField != null) {
+		ListenToMail();
+	}
+	if (passwordField != null) {
+		ListenToPassword();
+	}
+	if (passwordRepeatField != null) {
+		ListenToPasswordRepeat();
+	}
+	if (pwField != null) {
+		console.log('pw-field');
+		pwInput = document.querySelector('.js-password');
+		pwErrormessage = document.querySelector('.js-password-errormessage');
+		pwError = document.querySelector('.js-password-error');
+		iconPwError = document.querySelector('.js-icon-password-error');
+		iconPwCorrect = document.querySelector('.js-icon-password');
+		ListenToSinglePw();
+	}
+	// ListenToFocus();
+	if (submitButton != null) {
+		ListenToButton(submitButton);
+	} else if (startButton != null) {
+		console.log('startbutton');
+		ListenToButton(startButton);
+	}
 };
 
 const init = function() {
