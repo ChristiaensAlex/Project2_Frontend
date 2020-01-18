@@ -1,4 +1,4 @@
-let form, mailErrorMessage, mailField, mailInput, mailLabel, mailError, iconCorrect, iconError, passwordInput, passwordError, passwordField, iconPasswordCorrect, iconPasswordError, pw, passwordRepeatInput, passwordRepeatError, passwordRepeatField, iconPasswordRepeatCorrect, iconPasswordRepeatError, pwInput, pwError, pwErrormessage, iconPwCorrect, iconPwError;
+let form, mailErrorMessage, mailField, mailInput, mailLabel, mailError, iconCorrect, iconError, passwordInput, passwordError, passwordField, iconPasswordCorrect, iconPasswordError, pw, passwordRepeatInput, passwordRepeatError, passwordRepeatField, iconPasswordRepeatCorrect, iconPasswordRepeatError, pwInput, pwError, pwErrormessage, iconPwCorrect, iconPwError, firstNameInput, lastNameInput;
 
 const isValidEmailAddress = function(emailAddress) {
 	// Basis manier om e-mailadres te checken.
@@ -232,7 +232,7 @@ const ListenToPasswordRepeat = function() {
 			if (isEmpty(passwordRepeatInput.value)) {
 				passwordRepeatErrormessage.innerText = 'Dit veld is verplicht.';
 			} else {
-				console.log(pw, passwordRepeatInput.value);
+				console.log(passwordInput.value, passwordRepeatInput.value);
 				passwordRepeatErrormessage.innerText = 'De wachtwoorden komen niet overeen.';
 			}
 			addErrors('passwordRepeat');
@@ -258,7 +258,16 @@ const ListenToButton = function(button) {
 		if (button == submitButton) {
 			if (isValidEmailAddress(mailInput.value) && isValidPassword(passwordInput.value) && isSamePassword(passwordInput.value, passwordRepeatInput.value)) {
 				console.log('Form is good to go!');
-				form.submit();
+
+				let payload = {
+					firstName: firstNameInput.value,
+					lastName: lastNameInput.value,
+					email: mailInput.value,
+					password: passwordInput.value,
+					confirmPassword: passwordRepeatInput.value
+				};
+				OnHandlerClickedLogin(payload);
+				window.location.href = 'RegistrationMentor2.html';
 			} else {
 				if (!isValidEmailAddress(mailInput.value)) {
 					addErrors('email');
@@ -317,6 +326,8 @@ const GetDomElements = function() {
 	iconPasswordRepeatError = document.querySelector('.js-icon-password-repeat-error');
 	iconPasswordRepeatCorrect = document.querySelector('.js-icon-password-repeat');
 
+	firstNameInput = document.querySelector('.js-firstname');
+	lastNameInput = document.querySelector('.js-lastname');
 	//single password
 
 	pwField = document.querySelector('.js-pw-field');
