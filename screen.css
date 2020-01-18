@@ -17,66 +17,6 @@
 #Variables
 \*------------------------------------*/
 :root {
-<<<<<<< HEAD
-  /*colors*/
-
-  --global-color-alpha-light: #ffb9a6;
-  --global-color-alpha: #fc8c71;
-  --global-color-alpha-dark: #fe7c5a;
-  --global-color-alpha-dark-x: #fe6740;
-  --global-color-alpha-dark-xx: #ff5d33;
-
-  --global-color-beta: #1c5c5c;
-  --global-color-omega: #27255f;
-
-  --global-color-neutral-xxxxx-light: white;
-  --global-color-neutral-xxxx-light: white;
-  --global-color-neutral-xxx-light: #fafaff;
-  --global-color-neutral-xx-light: #ececf0;
-  --global-color-neutral-x-light: #c8c8cc;
-  --global-color-neutral-light: #aaaab3;
-  --global-color-neutral: #8d8d99;
-  --global-color-neutral-dark: #757580;
-  --global-color-neutral-x-dark: #5d5d66;
-  --global-color-neutral-xx-dark: #3b3f40;
-  --global-color-neutral-xxx-dark: #17191a;
-  --global-color-neutral-xxxx-dark: #17171a;
-
-  --global-color-neutral-x-light-transparent: #c8c8cc29;
-  /* border variables */
-  --global-borderRadius: 4px;
-  --global-borderWidth: 1px;
-
-  /* transitions */
-  --global-transitionTiming-alpha: 0.1s ease-out;
-
-  /* Baseline settings */
-  --global-baseline: 8px;
-  --global-whitespace: calc(var(--global-baseline) * 3); /* = 24px */
-
-  --global-whitespace-xs: calc(var(--global-baseline) / 2); /* = 4px */
-  --global-whitespace-sm: calc(var(--global-baseline) * 1); /*  = 8px */
-  --global-whitespace-md: calc(var(--global-baseline) * 2); /*  = 16px */
-  --global-whitespace-lg: calc(var(--global-baseline) * 4); /*  = 32px */
-  --global-whitespace-xl: calc(var(--global-whitespace) * 2); /*  = 48px */
-  --global-whitespace-xxl: calc(var(--global-whitespace) * 3); /*  = 72px */
-
-  /*fontsizes: modular scale met base 16px en ratio 1.25*/
-  --global-fontsize-xs: 10px;
-  --global-fontsize-sm: 13px;
-  --global-fontsize: 16px;
-  --global-fontsize-md: 20px;
-  --global-fontsize-lg: 25px;
-  --global-fontsize-xl: 31px;
-  --global-fontsize-xxl: 39px;
-  --global-fontsize-xxxl: 48px;
-
-  /*error*/
-
-  --global-color-error: #fe5e33;
-  --global-input-error-boxShadowColor: #fe5e33;
-  --input-border: none;
-=======
 	/*colors*/
 
 	--global-color-alpha-light: #ffb9a6;
@@ -137,7 +77,6 @@
 	--global-color-error: #fe5e33;
 	--global-input-error-boxShadowColor: #fe5e33;
 	--input-border: none;
->>>>>>> cefb9911790966eb0337d4be5b2a382f1953ca32
 }
 
 /*------------------------------------*\
@@ -149,18 +88,6 @@
   Global page styles + universal box-sizing:
 */
 html {
-<<<<<<< HEAD
-  font-size: var(--global-fontsize); /*16px*/
-  line-height: 1.5;
-  font-family: 'Poppins', Helvetica, arial, sans-serif;
-  font-weight: 400;
-  color: var(--global-color-omega);
-  background-color: var(--global-color-neutral-xxxx-light);
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  height: 100%;
-=======
 	font-size: var(--global-fontsize); /*16px*/
 	line-height: 1.5;
 	font-family: 'Poppins', Helvetica, arial, sans-serif;
@@ -171,7 +98,6 @@ html {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	height: 100%;
->>>>>>> cefb9911790966eb0337d4be5b2a382f1953ca32
 }
 
 @media (prefers-color-scheme: dark) {
@@ -188,17 +114,6 @@ html {
 }
 
 ::-moz-selection {
-<<<<<<< HEAD
-  background: var(--global-color-alpha-light);
-  color: inherit;
-  text-shadow: none;
-}
-
-::selection {
-  background: var(--global-color-selection);
-  color: var(--global-color-neutral-xxxxx-light);
-  text-shadow: none;
-=======
 	background: var(--global-color-alpha-light);
 	color: inherit;
 	text-shadow: none;
@@ -208,7 +123,6 @@ html {
 	background: var(--global-color-selection);
 	color: var(--global-color-neutral-xxxx-light);
 	text-shadow: none;
->>>>>>> cefb9911790966eb0337d4be5b2a382f1953ca32
 }
 
 /*------------------------------------*\
@@ -310,21 +224,12 @@ hr {
 
 a,
 a:visited {
-<<<<<<< HEAD
-  transition: all var(--global-transitionTiming-alpha);
-  color: var(--global-color-alpha);
-  outline-color: var(--global-link-BoxShadowColor);
-  outline-width: medium;
-  outline-offset: 2px;
-  text-decoration: none;
-=======
 	transition: all var(--global-transitionTiming-alpha);
 	color: var(--global-color-omega);
 	outline-color: var(--global-link-BoxShadowColor);
 	outline-width: medium;
 	outline-offset: 2px;
 	text-decoration: none;
->>>>>>> cefb9911790966eb0337d4be5b2a382f1953ca32
 }
 
 a:hover,
@@ -346,21 +251,12 @@ input::placeholder {
 }
 
 body {
-<<<<<<< HEAD
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  margin: 0px;
-
-  /* background-image: url(LoginMentor.png);
-=======
 	height: 100%;
 	display: flex;
 	flex-direction: column;
 	margin: 0px;
 
 	/* background-image: url(LoginMentor.png);
->>>>>>> cefb9911790966eb0337d4be5b2a382f1953ca32
 	background-repeat: no-repeat;  */
 }
 
@@ -375,11 +271,7 @@ body {
 .o-row {
   position: relative;
 
-<<<<<<< HEAD
-  padding: 0 var(--global-whitespace);
-=======
 	padding: 0 var(--global-whitespace);
->>>>>>> cefb9911790966eb0337d4be5b2a382f1953ca32
 }
 
 /*
@@ -388,19 +280,11 @@ body {
   Creates a horizontal container that sets de global max-width
 */
 .o-container {
-<<<<<<< HEAD
-  margin-left: auto;
-  margin-right: auto;
-
-  max-width: 800px; /* 79.5 * 16px = 1272 */
-  width: 100%;
-=======
 	margin-left: auto;
 	margin-right: auto;
 
 	max-width: 800px; /* 79.5 * 16px = 1272 */
 	width: 100%;
->>>>>>> cefb9911790966eb0337d4be5b2a382f1953ca32
 }
 
 /*
@@ -417,21 +301,6 @@ body {
 }
 
 @media (min-width: 768px) {
-<<<<<<< HEAD
-  .o-section--lg + .o-section--lg,
-  .o-section--xl + .o-section--xl {
-    padding-top: var(--global-whitespace-lg);
-  }
-  .o-section {
-    margin: auto;
-  }
-}
-
-@media (min-width: 992px) {
-  .o-section--xl + .o-section--xl {
-    padding-top: var(--global-whitespace-xxl);
-  }
-=======
 	.o-section--lg + .o-section--lg,
 	.o-section--xl + .o-section--xl {
 		padding-top: var(--global-whitespace-lg);
@@ -464,7 +333,6 @@ body {
 		align-items: center;
 		margin: auto 0;
 	}
->>>>>>> cefb9911790966eb0337d4be5b2a382f1953ca32
 }
 /*
     Objects: Row
@@ -1778,6 +1646,33 @@ each contact has a profile pic and name
   margin-left: var(--global-whitespace-lg);
 }
 
+/*
+	Popup
+*/
+
+.c-popup-form{
+	display: none;
+	position: absolute;
+	top: 168;
+	left: 36; 
+	right:36
+}
+.c-popup-form--card {
+	background-color: var(--global-color-neutral-xxxx-light);
+	border-radius: 14px;
+	width: 100%;
+	padding: 36px;
+	max-width: 552px;
+	line-height: 24px;
+	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.c-popup-blur {
+	filter: blur(8px);
+}
+
+
+
 /*begin double*/
 
 /* einde double*/
@@ -2622,6 +2517,10 @@ No media query since this is the default in mobile first design
 	margin-bottom: 64px;
 }
 
+.c-popup-form--card > .c-backbutton {
+	width: 100%;
+}
+
 @media (min-width: 768px) {
 	.c-backbutton-long {
 		padding-right: 190px;
@@ -2642,6 +2541,13 @@ No media query since this is the default in mobile first design
 	justify-content: center;
 	margin-left: var(--global-whitespace-xs);
 }
+
+.c-popup-form--card > .c-submitbutton {
+	width: 100%;
+	margin-left: 0;
+	margin-bottom: calc(var(--global-baseline) * 2);
+}
+
 
 .c-button__mainStepImage {
 	display: flex;

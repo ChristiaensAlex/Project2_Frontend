@@ -1,11 +1,4 @@
 let deleteClient, background, deleteProgressiveScheme;
-if (deleteClient != null) {
-  console.log('True 1');
-  deleteClient.addEventListener('click', onHandlerClickedPopUp);
-} else if (deleteProgressiveScheme != null) {
-  console.log('True 2');
-  deleteProgressiveScheme.addEventListener('click', onHandlerClickedPopUp);
-}
 
 const OnHandlerClickedCancel = function() {
   background.classList.remove('c-popup-blur');
@@ -19,17 +12,35 @@ const onHandlerClickedPopUp = function() {
   popup.style.display = 'block';
 };
 
+const ListenToDelete = function(element){
+  element.addEventListener('click', onHandlerClickedPopUp); 
+}
+
 const getElements = function() {
-  deleteClient = document.querySelector('.js-client-delete');
+  console.log("Get Elements"); 
+  deleteClient = document.querySelectorAll('.js-client-delete');
+  console.log(deleteClient); 
   background = document.querySelector('.js-background-popup');
   popup = document.querySelector('.c-popup-form');
   cancelButton = document.querySelector('.js-cancel');
   cancelButton.addEventListener('click', OnHandlerClickedCancel);
-  deleteProgressiveScheme = document.querySelector('.js-progressivescheme-delete');
+  deleteProgressiveScheme = document.querySelectorAll('.js-progressivescheme-delete');
   console.log(deleteProgressiveScheme);
+  if(typeof deleteClient != 'undefined' && deleteClient.length > 0){
+    console.log("Delete client"); 
+    deleteClient.forEach(element => {
+      ListenToDelete(element)}
+      );
+  }
+  else if(typeof deleteProgressiveScheme != 'undefined' && deleteProgressiveScheme.length > 0){
+    console.log("HIER"); 
+    deleteProgressiveScheme.forEach(element => {
+      ListenToDelete(element)}
+      );
+  }
 };
 
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DOM loaded');
-  getElements();
+  getElements(); 
 });
