@@ -48,7 +48,8 @@ const showAllProgressiveSchemes = function(jsonObject){
 }
 
 const getProgressiveSchemes = function(){
-    let url = `${baseURL}progressiveScheme`; 
+    let id = "aacb2362-73a9-43dc-b9de-0ce057623568"; 
+    let url = `${baseURL}mentor/${id}/progressiveScheme`; 
     fetch(url).then(function(response){
         if(!response.ok){
             throw Error(`Problem to fetch(). Status code: ${response.status}`);
