@@ -1,4 +1,5 @@
 const url = 'https://localhost:44374/api/AuthMentor/Register';
+let id;
 const postAPI = function(payload) {
 	console.log('post');
 	let body = JSON.stringify(payload);
@@ -12,7 +13,9 @@ const postAPI = function(payload) {
 		body: body
 	})
 		.then(res => res.json())
-		.then(data => console.log(data))
+		.then(data => {
+			console.log(data), (id = data.id), console.log(id);
+		})
 		.catch(err => console.log(err));
 };
 
