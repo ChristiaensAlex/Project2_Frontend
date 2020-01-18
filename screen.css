@@ -811,6 +811,10 @@ Component: Spread
 .c-input-list {
 	padding-bottom: var(--global-whitespace-md);
 }
+.c-register {
+	display: flex;
+	justify-content: flex-end;
+}
 /*
 
 /*buttons*/
