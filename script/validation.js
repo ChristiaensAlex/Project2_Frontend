@@ -266,8 +266,8 @@ const ListenToButton = function(button) {
 					password: passwordInput.value,
 					confirmPassword: passwordRepeatInput.value
 				};
-				OnHandlerClickedLogin(payload);
-				window.location.href = 'RegistrationMentor2.html';
+				postRegisterMentorAPI(payload);
+				
 			} else {
 				if (!isValidEmailAddress(mailInput.value)) {
 					addErrors('email');
@@ -285,7 +285,12 @@ const ListenToButton = function(button) {
 			}
 		} else if (button == startButton) {
 			if (isValidEmailAddress(mailInput.value) && !isEmpty(pwInput.value)) {
-				OnHandlerClickedLogin();
+				let payload = {
+					email: mailInput.value,
+					password: passwordInput.value
+				};
+				postLoginMentorAPI(payload);
+				window.location.href = 'MentorHasClientList.html';
 			} else {
 				if (!isValidEmailAddress(mailInput.value)) {
 					addErrors('email');

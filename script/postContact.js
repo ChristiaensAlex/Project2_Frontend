@@ -1,5 +1,5 @@
 const postContactAPI = function(payload, mentorId) {
-	console.log('post' + mentorId);
+	console.log('post contact' + mentorId);
 	let body = JSON.stringify(payload);
 	console.log(body);
 	fetch(`https://localhost:44374/api/mentor/${mentorId}/contact`, {
@@ -12,13 +12,13 @@ const postContactAPI = function(payload, mentorId) {
 	})
 		.then(res => res.json())
 		.then(data => {
-			console.log(data), console.log(data);
+			console.log(data), console.log(data), window.location.href = 'MentorHasClientList.html';;
 		})
 		.catch(err => console.log(err));
 };
 
 const ListenToSubmit = function() {
-	submitButton.addEventListener('click', function(event) {
+	submit.addEventListener('click', function(event) {
 		event.preventDefault();
 		let payload = [
 			{
@@ -29,11 +29,12 @@ const ListenToSubmit = function() {
 		];
 		mentorId = sessionStorage.mentorId;
 		postContactAPI(payload, mentorId);
+		
 	});
 };
 
 const GetDomElements = function() {
-	submitButton = document.querySelector('.js-submitButton');
+	submit = document.querySelector('.js-submitButton');
 	phonenumber = document.querySelector('.js-phonenumber');
 	firstname = document.querySelector('.js-firstname');
 
