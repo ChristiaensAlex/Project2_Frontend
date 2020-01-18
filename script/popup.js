@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 let deleteClientButton, background, deleteCalendarButton;
+=======
+let deleteClientButton, background;
+>>>>>>> 0a9c8b2eeb210aa7e3c17601fab68bcb9293e00f
 
 const OnHandlerClickedCancel = function() {
   background.classList.remove('c-popup-blur');
@@ -13,7 +17,7 @@ const onHandlerClickedPopUp = function() {
 };
 
 const getElements = function() {
-  deleteClientButton = document.querySelector('.js-client-delete');
+  deleteClientButton = document.querySelectorAll('.js-client-delete');
   background = document.querySelector('.js-background-popup');
   popup = document.querySelector('.c-popup-form');
   cancelButton = document.querySelector('.js-cancel');
@@ -28,5 +32,4 @@ const getElements = function() {
 
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DOM loaded');
-  getElements();
 });
