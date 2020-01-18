@@ -276,7 +276,7 @@ const ListenToButton = function(button) {
 			}
 		} else if (button == startButton) {
 			if (isValidEmailAddress(mailInput.value) && !isEmpty(pwInput.value)) {
-				form.submit();
+				OnHandlerClickedLogin();
 			} else {
 				if (!isValidEmailAddress(mailInput.value)) {
 					addErrors('email');
