@@ -524,6 +524,13 @@ body {
 		justify-content: space-between;
 	}
 }
+@media (min-width: 1400px) {
+	.c-content {
+		width: 1200px;
+		display: flex;
+		justify-content: space-between;
+	}
+}
 
 /* .c-welcome {
 	opacity: 0;
@@ -580,6 +587,7 @@ body {
 	.c-logo__name {
 		margin: 0;
 		font-size: var(--global-fontsize-xxxl);
+		text-align: center;
 	}
 
 	.c-logo__symbol {
