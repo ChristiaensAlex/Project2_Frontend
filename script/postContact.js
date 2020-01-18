@@ -29,6 +29,7 @@ const ListenToSubmit = function() {
 		];
 		mentorId = sessionStorage.mentorId;
 		postContactAPI(payload, mentorId);
+		window.location.href = 'MentorHasClientList.html';
 	});
 };
 

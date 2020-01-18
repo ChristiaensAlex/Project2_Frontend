@@ -1,9 +1,8 @@
 let email, password;
 
-const url = 'https://localhost:44374/api/AuthMentor/Login';
-const postAPI = function(payload) {
+const postLoginMentorAPI = function(payload) {
 	console.log('post');
-	fetch(url, {
+	fetch('https://localhost:44374/api/AuthMentor/Login', {
 		method: 'POST',
 		mode: 'cors',
 		cache: 'no-cache',
@@ -15,17 +14,3 @@ const postAPI = function(payload) {
 		.then(data => console.log(data))
 		.catch(err => console.log(err));
 };
-
-const OnHandlerClickedLogin = function() {
-	email = mailInput.value; 
-	password = passwordInput.value;
-	let payload = { email: email, password: password };
-	console.log(payload);
-	console.log('Handler');
-	postAPI(payload);
-};
-
-
-document.addEventListener('DOMContentLoaded', function() {
-	console.log('DOM loaded');
-});

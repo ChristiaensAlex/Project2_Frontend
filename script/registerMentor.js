@@ -18,11 +18,3 @@ const postAPI = function(payload) {
 		})
 		.catch(err => console.log(err));
 };
-
-const OnHandlerClickedLogin = function(payload) {
-	console.log(payload);
-	console.log('Handler');
-	// console.log(emailLogin.value);
-	// console.log(passwordLogin.value);
-	postAPI(payload);
-};
