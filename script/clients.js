@@ -4,10 +4,10 @@ const showAllClients = function(jsonObject) {
 	for (i in jsonObject) {
 		console.log(jsonObject[i]);
 		clients.innerHTML += `<div class="c-client">
-        <div class="c-client__userPhoto">
+        <div class="c-client__userPhoto js-client">
           <img class="c-icon" src="icon_Chloë.png" alt="profielfoto" />
         </div>
-        <div class="c-client__name">
+        <div class="c-client__name js-client" clientnr="${i}">
           ${jsonObject[i].firstName + ' ' + jsonObject[i].lastName}
         </div>
         <div class="c-client__delete js-client-delete">
@@ -22,11 +22,26 @@ const showAllClients = function(jsonObject) {
         </div>
       </div>`;
 	}
-	getElements();
+	ListenToClients(jsonObject);
 };
-const getAPI = function(mentorId) {
-	console.log(mentorId);
-	let url = `https://localhost:44374/api/client/`;
+
+const ListenToClients = function(jsonObject) {
+	clients = document.querySelectorAll('.js-client');
+	for (client of clients) {
+		client.addEventListener('click', function(event) {
+			console.log(this);
+			let nr = this.getAttribute('clientnr');
+			console.log(nr);
+			clientId = jsonObject[nr].id;
+			sessionStorage.clientId = clientId;
+			console.log(clientId);
+			window.location.href = 'DetailInfoClient.html';
+		});
+	}
+};
+const getAPI = function(url) {
+	
+
 	fetch(url)
 		.then(function(response) {
 			if (!response.ok) {
@@ -45,7 +60,7 @@ const getAPI = function(mentorId) {
 };
 const initClients = function() {
 	mentorId = 'ef4c3f22-6ac3-4143-b9cd-21a23f9ea1fe';
-	getAPI(mentorId);
+	getAPI(`https://localhost:44374/api/client/`);
 	clients = document.querySelector('.c-clients');
 };
 document.addEventListener('DOMContentLoaded', function() {
