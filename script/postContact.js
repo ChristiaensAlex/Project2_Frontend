@@ -12,7 +12,7 @@ const postContactAPI = function(payload, mentorId) {
 	})
 		.then(res => res.json())
 		.then(data => {
-			console.log(data), console.log(data);
+			console.log(data), console.log(data), window.location.href = 'MentorHasClientList.html';;
 		})
 		.catch(err => console.log(err));
 };
@@ -29,7 +29,7 @@ const ListenToSubmit = function() {
 		];
 		mentorId = sessionStorage.mentorId;
 		postContactAPI(payload, mentorId);
-		window.location.href = 'MentorHasClientList.html';
+		
 	});
 };
 

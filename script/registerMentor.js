@@ -1,5 +1,3 @@
-
-
 const postRegisterMentorAPI = function(payload) {
 	console.log('post');
 	let body = JSON.stringify(payload);
@@ -14,7 +12,7 @@ const postRegisterMentorAPI = function(payload) {
 	})
 		.then(res => res.json())
 		.then(data => {
-			console.log(data), (sessionStorage.mentorId = data.id), console.log(sessionStorage.mentorId);
+			console.log(data), (sessionStorage.mentorId = data.id), console.log(sessionStorage.mentorId), (window.location.href = 'RegistrationMentor2.html');
 		})
 		.catch(err => console.log(err));
 };

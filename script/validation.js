@@ -267,7 +267,7 @@ const ListenToButton = function(button) {
 					confirmPassword: passwordRepeatInput.value
 				};
 				postRegisterMentorAPI(payload);
-				window.location.href = 'RegistrationMentor2.html';
+				
 			} else {
 				if (!isValidEmailAddress(mailInput.value)) {
 					addErrors('email');
