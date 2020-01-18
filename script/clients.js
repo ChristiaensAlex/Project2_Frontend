@@ -1,9 +1,9 @@
 let fullName, fullNameArr, clients;
 
-const showAllClients = function(jsonObject){
-    for(i in jsonObject){
-        console.log(jsonObject[i]);
-        clients.innerHTML += `<div class="c-client">
+const showAllClients = function(jsonObject) {
+	for (i in jsonObject) {
+		console.log(jsonObject[i]);
+		clients.innerHTML += `<div class="c-client">
         <div class="c-client__userPhoto">
           <img class="c-icon" src="icon_Chloë.png" alt="profielfoto" />
         </div>
@@ -21,31 +21,34 @@ const showAllClients = function(jsonObject){
           </svg>
         </div>
       </div>`;
-    }
-    getElements(); 
-
-    
-}
-const getAPI = function(){ 
-    let url = "https://localhost:44374/api/client";
-    fetch(url).then(function(response){
-        if(!response.ok){
-            throw Error(`Problem to fetch(). Status code: ${response.status}`);
-        } else {
-            return response.json();
-        }
-    }).then(function(jsonObject){
-        showAllClients(jsonObject);
-        console.log(jsonObject);
-    }).catch(function(error){
-        console.error(`Problem to process json ${error} `);
-    });
+	}
+	getElements();
 };
-const initClients= function(){
-    getAPI();
-    clients = document.querySelector('.c-clients')
-}
-document.addEventListener('DOMContentLoaded', function(){
-    console.log('DOM loaded');
-    initClients();
-})
+const getAPI = function(mentorId) {
+	console.log(mentorId);
+	let url = `https://localhost:44374/api/client/`;
+	fetch(url)
+		.then(function(response) {
+			if (!response.ok) {
+				throw Error(`Problem to fetch(). Status code: ${response.status}`);
+			} else {
+				return response.json();
+			}
+		})
+		.then(function(jsonObject) {
+			showAllClients(jsonObject);
+			console.log(jsonObject);
+		})
+		.catch(function(error) {
+			console.error(`Problem to process json ${error} `);
+		});
+};
+const initClients = function() {
+	mentorId = 'ef4c3f22-6ac3-4143-b9cd-21a23f9ea1fe';
+	getAPI(mentorId);
+	clients = document.querySelector('.c-clients');
+};
+document.addEventListener('DOMContentLoaded', function() {
+	console.log('DOM loaded');
+	initClients();
+});

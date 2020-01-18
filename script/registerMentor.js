@@ -1,10 +1,10 @@
-const url = 'https://localhost:44374/api/AuthMentor/Register';
-let mentorId;
-const postAPI = function(payload) {
+
+
+const postRegisterMentorAPI = function(payload) {
 	console.log('post');
 	let body = JSON.stringify(payload);
 	console.log(body);
-	fetch(url, {
+	fetch('https://localhost:44374/api/AuthMentor/Register', {
 		method: 'POST',
 		mode: 'cors',
 		cache: 'no-cache',

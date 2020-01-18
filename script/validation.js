@@ -266,7 +266,7 @@ const ListenToButton = function(button) {
 					password: passwordInput.value,
 					confirmPassword: passwordRepeatInput.value
 				};
-				postAPI(payload);
+				postRegisterMentorAPI(payload);
 				window.location.href = 'RegistrationMentor2.html';
 			} else {
 				if (!isValidEmailAddress(mailInput.value)) {
