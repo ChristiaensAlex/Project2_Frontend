@@ -537,6 +537,13 @@ body {
     justify-content: center;
   }
 }
+@media (min-width: 1400px) {
+	.c-content {
+		width: 1200px;
+		display: flex;
+		justify-content: space-between;
+	}
+}
 
 /* .c-welcome {
 opacity: 0;
@@ -2217,10 +2224,11 @@ No media query since this is the default in mobile first design
     flex-direction: column;
   }
 
-  .c-logo__name {
-    margin: 0;
-    font-size: calc(var(--global-fontsize-xxxl));
-  }
+	.c-logo__name {
+		margin: 0;
+		font-size: var(--global-fontsize-xxxl);
+		text-align: center;
+	}
 
   .c-logo__symbol {
     width: 100%;
