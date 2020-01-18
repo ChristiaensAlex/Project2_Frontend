@@ -224,12 +224,12 @@ hr {
 
 a,
 a:visited {
-  transition: all var(--global-transitionTiming-alpha);
-  color: var(--global-color-alpha);
-  outline-color: var(--global-link-BoxShadowColor);
-  outline-width: medium;
-  outline-offset: 2px;
-  text-decoration: none;
+	transition: all var(--global-transitionTiming-alpha);
+	color: var(--global-color-omega);
+	outline-color: var(--global-link-BoxShadowColor);
+	outline-width: medium;
+	outline-offset: 2px;
+	text-decoration: none;
 }
 
 a:hover,
@@ -325,14 +325,14 @@ body {
   height: auto;
   margin-top: 56px;
 }
-@media (min-width: 768px) {
-  .o-header {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto 0;
-  }
+@media (min-width: 1200px) {
+	.o-header {
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: auto 0;
+	}
 }
 /*
     Objects: Row
@@ -2150,18 +2150,19 @@ No media query since this is the default in mobile first design
   height: 100vh;
 }
 
-@media (min-width: 768px) {
-  .c-content {
-    display: flex;
-    justify-content: space-around;
-    width: 704px;
-  }
-}
-@media (min-width: 992px) {
-  .c-content {
-    width: 800px;
-    justify-content: space-between;
-  }
+/* @media (min-width: 768px) {
+	/* .c-content {
+		display: flex;
+		justify-content: space-around;
+		width: 704px;
+	} 
+} */
+@media (min-width: 1200px) {
+	.c-content {
+		width: 1000px;
+		display: flex;
+		justify-content: space-between;
+	}
 }
 
 /* .c-welcome {
@@ -2194,9 +2195,9 @@ No media query since this is the default in mobile first design
   height: 36px;
 }
 .c-logo__name {
-  font-size: 20px;
-  margin-left: var(--global-whitespace-md);
-  color: var(--global-color-omega);
+	font-size: var(--global-fontsize-md);
+	margin-left: var(--global-whitespace-md);
+	color: var(--global-color-omega);
 }
 
 .c-logo__menu {
@@ -2467,6 +2468,10 @@ No media query since this is the default in mobile first design
   justify-content: space-around;
   margin-right: var(--global-whitespace-xs);
 }
+
+.c-backbutton__text {
+	color: var(--global-color-alpha);
+}
 .c-backbutton-long {
   width: 100%;
   padding-right: 88px;
@@ -2523,7 +2528,13 @@ No media query since this is the default in mobile first design
   font-size: var(--global-fontsize-md);
   margin: var(--global-whitespace-xl) 0;
 }
-
+.c-choice div {
+	color: var(--global-color-alpha);
+}
+.c-symbol__choice {
+	display: flex;
+	justify-content: center;
+}
 /* Component: navigation client
     ---
 	*/
@@ -3191,8 +3202,8 @@ navigation footer for client with visualisation of progress, phonebutton and ove
   }
 }
 
-@media (min-width: 1026px) {
-  /* .c-section_menu{ 
+@media (min-width: 1200px) {
+	/* .c-section_menu{ 
     padding: 0 calc(var(--global-whitespace-xxl)*6);
     mag hier niet staan of fuck-up andere schermen
   } */
@@ -3516,11 +3527,11 @@ mentor can see detail info of client and can choose between calendar, profile in
   right: 12.5%;
   width: 25%;
 }
-.c-planning {
-  position: absolute;
-  width: 25%;
-  bottom: 12.5%;
-  left: 37.5%;
+.c-planningClient {
+	position: absolute;
+	width: 25%;
+	bottom: 12.5%;
+	left: 37.5%;
 }
 
 /*page edit profile */
