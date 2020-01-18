@@ -931,6 +931,9 @@ body {
 	font-size: var(--global-fontsize-md);
 	margin: var(--global-whitespace-xl) 0;
 }
+.c-choice div {
+	color: var(--global-color-alpha);
+}
 .c-symbol__choice {
 	display: flex;
 	justify-content: center;
