@@ -2,7 +2,7 @@ let form, buttonAddStep, removeButton, buttonAddStepBetween, inputStep, inputSte
 
 const getFormElements = function() {
 	form = document.querySelector('.js-form-addStep');
-	GetDomElements();
+	//GetDomElements();
 	if (form) {
 		form.noValidate = true; //input is not validated when submitted
 		// form.addEventListener('submit', onFormSubmit);
