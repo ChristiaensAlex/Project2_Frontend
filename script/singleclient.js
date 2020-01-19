@@ -1,3 +1,5 @@
+let profiel;
+
 const showClient = function(json) {
 	document.querySelector('.c-clientname').innerHTML = `${json.firstName} ${json.lastName}`;
 };
@@ -12,6 +14,7 @@ const getAPI = function(url) {
 			}
 		})
 		.then(function(jsonObject) {
+			sessionStorage.Client = jsonObject;
 			showClient(jsonObject);
 			console.log(jsonObject);
 		})
@@ -22,5 +25,6 @@ const getAPI = function(url) {
 
 document.addEventListener('DOMContentLoaded', function() {
 	console.log('DOM loaded');
+	profiel = document.querySelector('.c-profile');
 	getAPI(`https://localhost:44374/api/client/${sessionStorage.clientId}`);
 });

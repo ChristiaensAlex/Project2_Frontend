@@ -12,7 +12,7 @@ const postContactAPI = function(payload, mentorId) {
 	})
 		.then(res => res.json())
 		.then(data => {
-			console.log(data), console.log(data), window.location.href = 'MentorHasClientList.html';;
+			console.log(data), console.log(data); // (window.location.href = 'MentorHasClientList.html');
 		})
 		.catch(err => console.log(err));
 };
@@ -20,16 +20,20 @@ const postContactAPI = function(payload, mentorId) {
 const ListenToSubmit = function() {
 	submit.addEventListener('click', function(event) {
 		event.preventDefault();
-		let payload = [
-			{
-				firstName: firstname.value,
-				phoneNumber: phonenumber.value,
-				profilePicture: 'stringpicture'
-			}
-		];
-		mentorId = sessionStorage.mentorId;
-		postContactAPI(payload, mentorId);
-		
+		let payload = [];
+		allContacts = document.querySelectorAll('.js-single-step');
+		console.log(allContacts);
+		for (i = 0; i < allContacts.length; i++) {
+			let contact = {
+				firstName: allContacts[i].querySelector('.js-firstname').value,
+				phoneNumber: allContacts[i].querySelector('.js-phonenumber').value,
+				profilePicture: 'profilepic'
+			};
+
+			payload.push(contact);
+		}
+		console.log(payload);
+		postContactAPI(payload, sessionStorage.mentorId);
 	});
 };
 
