@@ -743,7 +743,7 @@ Component: Spread
 	padding: 9px var(--global-baseline);
 	outline: none;
 	transition: all var(--global-transitionTiming-alpha);
-	border-radius: var(--global-borderRadius);
+	border-radius: var(--global-borderRadius-sm);
 	border: var(--input-border);
 }
 
@@ -815,7 +815,7 @@ Component: Spread
 }
 
 .c-custom-select__input :last-child {
-	border-radius: var(--global-borderRadius);
+	border-radius: var(--global-borderRadius-sm);
 }
 /*Search*/
 .c-input-search {
