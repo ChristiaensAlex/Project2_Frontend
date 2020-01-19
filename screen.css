@@ -893,18 +893,18 @@ Component: Spread
 }
 
 .c-backbutton__arrow {
-	width: 24px;
-	height: 24px;
+	width: var(--global-whitespace);
+	height: var(--global-whitespace);
 	fill: var(--global-color-alpha);
 }
 
 .c-submitbutton {
 	background-color: var(--global-color-alpha);
 	color: var(--global-color-neutral-xxx-light);
-	height: 48px;
+	height: var(--global-whitespace-xl);
 	width: 100%;
 	justify-content: center;
-	margin-left: 4px;
+	margin-left: var(--global-whitespace-xs);
 }
 
 .c-popup-form--card > .c-submitbutton {
@@ -1444,7 +1444,11 @@ the visualisation of 1 step for the client with picto, countsymbol and explanati
 	padding-left: var(--global-whitespace-md);
 	width: 100%;
 }
-
+.c-step-description--header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
 .c-picto {
 }
 
@@ -1652,8 +1656,8 @@ navigation footer for menu mentor
 }
 
 .c-button__addStep {
-	margin-top: 32px;
-	margin-bottom: 16px;
+	margin-top: var(--global-whitespace-lg);
+	margin-bottom: var(--global-whitepace-md);
 }
 
 .c-button_addStepImage {
@@ -1662,7 +1666,7 @@ navigation footer for menu mentor
 
 /*overview steps of progressive scheme for client*/
 .c-overview__header {
-	margin-top: 24px;
+	margin-top: var(--global-whitespace);
 	height: 240px;
 	width: 100%;
 	display: flex;
@@ -1781,7 +1785,7 @@ gives client feedback by congratulating them on finishing a progressive scheme a
 .c-congrats__bar {
 	position: relative;
 	width: 100%;
-	height: 24px;
+	height: var(--global-whitespace);
 }
 
 .c-progressbar__front {
@@ -1987,9 +1991,9 @@ mentor can see detail info of client and can choose between calendar, profile in
 }
 .c-contact__wrapper {
 	box-shadow: var(--input-focus-boxShadow, 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75));
-	border-radius: 14px;
-	padding: 16px;
-	margin-bottom: 16px;
+	border-radius: var(--global-borderRadius-lg);
+	padding: calc(var(--global-whitespace));
+	margin-bottom: calc(var(--global-whitespace-md));
 }
 
 .c-contact__wrapper + .c-addContact {
