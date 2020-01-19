@@ -26,26 +26,27 @@ const getFormElements = function() {
 const onHandlerClickedRemove = function(e) {
 	e.preventDefault();
 	document.querySelector('.js-all-steps').removeChild(e.currentTarget.parentNode.parentNode.parentNode.parentNode);
-	let stepNumbers = document.querySelectorAll('.js-step-number'); 
-	let stepNumbersArr = Array.from(stepNumbers); 
-	console.log(stepNumbers); 
-	console.log("Lijst"); 
+	let stepNumbers = document.querySelectorAll('.js-single-step');
+	let stepNumbersArr = Array.from(stepNumbers);
+	console.log(stepNumbers);
+	console.log('Lijst');
 	console.log(stepNumbersArr);
-	stepNumbersArr.forEach( i => {
-		console.log("I"); 
+	stepNumbersArr.forEach(i => {
+		console.log('I');
 		console.log(i);
-		if (i.dataset.number <= e.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.number){
-			console.log("Dataset nummer 1");
-			console.log(e.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.number); 
-			e.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.number = e.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.number + 1; 
-			console.log("Nieuw dataset nummer 2");
-			console.log(e.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.number); 
-			i.innerHTML = i.dataset.number; 
+		nummer2 = i.getAttribute('data-number');
+		nummer = i.dataset.number;
+		console.log(nummer2);
+		if (i.dataset.number >= e.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.number) {
+			console.log('Dataset nummer 1');
+			console.log(e.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.number);
+			nummer = parseInt(nummer) - 1;
+			console.log('Nieuw dataset nummer 2');
+			console.log(nummer);
+			i.querySelector('.js-step-number').innerHTML = nummer;
+		} else {
 		}
-		else{
-			
-		}; 
-	})
+	});
 	// if( <= ){
 
 	// }
@@ -58,8 +59,8 @@ const onHandlerClickedAdd = function(e) {
 	inpStep.dataset.number = count.length + 1;
 	if (inpStep.querySelector('.js-step-number') && inpStep.querySelector('.js-input-description')) {
 		inpStep.querySelector('.js-step-number').innerHTML = inpStep.dataset.number;
-		console.log("Dataset nummer");
-		console.log(inpStep.dataset.number); 
+		console.log('Dataset nummer');
+		console.log(inpStep.dataset.number);
 		inpStep.querySelector('.js-input-description').value = '';
 	}
 	allSteps.appendChild(inpStep);
