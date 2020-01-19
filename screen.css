@@ -17,66 +17,65 @@
   #Variables
   \*------------------------------------*/
 :root {
-  /*colors*/
+	/*colors*/
 
-  --global-color-alpha-light: #ffb9a6;
-  --global-color-alpha: #fc8c71;
-  --global-color-alpha-dark: #fe7c5a;
-  --global-color-alpha-dark-x: #fe6740;
-  --global-color-alpha-dark-xx: #ff5d33;
+	--global-color-alpha-light: #ffb9a6;
+	--global-color-alpha: #fc8c71;
+	--global-color-alpha-dark: #fe7c5a;
+	--global-color-alpha-dark-x: #fe6740;
+	--global-color-alpha-dark-xx: #ff5d33;
 
-  --global-color-beta: #1c5c5c;
-  --global-color-omega: #27255f;
+	--global-color-beta: #1c5c5c;
+	--global-color-omega: #27255f;
 
-  --global-color-neutral-xxxx-light: white;
-  --global-color-neutral-xxx-light: #fafaff;
-  --global-color-neutral-xx-light: #ececf0;
-  --global-color-neutral-x-light: #c8c8cc;
-  --global-color-neutral-light: #aaaab3;
-  --global-color-neutral: #8d8d99;
-  --global-color-neutral-dark: #757580;
-  --global-color-neutral-x-dark: #5d5d66;
-  --global-color-neutral-xx-dark: #3b3f40;
-  --global-color-neutral-xxx-dark: #17191a;
-  --global-color-neutral-xxxx-dark: #17171a;
+	--global-color-neutral-xxxx-light: white;
+	--global-color-neutral-xxx-light: #fafaff;
+	--global-color-neutral-xx-light: #ececf0;
+	--global-color-neutral-x-light: #c8c8cc;
+	--global-color-neutral-light: #aaaab3;
+	--global-color-neutral: #8d8d99;
+	--global-color-neutral-dark: #757580;
+	--global-color-neutral-x-dark: #5d5d66;
+	--global-color-neutral-xx-dark: #3b3f40;
+	--global-color-neutral-xxx-dark: #17191a;
+	--global-color-neutral-xxxx-dark: #17171a;
 
-  --global-color-neutral-x-light-transparent: #c8c8cc29;
-  /* border variables */
-  --global-borderRadius-sm: 4px;
-  --global-borderRadius-md: 8px;
-  --global-borderRadius-lg: 16px;
+	--global-color-neutral-x-light-transparent: #c8c8cc29;
+	/* border variables */
+	--global-borderRadius-sm: 4px;
+	--global-borderRadius-md: 8px;
+	--global-borderRadius-lg: 16px;
+	--global-borderWidth: 1px;
 
-  --global-borderWidth: 1px;
+	/* transitions */
+	--global-transitionTiming-alpha: 0.1s ease-out;
 
-  /* transitions */
-  --global-transitionTiming-alpha: 0.1s ease-out;
+	/* Baseline settings */
+	--global-baseline: 8px;
+	--global-whitespace: calc(var(--global-baseline) * 3); /* = 24px */
 
-  /* Baseline settings */
-  --global-baseline: 8px;
-  --global-whitespace: calc(var(--global-baseline) * 3); /* = 24px */
+	--global-whitespace-xs: calc(var(--global-baseline) / 2); /* = 4px */
+	--global-whitespace-sm: calc(var(--global-baseline) * 1); /*  = 8px */
+	--global-whitespace-md: calc(var(--global-baseline) * 2); /*  = 16px */
+	--global-whitespace-lg: calc(var(--global-baseline) * 4); /*  = 32px */
+	--global-whitespace-xl: calc(var(--global-whitespace) * 2); /*  = 48px */
+	--global-whitespace-xxl: calc(var(--global-whitespace) * 3); /*  = 72px */
 
-  --global-whitespace-xs: calc(var(--global-baseline) / 2); /* = 4px */
-  --global-whitespace-sm: calc(var(--global-baseline) * 1); /*  = 8px */
-  --global-whitespace-md: calc(var(--global-baseline) * 2); /*  = 16px */
-  --global-whitespace-lg: calc(var(--global-baseline) * 4); /*  = 32px */
-  --global-whitespace-xl: calc(var(--global-whitespace) * 2); /*  = 48px */
-  --global-whitespace-xxl: calc(var(--global-whitespace) * 3); /*  = 72px */
+	/*fontsizes: modular scale met base 16px en ratio 1.25*/
+	--global-fontsize-xs: 10px;
+	--global-fontsize-sm: 13px;
+	--global-fontsize: 16px;
+	--global-fontsize-md: 20px;
+	--global-fontsize-lg: 25px;
+	--global-fontsize-xl: 31px;
+	--global-fontsize-xxl: 39px;
+	--global-fontsize-xxxl: 48px;
 
-  /*fontsizes: modular scale met base 16px en ratio 1.25*/
-  --global-fontsize-xs: 10px;
-  --global-fontsize-sm: 13px;
-  --global-fontsize: 16px;
-  --global-fontsize-md: 20px;
-  --global-fontsize-lg: 25px;
-  --global-fontsize-xl: 31px;
-  --global-fontsize-xxl: 39px;
-  --global-fontsize-xxxl: 48px;
+	/*error*/
 
-  /*error*/
-
-  --global-color-error: #fe5e33;
-  --global-input-error-boxShadowColor: #fe5e33;
-  --input-border: none;
+	--global-color-error: #fe5e33;
+	--global-input-error-boxShadowColor: #fe5e33;
+	--input-border: none;
 }
 
 /*------------------------------------*\
@@ -120,9 +119,9 @@ html {
 }
 
 ::selection {
-  background: var(--global-color-selection);
-  color: var(--global-color-neutral-xxxx-light);
-  text-shadow: none;
+	background: var(--global-color-alpha-light);
+	color: var(--global-color-neutral-xxxx-light);
+	text-shadow: none;
 }
 
 /*------------------------------------*\
@@ -251,22 +250,12 @@ input::placeholder {
 }
 
 body {
-<<<<<<< HEAD
   height: 100%;
   display: flex;
   flex-direction: column;
   margin: 0px;
 
-  /* background-image: url(LoginMentor.png);
-=======
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	margin: 0px;
-
 	/* background-image: url(LoginMentor.png);
-<<<<<<< HEAD
->>>>>>> 0121609433bbcb4905ec1822d91580ab3a3fa6dd
 	background-repeat: no-repeat;  */
 }
 
@@ -282,37 +271,19 @@ body {
 
 .o-row {
   position: relative;
-
-<<<<<<< HEAD
-  padding: 0 var(--global-whitespace);
-=======
 	padding: 0 var(--global-whitespace);
->>>>>>> 0121609433bbcb4905ec1822d91580ab3a3fa6dd
-=======
-
-	padding: 0 var(--global-whitespace);*/
->>>>>>> fe473c4bd6476b1be622d09abee94a6c8c82ad1b
 }
-
 /*
-	Objects: Container
-	---
-	Creates a horizontal container that sets de global max-width
-  */
+  Objects: Container
+  ---
+  Creates a horizontal container that sets de global max-width
+*/
 .o-container {
-<<<<<<< HEAD
-  margin-left: auto;
-  margin-right: auto;
-
-  max-width: 800px; /* 79.5 * 16px = 1272 */
-  width: 100%;
-=======
 	margin-left: auto;
 	margin-right: auto;
 
 	max-width: 800px; /* 79.5 * 16px = 1272 */
 	width: 100%;
->>>>>>> 0121609433bbcb4905ec1822d91580ab3a3fa6dd
 }
 
 /*
@@ -353,25 +324,18 @@ body {
 
 @media (min-width: 992px) {
 	.o-section--xl + .o-section--xl {
-		padding-top: var(--global-whitespace-xxl);
+		padding-top: var(--global-whitespace-xl);
 	}
 }
 /*
-	  Objects: Row
-	  ---
-	  Creates a horizontal row that stretches the viewport and adds padding around children
-  */
+    Objects: Header
+    ---
+    
+*/
 
 .o-header {
-  height: auto;
-}
-@media (min-width: 768px) {
-  .o-header {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+	height: auto;
+	margin-top: 56px;
 }
 @media (min-width: 1200px) {
 	.o-header {
@@ -2431,11 +2395,6 @@ No media query since this is the default in mobile first design
 	/* Corrects inability to style clickable `input` types in iOS */
 	-webkit-appearance: none;
 }
-
-/*------------------------------------*\
-#COMPONENTS
-\*------------------------------------*/
-
 /*------------------------------------*\
   #COMPONENTS
   \*------------------------------------*/
@@ -2511,7 +2470,7 @@ No media query since this is the default in mobile first design
 
 	.c-logo__name {
 		margin: 0;
-		font-size: 48px;
+		font-size: var(--global-fontsize-xxxl);
 	}
 
 	.c-logo__symbol {
@@ -2534,16 +2493,16 @@ No media query since this is the default in mobile first design
     Component: forgotPassword
 */
 .c-forgotPassword {
-	padding: 0 32px;
+	padding: 0 var(--global-whitespace-lg);
 }
 
 .c-emailForgotPassword {
-	margin-top: 32px;
-	margin-bottom: 48px;
+	margin-top: var(--global-whitespace-lg);
+	margin-bottom: var(--global-whitespace-xl);
 }
 
 .c-forgotPasswordMessage {
-	padding-bottom: 40px;
+	padding-bottom: calc(var(--global-baseline) * 5);
 }
 
 /*
@@ -2622,13 +2581,13 @@ No media query since this is the default in mobile first design
 }
 
 .c-form-card {
-	padding-left: 16px;
-	padding-right: 32px;
+	padding-left: var(--global-whitespace-md);
+	padding-right: var(--global-whitespace-lg);
 }
 @media (min-width: 768px) {
 	.c-form-AddStep {
-		padding-left: 24px;
-		padding-right: 24px;
+		padding-left: var(--global-whitespace);
+		padding-right: var(--global-whitespace);
 	}
 }
 
@@ -2674,7 +2633,7 @@ Component: Spread
 }
 
 .c-error .c-icon {
-	margin-right: 8px;
+	margin-right: var(--global-baseline);
 }
 /*
   Component: Custom input
@@ -2691,10 +2650,10 @@ Component: Spread
 	font-size: var(--global-fontsize-md);
 	line-height: var(--lineheight-input, calc(var(--global-fontsize-md) * 1.5));
 	/*24px*/
-	padding: 9px 8px;
+	padding: 9px var(--global-baseline);
 	outline: none;
 	transition: all var(--global-transitionTiming-alpha);
-	border-radius: var(--global-borderRadius);
+	border-radius: var(--global-borderRadius-sm);
 	border: var(--input-border);
 }
 
@@ -2709,18 +2668,18 @@ Component: Spread
 }
 
 .c-input-steps {
-	margin-bottom: 16px;
+	margin-bottom: var(--global-whitespace-md);
 }
 
 .c-input-description {
 	height: var(--global-whitespace-xxl);
-	font-size: 13px;
+	font-size: var(--global-fontsize-sm);
 	line-height: 20px;
-	padding: 8px;
+	padding: var(--global-baseline);
 }
 
 .c-input:hover {
-	box-shadow: var(--input-hover-boxShadow, 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75));
+	box-shadow: var(--input-hover-boxShadow, 0 0 0 1px var(--global-color-alpha-dark-x));
 }
 
 .c-input:focus,
@@ -2766,7 +2725,7 @@ Component: Spread
 }
 
 .c-custom-select__input :last-child {
-	border-radius: var(--global-borderRadius);
+	border-radius: var(--global-borderRadius-sm);
 }
 /*Search*/
 .c-input-search {
@@ -2806,7 +2765,7 @@ Component: Spread
   Custom button
 */
 .c-button {
-	border-radius: var(--global-borderRadius);
+	border-radius: var(--global-borderRadius-sm);
 	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
 	font-size: var(--global-fontsize-md);
 	line-height: calc(var(--global-fontsize-md) * 1.5);
@@ -2818,16 +2777,10 @@ Component: Spread
 	border: var(--global-borderWidth) solid var(--global-color-alpha);
 	color: var(--global-color-alpha);
 	height: var(--global-whitespace-xl);
-	width: 120px;
+	width: 75%;
+	justify-content: space-around;
+	margin-right: var(--global-whitespace-xs);
 }
-/* .c-backbutton {
-  border: var(--global-borderWidth) solid var(--global-color-alpha);
-  color: var(--global-color-alpha);
-  height: 48px;
-  width: 50%;
-  justify-content: space-around;
-  margin-right: 4px;
-} */
 
 .c-backbutton__text {
 	color: var(--global-color-alpha);
@@ -2872,7 +2825,7 @@ Component: Spread
 
 .c-button__mainStepImage {
 	display: flex;
-	margin-bottom: 24px;
+	margin-bottom: var(--global-whitespace);
 }
 
 /*
@@ -2892,7 +2845,7 @@ user can choose role*/
 }
 
 .c-choice {
-	border-radius: var(--global-borderRadius);
+	border-radius: var(--global-borderRadius-sm);
 	box-shadow: 0 0 0 1px rgba(252, 140, 113, 0.05), 0 8px 8px rgba(252, 140, 113, 0.5);
 	display: flex;
 	flex-direction: column;
@@ -3011,7 +2964,7 @@ justify-items: center; */
 }
 
 .c-button__addClient-symbol {
-	padding-right: 8px;
+	padding-right: var(--global-baseline);
 	justify-content: center;
 	align-items: center;
 }
@@ -3089,20 +3042,6 @@ justify-items: center; */
 	margin: var(--global-whitespace) 0;
 	padding: var(--global-baseline);
 }
-
-/* .c-client__userPhoto {
-  justify-content: center;
-  align-items: center;
-  margin: var(--global-baseline);
-  height: 48px;
-  width: 48px;
-	display: grid;
-	grid-template-columns: 64px 1fr 20px;
-	grid-template-rows: auto auto;
-	height: 80px;
-	margin: var(--global-whitespace) 0;
-	padding: var(--global-baseline);
-} */
 
 .c-client__userPhoto {
 	justify-content: center;
@@ -3665,7 +3604,7 @@ navigation footer for menu mentor
 	grid-template-columns: 56px 24px 1fr;
 	grid-template-rows: 1fr 1fr;
 	grid-column-gap: var(--global-baseline);
-	border-radius: 8px;
+	border-radius: var(--global-borderRadius-md);
 	position: relative;
 	padding: var(--global-baseline);
 }
@@ -3819,8 +3758,8 @@ each contact has a profile pic and name
 	height: 104px;
 	width: 296px;
 	max-width: 640px;
-	margin-bottom: 24px;
-	border-radius: 8px;
+	margin-bottom: var(--global-whitespace);
+	border-radius: var(--global-borderRadius-md);
 }
 
 .c-contact__profilepic {
@@ -3939,8 +3878,23 @@ mentor can see detail info of client and can choose between calendar, profile in
 }
 
 .c-contact__wrapper .c-profile {
+	display: grid;
+	grid-template-columns: 1fr 24px;
+	grid-template-rows: 48px 1fr;
+}
+.c-contact__wrapper .c-profile :first-child {
 }
 
+.c-contact__wrapper .c-profile .c-button__addProfilePic {
+	grid-row: 2;
+	grid-column: 1;
+	display: flex;
+	justify-content: flex-start;
+}
+.c-delete {
+	width: var(--global-whitespace);
+	height: var(--global-whitespace);
+}
 .c-contact__wrapper {
 	box-shadow: var(--input-focus-boxShadow, 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75));
 	border-radius: 14px;
@@ -3965,7 +3919,7 @@ mentor can see detail info of client and can choose between calendar, profile in
 }
 .c-popup-form--card {
 	background-color: var(--global-color-neutral-xxxx-light);
-	border-radius: 14px;
+	border-radius: var(--global-borderRadius-lg);
 	width: 100%;
 	padding: 36px;
 	max-width: 552px;
