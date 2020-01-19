@@ -857,17 +857,11 @@ Component: Spread
 .c-backbutton {
 	border: var(--global-borderWidth) solid var(--global-color-alpha);
 	color: var(--global-color-alpha);
-	height: var(--global-whitespace-xl);
-	width: 120px;
+	height: 48px;
+	width: 50%;
+	justify-content: space-around;
+	margin-right: 4px;
 }
-/* .c-backbutton {
-  border: var(--global-borderWidth) solid var(--global-color-alpha);
-  color: var(--global-color-alpha);
-  height: 48px;
-  width: 50%;
-  justify-content: space-around;
-  margin-right: 4px;
-} */
 
 .c-backbutton__text {
 	color: var(--global-color-alpha);
