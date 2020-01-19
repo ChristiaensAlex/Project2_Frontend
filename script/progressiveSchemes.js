@@ -1,8 +1,8 @@
 let progressiveSchemes, baseURL;
 
-const showAllProgressiveSchemes = function(jsonObject){
-    for(i in jsonObject){
-        progressiveSchemes.innerHTML += `<div class="c-stepplan">
+const showAllProgressiveSchemes = function(jsonObject) {
+	for (i in jsonObject) {
+		progressiveSchemes.innerHTML += `<div class="c-stepplan">
         <div class="c-stepplan__picto">
             <img class="c-icon" src="wassen.png" alt="beta_picto_wassen" />
 
@@ -43,33 +43,36 @@ const showAllProgressiveSchemes = function(jsonObject){
 
         </div>
     </div>`;
-    }
-    getElements(); 
-}
+	}
+	getElements();
+};
 
-const getProgressiveSchemes = function(){
-    let id = "aacb2362-73a9-43dc-b9de-0ce057623568"; 
-    let url = `${baseURL}mentor/${id}/progressiveScheme`; 
-    fetch(url).then(function(response){
-        if(!response.ok){
-            throw Error(`Problem to fetch(). Status code: ${response.status}`);
-        } else {
-            return response.json();
-        }
-    }).then(function(jsonObject){
-        showAllProgressiveSchemes(jsonObject); 
-        console.log(jsonObject);
-    }).catch(function(error){
-        console.error(`Problem to process json ${error}`);
-    })
-}
+const getProgressiveSchemes = function() {
+	let id = '82B3CB09-AC76-47A1-B879-B7A370E265D7';
+	let url = `${baseURL}mentor/${id}/progressiveScheme`;
+	fetch(url)
+		.then(function(response) {
+			if (!response.ok) {
+				throw Error(`Problem to fetch(). Status code: ${response.status}`);
+			} else {
+				return response.json();
+			}
+		})
+		.then(function(jsonObject) {
+			showAllProgressiveSchemes(jsonObject);
+			console.log(jsonObject);
+		})
+		.catch(function(error) {
+			console.error(`Problem to process json ${error}`);
+		});
+};
 
-const initProgressiveSchemes = function(){
-    getProgressiveSchemes();
-    progressiveSchemes = document.querySelector('.c-stepplans');
-}
-document.addEventListener('DOMContentLoaded', function(){
-    console.log('DOM loaded');
-    baseURL = "https://localhost:44374/api/";
-    initProgressiveSchemes();
-})
+const initProgressiveSchemes = function() {
+	getProgressiveSchemes();
+	progressiveSchemes = document.querySelector('.c-stepplans');
+};
+document.addEventListener('DOMContentLoaded', function() {
+	console.log('DOM loaded');
+	baseURL = 'https://localhost:44374/api/';
+	initProgressiveSchemes();
+});
