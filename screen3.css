@@ -1,4 +1,19 @@
 /*------------------------------------*\
+#FONTS
+\*------------------------------------*/
+@font-face {
+	font-family: 'Inter Web';
+	font-weight: 400;
+	src: url('../fonts/Inter-Regular.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Inter Web';
+	font-weight: 600;
+	src: url('../fonts/Inter-SemiBold.woff2') format('woff2');
+}
+
+/*------------------------------------*\
   #Variables
   \*------------------------------------*/
 :root {
@@ -317,23 +332,42 @@ body {
 		margin: auto 0;
 	}
 }
+/*
+    Objects: Row
+    ---
+    Creates a horizontal row that stretches the viewport and adds padding around children
+*/
 
-.c-spreadPage > .o-header {
-	height: 20vh;
+.o-header {
+	height: auto;
+}
+@media (min-width: 768px) {
+	.o-header {
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 }
 
-.c-spreadPage-noIcon > .o-header {
-	height: 15vh;
+/*
+  Objects: Row
+  ---
+  Creates a horizontal row that stretches the viewport and adds padding around children
+*/
+.o-header {
+	height: auto;
 }
 
 @media (min-width: 768px) {
-	.c-spreadPage > .o-header {
-		height: 30vh;
-	}
-	.c-spreadPage-noIcon > .o-header {
-		height: 25vh;
+	.o-header {
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 }
+
 /*
   Objects: Layout
   ---
@@ -464,11 +498,10 @@ body {
 }
 
 /*
-    Object: Button reset
-    ---
-    Small button reset object
+  Object: Button reset
+  ---
+  Small button reset object
 */
-
 .o-button-reset {
 	border: none;
 	margin: 0;
@@ -576,7 +609,7 @@ body {
 	Component: header image
   */
 .c-headerImage {
-	margin-bottom: calc(var(--global-baseline) * 7);
+	margin-bottom: 56px;
 	display: flex;
 	justify-content: center;
 }
@@ -595,10 +628,6 @@ body {
 
 .c-forgotPasswordMessage {
 	padding-bottom: calc(var(--global-baseline) * 5);
-}
-
-.c-reset-description {
-	font-size: var(--global-fontsize-md);
 }
 
 /*
@@ -635,12 +664,13 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: calc(100vh - 92px);
+	height: 100vh;
+	transform: translateY(-94px);
 }
 
 @media (min-width: 768px) {
 	.c-card {
-		height: 100%;
+		transform: translateY(0);
 	}
 }
 
@@ -653,7 +683,9 @@ body {
 	max-width: 640px;
 	height: fit-content;
 	margin: auto;
+	padding: 0 var(--global-whitespace-lg) 0 var(--global-whitespace-lg);
 }
+
 /*makes sure that last paragraph of form__field has no margin bottom so "wachtwoord vergeten" can be close to the input field*/
 .c-form__field > *:last-child {
 	margin-bottom: 0;
@@ -691,8 +723,7 @@ Component: Spread
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	justify-content: space-around;
 	background-color: var(--global-color-alpha-x-light);
 }
 
@@ -773,7 +804,7 @@ Component: Spread
 }
 
 .c-input:hover {
-	box-shadow: var(--input-focus-boxShadow, 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75));
+	box-shadow: var(--input-hover-boxShadow, 0 0 0 1px var(--global-color-alpha-dark-x));
 }
 
 .c-input:focus,
@@ -805,8 +836,8 @@ Component: Spread
 } */
 
 .c-custom-select__symbol {
-	width: var(--global-whitespace);
-	height: var(--global-whitespace);
+	width: 24px;
+	height: 24px;
 	position: absolute;
 	top: 12px;
 	right: 12px;
@@ -819,7 +850,7 @@ Component: Spread
 }
 
 .c-custom-select__input :last-child {
-	border-radius: var(--global-borderRadius-sm);
+	border-radius: var(--global-borderRadius);
 }
 /*Search*/
 .c-input-search {
@@ -871,7 +902,7 @@ Component: Spread
 	border: var(--global-borderWidth) solid var(--global-color-alpha);
 	color: var(--global-color-alpha);
 	height: var(--global-whitespace-xl);
-	width: 75%;
+	width: 50%;
 	justify-content: space-around;
 	margin-right: var(--global-whitespace-xs);
 }
@@ -882,11 +913,8 @@ Component: Spread
 
 .c-backbutton-long {
 	width: 100%;
-	padding-right: 30%;
+	padding-right: 88px;
 	margin-bottom: 64px;
-	background-color: var(--global-color-alpha);
-	fill: white;
-	color: white;
 }
 
 .c-popup-form--card > .c-backbutton {
@@ -900,18 +928,18 @@ Component: Spread
 }
 
 .c-backbutton__arrow {
-	width: var(--global-whitespace);
-	height: var(--global-whitespace);
+	width: 24px;
+	height: 24px;
 	fill: var(--global-color-alpha);
 }
 
 .c-submitbutton {
 	background-color: var(--global-color-alpha);
 	color: var(--global-color-neutral-xxx-light);
-	height: var(--global-whitespace-xl);
+	height: 48px;
 	width: 100%;
 	justify-content: center;
-	margin-left: var(--global-whitespace-xs);
+	margin-left: 4px;
 }
 
 .c-popup-form--card > .c-submitbutton {
@@ -919,9 +947,7 @@ Component: Spread
 	margin-left: 0;
 	margin-bottom: calc(var(--global-baseline) * 2);
 }
-.c-submitbutton-long {
-	width: 100%;
-}
+
 .c-button__mainStepImage {
 	display: flex;
 	margin-bottom: var(--global-whitespace);
@@ -950,7 +976,7 @@ user can choose role*/
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-evenly;
-	height: calc(var(--global-baseline) * 20);
+	height: 160px;
 	font-size: var(--global-fontsize-md);
 	margin: var(--global-whitespace-xl) 0;
 }
@@ -1067,20 +1093,10 @@ justify-items: center; */
 	justify-content: center;
 	align-items: center;
 }
-/*Component: Calendar
- A mentor has an overview of all his clients
 
-  */
-
-/* checken wat we hier nog van nodig hebben*/
-.c-calendar {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
 .c-calendar__arrow {
 	width: 9px;
-	height: var(--global-whitespace-md);
+	height: 16px;
 }
 
 .c-time__month {
@@ -1147,7 +1163,7 @@ justify-items: center; */
 	grid-template-columns: 64px 1fr 20px;
 	grid-template-rows: auto auto;
 	background-color: var(--global-color-neutral-x-light-transparent);
-	height: calc(var(--global-baseline) * 10);
+	height: 80px;
 	margin: var(--global-whitespace) 0;
 	padding: var(--global-baseline);
 	border-radius: var(--global-borderRadius-md);
@@ -1169,7 +1185,7 @@ justify-items: center; */
 }
 
 .c-client-page {
-	padding: 0 calc(var(--global-baseline) * 5) 0 calc(var(--global-baseline) * 5);
+	padding: 0 40px 0 40px;
 }
 
 .c-client__delete {
@@ -1205,7 +1221,7 @@ justify-items: center; */
 	grid-template-columns: 64px 1fr 20px;
 	grid-template-rows: auto auto;
 	background-color: var(--global-color-neutral-x-light-transparent);
-	height: calc(var(--global-baseline) * 10);
+	height: 80px;
 	margin: var(--global-whitespace) 0;
 	padding: var(--global-baseline);
 	border-radius: var(--global-borderRadius-md);
@@ -1275,7 +1291,7 @@ justify-items: center; */
 	grid-template-columns: 64px 1fr 20px;
 	grid-template-rows: auto auto;
 	background-color: var(--global-color-neutral-x-light-transparent);
-	height: calc(var(--global-baseline) * 10);
+	height: 80px;
 	margin: var(--global-whitespace) 0;
 	padding: var(--global-baseline);
 	border-radius: var(--global-borderRadius-md);
@@ -1313,7 +1329,14 @@ justify-items: center; */
 	}
 
 	.c-stepplans .c-stepplan {
+		display: grid;
+		grid-template-columns: 64px 1fr 20px;
+		grid-template-rows: auto auto;
+		background-color: var(--global-color-neutral-x-light-transparent);
+		height: 80px;
 		width: 300px;
+		margin: var(--global-whitespace) 0;
+		padding: var(--global-baseline);
 	}
 }
 
@@ -1362,7 +1385,7 @@ client can get to contact list
 .c-phonebutton {
 	background-color: var(--global-color-alpha);
 	border-radius: 23px;
-	height: calc(var(--global-baseline) * 7);
+	height: 56px;
 	width: 104px;
 	display: flex;
 	justify-content: flex-end;
@@ -1445,16 +1468,21 @@ the visualisation of 1 step for the client with picto, countsymbol and explanati
 
 .c-picto {
 }
-.c-step-description--header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
+
 .c-step__explanation {
 	width: 256px;
 	text-align: center;
 }
 
+.c-topLeftLogo {
+	height: var(--global-whitespace-xl);
+	margin: var(--global-whitespace);
+}
+
+/*Component: footer
+  ---
+  navigation footer for client with visualisation of progress, phonebutton and overview steps button
+  */
 .c-single-step {
 	margin-bottom: calc(var(--global-baseline) * 3);
 }
@@ -1467,7 +1495,7 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 	position: absolute;
 	width: 100%;
 	bottom: 0;
-	height: calc(var(--global-baseline) * 8);
+	height: 64px;
 }
 
 .c-footer__navbarClient {
@@ -1489,13 +1517,14 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 
 .c-footer__navbarClient .c-phonebutton {
 	border-radius: 100%;
-	height: calc(var(--global-baseline) * 8);
-	width: calc(var(--global-baseline) * 8);
+	height: 64px;
+	width: 64px;
 	display: flex;
 	justify-content: center;
 	position: static;
 	padding: 0;
 }
+
 .c-steps__progress {
 	width: 25%;
 	display: flex;
@@ -1507,12 +1536,13 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 	display: flex;
 	justify-content: flex-end;
 }
+
 .c-stepsOverview__sybmol {
 	border: var(--global-borderWidth) solid var(--global-color-omega);
 	border-radius: 8px;
 	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
-	height: calc(var(--global-baseline) * 5);
-	width: calc(var(--global-baseline) * 5);
+	height: 40px;
+	width: 40px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -1543,9 +1573,7 @@ navigation footer for menu mentor
 	align-items: center;
 	margin-top: 10px;
 }
-.c-section_menu {
-	padding: 0 0 calc(var(--global-whitespace-xxl)) 0;
-}
+
 @media (min-width: 768px) {
 	.c-section_menu {
 		padding: 0 calc(var(--global-whitespace-xxl) * 2);
@@ -1554,10 +1582,7 @@ navigation footer for menu mentor
 		padding: 0 calc(var(--global-whitespace-xxl) * 2);
 	}
 }
-.c-topLeftLogo {
-	height: var(--global-whitespace-xl);
-	margin: var(--global-whitespace);
-}
+
 @media (min-width: 992px) {
 	.c-topLeftLogo {
 		display: flex;
@@ -1625,19 +1650,21 @@ navigation footer for menu mentor
 	justify-content: space-between;
 	margin-bottom: var(--global-whitespace-sm);
 }
+
 /*Registration page mentor part 2*/
 .c-button__addProfilePic {
 	margin-bottom: var(--global-whitespace-sm);
 }
 
 .c-addPhonenumber p {
-	margin-top: var(--global-baseline);
+	margin-top: 8px;
 }
 
 .c-addContact {
 	display: flex;
 	justify-content: flex-end;
 }
+
 .c-button__addContact {
 	display: flex;
 	justify-content: space-around;
@@ -1646,8 +1673,8 @@ navigation footer for menu mentor
 }
 
 .c-button__addStep {
-	margin-top: var(--global-whitespace-lg);
-	margin-bottom: var(--global-whitepace-md);
+	margin-top: 32px;
+	margin-bottom: 16px;
 }
 
 .c-button_addStepImage {
@@ -1656,7 +1683,7 @@ navigation footer for menu mentor
 
 /*overview steps of progressive scheme for client*/
 .c-overview__header {
-	margin-top: var(--global-whitespace);
+	margin-top: 24px;
 	height: 240px;
 	width: 100%;
 	display: flex;
@@ -1668,10 +1695,12 @@ navigation footer for menu mentor
 	height: 200px;
 	width: 200px;
 }
+
 .c-overview__header .c-progressiveScheme__mainPicto .c-icon {
 	height: 100%;
 	width: 100%;
 }
+
 .c-overview__header .c-progressiveScheme__name {
 	font-size: var(--global-fontsize-lg);
 	position: absolute;
@@ -1703,8 +1732,8 @@ navigation footer for menu mentor
 .c-overview__step .c-picto {
 	grid-row: span 2;
 	align-self: center;
-	width: calc(var(--global-baseline) * 7);
-	height: calc(var(--global-baseline) * 7);
+	width: 56px;
+	height: 56px;
 	border: var(--global-borderWidth) solid var(--global-color-omega);
 	border-radius: 100%;
 	display: flex;
@@ -1743,6 +1772,7 @@ gives client feedback by congratulating them on finishing a progressive scheme a
 	align-items: center;
 	justify-content: center;
 }
+
 .c-congrats {
 	justify-self: center;
 	width: 100%;
@@ -1762,6 +1792,7 @@ gives client feedback by congratulating them on finishing a progressive scheme a
 .c-congrats__text > div {
 	font-size: var(--global-fontsize-lg);
 }
+
 .c-congrats__img {
 	width: 194px;
 	height: 156px;
@@ -1771,7 +1802,7 @@ gives client feedback by congratulating them on finishing a progressive scheme a
 .c-congrats__bar {
 	position: relative;
 	width: 100%;
-	height: var(--global-whitespace);
+	height: 24px;
 }
 
 .c-progressbar__front {
@@ -1800,7 +1831,7 @@ where client can see all their emergency contacts*/
 	display: flex;
 	align-items: center;
 	width: 100%;
-	height: calc(var(--global-baseline) * 8);
+	height: 64px;
 	margin-bottom: var(--global-whitespace);
 }
 
@@ -1810,7 +1841,7 @@ where client can see all their emergency contacts*/
 }
 
 .c-phone__img {
-	width: var(--global-whitespace-lg);
+	width: 32px;
 	height: 100%;
 }
 
@@ -1893,8 +1924,8 @@ mentor can see detail info of client and can choose between calendar, profile in
 }
 
 .c-clientphoto {
-	width: calc(var(--global-baseline) * 7);
-	height: calc(var(--global-baseline) * 7);
+	width: 56px;
+	height: 56px;
 }
 .c-clientname {
 	font-size: var(--global-fontsize-lg);
@@ -1977,9 +2008,9 @@ mentor can see detail info of client and can choose between calendar, profile in
 }
 .c-contact__wrapper {
 	box-shadow: var(--input-focus-boxShadow, 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75));
-	border-radius: var(--global-borderRadius-lg);
-	padding: var(--global-whitespace-md);
-	margin-bottom: var(--global-whitespace-md);
+	border-radius: 14px;
+	padding: 16px;
+	margin-bottom: 16px;
 }
 
 .c-contact__wrapper + .c-addContact {
@@ -2003,7 +2034,7 @@ mentor can see detail info of client and can choose between calendar, profile in
 	width: 100%;
 	padding: 36px;
 	max-width: 552px;
-	line-height: 24px; /*inherit*/
+	line-height: 24px;
 	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
 }
 
