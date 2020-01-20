@@ -17,7 +17,6 @@
   #Variables
   \*------------------------------------*/
 :root {
-<<<<<<< HEAD
   /*colors*/
 
   --global-color-alpha-x-light: #fbf3ef;
@@ -79,66 +78,6 @@
   --global-color-error: #fe5e33;
   --global-input-error-boxShadowColor: #fe5e33;
   --input-border: none;
-=======
-	/*colors*/
-
-	--global-color-alpha-light: #ffb9a6;
-	--global-color-alpha: #fc8c71;
-	--global-color-alpha-dark: #fe7c5a;
-	--global-color-alpha-dark-x: #fe6740;
-	--global-color-alpha-dark-xx: #ff5d33;
-
-	--global-color-beta: #1c5c5c;
-	--global-color-omega: #27255f;
-
-	--global-color-neutral-xxxxx-light: white;
-	--global-color-neutral-xxxx-light: white;
-	--global-color-neutral-xxx-light: #fafaff;
-	--global-color-neutral-xx-light: #ececf0;
-	--global-color-neutral-x-light: #c8c8cc;
-	--global-color-neutral-light: #aaaab3;
-	--global-color-neutral: #8d8d99;
-	--global-color-neutral-dark: #757580;
-	--global-color-neutral-x-dark: #5d5d66;
-	--global-color-neutral-xx-dark: #3b3f40;
-	--global-color-neutral-xxx-dark: #17191a;
-	--global-color-neutral-xxxx-dark: #17171a;
-
-	--global-color-neutral-x-light-transparent: #c8c8cc29;
-	/* border variables */
-	--global-borderRadius: 4px;
-	--global-borderWidth: 1px;
-
-	/* transitions */
-	--global-transitionTiming-alpha: 0.1s ease-out;
-
-	/* Baseline settings */
-	--global-baseline: 8px;
-	--global-whitespace: calc(var(--global-baseline) * 3); /* = 24px */
-
-	--global-whitespace-xs: calc(var(--global-baseline) / 2); /* = 4px */
-	--global-whitespace-sm: calc(var(--global-baseline) * 1); /*  = 8px */
-	--global-whitespace-md: calc(var(--global-baseline) * 2); /*  = 16px */
-	--global-whitespace-lg: calc(var(--global-baseline) * 4); /*  = 32px */
-	--global-whitespace-xl: calc(var(--global-whitespace) * 2); /*  = 48px */
-	--global-whitespace-xxl: calc(var(--global-whitespace) * 3); /*  = 72px */
-
-	/*fontsizes: modular scale met base 16px en ratio 1.25*/
-	--global-fontsize-xs: 10px;
-	--global-fontsize-sm: 13px;
-	--global-fontsize: 16px;
-	--global-fontsize-md: 20px;
-	--global-fontsize-lg: 25px;
-	--global-fontsize-xl: 31px;
-	--global-fontsize-xxl: 39px;
-	--global-fontsize-xxxl: 48px;
-
-	/*error*/
-
-	--global-color-error: #fe5e33;
-	--global-input-error-boxShadowColor: #fe5e33;
-	--input-border: none;
->>>>>>> 368b2dfc2c78e474e8092ad820850c1c649b156a
 }
 
 /*------------------------------------*\
@@ -286,21 +225,12 @@ hr {
 
 a,
 a:visited {
-<<<<<<< HEAD
-  transition: all var(--global-transitionTiming-alpha);
-  color: var(--global-color-alpha);
-  outline-color: var(--global-link-BoxShadowColor);
-  outline-width: medium;
-  outline-offset: 2px;
-  text-decoration: none;
-=======
 	transition: all var(--global-transitionTiming-alpha);
 	color: var(--global-color-omega);
 	outline-color: var(--global-link-BoxShadowColor);
 	outline-width: medium;
 	outline-offset: 2px;
 	text-decoration: none;
->>>>>>> 368b2dfc2c78e474e8092ad820850c1c649b156a
 }
 
 a:hover,
@@ -328,7 +258,6 @@ body {
 	margin: 0px;
 
 	/* background-image: url(LoginMentor.png);
-<<<<<<< HEAD
 	background-repeat: no-repeat;  */
 }
 
@@ -344,10 +273,8 @@ body {
 
 .o-row {
   position: relative;
-=======
->>>>>>> 368b2dfc2c78e474e8092ad820850c1c649b156a
 
-	padding: 0 var(--global-whitespace);*/
+	padding: 0 var(--global-whitespace);
 }
 
 /*
@@ -398,7 +325,6 @@ body {
   */
 
 .o-header {
-<<<<<<< HEAD
   height: auto;
 }
 
@@ -423,8 +349,7 @@ body {
   .c-spreadPage-noIcon > .o-header {
     height: 25vh;
   }
-=======
-	height: auto;
+	
 }
 @media (min-width: 1200px) {
 	.o-header {
@@ -434,7 +359,6 @@ body {
 		align-items: center;
 		margin: auto 0;
 	}
->>>>>>> 368b2dfc2c78e474e8092ad820850c1c649b156a
 }
 
 /*
