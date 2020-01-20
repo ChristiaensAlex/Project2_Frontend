@@ -314,9 +314,9 @@ body {
 	}
 }
 /*
-    Objects: Header
+    Objects: Row
     ---
-    
+    Creates a horizontal row that stretches the viewport and adds padding around children
 */
 
 .o-header {
@@ -330,6 +330,41 @@ body {
 		justify-content: center;
 		align-items: center;
 		margin: auto 0;
+	}
+}
+/*
+    Objects: Row
+    ---
+    Creates a horizontal row that stretches the viewport and adds padding around children
+*/
+
+.o-header {
+	height: auto;
+}
+@media (min-width: 768px) {
+	.o-header {
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+/*
+  Objects: Row
+  ---
+  Creates a horizontal row that stretches the viewport and adds padding around children
+*/
+.o-header {
+	height: auto;
+}
+
+@media (min-width: 768px) {
+	.o-header {
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 }
 
@@ -560,7 +595,7 @@ body {
 
 	.c-logo__name {
 		margin: 0;
-		font-size: var(--global-fontsize-xxxl);
+		font-size: 48px;
 	}
 
 	.c-logo__symbol {
@@ -743,7 +778,7 @@ Component: Spread
 	padding: 9px var(--global-baseline);
 	outline: none;
 	transition: all var(--global-transitionTiming-alpha);
-	border-radius: var(--global-borderRadius-sm);
+	border-radius: var(--global-borderRadius);
 	border: var(--input-border);
 }
 
@@ -815,7 +850,7 @@ Component: Spread
 }
 
 .c-custom-select__input :last-child {
-	border-radius: var(--global-borderRadius-sm);
+	border-radius: var(--global-borderRadius);
 }
 /*Search*/
 .c-input-search {
@@ -867,7 +902,7 @@ Component: Spread
 	border: var(--global-borderWidth) solid var(--global-color-alpha);
 	color: var(--global-color-alpha);
 	height: var(--global-whitespace-xl);
-	width: 75%;
+	width: 50%;
 	justify-content: space-around;
 	margin-right: var(--global-whitespace-xs);
 }
@@ -893,18 +928,18 @@ Component: Spread
 }
 
 .c-backbutton__arrow {
-	width: var(--global-whitespace);
-	height: var(--global-whitespace);
+	width: 24px;
+	height: 24px;
 	fill: var(--global-color-alpha);
 }
 
 .c-submitbutton {
 	background-color: var(--global-color-alpha);
 	color: var(--global-color-neutral-xxx-light);
-	height: var(--global-whitespace-xl);
+	height: 48px;
 	width: 100%;
 	justify-content: center;
-	margin-left: var(--global-whitespace-xs);
+	margin-left: 4px;
 }
 
 .c-popup-form--card > .c-submitbutton {
@@ -1131,6 +1166,7 @@ justify-items: center; */
 	height: 80px;
 	margin: var(--global-whitespace) 0;
 	padding: var(--global-baseline);
+	border-radius: var(--global-borderRadius-md);
 }
 
 .c-client__userPhoto {
@@ -1167,14 +1203,7 @@ justify-items: center; */
 	}
 
 	.c-clients .c-client {
-		display: grid;
-		grid-template-columns: 64px 1fr 20px;
-		grid-template-rows: auto auto;
-		background-color: var(--global-color-neutral-x-light-transparent);
-		height: 80px;
 		width: 300px;
-		margin: var(--global-whitespace) 0;
-		padding: var(--global-baseline);
 	}
 }
 /*Component: PlanningList
@@ -1195,6 +1224,7 @@ justify-items: center; */
 	height: 80px;
 	margin: var(--global-whitespace) 0;
 	padding: var(--global-baseline);
+	border-radius: var(--global-borderRadius-md);
 }
 
 .c-planning__userPhoto {
@@ -1264,6 +1294,7 @@ justify-items: center; */
 	height: 80px;
 	margin: var(--global-whitespace) 0;
 	padding: var(--global-baseline);
+	border-radius: var(--global-borderRadius-md);
 }
 
 .c-stepplan__picto {
@@ -1292,7 +1323,6 @@ justify-items: center; */
 
 @media (min-width: 992px) {
 	.c-stepplans {
-		display: grid;
 		grid-template-columns: auto auto;
 		grid-template-rows: auto;
 		margin-left: calc(var(--global-baseline) * 8);
@@ -1326,15 +1356,6 @@ justify-items: center; */
 	font-size: inherit;
 	color: var(--global-color-omega);
 	text-decoration: underline;
-}
-
-@media (min-width: 992px) {
-	.c-stepplans {
-		display: grid;
-		grid-template-columns: auto auto;
-		grid-template-rows: auto;
-		margin-left: calc(var(--global-baseline) * 8);
-	}
 }
 
 .c-profile__picture {
@@ -1444,11 +1465,7 @@ the visualisation of 1 step for the client with picto, countsymbol and explanati
 	padding-left: var(--global-whitespace-md);
 	width: 100%;
 }
-.c-step-description--header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
+
 .c-picto {
 }
 
@@ -1656,8 +1673,8 @@ navigation footer for menu mentor
 }
 
 .c-button__addStep {
-	margin-top: var(--global-whitespace-lg);
-	margin-bottom: var(--global-whitepace-md);
+	margin-top: 32px;
+	margin-bottom: 16px;
 }
 
 .c-button_addStepImage {
@@ -1666,7 +1683,7 @@ navigation footer for menu mentor
 
 /*overview steps of progressive scheme for client*/
 .c-overview__header {
-	margin-top: var(--global-whitespace);
+	margin-top: 24px;
 	height: 240px;
 	width: 100%;
 	display: flex;
@@ -1785,7 +1802,7 @@ gives client feedback by congratulating them on finishing a progressive scheme a
 .c-congrats__bar {
 	position: relative;
 	width: 100%;
-	height: var(--global-whitespace);
+	height: 24px;
 }
 
 .c-progressbar__front {
@@ -1991,9 +2008,9 @@ mentor can see detail info of client and can choose between calendar, profile in
 }
 .c-contact__wrapper {
 	box-shadow: var(--input-focus-boxShadow, 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75));
-	border-radius: var(--global-borderRadius-lg);
-	padding: calc(var(--global-whitespace));
-	margin-bottom: calc(var(--global-whitespace-md));
+	border-radius: 14px;
+	padding: 16px;
+	margin-bottom: 16px;
 }
 
 .c-contact__wrapper + .c-addContact {
