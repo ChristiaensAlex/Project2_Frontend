@@ -1,29 +1,14 @@
 /*------------------------------------*\
-#FONTS
-\*------------------------------------*/
-@font-face {
-	font-family: 'Inter Web';
-	font-weight: 400;
-	src: url('../fonts/Inter-Regular.woff2') format('woff2');
-}
-
-@font-face {
-	font-family: 'Inter Web';
-	font-weight: 600;
-	src: url('../fonts/Inter-SemiBold.woff2') format('woff2');
-}
-
-/*------------------------------------*\
   #Variables
   \*------------------------------------*/
 :root {
 	/*colors*/
-
+	--global-color-alpha-x-light: #fcf1ef;
 	--global-color-alpha-light: #ffb9a6;
 	--global-color-alpha: #fc8c71;
 	--global-color-alpha-dark: #fe7c5a;
-	--global-color-alpha-dark-x: #fe6740;
-	--global-color-alpha-dark-xx: #ff5d33;
+	--global-color-alpha-x-dark: #fe6740;
+	--global-color-alpha-xx-dark: #ff5d33;
 
 	--global-color-beta: #1c5c5c;
 	--global-color-omega: #27255f;
@@ -194,7 +179,9 @@ li ul,
 li ol {
 	margin-bottom: 0;
 }
-
+ul {
+	list-style-type: none;
+}
 blockquote {
 	font-style: normal;
 	font-size: var(--global-fontsize-md);
@@ -248,7 +235,11 @@ input {
 input::placeholder {
 	color: var(--color-placeholder, var(--global-color-neutral-x-light));
 }
-
+input::-webkit-clear-button {
+	/* Verwijderd het blauwe kruis bij de time input */
+	-webkit-appearance: none;
+	margin: 0;
+}
 body {
 	height: 100%;
 	display: flex;
@@ -509,14 +500,6 @@ body {
 	margin: auto;
 }
 
-/* @media (min-width: 768px) {
-	/* .c-content {
-		display: flex;
-		justify-content: space-around;
-		width: 704px;
-	} 
-} */
-
 @media (min-width: 1200px) {
 	.c-content {
 		width: 1000px;
@@ -552,7 +535,7 @@ body {
 }
 
 .c-logo__name {
-	font-size: 20px;
+	font-size: var(--global-fontsize-md);
 	margin-left: var(--global-whitespace-md);
 	color: var(--global-color-omega);
 }
@@ -576,7 +559,7 @@ body {
 
 	.c-logo__name {
 		margin: 0;
-		font-size: 48px;
+		font-size: var(--global-fontsize-xxxl);
 	}
 
 	.c-logo__symbol {
@@ -642,6 +625,25 @@ body {
 	justify-content: space-between;
 	align-content: center;
 }
+.c-title__AddClientsToProgressiveSteps {
+	display: flex;
+	font-size: var(--global-fontsize-md);
+	justify-content: space-between;
+	align-content: center;
+}
+
+.c-title__menu-alignleft {
+	display: flex;
+	font-size: var(--global-fontsize-md);
+	align-content: flex-start;
+}
+
+.c-title__menu-smallmargin__top {
+	display: flex;
+	font-size: var(--global-fontsize-md);
+	align-content: flex-start;
+	margin-top: calc(var(--global-whitespace-md) * -1);
+}
 /*
     Component: card
 */
@@ -652,7 +654,7 @@ body {
 	height: calc(100vh - 92px);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
 	.c-card {
 		height: 100%;
 	}
@@ -762,7 +764,7 @@ Component: Spread
 	padding: 9px var(--global-baseline);
 	outline: none;
 	transition: all var(--global-transitionTiming-alpha);
-	border-radius: var(--global-borderRadius);
+	border-radius: var(--global-borderRadius-sm);
 	border: var(--input-border);
 }
 
@@ -837,11 +839,12 @@ Component: Spread
 	border-radius: var(--global-borderRadius-sm);
 }
 /*Search*/
+
 .c-input-search {
 	padding-bottom: var(--global-whitespace-md);
 }
 
-.c-search {
+.c-search-input {
 	content: '';
 	position: absolute;
 	left: 10px;
@@ -851,9 +854,48 @@ Component: Spread
 	background-image: url(/magnifying-glass.svg) center / contain no-repeat;
 }
 
+.c-search {
+	position: relative;
+}
+
+.c-search:before {
+	content: '';
+	position: absolute;
+	display: block;
+	left: 10px;
+	top: 0;
+	bottom: 0;
+	width: var(--global-whitespace);
+	background: url('magnifying-glass.svg') center / contain no-repeat;
+}
+
+.c-search-list {
+	width: 100%;
+	background-color: var(--global-color-neutral-xx-light);
+	margin: var(--global-whitespace-md) 0 var(--global-whitespace) 0;
+	outline: none;
+	border-radius: var(--global-borderRadius);
+	border: var(--input-border);
+}
+
+.c-search-list__item {
+	width: 100%;
+	background-color: var(--global-color-neutral-xx-light);
+	height: var(--global-whitespace-xl);
+	outline: none;
+	border-radius: var(--global-borderRadius);
+	border: var(--input-border);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: var(--global-baseline);
+	border: 1px solid var(--global-color-omega);
+}
+
 .c-input-list {
 	padding-bottom: var(--global-whitespace-md);
 }
+
 .c-register {
 	display: flex;
 	justify-content: flex-end;
@@ -928,7 +970,12 @@ Component: Spread
 	justify-content: center;
 	margin-left: var(--global-whitespace-xs);
 }
-
+.c-submitbutton__arrow {
+	width: var(--global-whitespace);
+	height: var(--global-whitespace);
+	transform: scaleX(-1) translateX(-10px);
+	fill: var(--global-color-neutral-xxxx-light);
+}
 .c-popup-form--card > .c-submitbutton {
 	width: 100%;
 	margin-left: 0;
@@ -940,6 +987,41 @@ Component: Spread
 .c-button__mainStepImage {
 	display: flex;
 	margin-bottom: var(--global-whitespace);
+}
+
+.c-upload {
+	display: flex;
+	justify-content: center;
+	margin: calc(var(--global-whitespace-xs) * 5);
+}
+
+.c-uploadbutton {
+	border: none;
+	color: var(--global-color-neutral-xxx-light);
+	background-color: #438787;
+	height: 36px;
+	width: calc(var(--global-whitespace) * 16);
+}
+
+.c-uploadbutton__arrowbox {
+	border-radius: var(--global-borderRadius);
+	background-color: var(--global-color-beta);
+	width: 36px;
+	height: 36px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.c-uploadbutton__arrow {
+	width: var(--global-whitespace);
+	height: var(--global-whitespace);
+	transform: rotate(90deg);
+	fill: var(--global-color-neutral-xxx-light);
+}
+
+.c-uploadbutton__text {
+	transform: translateX(10px);
 }
 
 /*
@@ -1097,7 +1179,11 @@ justify-items: center; */
 	width: 9px;
 	height: var(--global-whitespace-md);
 }
-
+.c-time {
+	display: flex;
+	align-items: center;
+	padding-top: var(--global-whitespace-sm);
+}
 .c-time__month {
 	text-align: center;
 }
@@ -1149,6 +1235,35 @@ justify-items: center; */
 	padding: 5px;
 	background: var(--global-color-alpha);
 	color: white !important;
+}
+
+/* Component: chooce photo
+  ---
+user can choose a picto or photo for their stepplan or client*/
+.c-choose {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	grid-column-gap: var(--global-baseline);
+	grid-row-gap: var(--global-baseline);
+}
+
+.c-choose__picto {
+	place-self: center;
+	width: calc(var(--global-baseline) * 11);
+	height: calc(var(--global-baseline) * 11);
+}
+
+@media (min-width: 576px) {
+	.c-choose {
+		grid-template-columns: repeat(6, 1fr);
+	}
+}
+
+@media (min-width: 768px) {
+	.c-choose {
+		grid-template-columns: repeat(7, 1fr);
+	}
 }
 /*Component: ClientList
    A mentor has an overview of all his clients
@@ -1208,6 +1323,9 @@ justify-items: center; */
 /*Component: PlanningList
  A mentor has an overview of the planning of today
   */
+.c-ascribeclient-page {
+	max-width: 310px;
+}
 .c-hour {
 	font-size: var(--global-fontsize);
 }
@@ -1277,6 +1395,9 @@ justify-items: center; */
 		grid-template-columns: auto auto;
 		grid-template-rows: auto;
 		margin-left: calc(var(--global-baseline) * 8);
+	}
+	c-plannings .c-planning {
+		width: 300px;
 	}
 }
 /*Component: StepplansList
@@ -1351,7 +1472,7 @@ justify-items: center; */
 }
 
 .c-profile__picture {
-	padding-bottom: 40px;
+	padding-bottom: calc(var(--global-baseline) * 5);
 	margin-left: -10px;
 }
 
@@ -1425,7 +1546,7 @@ the visualisation of 1 step for the client with picto, countsymbol and explanati
 	height: 304px;
 	width: 256px;
 	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
-	border-radius: 14px;
+	border-radius: var(--global-borderRadius-lg);
 	padding: auto;
 	margin-bottom: var(--global-whitespace-xl);
 }
@@ -1441,9 +1562,9 @@ the visualisation of 1 step for the client with picto, countsymbol and explanati
 	display: flex;
 	flex-direction: row;
 	background-color: #f9f9fa;
-	border-radius: 0px 8px 8px 8px;
+	border-radius: var(--global-borderRadius-md);
 	box-shadow: 0px 2px 4px rgba(165, 163, 191, 0.15);
-	padding: 16px;
+	padding: var(--global-whitespace-md);
 }
 
 .c-add-step {
@@ -1458,8 +1579,6 @@ the visualisation of 1 step for the client with picto, countsymbol and explanati
 	width: 100%;
 }
 
-.c-picto {
-}
 .c-step-description--header {
 	display: flex;
 	justify-content: space-between;
@@ -1526,7 +1645,7 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 
 .c-stepsOverview__sybmol {
 	border: var(--global-borderWidth) solid var(--global-color-omega);
-	border-radius: 8px;
+	border-radius: var(--global-borderRadius-md);
 	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
 	height: calc(var(--global-baseline) * 5);
 	width: calc(var(--global-baseline) * 5);
@@ -1676,7 +1795,7 @@ navigation footer for menu mentor
 /*overview steps of progressive scheme for client*/
 .c-overview__header {
 	margin-top: var(--global-whitespace);
-	height: 240px;
+	height: calc(var(--global-whitespace) * 10);
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -1866,8 +1985,8 @@ each contact has a profile pic and name
 }
 
 .c-contact__profilepic {
-	height: 88px;
-	width: 88px;
+	height: calc(var(--global-baseline) * 11);
+	width: calc(var(--global-baseline) * 11);
 	margin: var(--global-baseline);
 }
 
@@ -1960,7 +2079,7 @@ mentor can see detail info of client and can choose between calendar, profile in
 	right: 12.5%;
 	width: 25%;
 }
-.c-planningClient {
+.c-diagram__circle .c-planningClient {
 	position: absolute;
 	width: 25%;
 	bottom: 12.5%;
