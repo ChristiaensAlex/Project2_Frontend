@@ -1,14 +1,29 @@
 /*------------------------------------*\
+#FONTS
+\*------------------------------------*/
+@font-face {
+	font-family: 'Inter Web';
+	font-weight: 400;
+	src: url('../fonts/Inter-Regular.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Inter Web';
+	font-weight: 600;
+	src: url('../fonts/Inter-SemiBold.woff2') format('woff2');
+}
+
+/*------------------------------------*\
   #Variables
   \*------------------------------------*/
-  :root {
+:root {
 	/*colors*/
-	--global-color-alpha-x-light: #fcf1ef;
+
 	--global-color-alpha-light: #ffb9a6;
 	--global-color-alpha: #fc8c71;
 	--global-color-alpha-dark: #fe7c5a;
-	--global-color-alpha-x-dark: #fe6740;
-	--global-color-alpha-xx-dark: #ff5d33;
+	--global-color-alpha-dark-x: #fe6740;
+	--global-color-alpha-dark-xx: #ff5d33;
 
 	--global-color-beta: #1c5c5c;
 	--global-color-omega: #27255f;
@@ -82,6 +97,13 @@ html {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	height: 100%;
+}
+
+@media (prefers-color-scheme: dark) {
+	html {
+		color: var(--global-color-neutral-xx-light);
+		background-color: var(--global-color-neutral-xx-dark);
+	}
 }
 
 *,
@@ -172,9 +194,7 @@ li ul,
 li ol {
 	margin-bottom: 0;
 }
-ul {
-	list-style-type: none;
-}
+
 blockquote {
 	font-style: normal;
 	font-size: var(--global-fontsize-md);
@@ -228,11 +248,7 @@ input {
 input::placeholder {
 	color: var(--color-placeholder, var(--global-color-neutral-x-light));
 }
-input::-webkit-clear-button {
-	/* Verwijderd het blauwe kruis bij de time input */
-	-webkit-appearance: none;
-	margin: 0;
-}
+
 body {
 	height: 100%;
 	display: flex;
@@ -316,23 +332,42 @@ body {
 		margin: auto 0;
 	}
 }
+/*
+    Objects: Row
+    ---
+    Creates a horizontal row that stretches the viewport and adds padding around children
+*/
 
-.c-spreadPage > .o-header {
-	height: 20vh;
+.o-header {
+	height: auto;
+}
+@media (min-width: 768px) {
+	.o-header {
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 }
 
-.c-spreadPage-noIcon > .o-header {
-	height: 15vh;
+/*
+  Objects: Row
+  ---
+  Creates a horizontal row that stretches the viewport and adds padding around children
+*/
+.o-header {
+	height: auto;
 }
 
 @media (min-width: 768px) {
-	.c-spreadPage > .o-header {
-		height: 30vh;
-	}
-	.c-spreadPage-noIcon > .o-header {
-		height: 25vh;
+	.o-header {
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 }
+
 /*
   Objects: Layout
   ---
@@ -493,6 +528,14 @@ body {
 	margin: auto;
 }
 
+/* @media (min-width: 768px) {
+	/* .c-content {
+		display: flex;
+		justify-content: space-around;
+		width: 704px;
+	} 
+} */
+
 @media (min-width: 1200px) {
 	.c-content {
 		width: 1000px;
@@ -517,8 +560,9 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	/*margin-bottom: var(--global-whitespace-xl);*/
+	margin-bottom: var(--global-whitespace-xl);
 	margin-bottom: 0;
+	padding: var(--global-whitespace-lg) var(--global-whitespace-md);
 }
 
 .c-logo__symbol {
@@ -527,7 +571,7 @@ body {
 }
 
 .c-logo__name {
-	font-size: var(--global-fontsize-md);
+	font-size: 20px;
 	margin-left: var(--global-whitespace-md);
 	color: var(--global-color-omega);
 }
@@ -551,7 +595,7 @@ body {
 
 	.c-logo__name {
 		margin: 0;
-		font-size: var(--global-fontsize-xxxl);
+		font-size: 48px;
 	}
 
 	.c-logo__symbol {
@@ -565,7 +609,7 @@ body {
 	Component: header image
   */
 .c-headerImage {
-	margin-bottom: calc(var(--global-baseline) * 7);
+	margin-bottom: 56px;
 	display: flex;
 	justify-content: center;
 }
@@ -584,10 +628,6 @@ body {
 
 .c-forgotPasswordMessage {
 	padding-bottom: calc(var(--global-baseline) * 5);
-}
-
-.c-reset-description {
-	font-size: var(--global-fontsize-md);
 }
 
 /*
@@ -617,25 +657,6 @@ body {
 	justify-content: space-between;
 	align-content: center;
 }
-.c-title__AddClientsToProgressiveSteps {
-	display: flex;
-	font-size: var(--global-fontsize-md);
-	justify-content: space-between;
-	align-content: center;
-}
-
-.c-title__menu-alignleft {
-	display: flex;
-	font-size: var(--global-fontsize-md);
-	align-content: flex-start;
-}
-
-.c-title__menu-smallmargin__top {
-	display: flex;
-	font-size: var(--global-fontsize-md);
-	align-content: flex-start;
-	margin-top: calc(var(--global-whitespace-md) * -1);
-}
 /*
     Component: card
 */
@@ -643,12 +664,13 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: calc(100vh - 92px);
+	height: 100vh;
+	transform: translateY(-94px);
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 768px) {
 	.c-card {
-		height: 100%;
+		transform: translateY(0);
 	}
 }
 
@@ -661,6 +683,7 @@ body {
 	max-width: 640px;
 	height: fit-content;
 	margin: auto;
+	padding: 0 var(--global-whitespace-lg) 0 var(--global-whitespace-lg);
 }
 
 /*makes sure that last paragraph of form__field has no margin bottom so "wachtwoord vergeten" can be close to the input field*/
@@ -700,8 +723,7 @@ Component: Spread
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	justify-content: space-around;
 	background-color: var(--global-color-alpha-x-light);
 }
 
@@ -756,7 +778,7 @@ Component: Spread
 	padding: 9px var(--global-baseline);
 	outline: none;
 	transition: all var(--global-transitionTiming-alpha);
-	border-radius: var(--global-borderRadius-sm);
+	border-radius: var(--global-borderRadius);
 	border: var(--input-border);
 }
 
@@ -782,7 +804,7 @@ Component: Spread
 }
 
 .c-input:hover {
-	box-shadow: var(--input-focus-boxShadow, 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75));
+	box-shadow: var(--input-hover-boxShadow, 0 0 0 1px var(--global-color-alpha-dark-x));
 }
 
 .c-input:focus,
@@ -814,8 +836,8 @@ Component: Spread
 } */
 
 .c-custom-select__symbol {
-	width: var(--global-whitespace);
-	height: var(--global-whitespace);
+	width: 24px;
+	height: 24px;
 	position: absolute;
 	top: 12px;
 	right: 12px;
@@ -828,10 +850,9 @@ Component: Spread
 }
 
 .c-custom-select__input :last-child {
-	border-radius: var(--global-borderRadius-sm);
+	border-radius: var(--global-borderRadius);
 }
 /*Search*/
-
 .c-input-search {
 	padding-bottom: var(--global-whitespace-md);
 }
@@ -846,51 +867,9 @@ Component: Spread
 	background-image: url(/magnifying-glass.svg) center / contain no-repeat;
 }
 
-.c-search-input {
-	position: relative;
-}
-
-.c-search:before {
-	content: '';
-	position: absolute;
-	display: block;
-	left: 10px;
-	top: 0;
-	bottom: 0;
-	width: var(--global-whitespace);
-	background: url('magnifying-glass.svg') center / contain no-repeat;
-}
-
-.c-search-list {
-	width: 100%;
-	background-color: var(--global-color-neutral-xx-light);
-	margin: var(--global-whitespace-md) 0 var(--global-whitespace) 0;
-	outline: none;
-	border-radius: var(--global-borderRadius);
-	border: var(--input-border);
-}
-
-.c-search-list__item {
-	width: 100%;
-	background-color: var(--global-color-neutral-xx-light);
-	height: var(--global-whitespace-xl);
-	outline: none;
-	border-radius: var(--global-borderRadius);
-	border: var(--input-border);
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: var(--global-baseline);
-	border: 1px solid var(--global-color-omega);
-}
-.c-input-points {
-	width: 50%;
-	padding: 9px var(--global-baseline);
-}
 .c-input-list {
 	padding-bottom: var(--global-whitespace-md);
 }
-
 .c-register {
 	display: flex;
 	justify-content: flex-end;
@@ -923,7 +902,7 @@ Component: Spread
 	border: var(--global-borderWidth) solid var(--global-color-alpha);
 	color: var(--global-color-alpha);
 	height: var(--global-whitespace-xl);
-	width: 75%;
+	width: 50%;
 	justify-content: space-around;
 	margin-right: var(--global-whitespace-xs);
 }
@@ -934,11 +913,8 @@ Component: Spread
 
 .c-backbutton-long {
 	width: 100%;
-	padding-right: 30%;
+	padding-right: 88px;
 	margin-bottom: 64px;
-	background-color: var(--global-color-alpha);
-	fill: white;
-	color: white;
 }
 
 .c-popup-form--card > .c-backbutton {
@@ -952,71 +928,29 @@ Component: Spread
 }
 
 .c-backbutton__arrow {
-	width: var(--global-whitespace);
-	height: var(--global-whitespace);
+	width: 24px;
+	height: 24px;
 	fill: var(--global-color-alpha);
 }
 
 .c-submitbutton {
 	background-color: var(--global-color-alpha);
 	color: var(--global-color-neutral-xxx-light);
-	height: var(--global-whitespace-xl);
+	height: 48px;
 	width: 100%;
 	justify-content: center;
-	margin-left: var(--global-whitespace-xs);
+	margin-left: 4px;
 }
-.c-submitbutton__arrow {
-	width: var(--global-whitespace);
-	height: var(--global-whitespace);
-	transform: scaleX(-1) translateX(-10px);
-	fill: var(--global-color-neutral-xxxx-light);
-}
+
 .c-popup-form--card > .c-submitbutton {
 	width: 100%;
 	margin-left: 0;
 	margin-bottom: calc(var(--global-baseline) * 2);
 }
-.c-submitbutton-long {
-	width: 100%;
-}
+
 .c-button__mainStepImage {
 	display: flex;
 	margin-bottom: var(--global-whitespace);
-}
-
-.c-upload {
-	display: flex;
-	justify-content: center;
-	margin: calc(var(--global-whitespace-xs) * 5);
-}
-
-.c-uploadbutton {
-	border: none;
-	color: var(--global-color-neutral-xxx-light);
-	background-color: #438787;
-	height: 36px;
-	width: calc(var(--global-whitespace) * 16);
-}
-
-.c-uploadbutton__arrowbox {
-	border-radius: var(--global-borderRadius);
-	background-color: var(--global-color-beta);
-	width: 36px;
-	height: 36px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.c-uploadbutton__arrow {
-	width: var(--global-whitespace);
-	height: var(--global-whitespace);
-	transform: rotate(90deg);
-	fill: var(--global-color-neutral-xxx-light);
-}
-
-.c-uploadbutton__text {
-	transform: translateX(10px);
 }
 
 /*
@@ -1042,7 +976,7 @@ user can choose role*/
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-evenly;
-	height: calc(var(--global-baseline) * 20);
+	height: 160px;
 	font-size: var(--global-fontsize-md);
 	margin: var(--global-whitespace-xl) 0;
 }
@@ -1159,26 +1093,12 @@ justify-items: center; */
 	justify-content: center;
 	align-items: center;
 }
-/*Component: Calendar
- A mentor has an overview of all his clients
 
-  */
-
-/* checken wat we hier nog van nodig hebben*/
-.c-calendar {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
 .c-calendar__arrow {
 	width: 9px;
-	height: var(--global-whitespace-md);
+	height: 16px;
 }
-.c-time {
-	display: flex;
-	align-items: center;
-	padding-top: var(--global-whitespace-sm);
-}
+
 .c-time__month {
 	text-align: center;
 }
@@ -1221,7 +1141,7 @@ justify-items: center; */
 	width: 13.6%;
 	text-align: center;
 	margin-bottom: 5px;
-	font-size: var(--global-fontsize-sm);
+	font-size: 12px;
 	color: #777;
 }
 
@@ -1230,35 +1150,6 @@ justify-items: center; */
 	padding: 5px;
 	background: var(--global-color-alpha);
 	color: white !important;
-}
-
-/* Component: chooce photo
-  ---
-user can choose a picto or photo for their stepplan or client*/
-.c-choose {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-template-rows: repeat(3, 1fr);
-	grid-column-gap: var(--global-baseline);
-	grid-row-gap: var(--global-baseline);
-}
-
-.c-choose__picto {
-	place-self: center;
-	width: calc(var(--global-baseline) * 11);
-	height: calc(var(--global-baseline) * 11);
-}
-
-@media (min-width: 576px) {
-	.c-choose {
-		grid-template-columns: repeat(6, 1fr);
-	}
-}
-
-@media (min-width: 768px) {
-	.c-choose {
-		grid-template-columns: repeat(7, 1fr);
-	}
 }
 /*Component: ClientList
    A mentor has an overview of all his clients
@@ -1272,7 +1163,7 @@ user can choose a picto or photo for their stepplan or client*/
 	grid-template-columns: 64px 1fr 20px;
 	grid-template-rows: auto auto;
 	background-color: var(--global-color-neutral-x-light-transparent);
-	height: calc(var(--global-baseline) * 10);
+	height: 80px;
 	margin: var(--global-whitespace) 0;
 	padding: var(--global-baseline);
 	border-radius: var(--global-borderRadius-md);
@@ -1294,7 +1185,7 @@ user can choose a picto or photo for their stepplan or client*/
 }
 
 .c-client-page {
-	padding: 0 calc(var(--global-baseline) * 5) 0 calc(var(--global-baseline) * 5);
+	padding: 0 40px 0 40px;
 }
 
 .c-client__delete {
@@ -1318,9 +1209,6 @@ user can choose a picto or photo for their stepplan or client*/
 /*Component: PlanningList
  A mentor has an overview of the planning of today
   */
-.c-ascribeclient-page {
-	max-width: 310px;
-}
 .c-hour {
 	font-size: var(--global-fontsize);
 }
@@ -1333,7 +1221,7 @@ user can choose a picto or photo for their stepplan or client*/
 	grid-template-columns: 64px 1fr 20px;
 	grid-template-rows: auto auto;
 	background-color: var(--global-color-neutral-x-light-transparent);
-	height: calc(var(--global-baseline) * 10);
+	height: 80px;
 	margin: var(--global-whitespace) 0;
 	padding: var(--global-baseline);
 	border-radius: var(--global-borderRadius-md);
@@ -1391,9 +1279,6 @@ user can choose a picto or photo for their stepplan or client*/
 		grid-template-rows: auto;
 		margin-left: calc(var(--global-baseline) * 8);
 	}
-	.c-plannings .c-planning {
-		width: 300px;
-	}
 }
 /*Component: StepplansList
    A mentor has an overview of all his stepplans
@@ -1406,7 +1291,7 @@ user can choose a picto or photo for their stepplan or client*/
 	grid-template-columns: 64px 1fr 20px;
 	grid-template-rows: auto auto;
 	background-color: var(--global-color-neutral-x-light-transparent);
-	height: calc(var(--global-baseline) * 10);
+	height: 80px;
 	margin: var(--global-whitespace) 0;
 	padding: var(--global-baseline);
 	border-radius: var(--global-borderRadius-md);
@@ -1444,7 +1329,14 @@ user can choose a picto or photo for their stepplan or client*/
 	}
 
 	.c-stepplans .c-stepplan {
+		display: grid;
+		grid-template-columns: 64px 1fr 20px;
+		grid-template-rows: auto auto;
+		background-color: var(--global-color-neutral-x-light-transparent);
+		height: 80px;
 		width: 300px;
+		margin: var(--global-whitespace) 0;
+		padding: var(--global-baseline);
 	}
 }
 
@@ -1467,7 +1359,7 @@ user can choose a picto or photo for their stepplan or client*/
 }
 
 .c-profile__picture {
-	padding-bottom: calc(var(--global-baseline) * 5);
+	padding-bottom: 40px;
 	margin-left: -10px;
 }
 
@@ -1493,7 +1385,7 @@ client can get to contact list
 .c-phonebutton {
 	background-color: var(--global-color-alpha);
 	border-radius: 23px;
-	height: calc(var(--global-baseline) * 7);
+	height: 56px;
 	width: 104px;
 	display: flex;
 	justify-content: flex-end;
@@ -1541,7 +1433,7 @@ the visualisation of 1 step for the client with picto, countsymbol and explanati
 	height: 304px;
 	width: 256px;
 	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
-	border-radius: var(--global-borderRadius-lg);
+	border-radius: 14px;
 	padding: auto;
 	margin-bottom: var(--global-whitespace-xl);
 }
@@ -1557,9 +1449,9 @@ the visualisation of 1 step for the client with picto, countsymbol and explanati
 	display: flex;
 	flex-direction: row;
 	background-color: #f9f9fa;
-	border-radius: var(--global-borderRadius-md);
+	border-radius: 0px 8px 8px 8px;
 	box-shadow: 0px 2px 4px rgba(165, 163, 191, 0.15);
-	padding: var(--global-whitespace-md);
+	padding: 16px;
 }
 
 .c-add-step {
@@ -1574,16 +1466,23 @@ the visualisation of 1 step for the client with picto, countsymbol and explanati
 	width: 100%;
 }
 
-.c-step-description--header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+.c-picto {
 }
+
 .c-step__explanation {
 	width: 256px;
 	text-align: center;
 }
 
+.c-topLeftLogo {
+	height: var(--global-whitespace-xl);
+	margin: var(--global-whitespace);
+}
+
+/*Component: footer
+  ---
+  navigation footer for client with visualisation of progress, phonebutton and overview steps button
+  */
 .c-single-step {
 	margin-bottom: calc(var(--global-baseline) * 3);
 }
@@ -1596,7 +1495,7 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 	position: absolute;
 	width: 100%;
 	bottom: 0;
-	height: calc(var(--global-baseline) * 8);
+	height: 64px;
 }
 
 .c-footer__navbarClient {
@@ -1618,8 +1517,8 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 
 .c-footer__navbarClient .c-phonebutton {
 	border-radius: 100%;
-	height: calc(var(--global-baseline) * 8);
-	width: calc(var(--global-baseline) * 8);
+	height: 64px;
+	width: 64px;
 	display: flex;
 	justify-content: center;
 	position: static;
@@ -1640,10 +1539,10 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 
 .c-stepsOverview__sybmol {
 	border: var(--global-borderWidth) solid var(--global-color-omega);
-	border-radius: var(--global-borderRadius-md);
+	border-radius: 8px;
 	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
-	height: calc(var(--global-baseline) * 5);
-	width: calc(var(--global-baseline) * 5);
+	height: 40px;
+	width: 40px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -1674,9 +1573,7 @@ navigation footer for menu mentor
 	align-items: center;
 	margin-top: 10px;
 }
-.c-section_menu {
-	padding: 0 0 calc(var(--global-whitespace-xxl)) 0;
-}
+
 @media (min-width: 768px) {
 	.c-section_menu {
 		padding: 0 calc(var(--global-whitespace-xxl) * 2);
@@ -1685,10 +1582,7 @@ navigation footer for menu mentor
 		padding: 0 calc(var(--global-whitespace-xxl) * 2);
 	}
 }
-.c-topLeftLogo {
-	height: var(--global-whitespace-xl);
-	margin: var(--global-whitespace);
-}
+
 @media (min-width: 992px) {
 	.c-topLeftLogo {
 		display: flex;
@@ -1763,7 +1657,7 @@ navigation footer for menu mentor
 }
 
 .c-addPhonenumber p {
-	margin-top: var(--global-baseline);
+	margin-top: 8px;
 }
 
 .c-addContact {
@@ -1779,8 +1673,8 @@ navigation footer for menu mentor
 }
 
 .c-button__addStep {
-	margin-top: var(--global-whitespace-lg);
-	margin-bottom: var(--global-whitepace-md);
+	margin-top: 32px;
+	margin-bottom: 16px;
 }
 
 .c-button_addStepImage {
@@ -1789,8 +1683,8 @@ navigation footer for menu mentor
 
 /*overview steps of progressive scheme for client*/
 .c-overview__header {
-	margin-top: var(--global-whitespace);
-	height: calc(var(--global-whitespace) * 10);
+	margin-top: 24px;
+	height: 240px;
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -1838,8 +1732,8 @@ navigation footer for menu mentor
 .c-overview__step .c-picto {
 	grid-row: span 2;
 	align-self: center;
-	width: calc(var(--global-baseline) * 7);
-	height: calc(var(--global-baseline) * 7);
+	width: 56px;
+	height: 56px;
 	border: var(--global-borderWidth) solid var(--global-color-omega);
 	border-radius: 100%;
 	display: flex;
@@ -1908,7 +1802,7 @@ gives client feedback by congratulating them on finishing a progressive scheme a
 .c-congrats__bar {
 	position: relative;
 	width: 100%;
-	height: var(--global-whitespace);
+	height: 24px;
 }
 
 .c-progressbar__front {
@@ -1937,7 +1831,7 @@ where client can see all their emergency contacts*/
 	display: flex;
 	align-items: center;
 	width: 100%;
-	height: calc(var(--global-baseline) * 8);
+	height: 64px;
 	margin-bottom: var(--global-whitespace);
 }
 
@@ -1947,7 +1841,7 @@ where client can see all their emergency contacts*/
 }
 
 .c-phone__img {
-	width: var(--global-whitespace-lg);
+	width: 32px;
 	height: 100%;
 }
 
@@ -1980,8 +1874,8 @@ each contact has a profile pic and name
 }
 
 .c-contact__profilepic {
-	height: calc(var(--global-baseline) * 11);
-	width: calc(var(--global-baseline) * 11);
+	height: 88px;
+	width: 88px;
 	margin: var(--global-baseline);
 }
 
@@ -2030,8 +1924,8 @@ mentor can see detail info of client and can choose between calendar, profile in
 }
 
 .c-clientphoto {
-	width: calc(var(--global-baseline) * 7);
-	height: calc(var(--global-baseline) * 7);
+	width: 56px;
+	height: 56px;
 }
 .c-clientname {
 	font-size: var(--global-fontsize-lg);
@@ -2040,7 +1934,7 @@ mentor can see detail info of client and can choose between calendar, profile in
 /*component: diagram*/
 
 .c-bodyDetailClient {
-	height: calc(100vh - 140px);
+	height: 100vh - 140px;
 
 	margin: auto 0;
 }
@@ -2074,7 +1968,7 @@ mentor can see detail info of client and can choose between calendar, profile in
 	right: 12.5%;
 	width: 25%;
 }
-.c-diagram__circle .c-planningClient {
+.c-planningClient {
 	position: absolute;
 	width: 25%;
 	bottom: 12.5%;
@@ -2114,9 +2008,9 @@ mentor can see detail info of client and can choose between calendar, profile in
 }
 .c-contact__wrapper {
 	box-shadow: var(--input-focus-boxShadow, 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75));
-	border-radius: var(--global-borderRadius-lg);
-	padding: var(--global-whitespace-md);
-	margin-bottom: var(--global-whitespace-md);
+	border-radius: 14px;
+	padding: 16px;
+	margin-bottom: 16px;
 }
 
 .c-contact__wrapper + .c-addContact {
@@ -2140,7 +2034,7 @@ mentor can see detail info of client and can choose between calendar, profile in
 	width: 100%;
 	padding: 36px;
 	max-width: 552px;
-	line-height: 24px; /*inherit*/
+	line-height: 24px;
 	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
 }
 
@@ -2456,6 +2350,11 @@ mentor can see detail info of client and can choose between calendar, profile in
 	--input-focus-boxShadow: 0 0 0 1px rgba(254, 94, 51, 0.05), 0 4px 4px rgba(254, 94, 51, 0.75);
 }
 
+@media (prefers-color-scheme: dark) {
+	.s-has-error {
+		--input-border: 1px solid var(--global-color-error);
+	}
+}
 .s-correct {
 	--global-color-error: var(--global-color-beta);
 }
