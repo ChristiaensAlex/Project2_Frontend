@@ -256,6 +256,15 @@ body {
 	padding: 0 var(--global-whitespace);
 }
 
+.o-row-lg {
+	position: relative;
+	padding: 0 var(--global-whitespace-lg);
+}
+.o-row-xl {
+	position: relative;
+	padding: 0 var(--global-whitespace-xl);
+}
+
 /*
   Objects: Container
   ---
@@ -317,22 +326,6 @@ body {
 	}
 }
 
-.c-spreadPage > .o-header {
-	height: 20vh;
-}
-
-.c-spreadPage-noIcon > .o-header {
-	height: 15vh;
-}
-
-@media (min-width: 768px) {
-	.c-spreadPage > .o-header {
-		height: 30vh;
-	}
-	.c-spreadPage-noIcon > .o-header {
-		height: 25vh;
-	}
-}
 /*
   Objects: Layout
   ---
@@ -573,9 +566,6 @@ body {
 /*
     Component: forgotPassword
 */
-.c-forgotPassword {
-	padding: 0 var(--global-whitespace-lg);
-}
 
 .c-emailForgotPassword {
 	margin-top: var(--global-whitespace-lg);
@@ -587,7 +577,10 @@ body {
 }
 
 .c-reset-description {
-	font-size: var(--global-fontsize-md);
+	font-size: var(--global-fontsize);
+	display: flex;
+	flex-wrap: unset;
+	text-align: flex;
 }
 
 /*
@@ -705,6 +698,36 @@ Component: Spread
 	background-color: var(--global-color-alpha-x-light);
 }
 
+.c-spreadPage .c-logo__symbol {
+	height: 36px;
+	width: 36px;
+}
+
+/* .c-spreadPage > .o-header {
+	height: 20vh;
+} */
+
+/* .c-spreadPage-noIcon > .o-header {
+	height: 15vh;
+}
+*/
+.c-spreadPage > .o-header {
+	height: auto;
+	margin-bottom: calc(var(--global-baseline) * 7);
+}
+.c-spreadPage .c-buttonrow {
+}
+.c-spreadPage .c-form {
+	width: fit content;
+	height: fit-content;
+	margin: auto;
+	box-shadow: none;
+}
+@media (min-width: 1200px) {
+	.c-spreadPage-noIcon > .o-header {
+		height: 25vh;
+	}
+}
 /*
   Component: Label
   ---
@@ -903,6 +926,7 @@ Component: Spread
 	justify-content: center;
 	padding-top: var(--global-whitespace-lg);
 	margin-bottom: var(--global-whitespace);
+	max-width: 100%;
 }
 
 /*
@@ -938,9 +962,11 @@ Component: Spread
 	margin-bottom: 64px;
 	background-color: var(--global-color-alpha);
 	fill: white;
-	color: white;
 }
 
+.c-backbutton-long .c-backbutton__text {
+	color: white;
+}
 .c-popup-form--card > .c-backbutton {
 	width: 100%;
 }
