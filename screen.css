@@ -1,78 +1,66 @@
 /*------------------------------------*\
-#FONTS
-\*------------------------------------*/
-@font-face {
-  font-family: 'Inter Web';
-  font-weight: 400;
-  src: url('../fonts/Inter-Regular.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Inter Web';
-  font-weight: 600;
-  src: url('../fonts/Inter-SemiBold.woff2') format('woff2');
-}
-
-/*------------------------------------*\
-#Variables
-\*------------------------------------*/
+  #Variables
+  \*------------------------------------*/
 :root {
-  /*colors*/
-  --global-color-alpha-x-light: #fcf1ef;
-  --global-color-alpha-light: #ffb9a6;
-  --global-color-alpha: #fc8c71;
-  --global-color-alpha-dark: #fe7c5a;
-  --global-color-alpha-dark-x: #fe6740;
-  --global-color-alpha-dark-xx: #ff5d33;
-  --global-color-beta: #1c5c5c;
-  --global-color-omega: #27255f;
-  --global-color-neutral-xxxxx-light: white;
-  --global-color-neutral-xxxx-light: white;
-  --global-color-neutral-xxx-light: #fafaff;
-  --global-color-neutral-xx-light: #ececf0;
-  --global-color-neutral-x-light: #c8c8cc;
-  --global-color-neutral-light: #aaaab3;
-  --global-color-neutral: #8d8d99;
-  --global-color-neutral-dark: #757580;
-  --global-color-neutral-x-dark: #5d5d66;
-  --global-color-neutral-xx-dark: #3b3f40;
-  --global-color-neutral-xxx-dark: #17191a;
-  --global-color-neutral-xxxx-dark: #17171a;
-  --global-color-neutral-x-light-transparent: #c8c8cc29;
-  /* border variables */
-  --global-borderRadius: 4px;
-  --global-borderWidth: 1px;
-  /* transitions */
-  --global-transitionTiming-alpha: 0.1s ease-out;
-  /* Baseline settings */
-  --global-baseline: 8px;
-  --global-whitespace: calc(var(--global-baseline) * 3);
-  /* = 24px */
-  --global-whitespace-xs: calc(var(--global-baseline) / 2);
-  /* = 4px */
-  --global-whitespace-sm: calc(var(--global-baseline) * 1);
-  /*  = 8px */
-  --global-whitespace-md: calc(var(--global-baseline) * 2);
-  /*  = 16px */
-  --global-whitespace-lg: calc(var(--global-baseline) * 4);
-  /*  = 32px */
-  --global-whitespace-xl: calc(var(--global-whitespace) * 2);
-  /*  = 48px */
-  --global-whitespace-xxl: calc(var(--global-whitespace) * 3);
-  /*  = 72px */
-  /*fontsizes: modular scale met base 16px en ratio 1.25*/
-  --global-fontsize-xs: 10px;
-  --global-fontsize-sm: 13px;
-  --global-fontsize: 16px;
-  --global-fontsize-md: 20px;
-  --global-fontsize-lg: 25px;
-  --global-fontsize-xl: 31px;
-  --global-fontsize-xxl: 39px;
-  --global-fontsize-xxxl: 48px;
-  /*error*/
-  --global-color-error: #8c0015;
-  --global-input-error-boxShadowColor: #8c001580;
-  --input-border: none;
+	/*colors*/
+	--global-color-alpha-x-light: #fcf1ef;
+	--global-color-alpha-light: #ffb9a6;
+	--global-color-alpha: #fc8c71;
+	--global-color-alpha-dark: #fe7c5a;
+	--global-color-alpha-x-dark: #fe6740;
+	--global-color-alpha-xx-dark: #ff5d33;
+
+	--global-color-beta: #1c5c5c;
+	--global-color-omega: #27255f;
+
+	--global-color-neutral-xxxx-light: white;
+	--global-color-neutral-xxx-light: #fafaff;
+	--global-color-neutral-xx-light: #ececf0;
+	--global-color-neutral-x-light: #c8c8cc;
+	--global-color-neutral-light: #aaaab3;
+	--global-color-neutral: #8d8d99;
+	--global-color-neutral-dark: #757580;
+	--global-color-neutral-x-dark: #5d5d66;
+	--global-color-neutral-xx-dark: #3b3f40;
+	--global-color-neutral-xxx-dark: #17191a;
+	--global-color-neutral-xxxx-dark: #17171a;
+
+	--global-color-neutral-x-light-transparent: #c8c8cc29;
+	/* border variables */
+	--global-borderRadius-sm: 4px;
+	--global-borderRadius-md: 8px;
+	--global-borderRadius-lg: 16px;
+	--global-borderWidth: 1px;
+
+	/* transitions */
+	--global-transitionTiming-alpha: 0.1s ease-out;
+
+	/* Baseline settings */
+	--global-baseline: 8px;
+	--global-whitespace: calc(var(--global-baseline) * 3); /* = 24px */
+
+	--global-whitespace-xs: calc(var(--global-baseline) / 2); /* = 4px */
+	--global-whitespace-sm: calc(var(--global-baseline) * 1); /*  = 8px */
+	--global-whitespace-md: calc(var(--global-baseline) * 2); /*  = 16px */
+	--global-whitespace-lg: calc(var(--global-baseline) * 4); /*  = 32px */
+	--global-whitespace-xl: calc(var(--global-whitespace) * 2); /*  = 48px */
+	--global-whitespace-xxl: calc(var(--global-whitespace) * 3); /*  = 72px */
+
+	/*fontsizes: modular scale met base 16px en ratio 1.25*/
+	--global-fontsize-xs: 10px;
+	--global-fontsize-sm: 13px;
+	--global-fontsize: 16px;
+	--global-fontsize-md: 20px;
+	--global-fontsize-lg: 25px;
+	--global-fontsize-xl: 31px;
+	--global-fontsize-xxl: 39px;
+	--global-fontsize-xxxl: 48px;
+
+	/*error*/
+
+	--global-color-error: #fe5e33;
+	--global-input-error-boxShadowColor: #fe5e33;
+	--input-border: none;
 }
 
 /*------------------------------------*\
@@ -84,30 +72,22 @@
   Global page styles + universal box-sizing:
 */
 html {
-  font-size: var(--global-fontsize);
-  /*16px*/
-  line-height: 1.5;
-  font-family: 'Poppins', Helvetica, arial, sans-serif;
-  font-weight: 400;
-  color: var(--global-color-omega);
-  background-color: var(--global-color-neutral-xxxx-light);
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  height: 100%;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color: var(--global-color-neutral-xx-light);
-    background-color: var(--global-color-neutral-xx-dark);
-  }
+	font-size: var(--global-fontsize); /*16px*/
+	line-height: 1.5;
+	font-family: 'Poppins', Helvetica, arial, sans-serif;
+	font-weight: 400;
+	color: var(--global-color-omega);
+	background-color: var(--global-color-neutral-xxxx-light);
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	height: 100%;
 }
 
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
+	box-sizing: inherit;
 }
 
 ::-moz-selection {
@@ -117,7 +97,7 @@ html {
 }
 
 ::selection {
-	background: var(--global-color-selection);
+	background: var(--global-color-alpha-light);
 	color: var(--global-color-neutral-xxxx-light);
 	text-shadow: none;
 }
@@ -131,8 +111,8 @@ Elements: Images
 Default markup for images to make them responsive
 */
 img {
-  max-width: 100%;
-  vertical-align: top;
+	max-width: 100%;
+	vertical-align: top;
 }
 
 /*
@@ -143,34 +123,34 @@ img {
 h1,
 h2,
 h3 {
-  font-weight: 700;
+	font-weight: 700;
 }
 
 h1 {
-  font-size: var(--global-fontsize-xl);
-  line-height: calc(var(--global-baseline) * 6);
-  margin: 0 0 var(--global-whitespace);
+	font-size: var(--global-fontsize-xl);
+	line-height: calc(var(--global-baseline) * 6);
+	margin: 0 0 var(--global-whitespace);
 }
 
 h2 {
-  font-size: var(--global-fontsize-lg);
-  line-height: calc(var(--global-baseline) * 5);
-  margin: 0 0 var(--global-whitespace);
+	font-size: var(--global-fontsize-lg);
+	line-height: calc(var(--global-baseline) * 5);
+	margin: 0 0 var(--global-whitespace);
 }
 
 h3 {
-  font-size: var(--global-fontsize-md);
-  line-height: calc(var(--global-baseline) * 4);
-  margin: 0 0 var(--global-whitespace);
+	font-size: var(--global-fontsize-md);
+	line-height: calc(var(--global-baseline) * 4);
+	margin: 0 0 var(--global-whitespace);
 }
 
 h4,
 h5,
 h6 {
-  font-size: var(--global-fontsize);
-  font-weight: 600;
-  line-height: calc(var(--global-baseline) * 3);
-  margin: 0 0 var(--global-whitespace);
+	font-size: var(--global-fontsize);
+	font-weight: 600;
+	line-height: calc(var(--global-baseline) * 3);
+	margin: 0 0 var(--global-whitespace);
 }
 
 p,
@@ -180,80 +160,87 @@ dl,
 table,
 address,
 figure {
-  margin: 0 0 var(--global-whitespace);
+	margin: 0 0 var(--global-whitespace);
 }
 
 ul,
 ol {
-  padding-left: var(--global-whitespace);
+	padding-left: var(--global-whitespace);
 }
 
 li ul,
 li ol {
-  margin-bottom: 0;
+	margin-bottom: 0;
 }
-
+ul {
+	list-style-type: none;
+}
 blockquote {
-  font-style: normal;
-  font-size: var(--global-fontsize-md);
-  line-height: calc(var(--global-baseline) * 6);
-  margin: 0 0 var(--global-whitespace);
+	font-style: normal;
+	font-size: var(--global-fontsize-md);
+	line-height: calc(var(--global-baseline) * 6);
+	margin: 0 0 var(--global-whitespace);
 }
 
 blockquote * {
-  font-size: inherit;
-  line-height: inherit;
+	font-size: inherit;
+	line-height: inherit;
 }
 
 figcaption {
-  font-weight: 400;
-  font-size: var(--global-fontsize-sm);
-  line-height: calc(var(--global-baseline) * 2);
-  margin-top: var(--global-whitespace-xxs);
+	font-weight: 400;
+	font-size: var(--global-fontsize-sm);
+	line-height: calc(var(--global-baseline) * 2);
+	margin-top: var(--global-whitespace-xxs);
 }
 
 hr {
-  border: 0;
-  height: var(--global-borderWidth);
-  background: var(--global-color-neutral-x-light);
-  margin: 0 0 var(--global-whitespace);
+	border: 0;
+	height: var(--global-borderWidth);
+	background: var(--global-color-neutral-x-light);
+	margin: 0 0 var(--global-whitespace);
 }
 
 a,
 a:visited {
-  transition: all var(--global-transitionTiming-alpha);
-  color: var(--global-color-alpha);
-  outline-color: var(--global-link-BoxShadowColor);
-  outline-width: medium;
-  outline-offset: 2px;
-  text-decoration: none;
+	transition: all var(--global-transitionTiming-alpha);
+	color: var(--global-color-omega);
+	outline-color: var(--global-link-BoxShadowColor);
+	outline-width: medium;
+	outline-offset: 2px;
+	text-decoration: none;
 }
 
 a:hover,
 a:focus {
-  color: var(--global-color-alpha-light);
+	color: var(--global-color-alpha-light);
 }
 
 a:active {
-  color: var(--global-color-alpha-dark);
+	color: var(--global-color-alpha-dark);
 }
 
 label,
 input {
-  display: block;
+	display: block;
 }
 
 input::placeholder {
-  color: var(--color-placeholder, var(--global-color-neutral-x-light));
+	color: var(--color-placeholder, var(--global-color-neutral-x-light));
 }
-
+input::-webkit-clear-button {
+	/* Verwijderd het blauwe kruis bij de time input */
+	-webkit-appearance: none;
+	margin: 0;
+}
 body {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  margin: 0px;
-  /* background-image: url(LoginMentor.png);
-background-repeat: no-repeat;  */
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	margin: 0px;
+
+	/* background-image: url(LoginMentor.png);
+	background-repeat: no-repeat;  */
 }
 
 /*------------------------------------*\
@@ -265,8 +252,8 @@ background-repeat: no-repeat;  */
   Creates a horizontal row that stretches the viewport and adds padding around children
 */
 .o-row {
-  position: relative;
-  padding: 0 var(--global-whitespace);
+	position: relative;
+	padding: 0 var(--global-whitespace);
 }
 
 /*
@@ -288,11 +275,11 @@ background-repeat: no-repeat;  */
   Creates vertical whitespace between adjacent sections inside a row
 */
 .o-section {
-  position: relative;
+	position: relative;
 }
 
 .o-section + .o-section {
-  padding-top: var(--global-whitespace);
+	padding-top: var(--global-whitespace);
 }
 
 @media (min-width: 768px) {
@@ -320,7 +307,7 @@ background-repeat: no-repeat;  */
 	height: auto;
 	margin-top: 56px;
 }
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
 	.o-header {
 		height: 100vh;
 		display: flex;
@@ -330,24 +317,22 @@ background-repeat: no-repeat;  */
 	}
 }
 
-/*
-  Objects: Row
-  ---
-  Creates a horizontal row that stretches the viewport and adds padding around children
-*/
-.o-header {
-  height: auto;
+.c-spreadPage > .o-header {
+	height: 20vh;
+}
+
+.c-spreadPage-noIcon > .o-header {
+	height: 15vh;
 }
 
 @media (min-width: 768px) {
-  .o-header {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+	.c-spreadPage > .o-header {
+		height: 30vh;
+	}
+	.c-spreadPage-noIcon > .o-header {
+		height: 25vh;
+	}
 }
-
 /*
   Objects: Layout
   ---
@@ -356,115 +341,115 @@ background-repeat: no-repeat;  */
   with width utilities
 */
 .o-layout {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .o-layout__item {
-  width: 100%;
+	width: 100%;
 }
 
 /* gutter modifiers, these affect o-layout__item too */
 .o-layout--gutter {
-  margin: 0 -12px;
+	margin: 0 -12px;
 }
 
 .o-layout--gutter > .o-layout__item {
-  padding: 0 12px;
+	padding: 0 12px;
 }
 
 .o-layout--gutter-sm {
-  margin: 0 -6px;
+	margin: 0 -6px;
 }
 
 .o-layout--gutter-sm > .o-layout__item {
-  padding: 0 6px;
+	padding: 0 6px;
 }
 
 .o-layout--gutter-lg {
-  margin: 0 calc(var(--global-whitespace) * -1);
+	margin: 0 calc(var(--global-whitespace) * -1);
 }
 
 .o-layout--gutter-lg > .o-layout__item {
-  padding: 0 var(--global-whitespace);
+	padding: 0 var(--global-whitespace);
 }
 
 .o-layout--gutter-xl {
-  margin: 0 calc(var(--global-whitespace-lg) * -1);
+	margin: 0 calc(var(--global-whitespace-lg) * -1);
 }
 
 .o-layout--gutter-xl > .o-layout__item {
-  padding: 0 var(--global-whitespace-lg);
+	padding: 0 var(--global-whitespace-lg);
 }
 
 /* reverse horizontal row modifier */
 .o-layout--row-reverse {
-  flex-direction: row-reverse;
+	flex-direction: row-reverse;
 }
 
 /* Horizontal alignment modifiers*/
 .o-layout--justify-start {
-  justify-content: flex-start;
+	justify-content: flex-start;
 }
 
 .o-layout--justify-end {
-  justify-content: flex-end;
+	justify-content: flex-end;
 }
 
 .o-layout--justify-center {
-  justify-content: center;
+	justify-content: center;
 }
 
 .o-layout--justify-space-around {
-  justify-content: space-around;
+	justify-content: space-around;
 }
 
 .o-layout--justify-space-evenly {
-  justify-content: space-evenly;
+	justify-content: space-evenly;
 }
 
 .o-layout--justify-space-between {
-  justify-content: space-between;
+	justify-content: space-between;
 }
 
 /* Vertical alignment modifiers */
 .o-layout--align-start {
-  align-items: flex-start;
+	align-items: flex-start;
 }
 
 .o-layout--align-end {
-  align-items: flex-end;
+	align-items: flex-end;
 }
 
 .o-layout--align-center {
-  align-items: center;
+	align-items: center;
 }
 
 .o-layout--align-baseline {
-  align-items: baseline;
+	align-items: baseline;
 }
 
 /* Vertical alignment modifiers that only work if there is one than one flex item */
 .o-layout--align-content-start {
-  align-content: start;
+	align-content: start;
 }
 
 .o-layout--align-content-end {
-  align-content: end;
+	align-content: end;
 }
 
 .o-layout--align-content-center {
-  align-content: center;
+	align-content: center;
 }
 
 .o-layout--align-content-space-around {
-  align-content: space-around;
+	align-content: space-around;
 }
 
 .o-layout--align-content-space-between {
-  align-content: space-between;
+	align-content: space-between;
 }
 
 /*
@@ -473,8 +458,8 @@ background-repeat: no-repeat;  */
   Small reusable object to remove default list styling from lists
 */
 .o-list {
-  list-style: none;
-  padding: 0;
+	list-style: none;
+	padding: 0;
 }
 
 /*
@@ -482,840 +467,6 @@ background-repeat: no-repeat;  */
   ---
   Small button reset object
 */
-.o-button-reset {
-  border: none;
-  margin: 0;
-  padding: 0;
-  width: auto;
-  overflow: visible;
-  background: transparent;
-  /* inherit font & color from ancestor */
-  color: inherit;
-  font: inherit;
-  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
-  line-height: normal;
-  /* Corrects font smoothing for webkit */
-  -webkit-font-smoothing: inherit;
-  -moz-osx-font-smoothing: inherit;
-  /* Corrects inability to style clickable `input` types in iOS */
-  -webkit-appearance: none;
-}
-
-/*------------------------------------*\
-#COMPONENTS
-\*------------------------------------*/
-/*content*/
-.c-content {
-  margin: auto;
-}
-
-@media (min-width: 768px) {
-  .c-content {
-    display: flex;
-    justify-content: center;
-  }
-}
-
-/* .c-welcome {
-opacity: 0;
-width: 0;
-}
-
-@media (min-width: 768px) {
-.c-welcome {
-  opacity: 1;
-  width: auto;
-}
-} */
-/*
-  Component: Logo
-  ---
-  Everything logo related here
-*/
-.c-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: var(--global-whitespace-xl);
-  margin-bottom: 0;
-  padding: var(--global-whitespace-lg) var(--global-whitespace-md);
-}
-
-.c-logo__symbol {
-  background-color: var(--global-color-beta);
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--global-color-beta);
-}
-
-.c-logo__name {
-  font-size: 20px;
-  margin-left: var(--global-whitespace-md);
-  color: var(--global-color-omega);
-}
-
-@media (min-width: 768px) {
-  .c-logo {
-    margin: auto;
-    flex-direction: column;
-  }
-
-  .c-logo__name {
-    margin: 0;
-    font-size: 48px;
-  }
-}
-
-/*
-  Component: header image
-*/
-.c-headerImage {
-  margin-bottom: 56px;
-  display: flex;
-  justify-content: center;
-}
-
-.c-forgotPassword {
-  padding: 0 32px;
-}
-
-.c-emailForgotPassword {
-  margin-top: 32px;
-  margin-bottom: 48px;
-}
-
-.c-forgotPasswordMessage {
-  padding-bottom: 40px;
-}
-
-/*
-  Component: Title
-  ---
-  title of the page
-*/
-.c-title {
-  font-size: var(--global-fontsize-lg);
-}
-
-.c-card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  transform: translateY(-94px);
-}
-
-@media (min-width: 768px) {
-  .c-card {
-    transform: translateY(0);
-  }
-}
-
-/*
-  Component: Forms
-  ---
-  Everything form related here. Including input, label and button
-*/
-.c-form {
-  max-width: 640px;
-  height: fit-content;
-  margin: auto;
-}
-
-/*makes sure that last paragraph of form__field has no margin bottom so "wachtwoord vergeten" can be close to the input field*/
-.c-form__field > *:last-child {
-  margin-bottom: 0;
-}
-
-@media (min-width: 768px) {
-  .c-form {
-    padding: 88px 80px;
-    border-radius: 14px;
-    /* border: var(--global-borderWidth) solid var(--global-color-alpha); */
-    box-shadow: 0 0 0 1px rgba(252, 140, 113, 0.05), 0 8px 8px rgba(252, 140, 113, 0.5);
-  }
-}
-
-.c-form-AddStep {
-  display: flex;
-  flex-direction: column;
-}
-
-.c-form-card {
-  padding-left: 16px;
-  padding-right: 32px;
-}
-
-.c-form-AddClient {
-  padding: 0 40px;
-}
-
-@media (min-width: 768px) {
-  .c-form-AddStep {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-}
-
-/*
-Component: Spread
-*/
-.c-spreadPage {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  background-color: var(--global-color-alpha-x-light);
-}
-
-/*
-  Component: Label
-  ---
-  Custom label
-*/
-.c-label {
-  margin-bottom: 0;
-  font-size: var(--global-fontsize-md);
-  padding: 0 0 var(--global-whitespace-xs);
-  line-height: calc(var(--global-fontsize-md) * 1.5);
-  color: var(--label-color, var(--global-color-omega));
-  display: flex;
-  justify-content: space-between;
-}
-
-/*
-  Component: Custom input
-  ---
-  Custom input
-*/
-.c-input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  width: 100%;
-  background-color: var(--global-color-neutral-xx-light);
-  font-family: inherit;
-  font-size: var(--global-fontsize-md);
-  line-height: var(--lineheight-input, calc(var(--global-fontsize-md) * 1.5));
-  /*24px*/
-  padding: 9px 8px;
-  outline: none;
-  transition: all var(--global-transitionTiming-alpha);
-  border-radius: var(--global-borderRadius);
-  border: var(--input-border);
-}
-
-.c-input-steps {
-  margin-bottom: 16px;
-}
-
-.c-input-description {
-  height: var(--global-whitespace-xxl);
-  font-size: 13px;
-  line-height: 20px;
-  padding: 8px;
-}
-
-/* .c-input:hover {
-box-shadow: var(--input-hover-boxShadow, 0 0 0 1px var(--global-color-alpha-dark-x));
-}
-
-.c-input:focus,
-.c-input:active {
-box-shadow: var(--input-focus-boxShadow, 0 0 0 3px var(--global-color-alpha-dark-x-transparent), 0 0 0 1px var(--global-color-alpha-dark-x));
-} */
-/**/
-.c-buttonrow {
-  display: flex;
-  justify-content: center;
-  padding-top: var(--global-whitespace-lg);
-  margin-bottom: var(--global-whitespace);
-}
-
-/*
-  Component: Button
-  ---
-  Custom button
-*/
-.c-button {
-  border-radius: var(--global-borderRadius);
-  box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
-  font-size: var(--global-fontsize-md);
-  line-height: calc(var(--global-fontsize-md) * 1.5);
-  display: flex;
-  align-items: center;
-}
-
-.c-backbutton {
-  border: var(--global-borderWidth) solid var(--global-color-alpha);
-  color: var(--global-color-alpha);
-  height: 48px;
-  width: 120px;
-  justify-content: space-around;
-  margin-right: 4px;
-}
-
-.c-backbutton-long {
-  width: 100%;
-  padding-right: 88px;
-  margin-bottom: 64px;
-}
-
-@media (min-width: 768px) {
-  .c-backbutton-long {
-    padding-right: 190px;
-  }
-}
-
-.c-backbutton__arrow {
-  width: 24px;
-  height: 24px;
-  fill: var(--global-color-alpha);
-}
-
-.c-submitbutton {
-  background-color: var(--global-color-alpha);
-  color: var(--global-color-neutral-xxx-light);
-  height: 48px;
-  width: 100%;
-  justify-content: center;
-  margin-left: 4px;
-}
-
-.c-button__mainStepImage {
-  display: flex;
-  margin-bottom: 24px;
-}
-
-/*
-  Component: link
-  ---
-  Custom link
-*/
-.c-link {
-  text-decoration: underline;
-  text-align: end;
-}
-
-/* Component: choice
-  ---
-user can choose role*/
-.c-choices {
-}
-
-.c-choice {
-  border-radius: var(--global-borderRadius);
-  box-shadow: 0 0 0 1px rgba(252, 140, 113, 0.05), 0 8px 8px rgba(252, 140, 113, 0.5);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  height: 160px;
-  font-size: var(--global-fontsize-md);
-  margin: var(--global-whitespace-xl) 0;
-}
-
-/* Component: navigation client
-  ---
-*/
-.c-navigationClient {
-  display: grid;
-  grid-template-columns: 56px 1fr 56px;
-  height: var(--global-whitespace-xl);
-  margin: var(--global-whitespace);
-}
-
-.c-userphoto {
-  justify-self: self-end;
-  height: 100%;
-}
-
-.c-icon {
-  height: 100%;
-}
-
-.c-logout {
-  justify-self: self-end;
-  font-size: var(--global-fontsize-xs);
-  height: 100%;
-}
-
-.c-logout__symbol {
-  height: 75%;
-}
-
-.c-logout a {
-  color: var(--global-color-omega);
-}
-
-/*Component: date
----
-picto representation of current date
-*/
-.c-date {
-  display: flex;
-  justify-content: space-evenly;
-  margin: var(--global-whitespace);
-  /* border: var(--global-borderWidth) solid var(--global-color-beta);
-border-radius: var(--global-borderRadius); */
-}
-
-/*Component: progressive Scheme
----
-
-*/
-.c-progressiveSchemes {
-}
-
-.c-progressiveSchemes .c-progressiveScheme {
-  background-color: var(--global-color-neutral-x-light-transparent);
-  height: 104px;
-  display: flex;
-  align-items: center;
-  /* display: grid;
-grid-template-columns: 56px 1fr;
-align-items: center;
-justify-items: center; */
-  margin: var(--global-whitespace) 0;
-  padding: var(--global-baseline);
-}
-
-.c-progressiveScheme__mainPicto {
-  /* display: flex; */
-  justify-content: center;
-  align-items: center;
-  margin: var(--global-baseline);
-}
-
-.c-progressiveScheme__name {
-  display: flex;
-  align-self: center;
-  font-size: var(--global-fontsize-md);
-  margin: 0 var(--global-baseline);
-}
-
-/*Component: phone button
----
-client can get to contact list
-*/
-.c-phonebutton {
-  background-color: var(--global-color-alpha);
-  border-radius: 23px;
-  height: 56px;
-  width: 104px;
-  display: flex;
-  justify-content: flex-end;
-  /*positioning telephone so that it stays in the same spot on the screen no matter how much you scroll*/
-  position: fixed;
-  top: 563;
-  left: -20;
-  padding-right: var(--global-whitespace-md);
-}
-
-/*SingleStepClient page*/
-/*Component: header in screen step of progressive scheme client
----
-
-*/
-.c-header__step {
-  display: flex;
-  justify-content: space-between;
-  margin: var(--global-whitespace) 0;
-}
-
-.c-progressiveScheme {
-  display: flex;
-}
-
-/*Component: step
----
-the visualisation of 1 step for the client with picto, countsymbol and explanation
-*/
-.c-step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.c-step__countsymbol {
-  position: absolute;
-  top: -12px;
-  left: -12px;
-}
-
-.c-step__pictowrapper {
-  display: block;
-  position: relative;
-  height: 304px;
-  width: 256px;
-  box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
-  border-radius: 14px;
-  padding: auto;
-  margin-bottom: var(--global-whitespace-xl);
-}
-
-.c-step__picto {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.c-new-step {
-  display: flex;
-  flex-direction: row;
-  background-color: #f9f9fa;
-  border-radius: 0px 8px 8px 8px;
-  box-shadow: 0px 2px 4px rgba(165, 163, 191, 0.15);
-  padding: 16px;
-}
-
-.c-add-step {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-.c-step-description {
-  padding-left: 16px;
-  width: 100%;
-}
-
-.c-picto {
-}
-
-.c-step__explanation {
-  width: 256px;
-  text-align: center;
-}
-
-/*Component: footer
----
-navigation footer for client with visualisation of progress, phonebutton and overview steps button
-*/
-.c-footer {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  height: 64px;
-}
-
-.c-footer__navbarClient {
-  box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 -5px 5px -5px rgba(170, 170, 179, 0.75);
-  position: relative;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 100%;
-}
-
-.c-footer__navbarClient .c-emergencycall {
-  position: absolute;
-  top: -32px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.c-footer__navbarClient .c-phonebutton {
-  border-radius: 100%;
-  height: 64px;
-  width: 64px;
-  display: flex;
-  justify-content: center;
-  position: static;
-  padding: 0;
-}
-
-.c-steps__progress {
-  width: 25%;
-  display: flex;
-  justify-content: flex-start;
-}
-
-.c-footer__steps-overview {
-  width: 25%;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.c-stepsOverview__sybmol {
-  border: var(--global-borderWidth) solid var(--global-color-omega);
-  border-radius: 8px;
-  box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
-  height: 40px;
-  width: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/*Registration page mentor part 1*/
-.c-progressRegistration {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: var(--global-whitespace-sm);
-}
-
-/*Registration page mentor part 2*/
-.c-button__addProfilePic {
-  margin-bottom: var(--global-whitespace-sm);
-}
-
-.c-addPhonenumber p {
-  margin-top: 8px;
-}
-
-.c-addContact {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.c-button__addContact {
-  display: flex;
-  justify-content: space-around;
-  width: 178px;
-  font-size: var(--global-fontsize-sm);
-}
-
-.c-button__addStep {
-  margin-top: 32px;
-  margin-bottom: 16px;
-}
-
-.c-button_addStepImage {
-  display: flex;
-}
-
-/*overview steps of progressive scheme for client*/
-.c-overview__header {
-  margin-top: 24px;
-  height: 240px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-
-.c-overview__header .c-progressiveScheme__mainPicto {
-  height: 200px;
-  width: 200px;
-}
-
-.c-overview__header .c-progressiveScheme__mainPicto .c-icon {
-  height: 100%;
-  width: 100%;
-}
-
-.c-overview__header .c-progressiveScheme__name {
-  font-size: var(--global-fontsize-lg);
-  position: absolute;
-  bottom: -16px;
-  left: 0;
-}
-
-.c-overview__step {
-  margin: var(--global-whitespace) 0;
-  background-color: var(--global-color-neutral-xxx-light);
-  display: grid;
-  grid-template-columns: 56px 24px 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-column-gap: var(--global-baseline);
-  border-radius: 8px;
-  position: relative;
-  padding: var(--global-baseline);
-}
-
-.c-overview__step .c-step__countsymbol {
-  position: static;
-  align-self: center;
-}
-
-.c-overview__step .c-step__name {
-  align-self: center;
-}
-
-.c-overview__step .c-picto {
-  grid-row: span 2;
-  align-self: center;
-  width: 56px;
-  height: 56px;
-  border: var(--global-borderWidth) solid var(--global-color-omega);
-  border-radius: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.c-overview__step .c-picto img {
-  width: 80%;
-}
-
-.c-checkmark {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-}
-
-.c-downwardsArrow {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.c-downwardArrowAdd {
-  margin-top: 32px;
-}
-
-/*finished progressive scheme screen --> congratulates the user*/
-/*Component: congrats
----
-gives client feedback by congratulating them on finishing a progressive scheme and shows how their progress bar fills up
-*/
-.c-card__congrats {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.c-congrats {
-  justify-self: center;
-  width: 100%;
-}
-
-.c-congrats__body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.c-congrats__text {
-  text-align: center;
-}
-
-.c-congrats__text > div {
-  font-size: var(--global-fontsize-lg);
-}
-
-.c-congrats__img {
-  width: 194px;
-  height: 156px;
-  margin-bottom: var(--global-whitespace-lg);
-}
-
-.c-congrats__bar {
-  position: relative;
-  width: 100%;
-  height: 24px;
-}
-
-.c-progressbar__front {
-  position: absolute;
-  left: 0;
-  height: 100%;
-}
-
-.c-progressbar__back {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/*conctactlist for client
-
-where client can see all their emergency contacts*/
-.c-navigation__close {
-  margin-top: var(--global-whitespace);
-  display: flex;
-  justify-content: flex-end;
-}
-
-.c-phone {
-  display: flex;
-  align-items: center;
-  border: hotpink;
-  width: 100%;
-  height: 64px;
-  margin-bottom: var(--global-whitespace);
-}
-
-.c-phone h1 {
-  margin-bottom: 0;
-  margin-left: var(--global-whitespace-md);
-}
-
-.c-phone__img {
-  width: 32px;
-  height: 100%;
-  border: hotpink;
-}
-
-.c-phone__img .c-icon {
-  fill: var(--global-color-omega);
-  border: red;
-  height: 100%;
-  width: 100%;
-}
-
-/*Component: contactlist*/
-.c-contactlist {
-  display: flex;
-  justify-content: center;
-}
-
-/*Component: contact
----
-clients can call a contact by touching the contact
-each contact has a profile pic and name
-*/
-.c-contact {
-  display: flex;
-  align-items: center;
-  background-color: var(--global-color-neutral-x-light-transparent);
-  height: 104px;
-  width: 296px;
-  max-width: 640px;
-  margin-bottom: 24px;
-  border-radius: 8px;
-}
-
-.c-contact__profilepic {
-  height: 88px;
-  width: 88px;
-  margin: var(--global-baseline);
-}
-
-.c-contact__profilepic .c-icon {
-  height: 100%;
-  width: 100%;
-}
-
-.c-contact__name {
-  font-size: var(--global-fontsize-lg);
-  margin-left: var(--global-whitespace-lg);
-}
-
-/*
-    Objects: List
-    ---
-    Small reusable object to remove default list styling from lists
-*/
-
-.o-list {
-	list-style: none;
-	padding: 0;
-}
-
-/*
-    Object: Button reset
-    ---
-    Small button reset object
-*/
-
 .o-button-reset {
 	border: none;
 	margin: 0;
@@ -1335,59 +486,48 @@ each contact has a profile pic and name
 	-webkit-appearance: none;
 }
 /*------------------------------------*\
-#COMPONENTS
-\*------------------------------------*/
-
+  #COMPONENTS
+  \*------------------------------------*/
 /*content*/
 .c-content {
-	height: 100vh;
+	margin: auto;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
 	.c-content {
+		width: 1000px;
 		display: flex;
-		justify-content: space-around;
-		width: 704px;
+		justify-content: space-between;
 	}
 }
-@media (min-width: 992px) {
+@media (min-width: 1400px) {
 	.c-content {
-		width: 800px;
+		width: 1200px;
+		display: flex;
 		justify-content: space-between;
 	}
 }
 
-/* .c-welcome {
-	opacity: 0;
-	width: 0;
-}
-
-@media (min-width: 768px) {
-	.c-welcome {
-		opacity: 1;
-		width: auto;
-	}
-} */
 /*
-    Component: Logo
-    ---
-    Everything logo related here
+  Component: Logo
+  ---
+  Everything logo related here
 */
-
 .c-logo {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-bottom: var(--global-whitespace-xl);
+	/*margin-bottom: var(--global-whitespace-xl);*/
 	margin-bottom: 0;
 }
 
 .c-logo__symbol {
-	width: 36px;
 	height: 36px;
+	width: 36px;
 }
+
 .c-logo__name {
-	font-size: 20px;
+	font-size: var(--global-fontsize-md);
 	margin-left: var(--global-whitespace-md);
 	color: var(--global-color-omega);
 }
@@ -1402,16 +542,16 @@ each contact has a profile pic and name
 	padding: var(--global-whitespace-lg) var(--global-whitespace-md);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
 	.c-logo {
 		margin: auto;
-
+		padding: var(--global-whitespace);
 		flex-direction: column;
 	}
 
 	.c-logo__name {
 		margin: 0;
-		font-size: calc(var(--global-fontsize-xxxl));
+		font-size: var(--global-fontsize-xxxl);
 	}
 
 	.c-logo__symbol {
@@ -1421,19 +561,15 @@ each contact has a profile pic and name
 	}
 }
 
-.c-topLeftLogo {
-	height: var(--global-whitespace-xl);
-	margin: var(--global-whitespace);
-}
-
 /*
-    Component: header image 
-*/
+	Component: header image
+  */
 .c-headerImage {
 	margin-bottom: calc(var(--global-baseline) * 7);
 	display: flex;
 	justify-content: center;
 }
+
 /*
     Component: forgotPassword
 */
@@ -1450,15 +586,24 @@ each contact has a profile pic and name
 	padding-bottom: calc(var(--global-baseline) * 5);
 }
 
+.c-reset-description {
+	font-size: var(--global-fontsize-md);
+}
+
 /*
-    Component: Title
-    ---
-    title of the page
+  Component: Title
+  ---
+  title of the page
 */
 .c-title {
 	font-size: var(--global-fontsize-lg);
 }
-
+@media (min-width: 1200px) {
+	.c-title {
+		font-size: var(--global-fontsize-xxxl);
+		text-align: center;
+	}
+}
 .c-title__menu {
 	display: flex;
 	font-size: var(--global-fontsize-md);
@@ -1472,11 +617,28 @@ each contact has a profile pic and name
 	justify-content: space-between;
 	align-content: center;
 }
+.c-title__AddClientsToProgressiveSteps {
+	display: flex;
+	font-size: var(--global-fontsize-md);
+	justify-content: space-between;
+	align-content: center;
+}
 
+.c-title__menu-alignleft {
+	display: flex;
+	font-size: var(--global-fontsize-md);
+	align-content: flex-start;
+}
+
+.c-title__menu-smallmargin__top {
+	display: flex;
+	font-size: var(--global-fontsize-md);
+	align-content: flex-start;
+	margin-top: calc(var(--global-whitespace-md) * -1);
+}
 /*
     Component: card
 */
-
 .c-card {
 	display: flex;
 	justify-content: center;
@@ -1484,23 +646,23 @@ each contact has a profile pic and name
 	height: calc(100vh - 92px);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
 	.c-card {
 		height: 100%;
 	}
 }
 
 /*
-    Component: Forms
-    ---
-    Everything form related here. Including input, label and button
+  Component: Forms
+  ---
+  Everything form related here. Including input, label and button
 */
-
 .c-form {
 	max-width: 640px;
 	height: fit-content;
 	margin: auto;
 }
+
 /*makes sure that last paragraph of form__field has no margin bottom so "wachtwoord vergeten" can be close to the input field*/
 .c-form__field > *:last-child {
 	margin-bottom: 0;
@@ -1511,7 +673,7 @@ each contact has a profile pic and name
 		padding: calc(var(--global-baseline) * 11) calc(var(--global-baseline) * 10);
 		border-radius: var(--global-borderRadius-lg);
 		/* border: var(--global-borderWidth) solid var(--global-color-alpha); */
-		box-shadow: 0 0 0 1px rgba(252, 140, 113, 0.05), 0 8px 8px rgba(252, 140, 113, 0.5);
+		box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
 	}
 }
 
@@ -1524,7 +686,6 @@ each contact has a profile pic and name
 	padding-left: var(--global-whitespace-md);
 	padding-right: var(--global-whitespace-lg);
 }
-
 @media (min-width: 768px) {
 	.c-form-AddStep {
 		padding-left: var(--global-whitespace);
@@ -1533,20 +694,21 @@ each contact has a profile pic and name
 }
 
 /*
-  Component: Spread Page 
+Component: Spread
 */
 .c-spreadPage {
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	justify-content: center;
+	align-items: center;
 	background-color: var(--global-color-alpha-x-light);
 }
 
 /*
-    Component: Label
-    ---
-    Custom label
+  Component: Label
+  ---
+  Custom label
 */
 .c-label {
 	margin-bottom: 0;
@@ -1558,10 +720,13 @@ each contact has a profile pic and name
 	justify-content: space-between;
 }
 
+.c-label-profilePic {
+	font-size: var(--global-fontsize-md);
+}
+
 /*
     Component: error
 */
-
 .c-error {
 	margin-top: var(--global-whitespace-xs);
 	font-size: var(--global-fontsize-sm);
@@ -1574,9 +739,9 @@ each contact has a profile pic and name
 	margin-right: var(--global-baseline);
 }
 /*
-    Component: Custom input
-    ---
-    Custom input
+  Component: Custom input
+  ---
+  Custom input
 */
 .c-input {
 	-webkit-appearance: none;
@@ -1586,12 +751,23 @@ each contact has a profile pic and name
 	background-color: var(--global-color-neutral-xx-light);
 	font-family: inherit;
 	font-size: var(--global-fontsize-md);
-	line-height: var(--lineheight-input, calc(var(--global-fontsize-md) * 1.5)); /*24px*/
+	line-height: var(--lineheight-input, calc(var(--global-fontsize-md) * 1.5));
+	/*24px*/
 	padding: 9px var(--global-baseline);
 	outline: none;
 	transition: all var(--global-transitionTiming-alpha);
 	border-radius: var(--global-borderRadius-sm);
 	border: var(--input-border);
+}
+
+.c-inputClient {
+	padding: var(--global-whitespace-md);
+}
+
+.c-inputs {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .c-input-steps {
@@ -1600,20 +776,21 @@ each contact has a profile pic and name
 
 .c-input-description {
 	height: var(--global-whitespace-xxl);
-	font-size: 13px;
+	font-size: var(--global-fontsize-sm);
 	line-height: 20px;
 	padding: var(--global-baseline);
 }
 
 .c-input:hover {
-	box-shadow: var(--input-hover-boxShadow, 0 0 0 1px var(--global-color-alpha-dark-x));
+	box-shadow: var(--input-focus-boxShadow, 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75));
 }
 
 .c-input:focus,
 .c-input:active {
 	border: var(--input-border, 1px solid var(--global-color-omega));
-	box-shadow: var(--input-focus-boxShadow, 0 0 0 3px var(--global-color-alpha-dark-x-transparent), 0 0 0 1px var(--global-color-alpha-dark-x));
+	box-shadow: var(--input-focus-boxShadow, 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75));
 }
+
 /*
     Component: Custom Select
     ---
@@ -1624,7 +801,6 @@ each contact has a profile pic and name
 	display: block;
 	position: relative;
 	border-radius: var(--global-borderRadius-sm);
-	background-color: red;
 }
 .c-custom-select__input {
 	font-size: inherit;
@@ -1654,15 +830,8 @@ each contact has a profile pic and name
 .c-custom-select__input :last-child {
 	border-radius: var(--global-borderRadius-sm);
 }
-/**/
-.c-buttonrow {
-	display: flex;
-	justify-content: center;
-	padding-top: var(--global-whitespace-lg);
-	margin-bottom: var(--global-whitespace);
-}
-
 /*Search*/
+
 .c-input-search {
 	padding-bottom: var(--global-whitespace-md);
 }
@@ -1677,15 +846,70 @@ each contact has a profile pic and name
 	background-image: url(/magnifying-glass.svg) center / contain no-repeat;
 }
 
+.c-search-input {
+	position: relative;
+}
+
+.c-search:before {
+	content: '';
+	position: absolute;
+	display: block;
+	left: 10px;
+	top: 0;
+	bottom: 0;
+	width: var(--global-whitespace);
+	background: url('magnifying-glass.svg') center / contain no-repeat;
+}
+
+.c-search-list {
+	width: 100%;
+	background-color: var(--global-color-neutral-xx-light);
+	margin: var(--global-whitespace-md) 0 var(--global-whitespace) 0;
+	outline: none;
+	border-radius: var(--global-borderRadius);
+	border: var(--input-border);
+}
+
+.c-search-list__item {
+	width: 100%;
+	background-color: var(--global-color-neutral-xx-light);
+	height: var(--global-whitespace-xl);
+	outline: none;
+	border-radius: var(--global-borderRadius);
+	border: var(--input-border);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: var(--global-baseline);
+	border: 1px solid var(--global-color-omega);
+}
+.c-input-points {
+	width: 50%;
+	padding: 9px var(--global-baseline);
+}
 .c-input-list {
 	padding-bottom: var(--global-whitespace-md);
 }
-/*
-    Component: Button
-    ---
-    Custom button
-*/
 
+.c-register {
+	display: flex;
+	justify-content: flex-end;
+}
+/*
+
+/*buttons*/
+.c-buttonrow {
+	display: flex;
+	justify-content: center;
+	padding-top: var(--global-whitespace-lg);
+	margin-bottom: var(--global-whitespace);
+}
+
+/*
+  Component: Button
+  ---
+  Custom button
+*/
 .c-button {
 	border-radius: var(--global-borderRadius-sm);
 	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
@@ -1694,19 +918,31 @@ each contact has a profile pic and name
 	display: flex;
 	align-items: center;
 }
+
 .c-backbutton {
 	border: var(--global-borderWidth) solid var(--global-color-alpha);
 	color: var(--global-color-alpha);
 	height: var(--global-whitespace-xl);
-	width: 120px;
-
+	width: 75%;
 	justify-content: space-around;
 	margin-right: var(--global-whitespace-xs);
 }
+
+.c-backbutton__text {
+	color: var(--global-color-alpha);
+}
+
 .c-backbutton-long {
 	width: 100%;
-	padding-right: 88px;
+	padding-right: 30%;
 	margin-bottom: 64px;
+	background-color: var(--global-color-alpha);
+	fill: white;
+	color: white;
+}
+
+.c-popup-form--card > .c-backbutton {
+	width: 100%;
 }
 
 @media (min-width: 768px) {
@@ -1725,20 +961,68 @@ each contact has a profile pic and name
 	background-color: var(--global-color-alpha);
 	color: var(--global-color-neutral-xxx-light);
 	height: var(--global-whitespace-xl);
-	width: 176px;
+	width: 100%;
 	justify-content: center;
 	margin-left: var(--global-whitespace-xs);
 }
-
+.c-submitbutton__arrow {
+	width: var(--global-whitespace);
+	height: var(--global-whitespace);
+	transform: scaleX(-1) translateX(-10px);
+	fill: var(--global-color-neutral-xxxx-light);
+}
+.c-popup-form--card > .c-submitbutton {
+	width: 100%;
+	margin-left: 0;
+	margin-bottom: calc(var(--global-baseline) * 2);
+}
+.c-submitbutton-long {
+	width: 100%;
+}
 .c-button__mainStepImage {
 	display: flex;
 	margin-bottom: var(--global-whitespace);
 }
 
+.c-upload {
+	display: flex;
+	justify-content: center;
+	margin: calc(var(--global-whitespace-xs) * 5);
+}
+
+.c-uploadbutton {
+	border: none;
+	color: var(--global-color-neutral-xxx-light);
+	background-color: #438787;
+	height: 36px;
+	width: calc(var(--global-whitespace) * 16);
+}
+
+.c-uploadbutton__arrowbox {
+	border-radius: var(--global-borderRadius);
+	background-color: var(--global-color-beta);
+	width: 36px;
+	height: 36px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.c-uploadbutton__arrow {
+	width: var(--global-whitespace);
+	height: var(--global-whitespace);
+	transform: rotate(90deg);
+	fill: var(--global-color-neutral-xxx-light);
+}
+
+.c-uploadbutton__text {
+	transform: translateX(10px);
+}
+
 /*
-    Component: link
-    ---
-    Custom link
+  Component: link
+  ---
+  Custom link
 */
 .c-link {
 	text-decoration: underline;
@@ -1746,8 +1030,11 @@ each contact has a profile pic and name
 }
 
 /* Component: choice
-    ---
-	user can choose role*/
+  ---
+user can choose role*/
+.c-choices {
+}
+
 .c-choice {
 	border-radius: var(--global-borderRadius-sm);
 	box-shadow: 0 0 0 1px rgba(252, 140, 113, 0.05), 0 8px 8px rgba(252, 140, 113, 0.5);
@@ -1755,18 +1042,24 @@ each contact has a profile pic and name
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-evenly;
-	height: 160px;
+	height: calc(var(--global-baseline) * 20);
 	font-size: var(--global-fontsize-md);
 	margin: var(--global-whitespace-xl) 0;
 }
+.c-choice div {
+	color: var(--global-color-alpha);
+}
+.c-symbol__choice {
+	display: flex;
+	justify-content: center;
+}
 
 /* Component: navigation client
-    ---
-	*/
+  ---
+*/
 .c-navigationClient {
 	display: grid;
 	grid-template-columns: 56px 1fr 56px;
-
 	height: var(--global-whitespace-xl);
 	margin: var(--global-whitespace);
 }
@@ -1785,41 +1078,43 @@ each contact has a profile pic and name
 	font-size: var(--global-fontsize-xs);
 	height: 100%;
 }
+
 .c-logout__symbol {
 	height: 75%;
 }
+
 .c-logout a {
 	color: var(--global-color-omega);
 }
 
 /*Component: date
- ---
- picto representation of current date
-	*/
-
+---
+picto representation of current date
+*/
 .c-date {
 	display: flex;
 	justify-content: space-evenly;
 	margin: var(--global-whitespace);
 	/* border: var(--global-borderWidth) solid var(--global-color-beta);
-	border-radius: var(--global-borderRadius); */
+border-radius: var(--global-borderRadius); */
 }
 
 /*Component: progressive Scheme
- ---
+---
 
-	*/
+*/
+.c-progressiveSchemes {
+}
 
 .c-progressiveSchemes .c-progressiveScheme {
 	background-color: var(--global-color-neutral-x-light-transparent);
 	height: 104px;
 	display: flex;
 	align-items: center;
-
 	/* display: grid;
-	grid-template-columns: 56px 1fr;
-	align-items: center;
-	justify-items: center; */
+grid-template-columns: 56px 1fr;
+align-items: center;
+justify-items: center; */
 	margin: var(--global-whitespace) 0;
 	padding: var(--global-baseline);
 }
@@ -1838,16 +1133,18 @@ each contact has a profile pic and name
 	margin: 0 var(--global-baseline);
 }
 
-/*
-    Component: ClientListButton
-*/
+/*Anja until phone button*/
+/*Component: ClientListButton
+ Add clients to the clientlist
+
+	*/
 
 .c-button__addClient {
 	display: flex;
 	justify-content: space-between;
 	background-color: var(--global-color-neutral-x-light-transparent);
 	font-size: var(--global-fontsize-sm);
-	border-radius: calc(var(--global-borderRadius-sm) * 4);
+	border-radius: var(--global-borderRadius-lg);
 	line-height: var(--global-fontsize-sm);
 	padding: var(--global-baseline) 0;
 	height: 100%;
@@ -1859,23 +1156,29 @@ each contact has a profile pic and name
 
 .c-button__addClient-symbol {
 	padding-right: var(--global-baseline);
+	justify-content: center;
+	align-items: center;
 }
 /*Component: Calendar
  A mentor has an overview of all his clients
 
   */
 
+/* checken wat we hier nog van nodig hebben*/
 .c-calendar {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
-
 .c-calendar__arrow {
 	width: 9px;
-	height: 16px;
+	height: var(--global-whitespace-md);
 }
-
+.c-time {
+	display: flex;
+	align-items: center;
+	padding-top: var(--global-whitespace-sm);
+}
 .c-time__month {
 	text-align: center;
 }
@@ -1918,7 +1221,7 @@ each contact has a profile pic and name
 	width: 13.6%;
 	text-align: center;
 	margin-bottom: 5px;
-	font-size: 12px;
+	font-size: var(--global-fontsize-sm);
 	color: #777;
 }
 
@@ -1929,10 +1232,37 @@ each contact has a profile pic and name
 	color: white !important;
 }
 
-/*Component: ClientList
- A mentor has an overview of all his clients
+/* Component: chooce photo
+  ---
+user can choose a picto or photo for their stepplan or client*/
+.c-choose {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	grid-column-gap: var(--global-baseline);
+	grid-row-gap: var(--global-baseline);
+}
 
-	*/
+.c-choose__picto {
+	place-self: center;
+	width: calc(var(--global-baseline) * 11);
+	height: calc(var(--global-baseline) * 11);
+}
+
+@media (min-width: 576px) {
+	.c-choose {
+		grid-template-columns: repeat(6, 1fr);
+	}
+}
+
+@media (min-width: 768px) {
+	.c-choose {
+		grid-template-columns: repeat(7, 1fr);
+	}
+}
+/*Component: ClientList
+   A mentor has an overview of all his clients
+	  */
 
 .c-clients {
 }
@@ -1942,17 +1272,18 @@ each contact has a profile pic and name
 	grid-template-columns: 64px 1fr 20px;
 	grid-template-rows: auto auto;
 	background-color: var(--global-color-neutral-x-light-transparent);
-	height: 80px;
+	height: calc(var(--global-baseline) * 10);
 	margin: var(--global-whitespace) 0;
 	padding: var(--global-baseline);
+	border-radius: var(--global-borderRadius-md);
 }
 
 .c-client__userPhoto {
 	justify-content: center;
 	align-items: center;
 	margin: var(--global-baseline);
-	height: 48px;
-	width: 48px;
+	height: var(--global-whitespace-xl);
+	width: var(--global-whitespace-xl);
 }
 
 .c-client__name {
@@ -1960,6 +1291,10 @@ each contact has a profile pic and name
 	align-self: center;
 	font-size: var(--global-fontsize-md);
 	margin: 0 var(--global-baseline);
+}
+
+.c-client-page {
+	padding: 0 calc(var(--global-baseline) * 5) 0 calc(var(--global-baseline) * 5);
 }
 
 .c-client__delete {
@@ -1977,21 +1312,15 @@ each contact has a profile pic and name
 	}
 
 	.c-clients .c-client {
-		display: grid;
-		grid-template-columns: 64px 1fr 20px;
-		grid-template-rows: auto auto;
-		background-color: var(--global-color-neutral-x-light-transparent);
-		height: 80px;
 		width: 300px;
-		margin: var(--global-whitespace) 0;
-		padding: var(--global-baseline);
 	}
 }
-
 /*Component: PlanningList
  A mentor has an overview of the planning of today
-
   */
+.c-ascribeclient-page {
+	max-width: 310px;
+}
 .c-hour {
 	font-size: var(--global-fontsize);
 }
@@ -2004,9 +1333,10 @@ each contact has a profile pic and name
 	grid-template-columns: 64px 1fr 20px;
 	grid-template-rows: auto auto;
 	background-color: var(--global-color-neutral-x-light-transparent);
-	height: 80px;
+	height: calc(var(--global-baseline) * 10);
 	margin: var(--global-whitespace) 0;
 	padding: var(--global-baseline);
+	border-radius: var(--global-borderRadius-md);
 }
 
 .c-planning__userPhoto {
@@ -2061,23 +1391,13 @@ each contact has a profile pic and name
 		grid-template-rows: auto;
 		margin-left: calc(var(--global-baseline) * 8);
 	}
-
 	.c-plannings .c-planning {
-		display: grid;
-		grid-template-columns: 64px 1fr 20px;
-		grid-template-rows: auto auto;
-		background-color: var(--global-color-neutral-x-light-transparent);
-		height: 80px;
 		width: 300px;
-		margin: var(--global-whitespace) 0;
-		padding: var(--global-baseline);
 	}
 }
-
 /*Component: StepplansList
- A mentor has an overview of all his stepplans
-
-	*/
+   A mentor has an overview of all his stepplans
+	  */
 .c-stepplans {
 }
 
@@ -2086,9 +1406,10 @@ each contact has a profile pic and name
 	grid-template-columns: 64px 1fr 20px;
 	grid-template-rows: auto auto;
 	background-color: var(--global-color-neutral-x-light-transparent);
-	height: 80px;
+	height: calc(var(--global-baseline) * 10);
 	margin: var(--global-whitespace) 0;
 	padding: var(--global-baseline);
+	border-radius: var(--global-borderRadius-md);
 }
 
 .c-stepplan__picto {
@@ -2117,31 +1438,24 @@ each contact has a profile pic and name
 
 @media (min-width: 992px) {
 	.c-stepplans {
-		display: grid;
 		grid-template-columns: auto auto;
 		grid-template-rows: auto;
 		margin-left: calc(var(--global-baseline) * 8);
 	}
 
 	.c-stepplans .c-stepplan {
-		display: grid;
-		grid-template-columns: 64px 1fr 20px;
-		grid-template-rows: auto auto;
-		background-color: var(--global-color-neutral-x-light-transparent);
-		height: 80px;
 		width: 300px;
-		margin: var(--global-whitespace) 0;
-		padding: var(--global-baseline);
 	}
 }
 
 /* Component: profile mentor
-    ---
-	*/
+	  ---
+	  */
 
 .c-mentor__logout {
 	display: grid;
 	grid-template-columns: 1fr 56px;
+
 	height: var(--global-whitespace-xl);
 	margin: var(--global-whitespace) var(--global-whitespace) var(--global-whitespace) 0;
 }
@@ -2152,17 +1466,8 @@ each contact has a profile pic and name
 	text-decoration: underline;
 }
 
-@media (min-width: 992px) {
-	.c-stepplans {
-		display: grid;
-		grid-template-columns: auto auto;
-		grid-template-rows: auto;
-		margin-left: calc(var(--global-baseline) * 8);
-	}
-}
-
 .c-profile__picture {
-	padding-bottom: 40px;
+	padding-bottom: calc(var(--global-baseline) * 5);
 	margin-left: -10px;
 }
 
@@ -2182,14 +1487,13 @@ each contact has a profile pic and name
 }
 
 /*Component: phone button
- ---
+---
 client can get to contact list
-	*/
-
+*/
 .c-phonebutton {
 	background-color: var(--global-color-alpha);
 	border-radius: 23px;
-	height: 56px;
+	height: calc(var(--global-baseline) * 7);
 	width: 104px;
 	display: flex;
 	justify-content: flex-end;
@@ -2202,21 +1506,23 @@ client can get to contact list
 
 /*SingleStepClient page*/
 /*Component: header in screen step of progressive scheme client
- ---
+---
 
-	*/
+*/
 .c-header__step {
 	display: flex;
 	justify-content: space-between;
 	margin: var(--global-whitespace) 0;
 }
+
 .c-progressiveScheme {
 	display: flex;
 }
+
 /*Component: step
- ---
+---
 the visualisation of 1 step for the client with picto, countsymbol and explanation
-	*/
+*/
 .c-step {
 	display: flex;
 	flex-direction: column;
@@ -2228,6 +1534,7 @@ the visualisation of 1 step for the client with picto, countsymbol and explanati
 	top: -12px;
 	left: -12px;
 }
+
 .c-step__pictowrapper {
 	display: block;
 	position: relative;
@@ -2272,7 +1579,6 @@ the visualisation of 1 step for the client with picto, countsymbol and explanati
 	justify-content: space-between;
 	align-items: center;
 }
-
 .c-step__explanation {
 	width: 256px;
 	text-align: center;
@@ -2283,16 +1589,16 @@ the visualisation of 1 step for the client with picto, countsymbol and explanati
 }
 
 /*Component: footer
- ---
+---
 navigation footer for client with visualisation of progress, phonebutton and overview steps button
-	*/
-
+*/
 .c-footer {
 	position: absolute;
 	width: 100%;
 	bottom: 0;
-	height: 64px;
+	height: calc(var(--global-baseline) * 8);
 }
+
 .c-footer__navbarClient {
 	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 -5px 5px -5px rgba(170, 170, 179, 0.75);
 	position: relative;
@@ -2301,6 +1607,7 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 	align-items: center;
 	height: 100%;
 }
+
 .c-footer__navbarClient .c-emergencycall {
 	position: absolute;
 	top: -32px;
@@ -2311,13 +1618,14 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 
 .c-footer__navbarClient .c-phonebutton {
 	border-radius: 100%;
-	height: 64px;
-	width: 64px;
+	height: calc(var(--global-baseline) * 8);
+	width: calc(var(--global-baseline) * 8);
 	display: flex;
 	justify-content: center;
 	position: static;
 	padding: 0;
 }
+
 .c-steps__progress {
 	width: 25%;
 	display: flex;
@@ -2329,17 +1637,22 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 	display: flex;
 	justify-content: flex-end;
 }
+
 .c-stepsOverview__sybmol {
 	border: var(--global-borderWidth) solid var(--global-color-omega);
 	border-radius: var(--global-borderRadius-md);
 	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
-	height: 40px;
-	width: 40px;
+	height: calc(var(--global-baseline) * 5);
+	width: calc(var(--global-baseline) * 5);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
+/*Component: footer
+ ---
+navigation footer for menu mentor
+	*/
 .c-navbar {
 	position: absolute;
 	width: 100%;
@@ -2361,21 +1674,21 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 	align-items: center;
 	margin-top: 10px;
 }
-
 .c-section_menu {
 	padding: 0 0 calc(var(--global-whitespace-xxl)) 0;
 }
-
 @media (min-width: 768px) {
 	.c-section_menu {
-		padding: 0 calc(var(--global-whitespace-xxl) * 2) var(--global-whitespace-xxl) calc(var(--global-whitespace-xxl) * 2);
+		padding: 0 calc(var(--global-whitespace-xxl) * 2);
 	}
-
 	.c-section_menu-profile {
 		padding: 0 calc(var(--global-whitespace-xxl) * 2);
 	}
 }
-
+.c-topLeftLogo {
+	height: var(--global-whitespace-xl);
+	margin: var(--global-whitespace);
+}
 @media (min-width: 992px) {
 	.c-topLeftLogo {
 		display: flex;
@@ -2413,8 +1726,8 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 	}
 
 	.c-navbar__mentor {
-		border: var(--global-borderWidth-sm) solid var(--global-color-neutral-xx-light);
-		border-width: 0 var(--global-borderWidth-sm) 0 0;
+		border: var(--global-borderWidth) solid var(--global-color-neutral-xx-light);
+		border-width: 0 var(--global-borderWidth) 0 0;
 		background-color: white;
 		height: 100%;
 		width: calc(var(--global-baseline) * 8);
@@ -2427,7 +1740,7 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 	}
 }
 
-@media (min-width: 1026px) {
+@media (min-width: 1200px) {
 	/* .c-section_menu{ 
     padding: 0 calc(var(--global-whitespace-xxl)*6);
     mag hier niet staan of fuck-up andere schermen
@@ -2438,12 +1751,12 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 }
 
 /*Registration page mentor part 1*/
-
 .c-progressRegistration {
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: var(--global-whitespace-sm);
 }
+
 /*Registration page mentor part 2*/
 .c-button__addProfilePic {
 	margin-bottom: var(--global-whitespace-sm);
@@ -2452,10 +1765,12 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 .c-addPhonenumber p {
 	margin-top: var(--global-baseline);
 }
+
 .c-addContact {
 	display: flex;
 	justify-content: flex-end;
 }
+
 .c-button__addContact {
 	display: flex;
 	justify-content: space-around;
@@ -2471,11 +1786,11 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 .c-button_addStepImage {
 	display: flex;
 }
-/*overview steps of progressive scheme for client*/
 
+/*overview steps of progressive scheme for client*/
 .c-overview__header {
 	margin-top: var(--global-whitespace);
-	height: 240px;
+	height: calc(var(--global-whitespace) * 10);
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -2486,10 +1801,12 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 	height: 200px;
 	width: 200px;
 }
+
 .c-overview__header .c-progressiveScheme__mainPicto .c-icon {
 	height: 100%;
 	width: 100%;
 }
+
 .c-overview__header .c-progressiveScheme__name {
 	font-size: var(--global-fontsize-lg);
 	position: absolute;
@@ -2517,20 +1834,23 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 .c-overview__step .c-step__name {
 	align-self: center;
 }
+
 .c-overview__step .c-picto {
 	grid-row: span 2;
 	align-self: center;
-	width: 56px;
-	height: 56px;
+	width: calc(var(--global-baseline) * 7);
+	height: calc(var(--global-baseline) * 7);
 	border: var(--global-borderWidth) solid var(--global-color-omega);
 	border-radius: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
+
 .c-overview__step .c-picto img {
 	width: 80%;
 }
+
 .c-checkmark {
 	position: absolute;
 	top: -8px;
@@ -2548,9 +1868,8 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 }
 
 /*finished progressive scheme screen --> congratulates the user*/
-
 /*Component: congrats
---- 
+---
 gives client feedback by congratulating them on finishing a progressive scheme and shows how their progress bar fills up
 */
 .c-card__congrats {
@@ -2559,6 +1878,7 @@ gives client feedback by congratulating them on finishing a progressive scheme a
 	align-items: center;
 	justify-content: center;
 }
+
 .c-congrats {
 	justify-self: center;
 	width: 100%;
@@ -2578,6 +1898,7 @@ gives client feedback by congratulating them on finishing a progressive scheme a
 .c-congrats__text > div {
 	font-size: var(--global-fontsize-lg);
 }
+
 .c-congrats__img {
 	width: 194px;
 	height: 156px;
@@ -2595,6 +1916,7 @@ gives client feedback by congratulating them on finishing a progressive scheme a
 	left: 0;
 	height: 100%;
 }
+
 .c-progressbar__back {
 	position: absolute;
 	left: 0;
@@ -2605,7 +1927,6 @@ gives client feedback by congratulating them on finishing a progressive scheme a
 /*conctactlist for client
 
 where client can see all their emergency contacts*/
-
 .c-navigation__close {
 	margin-top: var(--global-whitespace);
 	display: flex;
@@ -2615,24 +1936,23 @@ where client can see all their emergency contacts*/
 .c-phone {
 	display: flex;
 	align-items: center;
-	border: hotpink;
 	width: 100%;
-	height: 64px;
+	height: calc(var(--global-baseline) * 8);
 	margin-bottom: var(--global-whitespace);
 }
+
 .c-phone h1 {
 	margin-bottom: 0;
 	margin-left: var(--global-whitespace-md);
 }
+
 .c-phone__img {
 	width: var(--global-whitespace-lg);
 	height: 100%;
-	border: hotpink;
 }
 
 .c-phone__img .c-icon {
 	fill: var(--global-color-omega);
-	border: red;
 	height: 100%;
 	width: 100%;
 }
@@ -2642,8 +1962,9 @@ where client can see all their emergency contacts*/
 	display: flex;
 	justify-content: center;
 }
+
 /*Component: contact
---- 
+---
 clients can call a contact by touching the contact
 each contact has a profile pic and name
 */
@@ -2655,12 +1976,12 @@ each contact has a profile pic and name
 	width: 296px;
 	max-width: 640px;
 	margin-bottom: var(--global-whitespace);
-	border-radius: var(--global-borderRadius-lg);
+	border-radius: var(--global-borderRadius-md);
 }
 
 .c-contact__profilepic {
-	height: 88px;
-	width: 88px;
+	height: calc(var(--global-baseline) * 11);
+	width: calc(var(--global-baseline) * 11);
 	margin: var(--global-baseline);
 }
 
@@ -2673,6 +1994,7 @@ each contact has a profile pic and name
 	font-size: var(--global-fontsize-lg);
 	margin-left: var(--global-whitespace-lg);
 }
+
 /*detailinfoclient page
 ---
 mentor can see detail info of client and can choose between calendar, profile info and feedback
@@ -2708,8 +2030,8 @@ mentor can see detail info of client and can choose between calendar, profile in
 }
 
 .c-clientphoto {
-	width: 56px;
-	height: 56px;
+	width: calc(var(--global-baseline) * 7);
+	height: calc(var(--global-baseline) * 7);
 }
 .c-clientname {
 	font-size: var(--global-fontsize-lg);
@@ -2718,7 +2040,7 @@ mentor can see detail info of client and can choose between calendar, profile in
 /*component: diagram*/
 
 .c-bodyDetailClient {
-	height: 100vh - 140px;
+	height: calc(100vh - 140px);
 
 	margin: auto 0;
 }
@@ -2752,7 +2074,7 @@ mentor can see detail info of client and can choose between calendar, profile in
 	right: 12.5%;
 	width: 25%;
 }
-.c-planning {
+.c-diagram__circle .c-planningClient {
 	position: absolute;
 	width: 25%;
 	bottom: 12.5%;
@@ -2773,19 +2095,57 @@ mentor can see detail info of client and can choose between calendar, profile in
 }
 
 .c-contact__wrapper .c-profile {
+	display: grid;
+	grid-template-columns: 1fr 24px;
+	grid-template-rows: 48px 1fr;
+}
+.c-contact__wrapper .c-profile :first-child {
 }
 
+.c-contact__wrapper .c-profile .c-button__addProfilePic {
+	grid-row: 2;
+	grid-column: 1;
+	display: flex;
+	justify-content: flex-start;
+}
+.c-delete {
+	width: var(--global-whitespace);
+	height: var(--global-whitespace);
+}
 .c-contact__wrapper {
 	box-shadow: var(--input-focus-boxShadow, 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75));
 	border-radius: var(--global-borderRadius-lg);
-	padding: calc(var(--global-whitespace));
-	margin-bottom: calc(var(--global-whitespace-md));
+	padding: var(--global-whitespace-md);
+	margin-bottom: var(--global-whitespace-md);
 }
 
 .c-contact__wrapper + .c-addContact {
 	display: flex;
 	justify-content: center;
 	font-size: inherit;
+}
+/*
+  Popup
+*/
+.c-popup-form {
+	display: none;
+	position: absolute;
+	top: 168;
+	left: 36;
+	right: 36;
+}
+.c-popup-form--card {
+	background-color: var(--global-color-neutral-xxxx-light);
+	border-radius: var(--global-borderRadius-lg);
+	width: 100%;
+	padding: 36px;
+	max-width: 552px;
+	line-height: 24px; /*inherit*/
+	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.c-popup-blur {
+	filter: blur(8px);
 }
 
 /*
@@ -2827,10 +2187,10 @@ mentor can see detail info of client and can choose between calendar, profile in
 }
 
 /*
-    Utilities: max-width
-    ---
-    Utility classes to put specific max widths onto elements
-*/
+	  Utilities: max-width
+	  ---
+	  Utility classes to put specific max widths onto elements
+  */
 
 .u-max-width-xs {
 	max-width: 27em !important;
@@ -2853,10 +2213,10 @@ mentor can see detail info of client and can choose between calendar, profile in
 }
 
 /*
-    Utilities: align
-    ---
-    Utility classes align text or components
-*/
+	  Utilities: align
+	  ---
+	  Utility classes align text or components
+  */
 
 .u-align-text-center {
 	text-align: center;
@@ -2867,20 +2227,20 @@ mentor can see detail info of client and can choose between calendar, profile in
 }
 
 /*
-    Utilities: text
-    Utility classes to create smaller or bigger test
-*/
+	  Utilities: text
+	  Utility classes to create smaller or bigger test
+  */
 
 .u-text-sm {
 	font-size: 14px;
 }
 
 /*
-    Utility: Widths
-    ---
-    Utility classes to put specific widths onto elements
-    Will be mostly used on o-layout__item
-*/
+	  Utility: Widths
+	  ---
+	  Utility classes to put specific widths onto elements
+	  Will be mostly used on o-layout__item
+  */
 
 .u-width-auto {
 	width: auto !important;
@@ -3075,18 +2435,18 @@ mentor can see detail info of client and can choose between calendar, profile in
 }
 
 /*
-    Utility: Grid
-    ---
-   Utility classes to put specific column or row spans onto elements
-   
-*/
+	  Utility: Grid
+	  ---
+	 Utility classes to put specific column or row spans onto elements
+	 
+  */
 
 /*
-    Utility: Colors
-    ---
-   Utility classes to change specific colors based on javascript 
-   
-*/
+	  Utility: Colors
+	  ---
+	 Utility classes to change specific colors based on javascript 
+	 
+  */
 
 .s-has-error {
 	--label-color: var(--global-color-error);
@@ -3096,11 +2456,6 @@ mentor can see detail info of client and can choose between calendar, profile in
 	--input-focus-boxShadow: 0 0 0 1px rgba(254, 94, 51, 0.05), 0 4px 4px rgba(254, 94, 51, 0.75);
 }
 
-@media (prefers-color-scheme: dark) {
-	.s-has-error {
-		--input-border: 1px solid var(--global-color-error);
-	}
-}
 .s-correct {
 	--global-color-error: var(--global-color-beta);
 }
@@ -3108,43 +2463,43 @@ mentor can see detail info of client and can choose between calendar, profile in
 	display: none;
 }
 /*------------------------------------*\
-#MEDIA
-\*------------------------------------*/
+  #MEDIA
+  \*------------------------------------*/
 
 /*
-    Media Queries
-    ---
-    EXAMPLE Media Queries for Responsive Design.
-    These examples override the primary ('mobile first') styles.
-    USE THEM INLINE!
-*/
+	  Media Queries
+	  ---
+	  EXAMPLE Media Queries for Responsive Design.
+	  These examples override the primary ('mobile first') styles.
+	  USE THEM INLINE!
+  */
 
 /* Extra small devices (portrait phones, less than 576px)
-No media query since this is the default in mobile first design
-*/
+  No media query since this is the default in mobile first design
+  */
 
 /* Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {}
-*/
+  @media (min-width: 576px) {}
+  */
 
 /* Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {}
-*/
+  @media (min-width: 768px) {}
+  */
 
 /* Large devices (landscape tablets, desktops, 992px and up)
-@media (min-width: 992px) {}
-*/
+  @media (min-width: 992px) {}
+  */
 
 /* Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {}
-*/
+  @media (min-width: 1200px) {}
+  */
 
 /*
-    Print styles.
-    ---
-    Inlined to avoid the additional HTTP request:
-    http://www.phpied.com/delay-loading-your-print-css/
-*/
+	  Print styles.
+	  ---
+	  Inlined to avoid the additional HTTP request:
+	  http://www.phpied.com/delay-loading-your-print-css/
+  */
 
 @media print {
 	*,
@@ -3153,7 +2508,7 @@ No media query since this is the default in mobile first design
 		background: transparent !important;
 		color: #000 !important;
 		/* Black prints faster:
-        http://www.sanbeiji.com/archives/953 */
+		  http://www.sanbeiji.com/archives/953 */
 		box-shadow: none !important;
 		text-shadow: none !important;
 	}
@@ -3168,9 +2523,9 @@ No media query since this is the default in mobile first design
 		content: ' (' attr(title) ')';
 	}
 	/*
-    * Don't show links that are fragment identifiers,
-    * or use the `javascript:` pseudo protocol
-    */
+	  * Don't show links that are fragment identifiers,
+	  * or use the `javascript:` pseudo protocol
+	  */
 	a[href^='#']:after,
 	a[href^='javascript:']:after {
 		content: '';
@@ -3184,9 +2539,9 @@ No media query since this is the default in mobile first design
 		page-break-inside: avoid;
 	}
 	/*
-    * Printing Tables:
-    * http://css-discuss.incutio.com/wiki/Printing_Tables
-    */
+	  * Printing Tables:
+	  * http://css-discuss.incutio.com/wiki/Printing_Tables
+	  */
 	thead {
 		display: table-header-group;
 	}
