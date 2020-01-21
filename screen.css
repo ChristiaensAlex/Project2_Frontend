@@ -84,13 +84,6 @@ html {
 	height: 100%;
 }
 
-@media (prefers-color-scheme: dark) {
-	html {
-		color: var(--global-color-neutral-xx-light);
-		background-color: var(--global-color-neutral-xx-dark);
-	}
-}
-
 *,
 *:before,
 *:after {
@@ -312,7 +305,7 @@ body {
 
 .o-header {
 	height: auto;
-	margin-top: 56px;
+	margin-top: calc(var(--global-baseline) * 7);
 }
 @media (min-width: 1200px) {
 	.o-header {
@@ -524,9 +517,8 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-bottom: var(--global-whitespace-xl);
+	/*margin-bottom: var(--global-whitespace-xl);*/
 	margin-bottom: 0;
-	padding: var(--global-whitespace-lg) var(--global-whitespace-md);
 }
 
 .c-logo__symbol {
@@ -760,7 +752,7 @@ Component: Spread
 	font-family: inherit;
 	font-size: var(--global-fontsize-md);
 	line-height: var(--lineheight-input, calc(var(--global-fontsize-md) * 1.5));
-	/*24px*/
+
 	padding: 9px var(--global-baseline);
 	outline: none;
 	transition: all var(--global-transitionTiming-alpha);
@@ -844,7 +836,7 @@ Component: Spread
 	padding-bottom: var(--global-whitespace-md);
 }
 
-.c-search-input {
+.c-search {
 	content: '';
 	position: absolute;
 	left: 10px;
@@ -854,7 +846,7 @@ Component: Spread
 	background-image: url(/magnifying-glass.svg) center / contain no-repeat;
 }
 
-.c-search {
+.c-search-input {
 	position: relative;
 }
 
@@ -891,7 +883,10 @@ Component: Spread
 	padding: var(--global-baseline);
 	border: 1px solid var(--global-color-omega);
 }
-
+.c-input-points {
+	width: 50%;
+	padding: 9px var(--global-baseline);
+}
 .c-input-list {
 	padding-bottom: var(--global-whitespace-md);
 }
@@ -1226,7 +1221,7 @@ justify-items: center; */
 	width: 13.6%;
 	text-align: center;
 	margin-bottom: 5px;
-	font-size: 12px;
+	font-size: var(--global-fontsize-sm);
 	color: #777;
 }
 
@@ -1265,6 +1260,37 @@ user can choose a picto or photo for their stepplan or client*/
 		grid-template-columns: repeat(7, 1fr);
 	}
 }
+
+.c-client-report {
+	background-color: var(--global-color-neutral-xx-light);
+	border-radius: var(--global-borderRadius-md);
+	display: flex;
+	flex-direction: row;
+	padding: var(--global-whitespace-md);
+	max-width: 296px;
+}
+
+.c-report-description + .c-report-description {
+	margin-left: var(--global-whitespace-md);
+}
+
+.c-report-title {
+	margin-bottom: -12px;
+}
+
+.c-report-scheme {
+	margin-bottom: var(--global-whitespace-lg);
+	margin-left: var(--global-whitespace-lg);
+}
+
+@media (min-width: 992px) {
+	.c-report-schemes {
+		display: grid;
+		grid-template-columns: auto auto;
+		grid-template-rows: auto;
+	}
+}
+
 /*Component: ClientList
    A mentor has an overview of all his clients
 	  */
@@ -1396,7 +1422,7 @@ user can choose a picto or photo for their stepplan or client*/
 		grid-template-rows: auto;
 		margin-left: calc(var(--global-baseline) * 8);
 	}
-	c-plannings .c-planning {
+	.c-plannings .c-planning {
 		width: 300px;
 	}
 }
@@ -1803,8 +1829,8 @@ navigation footer for menu mentor
 }
 
 .c-overview__header .c-progressiveScheme__mainPicto {
-	height: 200px;
-	width: 200px;
+	height: calc(var(--global-baseline) * 25);
+	width: calc(var(--global-baseline) * 25);
 }
 
 .c-overview__header .c-progressiveScheme__mainPicto .c-icon {
@@ -2045,7 +2071,7 @@ mentor can see detail info of client and can choose between calendar, profile in
 /*component: diagram*/
 
 .c-bodyDetailClient {
-	height: 100vh - 140px;
+	height: calc(100vh - 140px);
 
 	margin: auto 0;
 }
@@ -2461,11 +2487,6 @@ mentor can see detail info of client and can choose between calendar, profile in
 	--input-focus-boxShadow: 0 0 0 1px rgba(254, 94, 51, 0.05), 0 4px 4px rgba(254, 94, 51, 0.75);
 }
 
-@media (prefers-color-scheme: dark) {
-	.s-has-error {
-		--input-border: 1px solid var(--global-color-error);
-	}
-}
 .s-correct {
 	--global-color-error: var(--global-color-beta);
 }
