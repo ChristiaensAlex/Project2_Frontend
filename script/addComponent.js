@@ -28,7 +28,9 @@ const onHandlerClickedRemove = function(e) {
 	e.preventDefault();
 	console.log(allSteps);
 	console.log(e.currentTarget.parentNode.parentNode.parentNode);
-	document.querySelector('.js-all-steps').removeChild(e.currentTarget.parentNode.parentNode.parentNode);
+	console.log(e.currentTarget.parentNode.parentNode.parentNode.dataset.number);
+	removefromDB(e.currentTarget.parentNode.parentNode.parentNode.dataset.number);
+	//document.querySelector('.js-all-steps').removeChild(e.currentTarget.parentNode.parentNode.parentNode);
 };
 
 const onHandlerClickedAdd = function(e) {
@@ -45,6 +47,7 @@ const onHandlerClickedAdd = function(e) {
 	allSteps.appendChild(inpStep);
 	removeButton = document.querySelectorAll('.js-remove-button');
 	removeButton.forEach(element => {
+		console.log('activated removebuttons');
 		element.addEventListener('click', onHandlerClickedRemove);
 	});
 };
