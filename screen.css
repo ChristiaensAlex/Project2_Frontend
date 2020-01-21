@@ -584,7 +584,6 @@ body {
 	font-size: var(--global-fontsize-md);
 	text-align: center;
 	margin-bottom: var(--global-whitespace);
-
 }
 .c-form__field > .c-reset-description {
 	margin-top: var(--global-whitespace-lg);
@@ -780,10 +779,25 @@ Component: Spread
 	justify-content: space-between;
 }
 
-.c-label-profilePic {
+.c-label__profilepic {
 	font-size: var(--global-fontsize-md);
+	font-weight: 600;
 }
-
+.c-label__profile {
+	margin-bottom: 0;
+	font-size: var(--global-fontsize-md);
+	font-weight: 600;
+	padding: 0 0 var(--global-whitespace-xs);
+	line-height: var(--global-fontsize-md);
+	color: var(--label-color, var(--global-color-omega));
+	display: flex;
+	justify-content: space-between;
+}
+.c-label__profile + p {
+	font-size: var(--global-fontsize-md);
+	display: flex;
+	flex-wrap: initial;
+}
 /*
     Component: error
 */
@@ -1140,6 +1154,7 @@ user can choose role*/
 	justify-self: self-end;
 	font-size: var(--global-fontsize-xs);
 	height: 100%;
+	grid-column: 3;
 }
 
 .c-logout__symbol {
@@ -1545,15 +1560,42 @@ user can choose a picto or photo for their stepplan or client*/
 /* Component: profile mentor
 	  ---
 	  */
+.c-profileMentor {
+	display: flex;
+	flex-direction: column;
 
-.c-mentor__logout {
-	display: grid;
-	grid-template-columns: 1fr 56px;
-
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+.c-navigationMentor {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	height: var(--global-whitespace-xl);
 	margin: var(--global-whitespace) var(--global-whitespace) var(--global-whitespace) 0;
+	width: 100%;
+	padding: var(--global-whitespace-lg) var(--global-whitespace-lg) 0 var(--global-whitespace-lg);
 }
-
+.c-navigationMentor .c-logout {
+	height: var(--global-whitespace-lg);
+	width: var(--global-whitespace-lg);
+	margin: 0 var(--global-whitespace);
+}
+@media (min-width: 992px) {
+	.c-navigationMentor {
+		position: absolute;
+		top: 0;
+		padding: 0;
+	}
+	.c-navigationMentor .c-logout {
+		height: var(--global-whitespace-lg);
+		width: var(--global-whitespace-lg);
+		position: absolute;
+		right: var(--global-whitespace-xl);
+		top: var(--global-whitespace-xl);
+	}
+}
 .c-modify {
 	font-size: inherit;
 	color: var(--global-color-omega);
@@ -1563,17 +1605,6 @@ user can choose a picto or photo for their stepplan or client*/
 .c-profile__picture {
 	padding-bottom: calc(var(--global-baseline) * 5);
 	margin-left: -10px;
-}
-
-.c-label__profile {
-	margin-bottom: 0;
-	font-size: var(--global-fontsize-sm);
-	font-weight: 600;
-	padding: 0 0 var(--global-whitespace-xs);
-	line-height: var(--global-fontsize-md);
-	color: var(--label-color, var(--global-color-omega));
-	display: flex;
-	justify-content: space-between;
 }
 
 .c-profile__info {
@@ -1777,11 +1808,18 @@ navigation footer for menu mentor
 	}
 	.c-section_menu-profile {
 		padding: 0 calc(var(--global-whitespace-xxl) * 2);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-self: center;
 	}
+}
+.c-topLeftLogo {
+	position: static;
+	margin: 0 var(--global-whitespace);
 }
 .c-topLeftLogo .c-logo__symbol {
 	height: var(--global-whitespace-lg);
-	margin: var(--global-whitespace-lg);
 }
 @media (min-width: 992px) {
 	.c-navbar__mentor {
@@ -1790,13 +1828,12 @@ navigation footer for menu mentor
 	.c-topLeftLogo {
 		position: absolute;
 
-		top: 12;
+		top: 16;
 
 		display: flex;
 		height: fit-content;
-
+		margin: 0 0 calc(var(--global-baseline) * 7) 0;
 		width: 64px;
-		margin-bottom: calc(var(--global-baseline) * 7);
 	}
 	.c-topLeftLogo .c-logo__symbol {
 		height: var(--global-whitespace-lg);
