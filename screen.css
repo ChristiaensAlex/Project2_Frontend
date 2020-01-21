@@ -580,6 +580,27 @@ body {
 	flex-wrap: unset;
 	text-align: flex;
 }
+.c-title.c-reset-description {
+	font-size: var(--global-fontsize-md);
+	text-align: center;
+	margin-bottom: var(--global-whitespace);
+
+}
+.c-form__field > .c-reset-description {
+	margin-top: var(--global-whitespace-lg);
+}
+@media (min-width: 768px) {
+	.c-title.c-reset-description {
+		font-size: var(--global-fontsize-xl);
+		text-align: center;
+		width: 480px;
+	}
+}
+@media (min-width: 1200px) {
+	.c-title.c-reset-description {
+		margin-bottom: var(--global-whitespace-lg);
+	}
+}
 
 /*
   Component: Title
@@ -1758,21 +1779,38 @@ navigation footer for menu mentor
 		padding: 0 calc(var(--global-whitespace-xxl) * 2);
 	}
 }
-.c-topLeftLogo {
-	height: var(--global-whitespace-xl);
-	margin: var(--global-whitespace);
+.c-topLeftLogo .c-logo__symbol {
+	height: var(--global-whitespace-lg);
+	margin: var(--global-whitespace-lg);
 }
 @media (min-width: 992px) {
+	.c-navbar__mentor {
+		position: relative;
+	}
 	.c-topLeftLogo {
+		position: absolute;
+
+		top: 12;
+
 		display: flex;
-		justify-content: center;
-		height: var(--global-whitespace-xl);
-		margin: var(--global-whitespace);
+		height: fit-content;
+
+		width: 64px;
+		margin-bottom: calc(var(--global-baseline) * 7);
+	}
+	.c-topLeftLogo .c-logo__symbol {
+		height: var(--global-whitespace-lg);
+		margin: var(--global-whitespace-md);
+
+		z-index: 20;
+	}
+	.c-topLeftLogo .c-logo__symbol .c-icon {
 	}
 
 	/*niet veranderen!!!!*/
 	.c-section_menu {
 		padding: 0 0 calc(var(--global-whitespace-xxl)) 0;
+		margin-top: var(--global-whitespace-xxl);
 	}
 
 	.c-title__menu {
@@ -1804,12 +1842,19 @@ navigation footer for menu mentor
 		background-color: white;
 		height: 100%;
 		width: calc(var(--global-baseline) * 8);
+		transform: translateY(-100px);
 	}
 
 	.c-navbar__tabs {
 		display: flex;
 		flex-direction: column;
-		margin-top: calc(var(--global-whitespace-xl) * 2);
+
+		transform: translateY(240px);
+		justify-content: space-around;
+		height: 75%;
+		/* margin-top: calc(var(--global-whitespace-xl) * 2);
+		margin-bottom: calc(var(--global-whitespace-xxl) * 2); */
+		bottom: 0;
 	}
 }
 
