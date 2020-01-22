@@ -1,26 +1,25 @@
 let customHeaders = new Headers();
 customHeaders.append("Accept", "application/json");
 
-let MentorId = "aacb2362-73a9-43dc-b9de-0ce057623568"
+let MentorId = "ef4c3f22-6ac3-4143-b9cd-21a23f9ea1fe"
 
-URIMentors = "https://localhost:44374/api/mentor";
+
 URIContacts = `https://localhost:44374/api/mentor/${MentorId}/contact`;
 
 const init = function () {
-    getMentors();
     getContacts();
 };
 
 
 const showHtml = function (queryResponse, dataArrayContacts, dataArrayNumbers, dataArrayPictures) {
     let html = "";
-    for (const contact of queryResponse) {
+    for (let i = 0; i < dataArrayContacts.length; i++) {
         html += `<div class="c-contactlist">
-    					<div class="c-contact" onclick="window.location.href = 'tel:${dataArrayNumbers}';">
+    					<div class="c-contact" onclick="window.location.href = 'tel:${dataArrayNumbers[i]}';">
     						<div class="c-contact__profilepic">
-    							<img class="c-icon" src="${dataArrayPictures}" alt="profielfoto" />
+    							<img class="c-icon" src="${dataArrayPictures[i]}" alt="profielfoto" />
     						</div>
-    						<div class="c-contact__name">${dataArrayContacts}</div>
+    						<div class="c-contact__name">${dataArrayContacts[i]}</div>
     					</div>
     				</div>`;
     }
@@ -64,15 +63,6 @@ let getContacts = async function (Contact) {
 };
 
 
-let getMentors = async function (Contact) {
-    // Eerst bouwen we onze url op
-    const SERVER_ENDPOINT = `${URIMentors}`;
-    // Met de fetch API proberen we de data op te halen.
-    const response = await fetch(SERVER_ENDPOINT, { headers: customHeaders });
-    const queryResponse = await response.json();
-
-    console.log(queryResponse);
-};
 
 const fetchData = function (url) {
     fetch(url, { headers: customHeaders })
