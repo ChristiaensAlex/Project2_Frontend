@@ -1554,6 +1554,7 @@ user can choose a picto or photo for their stepplan or client*/
 
 @media (min-width: 992px) {
 	.c-stepplans {
+		display: grid;
 		grid-template-columns: auto auto;
 		grid-template-rows: auto;
 		margin-left: calc(var(--global-baseline) * 8);
