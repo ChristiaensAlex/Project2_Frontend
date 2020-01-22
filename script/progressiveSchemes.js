@@ -1,7 +1,7 @@
-let progressiveSchemes, baseURL, addStepsForm ,scheme, updatedScheme,  title, schemeTitle;
+let progressiveSchemes, stepPlans, baseURL, addStepsForm ,scheme, updatedScheme,  title, schemeTitle;
 const showAllProgressiveSchemes = function(jsonObject) {
 	for (i in jsonObject) {
-		progressiveSchemes.innerHTML += `<div class="c-stepplan">
+		progressiveSchemes.innerHTML += `<div class="c-stepplan" plannr=${i}>
         <div class="c-stepplan__picto">
             <img class="c-icon" src="wassen.png" alt="beta_picto_wassen" />
         </div>
@@ -38,8 +38,23 @@ const showAllProgressiveSchemes = function(jsonObject) {
         </div>
     </div>`;
 	}
-	getElements();
+    getElements();
+    ListenToProgressiveSchemes(jsonObject);
 };
+
+const ListenToProgressiveSchemes = function(jsonObject){
+    stepPlans = document.querySelectorAll('.c-stepplan');
+    for (stepPlan of stepPlans){
+        stepPlan.addEventListener('click', function(){
+            let i = this.getAttribute('plannr'); 
+            planId = jsonObject[i].id; 
+            sessionStorage.planId = planId; 
+            console.log(planId); 
+            window.location.href = 'DetailProgressiveStepsPlan.html'; 
+        })
+    }
+
+}
 
 const showClientsFromProgressiveScheme = function(payload){
     let clients = payload.clients; 
@@ -87,80 +102,6 @@ const showClientsFromProgressiveScheme = function(payload){
 
 }
 
-const showOneProgressiveScheme = function(payload){
-    console.log("In 1 stappenplan"); 
-    showClientsFromProgressiveScheme(payload); 
-    let progressiveSchemeName = document.querySelector(".js-progressiveScheme-name"); 
-    progressiveSchemeName.innerHTML = payload.name; 
-    console.log(progressiveSchemeName); 
-    let steps = payload.steps; 
-    console.log(steps[0].sequence); 
-    let progressiveSchemeSteps = document.querySelector(".js-scheme-allSteps"); 
-    for(i in steps){
-        progressiveSchemeSteps.innerHTML += `<div class="c-overview__step">
-        <div class="c-picto">
-            <img alt="Swipe de picto om door te gaan naar de volgende stap" />
-        </div>
-        <div class="c-step__countsymbol">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <g id="Getal" transform="translate(-100 -470)">
-                    <g id="Rectangle_24" data-name="Rectangle 24" transform="translate(100 470)" fill="#fff"
-                        stroke="#27255f" stroke-width="1.5">
-                        <rect width="24" height="24" rx="4" stroke="none" />
-                        <rect x="0.75" y="0.75" width="22.5" height="22.5" rx="3.25" fill="none" />
-                    </g>
-                    <circle id="Ellipse_4" data-name="Ellipse 4" cx="4" cy="4" r="4"
-                        transform="translate(108 478)" fill="#27255f" />
-                </g>
-            </svg>
-        </div>
-        <div class="c-step__name">Stap ${steps[i].sequence}</div>
-        <div class="c-step__explanation-mentor">
-            ${steps[i].descriptionStep}
-        </div>
-    </div> `;
-    if (i != 0){ //if the step is not the last one, add an arrow 
-        progressiveSchemeSteps.innerHTML +=  `<div class="c-downwardsArrow">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="27.353" viewBox="0 0 24 27.353">
-            <g id="Component_4_44" data-name="Component 4 – 44" transform="translate(0 27.353) rotate(-90)">
-                <g id="Group_972" data-name="Group 972" transform="translate(4 6)">
-                    <path id="Path_4" data-name="Path 4" d="M508.019,162.566l-6.2,6.2,6.2,6.2"
-                        transform="translate(-501.817 -162.566)" fill="none" stroke="#28225f"
-                        stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
-                    <path id="Path_5" data-name="Path 5" d="M478.752,117.413h19.669"
-                        transform="translate(-476.569 -111.036)" fill="none" stroke="#28225f"
-                        stroke-linecap="round" stroke-width="3" />
-                </g>
-                <rect id="Rectangle_85" data-name="Rectangle 85" width="24" height="24" fill="none" />
-            </g>
-        </svg>
-    </div>`
-    }
-    }
-    
-}
-
-const getProgressiveSchemeById = function(){
-	let id = "FE929E77-A1A3-4A61-B76E-F25CFCAFC99E"; 
-	let url = `${baseURL}progressiveScheme/${id}`;
-	console.log(url); 
-	fetch(url)
-	.then(function(response) {
-		if (!response.ok) {
-			throw Error(`Problem to fetch(). Status code: ${response.status}`);
-		} else {
-			return response.json(); 
-		}
-	})
-	.then(function(jsonObject) {
-		showOneProgressiveScheme(jsonObject); 
-		console.log(jsonObject);
-	})
-	.catch(function(error) {
-		console.error(`Problem to process json ${error}`);
-	});
-}
-
 
 const getProgressiveSchemes = function() {
 	let id = '82B3CB09-AC76-47A1-B879-B7A370E265D7';
@@ -175,7 +116,7 @@ const getProgressiveSchemes = function() {
 		})
 		.then(function(jsonObject) {
             if(progressiveSchemes){
-			showAllProgressiveSchemes(jsonObject);
+            showAllProgressiveSchemes(jsonObject);
             console.log(jsonObject);
         }
 		})
@@ -185,7 +126,6 @@ const getProgressiveSchemes = function() {
 };
 
 const putProgressiveScheme = function(payload){
-    console.log("In PUT");
     let body = JSON.stringify(payload);
     console.log(body);
     let schemeId = "f4ed4bfd-e707-4ff5-98a0-08d79eb0ca8e"; 
@@ -204,7 +144,6 @@ const putProgressiveScheme = function(payload){
 }
 
 const postProgressiveScheme = function(payload){
-    console.log("In post");
     let body = JSON.stringify(payload);
     console.log(body);
     let mentorId = "aacb2362-73a9-43dc-b9de-0ce057623568"; 
@@ -242,7 +181,8 @@ const getInputFieldsScheme = function(){
             updatedStep = {
                 id: ids[i], //NO ID FOR NEW STEP IN EXSISTING PROGRESSIVE SCHEME 
                 descriptionStep: stepDescription[i].value, 
-                pictoId: "3fa85f64-5717-4562-b3fc-2c963f66afa6", 
+                pictoId: 
+                "3fa85f64-5717-4562-b3fc-2c963f66afa6", 
                 sequence: sequenceInt
             };
             updatedStepsArr.push(updatedStep);  
@@ -285,15 +225,10 @@ const initProgressiveSchemes = function() {
     progressiveSchemes = document.querySelector('.c-stepplans');
     addStepsForm = document.querySelector('.js-form-addStep');
     mainImage = document.querySelector('.c-button_addStepImage');
-		console.log("We zitten in progressive scheme"); 
 		if(document.title == "Trek Je Plan - Stappenplannen Overzicht"){
-			getProgressiveSchemes()
-		}else if(document.title == "Trek Je Plan - Overzicht stappenplan - Mentor"){
-			getProgressiveSchemeById(); 
-	}
+			getProgressiveSchemes()}
     else if(addStepsForm){
         submitProgressiveScheme = document.querySelector('.c-submitbutton');
-        console.log(submitProgressiveScheme);
         submitProgressiveScheme.addEventListener('click', function(){
             // enige verplichte is PICTO nu default waarde 
             if(mainImage){
@@ -308,5 +243,5 @@ const initProgressiveSchemes = function() {
 document.addEventListener('DOMContentLoaded', function() {
 	console.log('DOM loaded - Create progressive scheme ');
 	baseURL = 'https://localhost:44374/api/';
-	initProgressiveSchemes();
+    initProgressiveSchemes();
 });
