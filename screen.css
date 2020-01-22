@@ -628,6 +628,15 @@ body {
 	justify-content: space-between;
 	align-content: center;
 }
+
+.c-title__menu-stepsplan{
+	display: flex;
+	font-size: var(--global-fontsize-lg);
+	justify-content: space-between;
+  align-content: center;
+  padding-bottom: var(--global-whitespace-md);
+}
+
 .c-title__AddClientsToProgressiveSteps {
 	display: flex;
 	font-size: var(--global-fontsize-md);
@@ -855,6 +864,10 @@ Component: Spread
 	padding: var(--global-baseline);
 }
 
+.c-input-time{
+	width: 90px; 
+}
+
 .c-input:hover {
 	box-shadow: var(--input-focus-boxShadow, 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75));
 }
@@ -931,7 +944,7 @@ Component: Spread
 	position: relative;
 }
 
-.c-search:before {
+.c-search-input:before {
 	content: '';
 	position: absolute;
 	display: block;
@@ -1137,6 +1150,50 @@ user can choose role*/
 	display: flex;
 	justify-content: center;
 }
+
+.c-symbol__clientProfiles{
+	margin: var(--global-whitespace-sm) 0;
+	display: flex;
+	justify-content: start;
+  }
+  
+  .c-symbol__clientProfiles-client{
+	margin: 0 var(--global-whitespace-sm) var(--global-whitespace-sm) var(--global-whitespace-sm);
+	font-size: var(--global-fontsize-xs);
+	display: grid;
+	grid-template-rows: 40px auto;
+  
+  }
+  
+  .c-symbol__clientProfiles-client__symbol{
+	width: 40px;
+	height: 40px;
+	display: flex;
+	justify-self: center;
+	grid-row: 1;
+	position: relative;
+  }
+  
+  .c-symbol__clientProfiles-client__name{
+	grid-row: 2;
+	display: flex;
+	justify-self: center;
+  }
+  
+  .c-symbol__clientProfiles-client__delete{
+	position: absolute;
+	grid-row: 1;
+	right: 0;
+	top: 0;
+	transform: translate(5px, -2px);
+  }
+  
+  .c-symbol__clientProfiles-client__addClient{
+	grid-row: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
 
 /* Component: navigation client
   ---
@@ -1441,6 +1498,15 @@ user can choose a picto or photo for their stepplan or client*/
 	font-size: var(--global-fontsize);
 }
 
+.c-hour__specific{
+	font-size: var(--global-fontsize-sm);
+	grid-row: 1;
+	grid-column: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+
 .c-plannings {
 }
 
@@ -1480,6 +1546,16 @@ user can choose a picto or photo for their stepplan or client*/
 	display: flex;
 	align-items: center;
 }
+
+.c-planning__name-indClient {
+	font-size: var(--global-fontsize);
+	  margin: 0 var(--global-baseline);
+	grid-row-start: 2;
+	grid-row-end: span 2;
+	  grid-column: 2;
+	  display: flex;
+	  align-items: center;
+  }
 
 .c-planning__check {
 	top: 0;
@@ -1568,6 +1644,16 @@ user can choose a picto or photo for their stepplan or client*/
 /* Component: profile mentor
 	  ---
 	  */
+
+	  .c-mentor__logout {
+		display: grid;
+		grid-template-columns: 1fr 56px  ;
+	
+		height: var(--global-whitespace-xl);
+		margin: var(--global-whitespace) var(--global-whitespace)  var(--global-whitespace) 0;
+	}
+	
+
 .c-profileMentor {
 	display: flex;
 	flex-direction: column;
@@ -1609,6 +1695,13 @@ user can choose a picto or photo for their stepplan or client*/
 	color: var(--global-color-omega);
 	text-decoration: underline;
 }
+
+.c-modify-steps{
+	font-size: var(--global-fontsize-md);
+	color: var(--global-color-omega);
+	  text-decoration: underline;
+  }
+
 
 .c-profile__picture {
 	padding-bottom: calc(var(--global-baseline) * 5);
@@ -1685,6 +1778,20 @@ the visualisation of 1 step for the client with picto, countsymbol and explanati
 	align-items: center;
 	height: 100%;
 }
+
+.c-step__explanation {
+	width: 256px;
+	text-align: center;
+  }
+  
+  .c-step__explanation-mentor{
+	width: 256px;
+	text-align: center;
+	font-size: var(--global-fontsize-sm);
+	color: var(--global-color-neutral-x-dark);
+	display: flex;
+	justify-content: center;
+  }
 
 .c-new-step {
 	display: flex;
@@ -1815,11 +1922,7 @@ navigation footer for menu mentor
 		padding: 0 calc(var(--global-whitespace-xxl) * 2);
 	}
 	.c-section_menu-profile {
-		padding: 0 calc(var(--global-whitespace-xxl) * 2);
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-self: center;
+		padding: 0 calc(var(--global-whitespace-xxl)*2);
 	}
 }
 .c-topLeftLogo {
@@ -2167,6 +2270,13 @@ mentor can see detail info of client and can choose between calendar, profile in
 	display: grid;
 	grid-template-columns: 36px 1fr 36px;
 	grid-template-rows: 36px 104px;
+	margin-top: var(--global-whitespace);
+}
+
+.c-topbarDetailProgressiveSteps {
+	display: grid;
+	grid-template-columns: 36px 1fr 36px;
+	grid-template-rows: 36px 32px;
 	margin-top: var(--global-whitespace);
 }
 
