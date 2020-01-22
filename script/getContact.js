@@ -1,6 +1,9 @@
 let baseURL = 'https://localhost:44374/api/',
 	json,
 	mentorId;
+const putContacts = function(payload) {
+	console.log(payload);
+};
 const showContacts = function(jsonObject) {
 	html = '';
 	i = 1;
@@ -81,7 +84,7 @@ const showContacts = function(jsonObject) {
 
 	getFormElements();
 	ListToRemoveButton();
-	ListenToPencil(jsonObject);
+	//ListenToPencil(jsonObject);
 };
 const getContacts = function(id) {
 	let url = `${baseURL}mentor/${id}/contact`;
@@ -111,21 +114,21 @@ const getContactElements = function() {
 	submit = document.querySelector('.js-submitButton');
 	phonenumber = document.querySelector('.js-phonenumber');
 	firstname = document.querySelector('.js-firstname');
-	ListenToSubmit();
+	ListenToSubmit(submit);
 };
-const ListenToPencil = function(jsonObject) {
-	let pencils = document.querySelectorAll('.c-stepplan__pencil');
-	for (p of pencils) {
-		p.addEventListener('click', function() {
-			console.log(this.parentElement.parentElement);
-			console.log(this.parentElement.parentElement.querySelector('.js-firstname').value);
-			let chosenContact = this.parentElement.parentElement.parentElement.getAttribute('data-number');
-			console.log(chosenContact);
+// const ListenToPencil = function(jsonObject) {
+// 	let pencils = document.querySelectorAll('.c-stepplan__pencil');
+// 	for (p of pencils) {
+// 		p.addEventListener('click', function() {
+// 			console.log(this.parentElement.parentElement);
+// 			console.log(this.parentElement.parentElement.querySelector('.js-firstname').value);
+// 			let chosenContact = this.parentElement.parentElement.parentElement.getAttribute('data-number');
+// 			console.log(chosenContact);
 
-			EditContact(jsonObject[chosenContact - 1]);
-		});
-	}
-};
+// 			EditContact(jsonObject[chosenContact - 1]);
+// 		});
+// 	}
+// };
 
 const EditContact = function(chosenContact) {
 	console.log(chosenContact);
@@ -151,6 +154,37 @@ const removefromDB = function(i) {
 		})
 		// .then(res => res.json())
 		.then(data => console.log(data));
+};
+
+const ListenToSubmit = function(button) {
+	button.addEventListener('click', function(event) {
+		event.preventDefault();
+		let payload = [];
+		allContacts = document.querySelectorAll('.js-single-step');
+		console.log(allContacts);
+		counter = 0;
+		console.log(json);
+		for (object of json) {
+			object.firstName = allContacts[counter].querySelector('.js-firstname').value;
+			object.phoneNumber = allContacts[counter].querySelector('.js-phonenumber').value;
+			object.profilePicture = 'string';
+			console.log(object);
+			payload.push(object);
+			counter++;
+		}
+
+		for (i = counter; i < allContacts.length; i++) {
+			let contact = {
+				firstName: allContacts[i].querySelector('.js-firstname').value,
+				phoneNumber: allContacts[i].querySelector('.js-phonenumber').value,
+				profilePicture: 'profilepic'
+			};
+
+			payload.push(contact);
+		}
+
+		putContacts(payload);
+	});
 };
 document.addEventListener('DOMContentLoaded', function() {
 	console.log('DOM loaded - contact');
