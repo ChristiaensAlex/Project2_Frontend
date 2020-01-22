@@ -13,6 +13,7 @@
 
     <!--SCRIPT-->
     <script src="script/addComponent.js"></script>
+    <script src="script/progressiveSchemes.js"></script>
     <!--FAVICON-->
     <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png" />
     <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png" />
@@ -41,14 +42,14 @@
     </div>
       <div class="o-row">
         <div class="o-container">
-            <form class="c-form-addStep js-form-addStep" action="#">
+            <form class="c-form-addStep js-form-addStep" action="#" onsubmit="return false;">
                     <h1 class="c-title ">
                             Stappenplan aanmaken
                     </h1>
                 <label for="name" class="c-label">
                         Naam   
                 </label>
-                <input class="c-input c-input-steps " type="text" name="name">
+                <input class="c-input c-input-steps js-scheme-name" type="text" name="name">
                         <p class="c-label">Hoofdfoto  </p> 
                 
                 <button class="o-button-reset c-button__mainStepImage">

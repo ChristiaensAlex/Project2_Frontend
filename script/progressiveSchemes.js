@@ -139,7 +139,7 @@ const initProgressiveSchemes = function() {
 
 };
 document.addEventListener('DOMContentLoaded', function() {
-	console.log('DOM loaded');
+	console.log('DOM loaded - Create progressive scheme ');
 	baseURL = 'https://localhost:44374/api/';
 	initProgressiveSchemes();
 });
