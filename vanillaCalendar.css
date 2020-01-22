@@ -1,0 +1,478 @@
+
+/*------------------------------------*\
+#Variables
+\*------------------------------------*/
+:root {
+	/*colors*/
+
+	--global-color-alpha-light: #ffb9a6;
+	--global-color-alpha: #fc8c71;
+	--global-color-alpha-dark: #fe7c5a;
+	--global-color-alpha-dark-x: #fe6740;
+	--global-color-alpha-dark-xx: #ff5d33;
+
+	--global-color-beta: #1c5c5c;
+	--global-color-omega: #27255f;
+
+	--global-color-neutral-xxxxx-light: white;
+	--global-color-neutral-xxxx-light: white;
+	--global-color-neutral-xxx-light: #fafaff;
+	--global-color-neutral-xx-light: #ececf0;
+	--global-color-neutral-x-light: #c8c8cc;
+	--global-color-neutral-light: #aaaab3;
+	--global-color-neutral: #8d8d99;
+	--global-color-neutral-dark: #757580;
+	--global-color-neutral-x-dark: #5d5d66;
+	--global-color-neutral-xx-dark: #3b3f40;
+	--global-color-neutral-xxx-dark: #17191a;
+	--global-color-neutral-xxxx-dark: #17171a;
+
+	--global-color-neutral-x-light-transparent: #c8c8cc29;
+	/* border variables */
+	--global-borderRadius: 4px;
+	--global-borderWidth: 1px;
+
+	/* transitions */
+	--global-transitionTiming-alpha: 0.1s ease-out;
+
+	/* Baseline settings */
+	--global-baseline: 8px;
+	--global-whitespace: calc(var(--global-baseline) * 3); /* = 24px */
+
+	--global-whitespace-xs: calc(var(--global-baseline) / 2); /* = 4px */
+	--global-whitespace-sm: calc(var(--global-baseline) * 1); /*  = 8px */
+	--global-whitespace-md: calc(var(--global-baseline) * 2); /*  = 16px */
+	--global-whitespace-lg: calc(var(--global-baseline) * 4); /*  = 32px */
+	--global-whitespace-xl: calc(var(--global-whitespace) * 2); /*  = 48px */
+	--global-whitespace-xxl: calc(var(--global-whitespace) * 3); /*  = 72px */
+
+	/*fontsizes: modular scale met base 16px en ratio 1.25*/
+	--global-fontsize-xs: 10px;
+	--global-fontsize-sm: 13px;
+	--global-fontsize: 16px;
+	--global-fontsize-md: 20px;
+	--global-fontsize-lg: 25px;
+	--global-fontsize-xl: 31px;
+	--global-fontsize-xxl: 39px;
+	--global-fontsize-xxxl: 48px;
+
+	/*error*/
+
+	--global-color-error: #fe5e33;
+	--global-input-error-boxShadowColor: #fe5e33;
+	--input-border: none;
+}
+
+
+.c-cal  *, .c-cal  *:before, .c-cal  *:after {
+  box-sizing: border-box;
+}
+
+.c-cal {
+  position: relative;
+}
+
+.c-cal__btn {
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-appearance: button;
+  border: 0;
+  cursor: pointer;
+  outline: none;
+  overflow: visible;
+  padding: 0;
+  text-align: center;
+  background-color: white;
+}
+
+.c-cal__header {
+  align-items: center;
+  display: flex;
+  padding: 0 22px 45px 35px;
+}
+
+.c-cal__header__label {
+  font-size: 17px;
+  color: #1d1a42;
+  text-align: center;
+  width: 100%;
+}
+
+.c-cal__week {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: var(--global-fontsize-sm);
+  text-align: left;
+  color: #9e9da6;
+  width: 264px;
+  margin-left: 30px;
+}
+
+.c-cal__week span {
+  flex-direction: column;
+  font-weight: bold;
+  flex: 0 0 37px;
+  max-width: 37px;
+  padding: 20px 5px 0px 0px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.c-cal__body {
+  display: flex;
+  flex-wrap: wrap;
+  width: 264px;
+  margin-left: 30px;
+}
+
+.c-cal__body, .c-cal__date{
+
+}
+
+.c-cal__date {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 37px;
+  max-width: 37px;
+  padding: 20px 5px 0px 0px;
+  font-size: var(--global-fontsize-sm);
+  color: var(--global-color-omega);
+}
+
+.c-cal__date span{
+  position: relative;
+  background-color: white;
+  border-radius: 100%;
+  padding: 6px 4px;
+}
+
+.c-cal__date span::before {
+  content: " ";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 100%;
+  border: 2px solid white;
+}
+
+.c-cal__date--today span {
+  background-color: var(--global-color-alpha);
+  
+  color: white;
+}
+
+.c-cal__date--today  span::before {
+  /* border: 2px solid var(--global-color-alpha); */
+}
+
+.c-cal__date--today  span::after {
+  border: none;
+}
+
+.c-cal__date--selected span::before {
+  border: 2px solid var(--global-color-alpha);
+}
+
+/* .c-cal__date--selected span  {
+  background-color: var(--global-color-alpha);
+  opacity: 0.5;
+  color: white;
+} */
+
+
+.c-cal__date--active{
+  cursor: pointer;
+}
+
+/* vcal-date vcal-date--active .c-cal__date--selected */
+
+.c-cal__date--disabled{
+  opacity: 0.5;
+}
+
+@media only screen and (max-width: 4000px) {
+
+  .c-cal {
+    order: 1;
+    margin-bottom: 10px;
+    margin-top: 65px;
+  }
+
+  .c-cal__header {
+    padding: 0 50px 45px 60px;
+  }
+
+  .c-cal__header {
+    max-width: 825px;
+  }
+
+  .c-cal__body, .c-cal__week {
+    width: 800px;
+  }
+
+
+  .c-cal__date, .c-cal__week span  {
+    flex: 0 0 14%;
+    max-width: 14%;
+  }
+
+  .c-button--dark {
+    margin-bottom: 0;
+    margin-top: 30px;
+    margin-left: 45px;
+    margin-right: 20px;
+  }
+
+  .c-cal__date span {
+    padding: 5px 6px;
+  }
+}
+
+
+
+@media only screen and (max-width: 1115px) {
+
+  .c-cal {
+    order: 1;
+    margin-bottom: 10px;
+    margin-top: 65px;
+  }
+
+  .c-cal__header {
+    padding: 0 50px 45px 60px;
+  }
+
+  .c-cal__header {
+    width: 78vw;
+  }
+
+  .c-cal__body, .c-cal__week {
+    width: 75vw;
+  }
+
+
+  .c-cal__date, .c-cal__week span  {
+    flex: 0 0 14%;
+    max-width: 14%;
+  }
+
+  .c-button--dark {
+    margin-bottom: 0;
+    margin-top: 30px;
+    margin-left: 45px;
+    margin-right: 20px;
+  }
+
+  .c-cal__date span {
+    padding: 5px 6px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .c-cal, .c-cal__body, .c-cal__week {
+    width: 60vw;
+  }
+
+  .c-cal {
+    margin-left: -70px;
+  }
+
+  .c-cal__header {
+    width: 65vw;
+  }
+
+  .c-cal__legend {
+    width: 76vw;
+  }
+
+  .c-cal__header {
+    padding: 0 10% 45px 10%;
+  }
+
+  .l-line--absolute {
+    width: 75vw;
+  }
+
+  .c-button--dark {
+    margin-right: 20px;
+  }
+
+}
+
+@media only screen and (max-width: 768px){
+  .c-cal {
+    margin-left: -35px;
+  }
+
+  .l-line--absolute {
+    right: 45px;
+  }
+
+  .c-cal__header {
+    padding: 0 8% 45px 10%;
+  }
+
+  .l-line--absolute {
+    right: 15px;
+  }
+
+  .c-cal__legend {
+    width: 80vw;
+  }
+}
+
+
+@media only screen and (max-width: 576px){
+    .c-cal, .c-cal__body, .c-cal__week {
+    width: 95vw;
+  }
+
+  .c-cal__header{
+    width: 100vw;
+  }
+  .c-cal__header {
+    padding: 0 5% 45px 12%;
+  }
+
+  .l-line--absolute {
+    width: 80vw;
+    right: -10px;
+  }
+
+  .c-cal {
+    margin-top: 45px;
+  }
+}
+
+
+@media only screen and (max-width: 380px){
+  .c-cal, .c-cal__body, .c-cal__week {
+    width: 95vw;
+  }
+
+  .c-cal__header{
+    width: 100vw;
+  }
+
+  .c-button--dark {
+    padding: 15px 0;
+  }
+}
+
+
+
+
+/*Component: PlanningList
+ A mentor has an overview of the planning of today
+
+  */
+.c-hour{
+  font-size: var(--global-fontsize);
+}
+
+
+
+.c-plannings {
+	
+}
+
+.c-plannings .c-planning {
+	display: grid;
+	grid-template-columns: 52px 1fr 20px;
+	grid-template-rows: 26px 26px 26px 26px;
+	background-color: var(--global-color-neutral-x-light-transparent);
+	height: 100px;
+	margin: var(--global-whitespace) 0;
+  padding: 0 var(--global-baseline);
+  border-radius: var(--global-borderRadius);
+}
+
+.c-planning__userPhoto {
+	grid-row: span 2;
+}
+
+
+.c-hour__specific{
+  font-size: var(--global-fontsize-sm);
+  grid-row: 1;
+  grid-column: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.c-planning__picto {
+  grid-row-start: 2;
+  grid-row-end: span 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.c-planning__username{
+  font-size: var(--global-fontsize);
+	margin: 0 var(--global-baseline);
+	grid-row:  1;
+  grid-column: 2;
+  	display: flex;
+	align-items: center;
+}
+
+
+.c-planning__name{
+	font-size: var(--global-fontsize-sm);
+	margin: 0 var(--global-baseline);
+	grid-row: 2;
+	grid-column: 2;
+	display: flex;
+	align-items: center;
+}
+
+.c-planning__name-indClient {
+  font-size: var(--global-fontsize);
+	margin: 0 var(--global-baseline);
+  grid-row-start: 2;
+  grid-row-end: span 2;
+	grid-column: 2;
+	display: flex;
+	align-items: center;
+}
+
+.c-planning__check {
+  grid-column: 3;
+  grid-row: 1;
+  transform: translate(15px, -7px);
+  opacity: 0.1;
+}
+
+.c-planning__check.c-planning__checked {
+  opacity: 1;
+}
+
+.c-planning__delete{
+  grid-column: 3;
+  grid-row-start: 2;
+  grid-row-end: span 2;
+  /* transform: translatey(-15px);  -> niet nodig*/
+	display: flex;
+  align-items: center;
+}
+
+@media (min-width: 992px){
+
+.c-plannings{
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-template-rows: auto;
+	margin-left: calc(var(--global-baseline)*8);
+}
+
+	.c-plannings .c-planning {
+  width: 300px;
+  /*enkel dit element nodig want al de rest wordt hierboven gedefiniëerd voor de andere schermgroottes*/
+}
+}
