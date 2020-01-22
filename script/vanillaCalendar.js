@@ -1,3 +1,4 @@
+let vandaag;
 var vanillaCalendar = {
   month: document.querySelectorAll('[data-calendar-area="month"]')[0],
   next: document.querySelectorAll('[data-calendar-toggle="next"]')[0],
@@ -40,6 +41,8 @@ var vanillaCalendar = {
     dateEl.innerHTML = num
     newDay.className = 'c-cal__date'
     newDay.setAttribute('data-calendar-date', this.date)
+    dateShort = this.date.getFullYear() + "-" + ("0" + (this.date.getMonth() + 1)).slice(-2) + "-" + ("0" + this.date.getDate()).slice(-2)
+    newDay.setAttribute('data-date', dateShort)
 
     // if it's the first day of the month
     if (num.toString() === "01") {
@@ -55,7 +58,9 @@ var vanillaCalendar = {
 
 
     if (this.date.toString() === this.todaysDate.toString()) {
-      newDay.classList.add('c-cal__date--today')
+      newDay.classList.add('c-cal__date--today');
+      newDay.classList.add('c-cal__date--selected');
+      vandaag = document.querySelector(".c-cal__date--today");
     }
 
     newDay.appendChild(dateEl)
@@ -64,17 +69,16 @@ var vanillaCalendar = {
 
   dateClicked: function () {
     var _this = this
+
     this.activeDates = document.querySelectorAll(
       '[data-calendar-status="active"]'
     )
     for (var i = 0; i < this.activeDates.length; i++) {
       this.activeDates[i].addEventListener('click', function (event) {
-        var picked = document.querySelectorAll(
-          '[data-calendar-label="picked"]'
-        )[0]
-        picked.innerHTML = this.dataset.calendarDate
+        var picked = document.querySelectorAll('[data-calendar-label="picked"]')[0]
         _this.removeActiveClass()
         this.classList.add('c-cal__date--selected')
+        DateClickedHandler(event);
       })
     }
   },
@@ -121,7 +125,7 @@ var vanillaCalendar = {
 
   removeActiveClass: function () {
     for (var i = 0; i < this.activeDates.length; i++) {
-      this.activeDates[i].classList.remove('vcal-date--selected')
+      this.activeDates[i].classList.remove('c-cal__date--selected')
     }
   }
 }
