@@ -48,7 +48,7 @@ const EditMentorProfile = function(payload, mentorId) {
 		body: body
 	})
 		.then(res => {
-			console.log(res.status)((window.location.href = 'MentorHasProfile.html'));
+			console.log(res.status)((window.location.href = 'EditProfileMentor2.html'));
 		})
 		// .then(data => {
 		// 	console.log(data); // ;
