@@ -134,8 +134,8 @@ const EditContact = function(chosenContact) {
 const removefromDB = function(i) {
 	i = parseInt(i) - 1;
 	console.log(i);
-	//let contactId = json[i].id;
-	contactId = 0;
+	let contactId = json[i].id;
+	//contactId = 0;
 	console.log('removed: ' + contactId);
 	let url = `${baseURL}mentor/${mentorId}/contact/${contactId}`;
 	fetch(url, {
