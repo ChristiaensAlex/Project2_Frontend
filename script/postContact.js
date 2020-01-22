@@ -39,9 +39,10 @@ const ListenToSubmit = function() {
 
 const GetDomElements = function() {
 	submit = document.querySelector('.js-submitButton');
+	console.log(submit);
 	phonenumber = document.querySelector('.js-phonenumber');
 	firstname = document.querySelector('.js-firstname');
-
+	sessionStorage.mentorId = 'EF4C3F22-6AC3-4143-B9CD-21A23F9EA1FE';
 	console.log(sessionStorage.mentorId);
 
 	ListenToSubmit();

@@ -1,7 +1,8 @@
-let form, buttonAddStep, removeButton, buttonAddStepBetween, inputStep, inputStepDescription;
+let form, buttonAddStep, removeButton, buttonAddStepBetween, inputStep, inputStepDescription, allSteps;
 
 const getFormElements = function() {
 	form = document.querySelector('.js-form-addStep');
+
 	//GetDomElements();
 	if (form) {
 		form.noValidate = true; //input is not validated when submitted
@@ -26,32 +27,36 @@ const getFormElements = function() {
 const onHandlerClickedRemove = function(e) {
 	e.preventDefault();
 	console.log(allSteps);
+
 	console.log(e.currentTarget.parentNode.parentNode.parentNode);
-	console.log(e.currentTarget.parentNode.parentNode.parentNode.dataset.number);
-	removefromDB(e.currentTarget.parentNode.parentNode.parentNode.dataset.number);
-	//document.querySelector('.js-all-steps').removeChild(e.currentTarget.parentNode.parentNode.parentNode);
-	document.querySelector('.js-all-steps').removeChild(e.currentTarget.parentNode.parentNode.parentNode.parentNode);
-	let stepNumbers = document.querySelectorAll('.js-single-step');
-	let stepNumbersArr = Array.from(stepNumbers);
-	console.log(stepNumbers);
-	console.log('Lijst');
-	console.log(stepNumbersArr);
-	stepNumbersArr.forEach(i => {
-		console.log('I');
-		console.log(i);
-		nummer2 = i.getAttribute('data-number');
-		nummer = i.dataset.number;
-		console.log(nummer2);
-		if (i.dataset.number >= e.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.number) {
-			console.log('Dataset nummer 1');
-			console.log(e.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.number);
-			nummer = parseInt(nummer) - 1;
-			console.log('Nieuw dataset nummer 2');
-			console.log(nummer);
-			i.querySelector('.js-step-number').innerHTML = nummer;
-		} else {
-		}
-	});
+	if (e.currentTarget.parentNode.parentNode.parentNode.querySelector('.c-contact__wrapper')) {
+		console.log(e.currentTarget.parentNode.parentNode.parentNode.dataset.number);
+		removefromDB(e.currentTarget.parentNode.parentNode.parentNode.dataset.number);
+		allSteps.removeChild(e.currentTarget.parentNode.parentNode.parentNode);
+	} else {
+		allSteps.removeChild(e.currentTarget.parentNode.parentNode.parentNode.parentNode);
+		let stepNumbers = document.querySelectorAll('.js-single-step');
+		let stepNumbersArr = Array.from(stepNumbers);
+		console.log(stepNumbers);
+		console.log('Lijst');
+		console.log(stepNumbersArr);
+		stepNumbersArr.forEach(i => {
+			console.log('I');
+			console.log(i);
+			nummer2 = i.getAttribute('data-number');
+			nummer = i.dataset.number;
+			console.log(nummer2);
+			if (i.dataset.number >= e.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.number) {
+				console.log('Dataset nummer 1');
+				console.log(e.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.number);
+				nummer = parseInt(nummer) - 1;
+				console.log('Nieuw dataset nummer 2');
+				console.log(nummer);
+				i.querySelector('.js-step-number').innerHTML = nummer;
+			} else {
+			}
+		});
+	}
 	// if( <= ){
 
 	// }
@@ -69,6 +74,10 @@ const onHandlerClickedAdd = function(e) {
 		inpStep.querySelector('.js-input-description').value = '';
 	}
 	allSteps.appendChild(inpStep);
+	ListToRemoveButton();
+};
+
+const ListToRemoveButton = function() {
 	removeButton = document.querySelectorAll('.js-remove-button');
 	removeButton.forEach(element => {
 		console.log('activated removebuttons');

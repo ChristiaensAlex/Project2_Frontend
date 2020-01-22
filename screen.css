@@ -864,7 +864,14 @@ Component: Spread
 	border: var(--input-border, 1px solid var(--global-color-omega));
 	box-shadow: var(--input-focus-boxShadow, 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75));
 }
-
+@media (min-width: 1200px) {
+	.c-input-description {
+		font-size: var(--global-fontsize-md);
+	}
+	.c-new-step {
+		font-size: var(--global-fontsize-md);
+	}
+}
 /*
     Component: Custom Select
     ---

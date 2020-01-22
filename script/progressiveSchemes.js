@@ -1,4 +1,4 @@
-let progressiveSchemes, baseURL, addStepsForm ,scheme,  title, schemeTitle;
+let progressiveSchemes, baseURL, addStepsForm, scheme, title, schemeTitle;
 const showAllProgressiveSchemes = function(jsonObject) {
 	for (i in jsonObject) {
 		progressiveSchemes.innerHTML += `<div class="c-stepplan">
@@ -58,21 +58,21 @@ const getProgressiveSchemes = function() {
 			}
 		})
 		.then(function(jsonObject) {
-            if(progressiveSchemes){
-			showAllProgressiveSchemes(jsonObject);
-            console.log(jsonObject);
-        }
+			if (progressiveSchemes) {
+				showAllProgressiveSchemes(jsonObject);
+				console.log(jsonObject);
+			}
 		})
 		.catch(function(error) {
 			console.error(`Problem to process json ${error}`);
 		});
 };
 
-const postProgressiveScheme = function(payload){
-    console.log("In post");
-    let body = JSON.stringify(payload);
-    console.log(body);
-    let mentorId = "aacb2362-73a9-43dc-b9de-0ce057623568"; 
+const postProgressiveScheme = function(payload) {
+	console.log('In post');
+	let body = JSON.stringify(payload);
+	console.log(body);
+	let mentorId = '82B3CB09-AC76-47A1-B879-B7A370E265D7';
 	fetch(`https://localhost:44374/api/progressiveScheme/${mentorId}`, {
 		method: 'POST',
 		mode: 'cors',
@@ -83,60 +83,59 @@ const postProgressiveScheme = function(payload){
 	})
 		.then(res => res.json())
 		.then(data => {
-			console.log(data); }) 
+			console.log(data), (window.location.href = 'MentorHasProgressiveStepsList.html');
+		})
 		.catch(err => console.log(err));
-  
-}
+};
 
-const getInputFieldsScheme = function(){
-    title = document.querySelector('.js-scheme-name');
-    stepNumber = document.querySelectorAll('.js-single-step');
-    stepDescription = document.querySelectorAll('.js-input-description'); 
-    let step = ""; 
-    let stepsArr = []; 
-    schemeTitle = title.value;
-    for(i = 0; i < stepNumber.length; i++){
-        currentStep = stepNumber[i]; 
-        let currentStepNumber = currentStep.dataset.number;
-        let sequenceInt = parseInt(currentStepNumber); 
-        step = {
-            descriptionStep: stepDescription[i].value, 
-            pictoId: "3fa85f64-5717-4562-b3fc-2c963f66afa6", 
-            sequence: sequenceInt
-        };
-        stepsArr.push(step);  
-    }
+const getInputFieldsScheme = function() {
+	title = document.querySelector('.js-scheme-name');
+	stepNumber = document.querySelectorAll('.js-single-step');
+	stepDescription = document.querySelectorAll('.js-input-description');
+	let step = '';
+	let stepsArr = [];
+	schemeTitle = title.value;
+	for (i = 0; i < stepNumber.length; i++) {
+		currentStep = stepNumber[i];
+		let currentStepNumber = currentStep.dataset.number;
+		let sequenceInt = parseInt(currentStepNumber);
+		step = {
+			descriptionStep: stepDescription[i].value,
+			pictoId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+			sequence: sequenceInt
+		};
+		stepsArr.push(step);
+	}
 
-    scheme = {
-        pictoId: "3fa85f64-5717-4562-b3fc-2c963f66afa6", 
-        name : schemeTitle,
-        totalSteps : stepNumber.length, 
-        steps: stepsArr
-    }
-    postProgressiveScheme(scheme);
-}
-
+	scheme = {
+		pictoId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+		name: schemeTitle,
+		totalSteps: stepNumber.length,
+		steps: stepsArr
+	};
+	postProgressiveScheme(scheme);
+};
 
 const initProgressiveSchemes = function() {
-    progressiveSchemes = document.querySelector('.c-stepplans');
-    addStepsForm = document.querySelector('.js-form-addStep');
-    mainImage = document.querySelector('.c-button_addStepImage');
-    mainImageFilled = mainImage.value; 
-    if(progressiveSchemes){
-    getProgressiveSchemes();}
-    else if(addStepsForm){
-        submitProgressiveScheme = document.querySelector('.c-submitbutton');
-        console.log(submitProgressiveScheme);
-        submitProgressiveScheme.addEventListener('click', function(){
-            // enige verplichte is PICTO nu default waarde 
-            if(mainImage){
-                mainImage.value = "3fa85f64-5717-4562-b3fc-2c963f66afa6";
-                getInputFieldsScheme(); 
-            }
-        });
-    }
+	progressiveSchemes = document.querySelector('.c-stepplans');
 
+	addStepsForm = document.querySelector('.js-form-addStep');
 
+	if (progressiveSchemes) {
+		getProgressiveSchemes();
+	} else if (addStepsForm) {
+		mainImage = document.querySelector('.c-button_addStepImage');
+		mainImageFilled = mainImage.value;
+		submitProgressiveScheme = document.querySelector('.c-submitbutton');
+		console.log(submitProgressiveScheme);
+		submitProgressiveScheme.addEventListener('click', function() {
+			// enige verplichte is PICTO nu default waarde
+			if (mainImage) {
+				mainImage.value = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
+				getInputFieldsScheme();
+			}
+		});
+	}
 };
 document.addEventListener('DOMContentLoaded', function() {
 	console.log('DOM loaded - Create progressive scheme ');

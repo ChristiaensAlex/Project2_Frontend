@@ -1,5 +1,6 @@
 let baseURL = 'https://localhost:44374/api/',
-	json;
+	json,
+	mentorId;
 const showContacts = function(jsonObject) {
 	html = '';
 	i = 1;
@@ -77,7 +78,9 @@ const showContacts = function(jsonObject) {
 		i++;
 	}
 	document.querySelector('.js-all-steps').innerHTML += html;
+
 	getFormElements();
+	ListToRemoveButton();
 	ListenToPencil(jsonObject);
 };
 const getContacts = function(id) {
@@ -131,11 +134,27 @@ const EditContact = function(chosenContact) {
 const removefromDB = function(i) {
 	i = parseInt(i) - 1;
 	console.log(i);
-	console.log('removed: ' + json[i].firstName);
+	//let contactId = json[i].id;
+	contactId = 0;
+	console.log('removed: ' + contactId);
+	let url = `${baseURL}mentor/${mentorId}/contact/${contactId}`;
+	fetch(url, {
+		method: 'DELETE'
+	})
+		.then(function(response) {
+			if (response.ok) {
+				console.log(response.status);
+			} else {
+				response.json();
+				throw Error(`Problem to fetch(). Status code: ${response.status}`);
+			}
+		})
+		// .then(res => res.json())
+		.then(data => console.log(data));
 };
 document.addEventListener('DOMContentLoaded', function() {
 	console.log('DOM loaded - contact');
-	let id = 'EF4C3F22-6AC3-4143-B9CD-21A23F9EA1FE';
+	mentorId = 'EF4C3F22-6AC3-4143-B9CD-21A23F9EA1FE';
 	getContactElements();
-	getContacts(id);
+	getContacts(mentorId);
 });
