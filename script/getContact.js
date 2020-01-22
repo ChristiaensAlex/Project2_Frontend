@@ -111,7 +111,7 @@ const getContactElements = function() {
 	submit = document.querySelector('.js-submitButton');
 	phonenumber = document.querySelector('.js-phonenumber');
 	firstname = document.querySelector('.js-firstname');
-	//ListenToSubmit();
+	ListenToSubmit();
 };
 const ListenToPencil = function(jsonObject) {
 	let pencils = document.querySelectorAll('.c-stepplan__pencil');
