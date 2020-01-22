@@ -1521,6 +1521,10 @@ user can choose a picto or photo for their stepplan or client*/
 .c-planning__picto {
 	grid-row: span 2;
 }
+.c-planning__picto-icon {
+	width: var(--global-whitespace-xl);
+	height: var(--global-whitespace-xl);
+}
 
 .c-planning__username {
 	font-size: var(--global-fontsize);
@@ -1553,7 +1557,12 @@ user can choose a picto or photo for their stepplan or client*/
 	transform: translate(15px, -15px);
 	opacity: 0.1;
 }
-
+.c-planning__check {
+	grid-column: 3;
+	grid-row: 1;
+	transform: translate(15px, -7px);
+	opacity: 0.1;
+}
 .c-planning__check.c-planning__checked {
 	transform: translate(15px, -15px);
 	opacity: 1;
@@ -1562,7 +1571,8 @@ user can choose a picto or photo for their stepplan or client*/
 .c-planning__delete {
 	grid-column: 3;
 	grid-row: 2;
-	transform: translatey(-15px);
+	grid-row-end: span 2;
+	/* transform: translatey(-15px);  -> niet nodig*/
 	display: flex;
 	align-items: center;
 }
@@ -1692,7 +1702,16 @@ _____ .c-profileMentor {
 	padding-bottom: calc(var(--global-baseline) * 5);
 	margin-left: -10px;
 }
-
+.c-label__profile {
+	margin-bottom: 0;
+	font-size: var(--global-fontsize-sm);
+	font-weight: 600;
+	padding: 0 0 var(--global-whitespace-xs);
+	line-height: var(--global-fontsize-md);
+	color: var(--label-color, var(--global-color-omega));
+	display: flex;
+	justify-content: space-between;
+}
 .c-profile__info {
 	font-size: var(--global-fontsize-sm);
 }
