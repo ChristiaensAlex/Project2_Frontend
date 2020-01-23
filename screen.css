@@ -2423,6 +2423,20 @@ mentor can see detail info of client and can choose between calendar, profile in
 	filter: blur(8px);
 }
 
+/*overzicht stappen client*/
+.c-step__countsymbol-symbol {
+	display: flex;
+	justify-content: space-between;
+}
+
+.c-step__countsymbol .c-step__countsymbol-margin {
+	margin-right: var(--global-whitespace-xs);
+}
+
+.c-step__name.c-step__name-moveright {
+	transform: translateX(var(--global-whitespace-lg));
+}
+
 /*
     Utilities: spacing
     ---
