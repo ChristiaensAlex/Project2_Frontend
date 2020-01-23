@@ -2314,8 +2314,10 @@ mentor can see detail info of client and can choose between calendar, profile in
 
 .c-bodyDetailClient {
 	height: calc(100vh - 140px);
-
 	margin: auto 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 .c-diagram {
 	display: flex;
