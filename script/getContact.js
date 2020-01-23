@@ -1,8 +1,25 @@
 let baseURL = 'https://localhost:44374/api/',
 	json,
 	mentorId;
-const putContacts = function(payload) {
-	console.log(payload);
+const putContacts = function(payload, mentorId) {
+	console.log('put client info');
+	let body = JSON.stringify(payload);
+	console.log(body);
+	fetch(`${baseURL}mentor/${mentorId}/contact`, {
+		method: 'PUT',
+		mode: 'cors',
+		cache: 'no-cache',
+		credentials: 'same-origin',
+		headers: { 'Content-Type': 'application/json' },
+		body: body
+	})
+		.then(res => {
+			console.log(res.status)//((window.location.href = 'MentorHasClientList.html'));
+		})
+		// .then(data => {
+		// 	console.log(data); // ;
+		// })
+		.catch(err => console.log(err));
 };
 const showContacts = function(jsonObject) {
 	html = '';
@@ -183,7 +200,7 @@ const ListenToSubmit = function(button) {
 			payload.push(contact);
 		}
 
-		putContacts(payload);
+		putContacts(payload, mentorId);
 	});
 };
 document.addEventListener('DOMContentLoaded', function() {
