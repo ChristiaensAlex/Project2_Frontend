@@ -2,8 +2,8 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="x-ua-compatible" content="ie-edhge" />
-		<title>Trek Je Plan - Wachtwoord vergeten</title>
-		<meta name="description" content="E-mail versturen om nieuw wachtwoord te kunnen instellen" />
+		<title>Trek Je Plan - Log in cliënt</title>
+		<meta name="description" content="Log in voor cliënt, begeleider wordt geacht reeds een account aangemaakt te hebben." />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 		<!--STYLE-->
@@ -12,7 +12,9 @@
 
 		<!--FONTS-->
 		<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
+
 		<!--SCRIPT-->
+
 		<!--FAVICON-->
 		<link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png" />
 		<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png" />
@@ -32,14 +34,13 @@
 		<meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png" />
 		<meta name="theme-color" content="#1C5C5C" />
 	</head>
-
-	<body class="c-spreadPage">
+	<body class="o-body">
 		<section class="o-section">
-			
+			<div class="c-content">
 				<div class="o-header">
 					<div class="c-logo">
-						<div class="c_logo__symbol">
-							<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" viewBox="0 0 151.15 155.57">
+						<div class="c-logo__symbol">
+							<svg class="c-icon" xmlns="http://www.w3.org/2000/svg" height="48" width="48" viewBox="0 0 151.15 155.57">
 								<defs>
 									<style>
 										.cls-1 {
@@ -61,36 +62,39 @@
 						</div>
 					</div>
 				</div>
-				<div class="o-row c-forgotPassword">
-					<div class="o-container c-forgotPasswordMessage">
-						<h1 class="c-title c-reset-description">
-							Wachtwoord wijzigen
-						</h1>
-						<form action="#">
-							<label for="oldPassword" class="c-label c-reset-description">Oud wachtwoord</label>
-							<input type="text" name="oldPassword" class="c-input" />
-							<label for="newPassword" class="c-label c-reset-description">Nieuw wachtwoord</label>
-							<input type="text" name="newPassword" class="c-input" />
-							<label for="checkNewPassword" class="c-label c-reset-description">Wachtwoord bevestigen</label>
-							<input type="text" name="checkNewPassword" class="c-input" />
-						</form>
-					</div>
+				<div class="c-card">
+					<div class="o-row">
+						<div class="o-container">
+							<!-- <div class="c-welcome">Logo in het groot met welkom</div> -->
 
-					<div class="c-buttonrow">
-						<a href="EditProfileMentor1.html" class="o-button-reset c-button c-backbutton js-backbutton">
-							<svg class=" c-backbutton__arrow" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="36" height="36" viewBox="0 0 400.004 400.004" style="enable-background:new 0 0 400.004 400.004;" xml:space="preserve">
-								<path
-									d="M382.688,182.686H59.116l77.209-77.214c6.764-6.76,6.764-17.726,0-24.485c-6.764-6.764-17.73-6.764-24.484,0L5.073,187.757
-c-6.764,6.76-6.764,17.727,0,24.485l106.768,106.775c3.381,3.383,7.812,5.072,12.242,5.072c4.43,0,8.861-1.689,12.242-5.072
-c6.764-6.76,6.764-17.726,0-24.484l-77.209-77.218h323.572c9.562,0,17.316-7.753,17.316-17.315
-C400.004,190.438,392.251,182.686,382.688,182.686z"
-								/>
-							</svg>
-							<div class="c-backbutton__text">
-								Terug
-							</div>
-						</a>
-						<button class="o-button-reset c-button c-submitbutton c-submitbutton-long">Opslaan</button>
+							<form class="c-form" action="#">
+								<p class="c-title">Ik ben cliënt...</p>
+								<p>
+									<label class="c-label" for="Username">Gebruikersnaam</label>
+									<input class="c-input" type="text" name="Username" />
+								</p>
+								<p>
+									<label class="c-label" for="Password">Wachtwoord</label>
+									<input class="c-input" type="password" name="Password" />
+								</p>
+								<div class="c-buttonrow">
+									<a href="index.html" class="o-button-reset c-button c-backbutton">
+										<svg class=" c-backbutton__arrow" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="36" height="36" viewBox="0 0 400.004 400.004" style="enable-background:new 0 0 400.004 400.004;" xml:space="preserve">
+											<path
+												d="M382.688,182.686H59.116l77.209-77.214c6.764-6.76,6.764-17.726,0-24.485c-6.764-6.764-17.73-6.764-24.484,0L5.073,187.757
+			   c-6.764,6.76-6.764,17.727,0,24.485l106.768,106.775c3.381,3.383,7.812,5.072,12.242,5.072c4.43,0,8.861-1.689,12.242-5.072
+			   c6.764-6.76,6.764-17.726,0-24.484l-77.209-77.218h323.572c9.562,0,17.316-7.753,17.316-17.315
+			   C400.004,190.438,392.251,182.686,382.688,182.686z"
+											/>
+										</svg>
+										<div class="c-backbutton__text">
+											Terug
+										</div>
+									</a>
+									<button class="o-button-reset c-button c-submitbutton" type="submit">Start</button>
+								</div>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
