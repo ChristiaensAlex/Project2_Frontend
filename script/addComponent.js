@@ -67,6 +67,7 @@ const onHandlerClickedAdd = function(e) {
 	let inpStep = inputStep.cloneNode(true);
 	let count = document.querySelectorAll('.js-single-step');
 	inpStep.dataset.number = count.length + 1;
+	inpStep.style.display = 'block'; 
 	if (inpStep.querySelector('.js-step-number') && inpStep.querySelector('.js-input-description')) {
 		inpStep.querySelector('.js-step-number').innerHTML = inpStep.dataset.number;
 		console.log('Dataset nummer');
@@ -86,6 +87,6 @@ const ListToRemoveButton = function() {
 };
 
 document.addEventListener('DOMContentLoaded', function() {
-	console.info('DOM loaded');
+	console.info('DOM loaded - addComponent');
 	getFormElements();
 });

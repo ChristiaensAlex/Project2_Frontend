@@ -2,7 +2,8 @@ const showStepsFromProgressiveScheme = function(payload){
     let steps = payload.steps; 
     let progressiveSchemeSteps = document.querySelector(".js-scheme-allSteps"); 
     console.log(progressiveSchemeSteps); 
- for(i in steps){
+    for(i in steps){
+        let datanumber = steps[i].sequence - 1;
         progressiveSchemeSteps.innerHTML += `<div class="c-overview__step">
         <div class="c-picto">
             <img alt="Swipe de picto om door te gaan naar de volgende stap" />
@@ -20,14 +21,13 @@ const showStepsFromProgressiveScheme = function(payload){
                  </g>
              </svg>
          </div>
-         <div class="c-step__name">Stap ${steps[i].sequence}</div>
+         <div class="c-step__name">Stap ${datanumber}</div>
          <div class="c-step__explanation-mentor">
              ${steps[i].descriptionStep}
          </div>
      </div> `;
-     let step = document.querySelector('.c-overview__step');
-     if (i != 0){ //if the step is not the last one, add an arrow 
-         step.outerHTML +=  `<div class="c-downwardsArrow">
+            if (i != 0){ //if the step is not the last one, add an arrow 
+                steps.outerHTML +=  `<div class="c-downwardsArrow">
          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="27.353" viewBox="0 0 24 27.353">
              <g id="Component_4_44" data-name="Component 4 – 44" transform="translate(0 27.353) rotate(-90)">
                  <g id="Group_972" data-name="Group 972" transform="translate(4 6)">
@@ -49,8 +49,9 @@ const showStepsFromProgressiveScheme = function(payload){
 const fillInputsFromEditPlan = function(payload){
 let steps = payload.steps; 
 let progressiveSchemeSteps = document.querySelector(".js-edit-scheme"); 
-console.log(progressiveSchemeSteps); 
+console.log(progressiveSchemeSteps);
 for(i in steps){
+    
     progressiveSchemeSteps.innerHTML += `<div class="c-single-step js-single-step" data-number=${steps[i].sequence}>
     <div class="c-new-step js-new-step">
         <div class="c-button_addStepImage">

@@ -173,6 +173,7 @@ const getInputFieldsScheme = function(){
             currentStep = stepNumber[i]; 
             let currentStepNumber = currentStep.dataset.number;
             let sequenceInt = parseInt(currentStepNumber); 
+            
             let ids = ["a3e9acdf-d4eb-4712-65eb-08d79eb0cc34", "4b70b6df-ba0b-41be-65ec-08d79eb0cc34"];
             updatedStep = {
                 id: ids[i], //NO ID FOR NEW STEP IN EXSISTING PROGRESSIVE SCHEME 

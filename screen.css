@@ -478,6 +478,8 @@ body {
 	/* Corrects inability to style clickable `input` types in iOS */
 	-webkit-appearance: none;
 }
+
+
 /*------------------------------------*\
   #COMPONENTS
   \*------------------------------------*/
@@ -1451,6 +1453,8 @@ user can choose a picto or photo for their stepplan or client*/
 	border-radius: var(--global-borderRadius-md);
 }
 
+
+
 .c-client__userPhoto {
 	justify-content: center;
 	align-items: center;
@@ -1478,7 +1482,6 @@ user can choose a picto or photo for their stepplan or client*/
 
 @media (min-width: 992px) {
 	.c-clients {
-		display: grid;
 		grid-template-columns: auto auto;
 		grid-template-rows: auto;
 		margin-left: calc(var(--global-baseline) * 8);
@@ -1487,6 +1490,11 @@ user can choose a picto or photo for their stepplan or client*/
 	.c-clients .c-client {
 		width: 300px;
 	}
+
+}
+
+.c-clients .u-hide{
+		display: none;
 }
 /*Component: PlanningList
  A mentor has an overview of the planning of today
@@ -1801,6 +1809,8 @@ the visualisation of 1 step for the client with picto, countsymbol and explanati
 	box-shadow: 0px 2px 4px rgba(165, 163, 191, 0.15);
 	padding: var(--global-whitespace-md);
 }
+
+
 
 .c-add-step {
 	display: flex;
@@ -2420,6 +2430,10 @@ mentor can see detail info of client and can choose between calendar, profile in
 .c-popup-blur {
 	filter: blur(8px);
 }
+
+/* .o-hidden-component{
+	display:none !important; 
+} */
 
 /*
     Utilities: spacing
