@@ -45,46 +45,15 @@ const showClientsFromProgressiveScheme = function(payload){
     let clients = payload.clients; 
     let clientSchemes = document.querySelector('.js-clientScheme'); 
     for(i in clients){
-        clientSchemes.innerHTML += `<div class="c-symbol__clientProfiles-client">
-        <div class="c-symbol__clientProfiles-client__symbol">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
-                <rect id="rectangle-6" width="40" height="40" rx="20" fill="#bdc0c4" />
-            </svg>
-            <div class="c-symbol__clientProfiles-client__delete">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-                    <g id="Group_1018" data-name="Group 1018" transform="translate(74 -190)">
-                        <g id="Group_1019" data-name="Group 1019" transform="translate(-137 18)">
-                            <circle id="Ellipse_151" data-name="Ellipse 151" cx="5.658" cy="5.658"
-                                r="5.658" transform="matrix(0.695, -0.719, 0.719, 0.695, 63, 180.139)"
-                                fill="#e0dee6" />
-                            <path id="Path_292" data-name="Path 292"
-                                d="M6,1.2,4.8,0,3,1.8,1.2,0,0,1.2,1.8,3,0,4.8,1.2,6,3,4.2,4.8,6,6,4.8,4.2,3Z"
-                                transform="translate(68 177.105) rotate(-1)" fill="#fff" />
-                        </g>
-                    </g>
-                </svg>
-            </div>
-        </div>
-        <div class="c-symbol__clientProfiles-client__name">
-            ${clients[i].firstName}
-        </div>
-    </div>`;
+        let OneClient = document.querySelector('.c-symbol__clientProfiles-client');
+        let clientClone = OneClient.cloneNode(true); 
+        clientClone.classList.remove('u-hide'); 
+        let client = clients[i]; 
+        let clientName = document.querySelector('.c-symbol__clientProfiles-client__name'); 
+        clientName.innerHTML = client.firstName; 
+        clientSchemes.appendChild(clientClone); 
     }
-    clientSchemes.innerHTML += ` <div class="c-symbol__clientProfiles-client">
-    <div class="c-symbol__clientProfiles-client__addClient">
-        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13">
-            <g id="Group_1142" data-name="Group 1142" transform="translate(-161 -194)">
-                <circle id="Ellipse_146" data-name="Ellipse 146" cx="6.5" cy="6.5" r="6.5"
-                    transform="translate(161 194)" fill="#1d5c5c" />
-                <path id="Path_285" data-name="Path 285"
-                    d="M5.471,1.094,4.377,0,2.736,1.641,1.094,0,0,1.094,1.641,2.736,0,4.377,1.094,5.471,2.736,3.83,4.377,5.471,5.471,4.377,3.83,2.736Z"
-                    transform="translate(167.519 197) rotate(45)" fill="#fff" />
-            </g>
-        </svg>
-    </div>
-</div>`; 
     
-
 }
 
 
