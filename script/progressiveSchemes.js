@@ -38,23 +38,8 @@ const showAllProgressiveSchemes = function(jsonObject) {
         </div>
     </div>`;
 	}
-    getElements();
-    ListenToProgressiveSchemes(jsonObject);
+    getElements(); 
 };
-
-const ListenToProgressiveSchemes = function(jsonObject){
-    stepPlans = document.querySelectorAll('.c-stepplan');
-    for (stepPlan of stepPlans){
-        stepPlan.addEventListener('click', function(){
-            let i = this.getAttribute('plannr'); 
-            planId = jsonObject[i].id; 
-            sessionStorage.planId = planId; 
-            console.log(planId); 
-            window.location.href = 'DetailProgressiveStepsPlan.html'; 
-        })
-    }
-
-}
 
 const showClientsFromProgressiveScheme = function(payload){
     let clients = payload.clients; 
@@ -118,6 +103,16 @@ const getProgressiveSchemes = function() {
             if(progressiveSchemes){
             showAllProgressiveSchemes(jsonObject);
             console.log(jsonObject);
+            stepPlans = document.querySelectorAll('.c-stepplan');
+            for (stepPlan of stepPlans){
+                stepPlan.addEventListener('click', function(){
+                    let i = this.getAttribute('plannr'); 
+                    planId = jsonObject[i].id; 
+                    sessionStorage.planId = planId; 
+                    console.log(planId); 
+                    window.location.href = 'DetailProgressiveStepsPlan.html'; 
+                })
+            }
         }
 		})
 		.catch(function(error) {
@@ -128,7 +123,8 @@ const getProgressiveSchemes = function() {
 const putProgressiveScheme = function(payload){
     let body = JSON.stringify(payload);
     console.log(body);
-    let schemeId = "f4ed4bfd-e707-4ff5-98a0-08d79eb0ca8e"; 
+    let schemeId = sessionStorage.planId; 
+    console.log(schemeId); 
 	fetch(`https://localhost:44374/api/progressiveScheme/${schemeId}`, {
 		method: 'PUT',
 		mode: 'cors',
@@ -189,7 +185,7 @@ const getInputFieldsScheme = function(){
         }
     
         updatedScheme = {
-            id: "f4ed4bfd-e707-4ff5-98a0-08d79eb0ca8e", //PROGRESSIVE SCHEME ID 
+            id: sessionStorage.planId, 
             pictoId: "3fa85f64-5717-4562-b3fc-2c963f66afa6", 
             name : schemeTitle,
             totalSteps : stepNumber.length, 
