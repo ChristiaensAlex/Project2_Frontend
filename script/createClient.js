@@ -26,11 +26,11 @@ const CreateClient = function(payload, mentorId) {
 		})
 		.catch(err => console.log(err));
 };
-const AddExistingClient = function(payload) {
+const AddExistingClient = function(payload, mentorId) {
 	console.log(' add existing client');
 	let body = JSON.stringify(payload);
 	console.log(body);
-	fetch(`https://localhost:44374/api/client/Login`, {
+	fetch(`https://localhost:44374/api/client/Login?mentorid=${mentorId}`, {
 		method: 'POST',
 		mode: 'cors',
 		cache: 'no-cache',
@@ -47,6 +47,7 @@ const AddExistingClient = function(payload) {
 const ListenToSubmitButton = function(button) {
 	button.addEventListener('click', function(event) {
 		event.preventDefault();
+		mentorId = 'EF4C3F22-6AC3-4143-B9CD-21A23F9EA1FE';
 		if (firstname) {
 			let payload = {
 				firstName: firstname.value,
@@ -57,7 +58,7 @@ const ListenToSubmitButton = function(button) {
 				infoClient: extra.value,
 				profilePictureId: '3fa85f64-5717-4562-b3fc-2c963f66afa6'
 			};
-			mentorId = 'EF4C3F22-6AC3-4143-B9CD-21A23F9EA1FE';
+
 			CreateClient(payload, mentorId);
 		} else {
 			let payload = {
@@ -65,7 +66,7 @@ const ListenToSubmitButton = function(button) {
 				password: password.value
 			};
 			console.log(payload);
-			//AddExistingClient(payload);
+			AddExistingClient(payload, mentorId);
 		}
 	});
 };
