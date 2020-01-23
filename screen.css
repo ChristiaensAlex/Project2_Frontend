@@ -1652,7 +1652,7 @@ user can choose a picto or photo for their stepplan or client*/
 	height: var(--global-whitespace-xl);
 	margin: var(--global-whitespace) var(--global-whitespace) var(--global-whitespace) 0;
 }
-_____ .c-profileMentor {
+.c-profileMentor {
 	display: flex;
 	flex-direction: column;
 
