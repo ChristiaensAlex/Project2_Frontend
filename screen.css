@@ -1779,6 +1779,15 @@ client can get to contact list
 .c-progressiveScheme {
 	display: flex;
 }
+.c-progressiveScheme__done {
+	--blur-scheme: blur(3px);
+	-webkit-filter: var(--blur-scheme);
+	-moz-filter: var(--blur-scheme);
+	-o-filter: var(--blur-scheme);
+	-ms-filter: var(--blur-scheme);
+	filter: var(--blur-scheme);
+	background-color: var(--global-color-neutral-x-light-transparent);
+}
 
 /*Component: step
 ---
