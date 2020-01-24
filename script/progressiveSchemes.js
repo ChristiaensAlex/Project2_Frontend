@@ -1,4 +1,4 @@
-let progressiveSchemes, stepPlans, baseURL, addStepsForm ,scheme, updatedScheme,  title, schemeTitle;
+let progressiveSchemes, stepPlans, baseURL, addStepsForm, scheme, updatedScheme, title, schemeTitle;
 const showAllProgressiveSchemes = function(jsonObject) {
 	for (i in jsonObject) {
 		progressiveSchemes.innerHTML += `<div class="c-stepplan" plannr=${i}>
@@ -38,24 +38,22 @@ const showAllProgressiveSchemes = function(jsonObject) {
         </div>
     </div>`;
 	}
-    getElements(); 
+	getElements();
 };
 
-const showClientsFromProgressiveScheme = function(payload){
-    let clients = payload.clients; 
-    let clientSchemes = document.querySelector('.js-clientScheme'); 
-    for(i in clients){
-        let OneClient = document.querySelector('.c-symbol__clientProfiles-client');
-        let clientClone = OneClient.cloneNode(true); 
-        clientClone.classList.remove('u-hide'); 
-        let client = clients[i]; 
-        let clientName = document.querySelector('.c-symbol__clientProfiles-client__name'); 
-        clientName.innerHTML = client.firstName; 
-        clientSchemes.appendChild(clientClone); 
-    }
-    
-}
-
+const showClientsFromProgressiveScheme = function(payload) {
+	let clients = payload.clients;
+	let clientSchemes = document.querySelector('.js-clientScheme');
+	for (i in clients) {
+		let OneClient = document.querySelector('.c-symbol__clientProfiles-client');
+		let clientClone = OneClient.cloneNode(true);
+		clientClone.classList.remove('u-hide');
+		let client = clients[i];
+		let clientName = document.querySelector('.c-symbol__clientProfiles-client__name');
+		clientName.innerHTML = client.firstName;
+		clientSchemes.appendChild(clientClone);
+	}
+};
 
 const getProgressiveSchemes = function() {
 	let id = '82B3CB09-AC76-47A1-B879-B7A370E265D7';
@@ -69,30 +67,30 @@ const getProgressiveSchemes = function() {
 			}
 		})
 		.then(function(jsonObject) {
-            if(progressiveSchemes){
-            showAllProgressiveSchemes(jsonObject);
-            console.log(jsonObject);
-            stepPlans = document.querySelectorAll('.c-stepplan');
-            for (stepPlan of stepPlans){
-                stepPlan.addEventListener('click', function(){
-                    let i = this.getAttribute('plannr'); 
-                    planId = jsonObject[i].id; 
-                    sessionStorage.planId = planId; 
-                    console.log(planId); 
-                    window.location.href = 'DetailProgressiveStepsPlan.html'; 
-                })
-            }
-        }
+			if (progressiveSchemes) {
+				showAllProgressiveSchemes(jsonObject);
+				console.log(jsonObject);
+				stepPlans = document.querySelectorAll('.c-stepplan');
+				for (stepPlan of stepPlans) {
+					stepPlan.addEventListener('click', function() {
+						let i = this.getAttribute('plannr');
+						planId = jsonObject[i].id;
+						sessionStorage.planId = planId;
+						console.log(planId);
+						window.location.href = 'DetailProgressiveStepsPlan.html';
+					});
+				}
+			}
 		})
 		.catch(function(error) {
 			console.error(`Problem to process json ${error}`);
 		});
 };
 
-const putProgressiveScheme = function(payload){
-    let body = JSON.stringify(payload);
-    console.log(payload);
-    let schemeId = sessionStorage.planId; 
+const putProgressiveScheme = function(payload) {
+	let body = JSON.stringify(payload);
+	console.log(payload);
+	let schemeId = sessionStorage.planId;
 	fetch(`https://localhost:44374/api/progressiveScheme/${schemeId}`, {
 		method: 'PUT',
 		mode: 'cors',
@@ -105,13 +103,12 @@ const putProgressiveScheme = function(payload){
 			console.log(data), (window.location.href = 'MentorHasProgressiveStepsList.html');
 		})
 		.catch(err => console.log(err));
-  
-}
+};
 
-const postProgressiveScheme = function(payload){
-    let body = JSON.stringify(payload);
-    console.log(body);
-    let mentorId = "aacb2362-73a9-43dc-b9de-0ce057623568"; 
+const postProgressiveScheme = function(payload) {
+	let body = JSON.stringify(payload);
+	console.log(body);
+	let mentorId = '82B3CB09-AC76-47A1-B879-B7A370E265D7';
 	fetch(`https://localhost:44374/api/progressiveScheme/${mentorId}`, {
 		method: 'POST',
 		mode: 'cors',
@@ -122,24 +119,24 @@ const postProgressiveScheme = function(payload){
 	})
 		.then(res => res.json())
 		.then(data => {
-			console.log(data); }) 
+			console.log(data), (window.location.href = 'MentorHasProgressiveStepsList.html');
+		})
 		.catch(err => console.log(err));
-  
-}
+};
 
-const getInputFieldsScheme = function(){
-    title = document.querySelector('.js-scheme-name');
-    stepNumber = document.querySelectorAll('.js-single-step');
-    stepDescription = document.querySelectorAll('.js-input-description'); 
-    let step = ""; 
-    let stepsArr = []; 
-    schemeTitle = title.value;
-    
-    if(document.title == "Trek Je Plan - Wijzig een stappenplan"){
+const getInputFieldsScheme = function() {
+	title = document.querySelector('.js-scheme-name');
+	stepNumber = document.querySelectorAll('.js-single-step');
+	stepDescription = document.querySelectorAll('.js-input-description');
+	let step = '';
+	let stepsArr = [];
+	schemeTitle = title.value;
+
+	if (document.title == 'Trek Je Plan - Wijzig een stappenplan') {
 		let payload = [];
-
-		counter = 1;
-		for (object of json.steps) {	
+		console.log(stepDescription[1]);
+		let counter = 1;
+		for (object of json.steps) {
 			object.descriptionStep = stepDescription[counter].value;
 			object.sequence = counter;
 			object.pictoId = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
@@ -148,73 +145,69 @@ const getInputFieldsScheme = function(){
 			counter++;
 		}
 
-		console.log(stepNumber)
+		console.log(stepNumber);
 		for (i = counter; i < stepNumber.length; i++) {
 			let step = {
 				descriptionStep: stepDescription[i].value,
 				sequence: counter,
-				pictoId:'3fa85f64-5717-4562-b3fc-2c963f66afa6',
+				pictoId: '3fa85f64-5717-4562-b3fc-2c963f66afa6'
 			};
 
 			payload.push(step);
 		}
-    
-        updatedScheme = {
-            id: sessionStorage.planId, 
-            pictoId: "3fa85f64-5717-4562-b3fc-2c963f66afa6", 
-            name : schemeTitle,
-            totalSteps : stepNumber.length - 1, 
-            steps: payload
-		}
+
+		updatedScheme = {
+			id: sessionStorage.planId,
+			pictoId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+			name: schemeTitle,
+			totalSteps: stepNumber.length - 1,
+			steps: payload
+		};
 		console.log(updatedScheme);
-		putProgressiveScheme(updatedScheme); 
+		putProgressiveScheme(updatedScheme);
+	} else if (document.title == 'Trek Je Plan - Maak een nieuw stappenplan aan') {
+		for (i = 0; i < stepNumber.length; i++) {
+			currentStep = stepNumber[i];
+			let currentStepNumber = currentStep.dataset.number;
+			let sequenceInt = parseInt(currentStepNumber);
+			console.log(sequenceInt);
+			step = {
+				descriptionStep: stepDescription[i].value,
+				pictoId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+				sequence: sequenceInt
+			};
+			stepsArr.push(step);
+		}
 
-	} else if(document.title == "Trek Je Plan - Maak een nieuw stappenplan aan") {
-        for(i = 0; i < stepNumber.length; i++){
-            currentStep = stepNumber[i]; 
-            let currentStepNumber = currentStep.dataset.number;
-            let sequenceInt = parseInt(currentStepNumber); 
-            step = {
-                descriptionStep: stepDescription[i].value, 
-                pictoId: "3fa85f64-5717-4562-b3fc-2c963f66afa6", 
-                sequence: sequenceInt
-            };
-            stepsArr.push(step);  
-        }
-    
-        scheme = {
-            pictoId: "3fa85f64-5717-4562-b3fc-2c963f66afa6", 
-            name : schemeTitle,
-            totalSteps : stepNumber.length, 
-            steps: stepsArr
-        }
-        postProgressiveScheme(scheme);
+		scheme = {
+			pictoId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+			name: schemeTitle,
+			totalSteps: stepNumber.length,
+			steps: stepsArr
+		};
+		postProgressiveScheme(scheme);
 	}
-    
-}
-
+};
 
 const initProgressiveSchemes = function() {
-    progressiveSchemes = document.querySelector('.c-stepplans');
-    addStepsForm = document.querySelector('.js-form-addStep');
-    mainImage = document.querySelector('.c-button_addStepImage');
-		if(document.title == "Trek Je Plan - Stappenplannen Overzicht"){
-			getProgressiveSchemes()}
-    else if(addStepsForm){
-        submitProgressiveScheme = document.querySelector('.c-submitbutton');
-        submitProgressiveScheme.addEventListener('click', function(){
-            // enige verplichte is PICTO nu default waarde 
-            if(mainImage){
-				mainImage.value = "3fa85f64-5717-4562-b3fc-2c963f66afa6";
-				getInputFieldsScheme(); 
-            }
-        });
-    }
-
-
+	progressiveSchemes = document.querySelector('.c-stepplans');
+	addStepsForm = document.querySelector('.js-form-addStep');
+	mainImage = document.querySelector('.c-button_addStepImage');
+	if (document.title == 'Trek Je Plan - Stappenplannen Overzicht') {
+		getProgressiveSchemes();
+	} else if (addStepsForm) {
+		submitProgressiveScheme = document.querySelector('.c-submitbutton');
+		submitProgressiveScheme.addEventListener('click', function() {
+			// enige verplichte is PICTO nu default waarde
+			if (mainImage) {
+				mainImage.value = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
+				getInputFieldsScheme();
+			}
+		});
+	}
 };
 document.addEventListener('DOMContentLoaded', function() {
 	console.log('DOM loaded - Create progressive scheme ');
 	baseURL = 'https://localhost:44374/api/';
-    initProgressiveSchemes();
+	initProgressiveSchemes();
 });

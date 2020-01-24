@@ -1637,7 +1637,7 @@ user can choose a picto or photo for their stepplan or client*/
 	grid-template-rows: auto auto;
 	background-color: var(--global-color-neutral-x-light-transparent);
 	height: calc(var(--global-baseline) * 10);
-	margin: var(--global-whitespace) 0;
+	margin: var(--global-whitespace) 0 calc(var(--global-baseline) * 11) 0;
 	padding: var(--global-baseline);
 	border-radius: var(--global-borderRadius-md);
 }
