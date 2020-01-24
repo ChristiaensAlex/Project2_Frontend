@@ -1,90 +1,62 @@
 let customHeaders = new Headers();
-customHeaders.append("Accept", "application/json");
+customHeaders.append('Accept', 'application/json');
 
+baseURL = `https://localhost:44374/api/`;
 
-ClientId = "1d32717c-4c22-40a2-650e-08d79a90abfb";
-URI = `https://localhost:44374/api/client/${ClientId}/rapport`
+let showClientReport = function(json) {
+	let html = '';
 
-const init = function () {
-    getClientReport(URI);
-};
-
-
-let showTitle = function (queryResponse) {
-    let title = `Rapport <span>${queryResponse.firstName + " " + queryResponse.lastName}</span>`
-    document.querySelector(".js-title").innerHTML = title;
-};
-
-let showClientReport = function (dataArraySchemeName, dataArrayNumberOfTimesDone, dataArrayLastTimeInMinutes) {
-    let html = "";
-    for (let i = 0; i < dataArraySchemeName.length; i++) {
-        html += `  <div class="c-report-scheme">
-              <p class="c-report-title">${dataArraySchemeName[i]}</p>
+	for (object of json.rapportDetailList) {
+		html += `  <div class="c-report-scheme">
+              <p class="c-report-title">${object.progressiveSchemeName}</p>
               <div class="c-client-report">
                 <div class="c-report-description">
                   <p>Aantal keer doorlopen:</p>
                   <div>Laatste tijd:</div>
                 </div>
                 <div class="c-report-description">
-                  <p>${dataArrayNumberOfTimesDone[i]}</p>
-                  <div>${dataArrayLastTimeInMinutes[i]} min</div>
+                  <p>${object.numberOfTimesDone}</p>
+                  <div>${object.lastTimeInMinutes} min</div>
                 </div>
               </div>
             </div>`;
-    }
-
-    document.querySelector(".js-report-schemes").innerHTML = html;
+	}
+	let title = `Rapport <span>${json.firstName + ' ' + json.lastName}</span>`;
+	document.querySelector('.js-title').innerHTML = title;
+	document.querySelector('.js-report-schemes').innerHTML = html;
 };
 
-
-let ProcessClientReport = function (queryResponse) {
-    // console.log(queryResponse)
-
-    // let FirstName = queryResponse.firstName;
-    // let LastName = queryResponse.lastName;
-
-    dataArraySchemeName = [];
-    for (var addSchemeName of queryResponse.rapportDetailList) {
-        let SN = addSchemeName.progressiveSchemeName;
-        dataArraySchemeName.push(SN);
-    };
-
-    dataArrayNumberOfTimesDone = [];
-    for (var addNumberOfTimesDone of queryResponse.rapportDetailList) {
-        let NOTD = addNumberOfTimesDone.numberOfTimesDone;
-        dataArrayNumberOfTimesDone.push(NOTD);
-    };
-
-    dataArrayLastTimeInMinutes = [];
-    for (var addLastTimeInMinutes of queryResponse.rapportDetailList) {
-        let LTIM = addLastTimeInMinutes.lastTimeInMinutes;
-        dataArrayLastTimeInMinutes.push(LTIM);
-    };
-
-    //console.log(dataArraySchemeName, dataArrayNumberOfTimesDone, dataArrayLastTimeInMinutes);
-    showTitle(queryResponse);
-    showClientReport(dataArraySchemeName, dataArrayNumberOfTimesDone, dataArrayLastTimeInMinutes);
+const getClientReport = function(clientId) {
+	let url = `${baseURL}client/${clientId}/rapport`;
+	fetch(url)
+		.then(function(response) {
+			if (!response.ok) {
+				throw Error(`Problem to fetch(). Status code: ${response.status}`);
+			} else {
+				let arr = new Array();
+				arr = response.json();
+				console.log(arr);
+				return arr;
+			}
+		})
+		.then(function(jsonObject) {
+			json = jsonObject;
+			console.log(jsonObject);
+			showClientReport(jsonObject);
+		})
+		.catch(function(error) {
+			console.log(error);
+			console.error(`Problem to process json $`);
+		});
 };
 
-let getClientReport = async function (URI) {
-    // Eerst bouwen we onze url op
-    const SERVER_ENDPOINT = `${URI}`;
-    // console.log(URI);
-    // Met de fetch API proberen we de data op te halen.
-    const response = await fetch(SERVER_ENDPOINT, { headers: customHeaders });
-    const queryResponse = await response.json();
+const init = function() {
+	clientId = sessionStorage.clientId;
+	console.log(clientId);
 
-    ProcessClientReport(queryResponse);
+	getClientReport(clientId);
 };
-
-const fetchData = function (url) {
-    fetch(url, { headers: customHeaders })
-        .then(r => r.json())
-        .then(data => data);
-};
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    console.info("domcontentloaded");
-    init();
+document.addEventListener('DOMContentLoaded', function() {
+	console.info('domcontentloaded');
+	init();
 });
