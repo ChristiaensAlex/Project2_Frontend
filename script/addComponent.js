@@ -1,9 +1,7 @@
-let form, buttonAddStep, removeButton, buttonAddStepBetween, inputStep, inputStepDescription, allSteps;
+let form, buttonAddStep, removeButton, buttonAddStepBetween, inputStep, inputStepDescription, allSteps, count;
 
 const getFormElements = function() {
 	form = document.querySelector('.js-form-addStep');
-
-	//GetDomElements();
 	if (form) {
 		form.noValidate = true; //input is not validated when submitted
 		// form.addEventListener('submit', onFormSubmit);
@@ -12,12 +10,13 @@ const getFormElements = function() {
 	}
 	buttonAddStep = document.querySelector('.js-button-addStep');
 	buttonAddContact = document.querySelector('.c-button__addContact');
-	if (buttonAddStep) {
+	count = document.querySelectorAll('.js-single-step');
+	if (document.title == "Trek Je Plan - Maak een nieuw stappenplan aan") {
+		console.log(count.length); 
 		buttonAddStep.addEventListener('click', onHandlerClickedAdd);
 	} else if (buttonAddContact) {
 		buttonAddContact.addEventListener('click', onHandlerClickedAdd);
 	}
-
 	inputStep = document.querySelector('.js-single-step');
 	numberStep = document.querySelector('.js-step-number');
 	allSteps = document.querySelector('.js-all-steps');
@@ -27,7 +26,6 @@ const getFormElements = function() {
 const onHandlerClickedRemove = function(e) {
 	e.preventDefault();
 	console.log(allSteps);
-
 	console.log(e.currentTarget.parentNode.parentNode.parentNode);
 	if (e.currentTarget.parentNode.parentNode.parentNode.querySelector('.c-contact__wrapper')) {
 		console.log(e.currentTarget.parentNode.parentNode.parentNode.dataset.number);
@@ -37,22 +35,20 @@ const onHandlerClickedRemove = function(e) {
 		allSteps.removeChild(e.currentTarget.parentNode.parentNode.parentNode.parentNode);
 		let stepNumbers = document.querySelectorAll('.js-single-step');
 		let stepNumbersArr = Array.from(stepNumbers);
-		console.log(stepNumbers);
-		console.log('Lijst');
 		console.log(stepNumbersArr);
 		stepNumbersArr.forEach(i => {
-			console.log('I');
-			console.log(i);
 			nummer2 = i.getAttribute('data-number');
+			console.log("Nummer 2: " + nummer2)
 			nummer = i.dataset.number;
-			console.log(nummer2);
+			console.log(nummer); 
+
 			if (i.dataset.number >= e.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.number) {
-				console.log('Dataset nummer 1');
-				console.log(e.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.number);
 				nummer = parseInt(nummer) - 1;
-				console.log('Nieuw dataset nummer 2');
-				console.log(nummer);
-				i.querySelector('.js-step-number').innerHTML = nummer;
+				if(document.title == "Trek Je Plan - Maak een nieuw stappenplan aan"){
+				i.querySelector('.js-step-number').innerHTML = nummer;}
+				else if(document.title =="Trek Je Plan - Wijzig een stappenplan"){
+					i.querySelector('.js-step-number').innerHTML = "Stap " + nummer;
+				}
 			} else {
 			}
 		});
@@ -65,24 +61,37 @@ const onHandlerClickedRemove = function(e) {
 const onHandlerClickedAdd = function(e) {
 	e.preventDefault();
 	let inpStep = inputStep.cloneNode(true);
-	let count = document.querySelectorAll('.js-single-step');
-	inpStep.dataset.number = count.length + 1;
+	count = document.querySelectorAll('.js-single-step');
+	inpStep.dataset.number = count.length + 1 ;
 	inpStep.style.display = 'block'; 
 	if (inpStep.querySelector('.js-step-number') && inpStep.querySelector('.js-input-description')) {
 		inpStep.querySelector('.js-step-number').innerHTML = inpStep.dataset.number;
-		console.log('Dataset nummer');
-		console.log(inpStep.dataset.number);
 		inpStep.querySelector('.js-input-description').value = '';
 	}
 	allSteps.appendChild(inpStep);
-	ListToRemoveButton();
+	ListenToRemoveButton();
 };
 
-const ListToRemoveButton = function() {
-	console.log(removeButton);
+const AddToEditScheme = function(e){
+	e.preventDefault();
+	let inpStep = inputStep.cloneNode(true);
+	count = document.querySelectorAll('.js-single-step');
+	inpStep.dataset.number = count.length ;
+	console.log("Inpstep nummer: " + inpStep.dataset.number); 
+	console.log(inpStep); 
+	inpStep.style.display = 'block'; 
+	if (inpStep.querySelector('.js-step-number') && inpStep.querySelector('.js-input-description')) {
+		inpStep.querySelector('.js-step-number').innerHTML = "Stap " + inpStep.dataset.number;
+		inpStep.querySelector('.js-input-description').value = '';
+	}
+	allSteps.appendChild(inpStep);
+	ListenToRemoveButton();
+	
+}
+
+const ListenToRemoveButton = function() {
 	removeButton = document.querySelectorAll('.js-remove-button');
 	removeButton.forEach(element => {
-		console.log('activated removebuttons');
 		element.addEventListener('click', onHandlerClickedRemove);
 	});
 };

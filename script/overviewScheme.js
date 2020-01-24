@@ -31,13 +31,20 @@ const fillInputsFromEditPlan = function(payload){
         let OneStep = document.querySelector('.c-first-step'); 
         let stepClone = OneStep.cloneNode(true); 
         stepClone.classList.remove('u-hide');
+        console.log(stepClone);
         let step = steps[i]; 
+        stepClone.dataset.number = parseInt(step.sequence); 
         let stepNumber = stepClone.querySelector('.js-step-number'); 
+
+        console.log(parseInt(step.sequence)); 
         stepNumber.innerHTML = `Stap ${step.sequence}`; 
         let stepInputDescription = stepClone.querySelector('.js-input-description'); 
         stepInputDescription.innerHTML = step.descriptionStep; 
         progressiveSchemeSteps.append(stepClone); 
     }
+    console.log(allSteps);
+    ListenToRemoveButton(); 
+	buttonAddStep.addEventListener('click', AddToEditScheme);
 }
 
 const showOneProgressiveScheme = function(payload){
