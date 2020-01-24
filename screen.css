@@ -1080,6 +1080,7 @@ Component: Spread
 	width: 100%;
 	justify-content: center;
 	margin-left: var(--global-whitespace-xs);
+	max-width: 320px;
 }
 .c-submitbutton__arrow {
 	width: var(--global-whitespace);
@@ -1133,6 +1134,15 @@ Component: Spread
 
 .c-uploadbutton__text {
 	transform: translateX(10px);
+}
+
+.c-upperAddButton {
+	display: flex;
+	justify-content: center;
+	margin: var(--global-whitespace) 0;
+}
+.c-upperAddButton .c-submitbutton {
+	padding: 0 var(--global-whitespace-sm);
 }
 
 /*

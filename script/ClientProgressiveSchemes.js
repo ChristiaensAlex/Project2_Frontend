@@ -6,7 +6,8 @@ let baseURL = 'https://localhost:44374/api/',
 	clientId,
 	frequency,
 	chosenDays = [],
-	numberOfDays;
+	numberOfDays,
+	backPage;
 
 const postCP = function(url, payload) {
 	console.log('add client to progressive scheme');
@@ -22,7 +23,7 @@ const postCP = function(url, payload) {
 	})
 		.then(res => res.json())
 		.then(data => {
-			console.log(data), console.log(data); // (window.location.href = 'DetailProgressiveSteppsplan.html');
+			console.log(data), console.log(data), (window.location.href = backPage);
 		})
 		.catch(err => console.log(err));
 };
@@ -64,8 +65,10 @@ const getSearchElements = function(element, string) {
 			console.log(jsonObject);
 			if (element == 'client') {
 				showClients(jsonObject, element);
+				backPage = 'DetailProgressiveSteppsplan.html';
 			} else if (element == 'progressiveScheme') {
 				showProgressiveSchemes(jsonObject, element);
+				backPage = 'PlanningClient.html';
 				console.log('ps');
 			}
 		})
@@ -129,6 +132,7 @@ const makePayload = function(frequency) {
 			payload.push(cpEveryFewDays);
 			console.log(cpEveryFewDays);
 			postCP(url, payload);
+
 			return url;
 	}
 };
@@ -235,8 +239,10 @@ document.addEventListener('DOMContentLoaded', function() {
 	console.log('DOM loaded - contact');
 	mentorId = 'EF4C3F22-6AC3-4143-B9CD-21A23F9EA1FE';
 
-	progressiveSchemeId = '52B05597-D586-4DF2-AB80-5DF8BF33B8D4';
-	clientId = '1D32717C-4C22-40A2-650E-08D79A90ABFB';
+	//progressiveSchemeId = '52B05597-D586-4DF2-AB80-5DF8BF33B8D4';
+	//clientId = '1D32717C-4C22-40A2-650E-08D79A90ABFB';
+	clientId = sessionStorage.clientId;
+	console.log(clientId);
 	search = document.querySelector('.c-search-input');
 	console.log(search.name);
 
