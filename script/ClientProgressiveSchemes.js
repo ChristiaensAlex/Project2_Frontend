@@ -26,18 +26,28 @@ const postCP = function(url, payload) {
 		})
 		.catch(err => console.log(err));
 };
-const showClients = function(json) {
+const showClients = function(json, element) {
 	i = 0;
 	for (object of json) {
 		document.querySelector('.c-search').innerHTML += `<div class="c-search-list__item" data-number="${i}">${object.firstName} ${object.lastName}</div>`;
 		console.log(i);
 		i++;
 	}
-	ListenToObjects();
+	ListenToObjects(element);
 };
 
-const getClients = function(string) {
-	let url = `${baseURL}mentor/${mentorId}/client?search=${string}`;
+const showProgressiveSchemes = function(json, element) {
+	i = 0;
+	for (object of json) {
+		document.querySelector('.c-search').innerHTML += `<div class="c-search-list__item" data-number="${i}">${object.name}</div>`;
+		console.log(i);
+		i++;
+	}
+	ListenToObjects(element);
+};
+
+const getSearchElements = function(element, string) {
+	let url = `${baseURL}mentor/${mentorId}/${element}?search=${string}`;
 	fetch(url)
 		.then(function(response) {
 			if (!response.ok) {
@@ -52,13 +62,19 @@ const getClients = function(string) {
 		.then(function(jsonObject) {
 			json = jsonObject;
 			console.log(jsonObject);
-			showClients(jsonObject);
+			if (element == 'client') {
+				showClients(jsonObject, element);
+			} else if (element == 'progressiveScheme') {
+				showProgressiveSchemes(jsonObject, element);
+				console.log('ps');
+			}
 		})
 		.catch(function(error) {
 			console.log(error);
 			console.error(`Problem to process json $`);
 		});
 };
+
 const makePayload = function(frequency) {
 	let payload = [];
 	let points = document.querySelector('.js-points').value;
@@ -138,7 +154,13 @@ const getDayOfWeek = function(day) {
 const ListenToSearch = function() {
 	search.addEventListener('change', function(event) {
 		console.log(this.value);
-		getClients(this.value);
+		getSearchElements(search.name, this.value);
+		// if (search.name == "Client"){
+		// 	getClients(this.value);
+		// }
+		// else if(search.name =="ProgressiveScheme"){
+		// 	getProgressiveSchemes(this.value);
+		// }
 	});
 };
 const ListenToSelect = function(select) {
@@ -166,8 +188,8 @@ const ListenToSelect = function(select) {
 
 const ListenToNumberOfDays = function(number) {
 	number.addEventListener('change', function() {
-        numberOfDays = this.value;
-        console.log("numberofdays" + numberOfDays)
+		numberOfDays = this.value;
+		console.log('numberofdays' + numberOfDays);
 	});
 };
 const listenToDays = function(days) {
@@ -186,8 +208,9 @@ const ListenToSubmit = function(button) {
 		makePayload(frequency);
 	});
 };
-const ListenToObjects = function() {
+const ListenToObjects = function(element) {
 	objects = document.querySelectorAll('.c-search-list__item');
+	console.log(element);
 	for (object of objects) {
 		console.log(object);
 		object.addEventListener('click', function(event) {
@@ -195,10 +218,16 @@ const ListenToObjects = function() {
 			i = this.dataset.number;
 			i = parseInt(i);
 			console.log(i);
-			chosenClient = json[i];
+			chosenItem = json[i];
 			console.log(json[i]);
-			search.value = `${chosenClient.firstName} ${chosenClient.lastName}`;
-			clientId = json[i].id;
+			search.value = `${chosenItem.firstName} ${chosenItem.lastName}`;
+			console.log(element);
+			if (element == 'client') {
+				clientId = json[i].id;
+			} else if (element == 'progressiveScheme') {
+				progressiveSchemeId = json[i].id;
+				console.log(progressiveSchemeId);
+			}
 		});
 	}
 };
@@ -207,7 +236,10 @@ document.addEventListener('DOMContentLoaded', function() {
 	mentorId = 'EF4C3F22-6AC3-4143-B9CD-21A23F9EA1FE';
 
 	progressiveSchemeId = '52B05597-D586-4DF2-AB80-5DF8BF33B8D4';
+	clientId = '1D32717C-4C22-40A2-650E-08D79A90ABFB';
 	search = document.querySelector('.c-search-input');
+	console.log(search.name);
+
 	select = document.querySelector('.js-select');
 	submit = document.querySelector('.js-submitbutton');
 	ListenToSearch(search);

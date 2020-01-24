@@ -1750,7 +1750,7 @@ client can get to contact list
 	justify-content: flex-end;
 	/*positioning telephone so that it stays in the same spot on the screen no matter how much you scroll*/
 	position: fixed;
-	top: 563;
+	bottom: 40;
 	left: -20;
 	padding-right: var(--global-whitespace-md);
 }
