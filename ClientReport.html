@@ -2,19 +2,17 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="x-ua-compatible" content="ie-edhge" />
-		<title>Trek Je Plan - Log in cliënt</title>
-		<meta name="description" content="Log in voor cliënt, begeleider wordt geacht reeds een account aangemaakt te hebben." />
+		<title>Trek Je Plan - Account aanmaken</title>
+		<meta name="description" content="Maak een account aan als begeleider" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 		<!--STYLE-->
 		<link rel="stylesheet" href="screen.css" />
-		<link rel="stylesheet" href="normalize.css" />
 
 		<!--FONTS-->
 		<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
-
 		<!--SCRIPT-->
-		<script src="script/loginClient.js"></script>
+		<script src="script/LoadClientReport.js"></script>
 		<!--FAVICON-->
 		<link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png" />
 		<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png" />
@@ -34,11 +32,12 @@
 		<meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png" />
 		<meta name="theme-color" content="#1C5C5C" />
 	</head>
-	<body class="o-body">
-		<section class="o-section">
-			<div class="c-content">
-				<div class="o-header">
-					<div class="c-logo">
+
+	<body>
+		<section>
+			<div class="o-row">
+				<div class="o-container">
+					<div class="c-topbarDetailClient">
 						<div class="c-logo__symbol">
 							<svg class="c-icon" xmlns="http://www.w3.org/2000/svg" height="48" width="48" viewBox="0 0 151.15 155.57">
 								<defs>
@@ -57,43 +56,63 @@
 								</g>
 							</svg>
 						</div>
-						<div class="c-logo__name">
-							Trek Je Plan
+
+						<div class="c-navigation__close">
+							<a href="DetailInfoClient.html">
+								<svg xmlns="http://www.w3.org/2000/svg" width="18.182" height="18.182" viewBox="0 0 18.182 18.182">
+									<g id="Group_9" data-name="Group 9" transform="translate(-336.363 -77.878)">
+										<path id="Path_6" data-name="Path 6" d="M1612.485,99l14.646,14.647" transform="translate(-1274.354 -19.354)" fill="none" stroke="#27255f" stroke-linecap="round" stroke-width="2.5" />
+										<path id="Path_7" data-name="Path 7" d="M0,0,14.647,14.647" transform="translate(352.778 79.646) rotate(90)" fill="none" stroke="#27255f" stroke-linecap="round" stroke-width="2.5" />
+									</g>
+								</svg>
+							</a>
 						</div>
 					</div>
-				</div>
-				<div class="c-card">
-					<div class="o-row">
-						<div class="o-container">
-							<!-- <div class="c-welcome">Logo in het groot met welkom</div> -->
-
-							<form class="c-form" action="#">
-								<p class="c-title">Ik ben cliënt...</p>
-								<p>
-									<label class="c-label" for="Username">Gebruikersnaam</label>
-									<input class="c-input js-username" type="text" name="Username" />
-								</p>
-								<p>
-									<label class="c-label" for="Password">Wachtwoord</label>
-									<input class="c-input js-password" type="password" name="Password" />
-								</p>
-								<div class="c-buttonrow">
-									<a href="index.html" class="o-button-reset c-button c-backbutton">
-										<svg class=" c-backbutton__arrow" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="36" height="36" viewBox="0 0 400.004 400.004" style="enable-background:new 0 0 400.004 400.004;" xml:space="preserve">
-											<path
-												d="M382.688,182.686H59.116l77.209-77.214c6.764-6.76,6.764-17.726,0-24.485c-6.764-6.764-17.73-6.764-24.484,0L5.073,187.757
-			   c-6.764,6.76-6.764,17.727,0,24.485l106.768,106.775c3.381,3.383,7.812,5.072,12.242,5.072c4.43,0,8.861-1.689,12.242-5.072
-			   c6.764-6.76,6.764-17.726,0-24.484l-77.209-77.218h323.572c9.562,0,17.316-7.753,17.316-17.315
-			   C400.004,190.438,392.251,182.686,382.688,182.686z"
-											/>
-										</svg>
-										<div class="c-backbutton__text">
-											Terug
-										</div>
-									</a>
-									<button class="o-button-reset c-button c-submitbutton js-submitbutton" type="submit">Start</button>
+					<div class="o-layout o-layout--column o-layout--justify-center o-layout--align-center">
+						<h1 class="c-title js-title">
+							Rapport
+							<span>Shannon Goemaere</span>
+						</h1>
+						<div class="c-report-schemes js-report-schemes">
+							<div class="c-report-scheme">
+								<p class="c-report-title">Wassen</p>
+								<div class="c-client-report">
+									<div class="c-report-description">
+										<p>Aantal keer doorlopen:</p>
+										<div>Laatste tijd:</div>
+									</div>
+									<div class="c-report-description">
+										<p>4</p>
+										<div>44 min</div>
+									</div>
 								</div>
-							</form>
+							</div>
+							<div class="c-report-scheme">
+								<p class="c-report-title">Wassen</p>
+								<div class="c-client-report">
+									<div class="c-report-description">
+										<p>Aantal keer doorlopen:</p>
+										<div>Laatste tijd:</div>
+									</div>
+									<div class="c-report-description">
+										<p>4</p>
+										<div>44 min</div>
+									</div>
+								</div>
+							</div>
+							<div class="c-report-scheme">
+								<p class="c-report-title">Wassen</p>
+								<div class="c-client-report">
+									<div class="c-report-description">
+										<p>Aantal keer doorlopen:</p>
+										<div>Laatste tijd:</div>
+									</div>
+									<div class="c-report-description">
+										<p>4</p>
+										<div>44 min</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
