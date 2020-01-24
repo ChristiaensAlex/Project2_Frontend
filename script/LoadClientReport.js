@@ -1,7 +1,4 @@
-let customHeaders = new Headers();
-customHeaders.append('Accept', 'application/json');
-
-baseURL = `https://localhost:44374/api/`;
+let baseURL = `https://localhost:44374/api/`;
 
 let showClientReport = function(json) {
 	let html = '';
