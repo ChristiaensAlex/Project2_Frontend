@@ -928,29 +928,21 @@ Component: Spread
 	padding-bottom: var(--global-whitespace-md);
 }
 
+.c-search__symbol {
+	position: absolute;
+	right: 8px;
+	top: 8px;
+
+	width: var(--global-whitespace-lg);
+	height: var(--global-whitespace-lg);
+
+	border: 1px solid red;
+	fill: hotpink;
+}
+
 .c-search {
-	content: '';
-	position: absolute;
-	left: 10px;
-	top: 0;
-	bottom: 0;
-	width: 20px;
-	background-image: url(/magnifying-glass.svg) center / contain no-repeat;
-}
-
-.c-search-input {
 	position: relative;
-}
-
-.c-search:before {
-	content: '';
-	position: absolute;
 	display: block;
-	left: 10px;
-	top: 0;
-	bottom: 0;
-	width: var(--global-whitespace);
-	background: url('magnifying-glass.svg') center / contain no-repeat;
 }
 
 .c-search-list {
@@ -986,6 +978,35 @@ Component: Spread
 .c-register {
 	display: flex;
 	justify-content: flex-end;
+}
+.c-days {
+	display: flex;
+}
+.c-day {
+	border: var(--global-borderWidth) solid var(--global-color-neutral);
+	border-radius: 100%;
+	width: var(--global-whitespace-lg);
+	height: var(--global-whitespace);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: var(--global-whitespace-xs);
+}
+
+.c-day.c-selected {
+	background-color: var(--global-color-neutral);
+}
+
+.c-numberOfDays {
+	margin: var(--global-whitespace-md) 0;
+	display: flex;
+	align-items: center;
+}
+.c-numberOfDays .c-label {
+	display: flex;
+	align-items: center;
+}
+.c-numberOfDays-input {
 }
 /*
 
@@ -1310,11 +1331,11 @@ justify-items: center; */
 	width: 9px;
 	height: var(--global-whitespace-md);
 }
-.c-time {
+/* .c-time {
 	display: flex;
 	align-items: center;
 	padding-top: var(--global-whitespace-sm);
-}
+} */
 .c-time__month {
 	text-align: center;
 }
