@@ -1228,6 +1228,7 @@ user can choose role*/
 	grid-template-columns: 56px 1fr 56px;
 	height: var(--global-whitespace-xl);
 	margin: var(--global-whitespace);
+	max-width: 768px;
 }
 
 .c-userphoto {
@@ -1264,6 +1265,11 @@ picto representation of current date
 	margin: var(--global-whitespace);
 	/* border: var(--global-borderWidth) solid var(--global-color-beta);
 border-radius: var(--global-borderRadius); */
+}
+
+.c-date .c-icon {
+	width: 60px;
+	height: 60px;
 }
 
 /*Component: progressive Scheme
