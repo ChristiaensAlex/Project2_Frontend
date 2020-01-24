@@ -1197,6 +1197,7 @@ user can choose role*/
 	grid-template-columns: 56px 1fr 56px;
 	height: var(--global-whitespace-xl);
 	margin: var(--global-whitespace);
+	max-width: 768px;
 }
 
 .c-userphoto {
@@ -1233,6 +1234,11 @@ picto representation of current date
 	margin: var(--global-whitespace);
 	/* border: var(--global-borderWidth) solid var(--global-color-beta);
 border-radius: var(--global-borderRadius); */
+}
+
+.c-date .c-icon {
+	width: 60px;
+	height: 60px;
 }
 
 /*Component: progressive Scheme
@@ -1729,7 +1735,7 @@ client can get to contact list
 	justify-content: flex-end;
 	/*positioning telephone so that it stays in the same spot on the screen no matter how much you scroll*/
 	position: fixed;
-	top: 563;
+	bottom: 40; 
 	left: -20;
 	padding-right: var(--global-whitespace-md);
 }
@@ -1747,6 +1753,16 @@ client can get to contact list
 
 .c-progressiveScheme {
 	display: flex;
+}
+
+.c-progressiveScheme__done{
+	--blur-scheme: blur(3px);
+  	-webkit-filter: var(--blur-scheme);
+  	-moz-filter: var(--blur-scheme);
+  	-o-filter: var(--blur-scheme);
+  	-ms-filter: var(--blur-scheme);
+  	filter: var(--blur-scheme);
+  	background-color: var(--global-color-neutral-x-light-transparent);
 }
 
 /*Component: step
