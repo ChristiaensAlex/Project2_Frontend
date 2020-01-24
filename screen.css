@@ -2341,23 +2341,34 @@ gives client feedback by congratulating them on finishing a progressive scheme a
 }
 
 .c-congrats__bar {
-	position: relative;
-	width: 100%;
-	height: var(--global-whitespace);
+  width: 100%;
+  height: var(--global-whitespace);
+  background-color: var(--global-color-neutral-xx-light);
+  border-radius: var(--global-borderRadius-lg);
 }
 
-.c-progressbar__front {
-	position: absolute;
-	left: 0;
-	height: 100%;
+.c-congrats__bar-progress{
+  width: 0; 
+  height: var(--global-whitespace);
+  background-color: var(--global-color-alpha);
+  z-index: 20 ;
+  border-radius: var(--global-borderRadius-lg) 0 0 var(--global-borderRadius-lg) ; 
+}
+
+@keyframes extension{
+  0%{
+    width: var(--global-previousCoins);
+  }
+  100%{
+    width: var(--global-newCoins); 
+  }
 }
 
 .c-progressbar__back {
-	position: absolute;
-	left: 0;
-	width: 100%;
-	height: 100%;
+  width: 100%;
 }
+
+
 
 /*conctactlist for client
 
