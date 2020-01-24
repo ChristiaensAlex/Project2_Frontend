@@ -91,9 +91,8 @@ const getProgressiveSchemes = function() {
 
 const putProgressiveScheme = function(payload){
     let body = JSON.stringify(payload);
-    console.log(body);
+    console.log(payload);
     let schemeId = sessionStorage.planId; 
-    console.log(schemeId); 
 	fetch(`https://localhost:44374/api/progressiveScheme/${schemeId}`, {
 		method: 'PUT',
 		mode: 'cors',
@@ -103,7 +102,8 @@ const putProgressiveScheme = function(payload){
 		body: body
 	})
 		.then(data => {
-			console.log(data); }) 
+			console.log(data), (window.location.href = 'MentorHasProgressiveStepsList.html');
+		})
 		.catch(err => console.log(err));
   
 }
@@ -133,36 +133,43 @@ const getInputFieldsScheme = function(){
     stepDescription = document.querySelectorAll('.js-input-description'); 
     let step = ""; 
     let stepsArr = []; 
-    let updatedStep = "";
-    let updatedStepsArr = []; 
     schemeTitle = title.value;
     
     if(document.title == "Trek Je Plan - Wijzig een stappenplan"){
-        for(i = 0; i < stepNumber.length; i++){
-            currentStep = stepNumber[i]; 
-            let currentStepNumber = currentStep.dataset.number;
-            let sequenceInt = parseInt(currentStepNumber); 
-            
-            let ids = ["a3e9acdf-d4eb-4712-65eb-08d79eb0cc34", "4b70b6df-ba0b-41be-65ec-08d79eb0cc34"];
-            updatedStep = {
-                id: ids[i], //NO ID FOR NEW STEP IN EXSISTING PROGRESSIVE SCHEME 
-                descriptionStep: stepDescription[i].value, 
-                pictoId: 
-                "3fa85f64-5717-4562-b3fc-2c963f66afa6", 
-                sequence: sequenceInt
-            };
-            updatedStepsArr.push(updatedStep);  
-        }
+		let payload = [];
+
+		counter = 1;
+		for (object of json.steps) {	
+			object.descriptionStep = stepDescription[counter].value;
+			object.sequence = counter;
+			object.pictoId = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
+			console.log(object);
+			payload.push(object);
+			counter++;
+		}
+
+		console.log(stepNumber)
+		for (i = counter; i < stepNumber.length; i++) {
+			let step = {
+				descriptionStep: stepDescription[i].value,
+				sequence: counter,
+				pictoId:'3fa85f64-5717-4562-b3fc-2c963f66afa6',
+			};
+
+			payload.push(step);
+		}
     
         updatedScheme = {
             id: sessionStorage.planId, 
             pictoId: "3fa85f64-5717-4562-b3fc-2c963f66afa6", 
             name : schemeTitle,
-            totalSteps : stepNumber.length, 
-            steps: updatedStepsArr
-        }
-        putProgressiveScheme(updatedScheme); 
-    } else if(document.title == "Trek Je Plan - Maak een nieuw stappenplan aan") {
+            totalSteps : stepNumber.length - 1, 
+            steps: payload
+		}
+		console.log(updatedScheme);
+		putProgressiveScheme(updatedScheme); 
+
+	} else if(document.title == "Trek Je Plan - Maak een nieuw stappenplan aan") {
         for(i = 0; i < stepNumber.length; i++){
             currentStep = stepNumber[i]; 
             let currentStepNumber = currentStep.dataset.number;
@@ -198,8 +205,8 @@ const initProgressiveSchemes = function() {
         submitProgressiveScheme.addEventListener('click', function(){
             // enige verplichte is PICTO nu default waarde 
             if(mainImage){
-                mainImage.value = "3fa85f64-5717-4562-b3fc-2c963f66afa6";
-                getInputFieldsScheme(); 
+				mainImage.value = "3fa85f64-5717-4562-b3fc-2c963f66afa6";
+				getInputFieldsScheme(); 
             }
         });
     }

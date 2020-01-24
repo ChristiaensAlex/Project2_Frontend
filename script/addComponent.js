@@ -79,6 +79,7 @@ const onHandlerClickedAdd = function(e) {
 };
 
 const ListToRemoveButton = function() {
+	console.log(removeButton);
 	removeButton = document.querySelectorAll('.js-remove-button');
 	removeButton.forEach(element => {
 		console.log('activated removebuttons');
