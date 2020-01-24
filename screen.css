@@ -1,46 +1,18 @@
 /*------------------------------------*\
-#FONTS
-\*------------------------------------*/
-<<<<<<< HEAD
-
-=======
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
-@font-face {
-	font-family: 'Inter Web';
-	font-weight: 400;
-	src: url('../fonts/Inter-Regular.woff2') format('woff2');
-}
-
-@font-face {
-	font-family: 'Inter Web';
-	font-weight: 600;
-	src: url('../fonts/Inter-SemiBold.woff2') format('woff2');
-}
-
-/*------------------------------------*\
-<<<<<<< HEAD
-#Variables
-\*------------------------------------*/
-=======
   #Variables
   \*------------------------------------*/
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 :root {
 	/*colors*/
-
+	--global-color-alpha-x-light: #fcf1ef;
 	--global-color-alpha-light: #ffb9a6;
 	--global-color-alpha: #fc8c71;
 	--global-color-alpha-dark: #fe7c5a;
-	--global-color-alpha-dark-x: #fe6740;
-	--global-color-alpha-dark-xx: #ff5d33;
+	--global-color-alpha-x-dark: #fe6740;
+	--global-color-alpha-xx-dark: #ff5d33;
 
 	--global-color-beta: #1c5c5c;
 	--global-color-omega: #27255f;
 
-<<<<<<< HEAD
-	--global-color-neutral-xxxxx-light: white;
-=======
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 	--global-color-neutral-xxxx-light: white;
 	--global-color-neutral-xxx-light: #fafaff;
 	--global-color-neutral-xx-light: #ececf0;
@@ -55,13 +27,9 @@
 
 	--global-color-neutral-x-light-transparent: #c8c8cc29;
 	/* border variables */
-<<<<<<< HEAD
-	--global-borderRadius: 4px;
-=======
 	--global-borderRadius-sm: 4px;
 	--global-borderRadius-md: 8px;
 	--global-borderRadius-lg: 16px;
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 	--global-borderWidth: 1px;
 
 	/* transitions */
@@ -90,34 +58,19 @@
 
 	/*error*/
 
-<<<<<<< HEAD
-	--global-color-error: #8c0015;
-	--global-input-error-boxShadowColor: #8c001580;
-=======
 	--global-color-error: #fe5e33;
 	--global-input-error-boxShadowColor: #fe5e33;
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 	--input-border: none;
 }
 
 /*------------------------------------*\
 #GENERIC
 \*------------------------------------*/
-<<<<<<< HEAD
-
-/*
-    Generic: Page
-    ---
-    Global page styles + universal box-sizing:
-*/
-
-=======
 /*
   Generic: Page
   ---
   Global page styles + universal box-sizing:
 */
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 html {
 	font-size: var(--global-fontsize); /*16px*/
 	line-height: 1.5;
@@ -130,49 +83,20 @@ html {
 	-moz-osx-font-smoothing: grayscale;
 	height: 100%;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
-@media (prefers-color-scheme: dark) {
-	html {
-		color: var(--global-color-neutral-xx-light);
-		background-color: var(--global-color-neutral-xx-dark);
-	}
-}
-<<<<<<< HEAD
-=======
-
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 *,
 *:before,
 *:after {
 	box-sizing: inherit;
 }
-<<<<<<< HEAD
-::-moz-selection {
-	background: var(--global-color-selection);
-	color: var(--global-color-neutral-xxxxx-light);
-=======
 
 ::-moz-selection {
 	background: var(--global-color-alpha-light);
 	color: inherit;
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 	text-shadow: none;
 }
 
 ::selection {
-<<<<<<< HEAD
-	background: var(--global-color-selection);
-	color: var(--global-color-neutral-xxxxx-light);
-	text-shadow: none;
-}
-/*------------------------------------*\
-#Elements
-\*------------------------------------*/
-
-=======
 	background: var(--global-color-alpha-light);
 	color: var(--global-color-neutral-xxxx-light);
 	text-shadow: none;
@@ -181,34 +105,21 @@ html {
 /*------------------------------------*\
 #Elements
 \*------------------------------------*/
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 /*
 Elements: Images
 ---
 Default markup for images to make them responsive
 */
-<<<<<<< HEAD
-
-=======
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 img {
 	max-width: 100%;
 	vertical-align: top;
 }
 
 /*
-<<<<<<< HEAD
-    Elements: typography
-    ---
-    Default markup for typographic elements
-*/
-
-=======
   Elements: typography
   ---
   Default markup for typographic elements
 */
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 h1,
 h2,
 h3 {
@@ -261,7 +172,9 @@ li ul,
 li ol {
 	margin-bottom: 0;
 }
-
+ul {
+	list-style-type: none;
+}
 blockquote {
 	font-style: normal;
 	font-size: var(--global-fontsize-md);
@@ -291,11 +204,7 @@ hr {
 a,
 a:visited {
 	transition: all var(--global-transitionTiming-alpha);
-<<<<<<< HEAD
-	color: var(--global-color-alpha);
-=======
 	color: var(--global-color-omega);
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 	outline-color: var(--global-link-BoxShadowColor);
 	outline-width: medium;
 	outline-offset: 2px;
@@ -319,15 +228,16 @@ input {
 input::placeholder {
 	color: var(--color-placeholder, var(--global-color-neutral-x-light));
 }
-
+input::-webkit-clear-button {
+	/* Verwijderd het blauwe kruis bij de time input */
+	-webkit-appearance: none;
+	margin: 0;
+}
 body {
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-<<<<<<< HEAD
-=======
 	margin: 0px;
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 
 	/* background-image: url(LoginMentor.png);
 	background-repeat: no-repeat;  */
@@ -336,18 +246,6 @@ body {
 /*------------------------------------*\
 #OBJECTS
 \*------------------------------------*/
-<<<<<<< HEAD
-
-/*
-    Objects: Row
-    ---
-    Creates a horizontal row that stretches the viewport and adds padding around children
-*/
-
-.o-row {
-	position: relative;
-
-=======
 /*
   Objects: Row
   ---
@@ -355,23 +253,23 @@ body {
 */
 .o-row {
 	position: relative;
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 	padding: 0 var(--global-whitespace);
 }
 
-/*
-<<<<<<< HEAD
-    Objects: Container
-    ---
-    Creates a horizontal container that sets de global max-width
-*/
+.o-row-lg {
+	position: relative;
+	padding: 0 var(--global-whitespace-lg);
+}
+.o-row-xl {
+	position: relative;
+	padding: 0 var(--global-whitespace-xl);
+}
 
-=======
+/*
   Objects: Container
   ---
   Creates a horizontal container that sets de global max-width
 */
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 .o-container {
 	margin-left: auto;
 	margin-right: auto;
@@ -381,18 +279,10 @@ body {
 }
 
 /*
-<<<<<<< HEAD
-    Objects: section
-    ---
-    Creates vertical whitespace between adjacent sections inside a row
-*/
-
-=======
   Objects: section
   ---
   Creates vertical whitespace between adjacent sections inside a row
 */
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 .o-section {
 	position: relative;
 }
@@ -413,64 +303,36 @@ body {
 
 @media (min-width: 992px) {
 	.o-section--xl + .o-section--xl {
-<<<<<<< HEAD
-		padding-top: var(--global-whitespace-xxl);
+		padding-top: var(--global-whitespace-xl);
 	}
 }
 /*
     Objects: Row
     ---
     Creates a horizontal row that stretches the viewport and adds padding around children
-=======
-		padding-top: var(--global-whitespace-xl);
-	}
-}
-/*
-    Objects: Header
-    ---
-    
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 */
 
 .o-header {
 	height: auto;
-<<<<<<< HEAD
-}
-@media (min-width: 768px) {
-=======
-	margin-top: 56px;
+	margin-top: calc(var(--global-baseline) * 7);
 }
 @media (min-width: 1200px) {
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 	.o-header {
 		height: 100vh;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-<<<<<<< HEAD
-=======
 		margin: auto 0;
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 	}
 }
 
 /*
-<<<<<<< HEAD
-    Objects: Layout
-    ---
-    The layout object provides us with a column-style layout system. This object
-    contains the basic structural elements, but classes should be complemented
-    with width utilities
-*/
-
-=======
   Objects: Layout
   ---
   The layout object provides us with a column-style layout system. This object
   contains the basic structural elements, but classes should be complemented
   with width utilities
 */
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 .o-layout {
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -483,10 +345,6 @@ body {
 }
 
 /* gutter modifiers, these affect o-layout__item too */
-<<<<<<< HEAD
-
-=======
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 .o-layout--gutter {
 	margin: 0 -12px;
 }
@@ -520,19 +378,11 @@ body {
 }
 
 /* reverse horizontal row modifier */
-<<<<<<< HEAD
-
-=======
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 .o-layout--row-reverse {
 	flex-direction: row-reverse;
 }
 
 /* Horizontal alignment modifiers*/
-<<<<<<< HEAD
-
-=======
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 .o-layout--justify-start {
 	justify-content: flex-start;
 }
@@ -558,10 +408,6 @@ body {
 }
 
 /* Vertical alignment modifiers */
-<<<<<<< HEAD
-
-=======
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 .o-layout--align-start {
 	align-items: flex-start;
 }
@@ -579,10 +425,6 @@ body {
 }
 
 /* Vertical alignment modifiers that only work if there is one than one flex item */
-<<<<<<< HEAD
-
-=======
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 .o-layout--align-content-start {
 	align-content: start;
 }
@@ -604,36 +446,20 @@ body {
 }
 
 /*
-<<<<<<< HEAD
-    Objects: List
-    ---
-    Small reusable object to remove default list styling from lists
-*/
-
-=======
   Objects: List
   ---
   Small reusable object to remove default list styling from lists
 */
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 .o-list {
 	list-style: none;
 	padding: 0;
 }
 
 /*
-<<<<<<< HEAD
-    Object: Button reset
-    ---
-    Small button reset object
-*/
-
-=======
   Object: Button reset
   ---
   Small button reset object
 */
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 .o-button-reset {
 	border: none;
 	margin: 0;
@@ -641,20 +467,6 @@ body {
 	width: auto;
 	overflow: visible;
 	background: transparent;
-<<<<<<< HEAD
-
-	/* inherit font & color from ancestor */
-	color: inherit;
-	font: inherit;
-
-	/* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
-	line-height: normal;
-
-	/* Corrects font smoothing for webkit */
-	-webkit-font-smoothing: inherit;
-	-moz-osx-font-smoothing: inherit;
-
-=======
 	/* inherit font & color from ancestor */
 	color: inherit;
 	font: inherit;
@@ -663,57 +475,13 @@ body {
 	/* Corrects font smoothing for webkit */
 	-webkit-font-smoothing: inherit;
 	-moz-osx-font-smoothing: inherit;
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 	/* Corrects inability to style clickable `input` types in iOS */
 	-webkit-appearance: none;
 }
 /*------------------------------------*\
-<<<<<<< HEAD
-#COMPONENTS
-\*------------------------------------*/
-
-=======
   #COMPONENTS
   \*------------------------------------*/
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 /*content*/
-.c-content {
-	margin: auto;
-}
-
-<<<<<<< HEAD
-@media (min-width: 768px) {
-	.c-content {
-		display: flex;
-		justify-content: center;
-	}
-}
-
-/* .c-welcome {
-	opacity: 0;
-	width: 0;
-}
-
-@media (min-width: 768px) {
-	.c-welcome {
-		opacity: 1;
-		width: auto;
-	}
-} */
-/*
-    Component: Logo
-    ---
-    Everything logo related here
-*/
-
-=======
-/* @media (min-width: 768px) {
-	/* .c-content {
-		display: flex;
-		justify-content: space-around;
-		width: 704px;
-	} 
-} */
 
 @media (min-width: 1200px) {
 	.c-content {
@@ -735,46 +503,25 @@ body {
   ---
   Everything logo related here
 */
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 .c-logo {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-<<<<<<< HEAD
-
-	margin-bottom: var(--global-whitespace-xl);
-
-=======
-	margin-bottom: var(--global-whitespace-xl);
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
+	/*margin-bottom: var(--global-whitespace-xl);*/
 	margin-bottom: 0;
-	padding: var(--global-whitespace-lg) var(--global-whitespace-md);
 }
 
 .c-logo__symbol {
-<<<<<<< HEAD
-	background-color: var(--global-color-beta);
-	width: 20px;
-	height: 20px;
-	border: 2px solid var(--global-color-beta);
-}
-=======
 	height: 36px;
 	width: 36px;
 }
 
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 .c-logo__name {
-	font-size: 20px;
+	font-size: var(--global-fontsize-md);
 	margin-left: var(--global-whitespace-md);
 	color: var(--global-color-omega);
 }
 
-<<<<<<< HEAD
-@media (min-width: 768px) {
-	.c-logo {
-		margin: auto;
-=======
 .c-logo__menu {
 	display: flex;
 	align-items: center;
@@ -789,15 +536,11 @@ body {
 	.c-logo {
 		margin: auto;
 		padding: var(--global-whitespace);
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 		flex-direction: column;
 	}
 
 	.c-logo__name {
 		margin: 0;
-<<<<<<< HEAD
-		font-size: 48px;
-=======
 		font-size: var(--global-fontsize-xxxl);
 	}
 
@@ -805,20 +548,15 @@ body {
 		width: 100%;
 		height: 240px;
 		margin-bottom: var(--global-whitespace);
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 	}
 }
 
 /*
-<<<<<<< HEAD
-    Component: Title
-    ---
-    title of the page
-=======
 	Component: header image
   */
 .c-headerImage {
-	margin-bottom: 56px;
+	margin-bottom: calc(var(--global-baseline) * 7);
+	margin-top: calc(var(--global-baseline) * 7);
 	display: flex;
 	justify-content: center;
 }
@@ -826,31 +564,51 @@ body {
 /*
     Component: forgotPassword
 */
-.c-forgotPassword {
-	padding: 0 var(--global-whitespace-lg);
-}
 
 .c-emailForgotPassword {
-	margin-top: var(--global-whitespace-lg);
-	margin-bottom: var(--global-whitespace-xl);
+	margin-top: var(--global-whitespace-xl);
+	margin-bottom: var(--global-whitespace-lg);
 }
 
 .c-forgotPasswordMessage {
 	padding-bottom: calc(var(--global-baseline) * 5);
 }
 
+.c-reset-description {
+	font-size: var(--global-fontsize);
+	display: flex;
+	flex-wrap: unset;
+	text-align: flex;
+}
+.c-title.c-reset-description {
+	font-size: var(--global-fontsize-md);
+	text-align: center;
+	margin-bottom: var(--global-whitespace);
+}
+.c-form__field > .c-reset-description {
+	margin-top: var(--global-whitespace-lg);
+}
+@media (min-width: 768px) {
+	.c-title.c-reset-description {
+		font-size: var(--global-fontsize-xl);
+		text-align: center;
+		width: 480px;
+	}
+}
+@media (min-width: 1200px) {
+	.c-title.c-reset-description {
+		margin-bottom: var(--global-whitespace-lg);
+	}
+}
+
 /*
   Component: Title
   ---
   title of the page
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 */
 .c-title {
 	font-size: var(--global-fontsize-lg);
 }
-<<<<<<< HEAD
-
-=======
 @media (min-width: 1200px) {
 	.c-title {
 		font-size: var(--global-fontsize-xxxl);
@@ -870,37 +628,50 @@ body {
 	justify-content: space-between;
 	align-content: center;
 }
+.c-title__menu-stepsplan {
+	display: flex;
+	font-size: var(--global-fontsize-lg);
+	justify-content: space-between;
+	align-content: center;
+	padding-bottom: var(--global-whitespace-md);
+}
+
+.c-title__AddClientsToProgressiveSteps {
+	display: flex;
+	font-size: var(--global-fontsize-md);
+	justify-content: space-between;
+	align-content: center;
+}
+
+.c-title__menu-alignleft {
+	display: flex;
+	font-size: var(--global-fontsize-md);
+	align-content: flex-start;
+}
+
+.c-title__menu-smallmargin__top {
+	display: flex;
+	font-size: var(--global-fontsize-md);
+	align-content: flex-start;
+	margin-top: calc(var(--global-whitespace-md) * -1);
+}
 /*
     Component: card
 */
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 .c-card {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 100vh;
-	transform: translateY(-94px);
+	height: calc(100vh - 92px);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
 	.c-card {
-		transform: translateY(0);
+		height: 100vh;
 	}
 }
 
 /*
-<<<<<<< HEAD
-    Component: Forms
-    ---
-    Everything form related here. Including input, label and button
-*/
-
-.c-form {
-	max-width: 800px;
-	height: fit-content;
-	margin: auto;
-}
-=======
   Component: Forms
   ---
   Everything form related here. Including input, label and button
@@ -909,10 +680,8 @@ body {
 	max-width: 640px;
 	height: fit-content;
 	margin: auto;
-	padding: 0 var(--global-whitespace-lg) 0 var(--global-whitespace-lg);
 }
 
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 /*makes sure that last paragraph of form__field has no margin bottom so "wachtwoord vergeten" can be close to the input field*/
 .c-form__field > *:last-child {
 	margin-bottom: 0;
@@ -920,18 +689,6 @@ body {
 
 @media (min-width: 768px) {
 	.c-form {
-<<<<<<< HEAD
-		padding: 88px 80px;
-		border-radius: 14px;
-		/* border: var(--global-borderWidth) solid var(--global-color-alpha); */
-		box-shadow: 0 0 0 1px rgba(252, 140, 113, 0.05), 0 8px 8px rgba(252, 140, 113, 0.5);
-	}
-}
-/*
-    Component: Label
-    ---
-    Custom label
-=======
 		padding: calc(var(--global-baseline) * 11) calc(var(--global-baseline) * 10);
 		border-radius: var(--global-borderRadius-lg);
 		/* border: var(--global-borderWidth) solid var(--global-color-alpha); */
@@ -959,26 +716,70 @@ body {
 Component: Spread
 */
 .c-spreadPage {
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
 	background-color: var(--global-color-alpha-x-light);
+	display: flex;
+	justify-content: center;
 }
 
+.c-spreadPage .c-reset-description {
+	margin-top: var(--global-whitespace-xl);
+}
+
+.c-spreadPage .c-logo__symbol {
+	height: 36px;
+	width: 36px;
+}
+.c-spreadPage .c-logo__name {
+	font-size: var(--global-fontsize-md);
+	margin-left: var(--global-whitespace-md);
+}
+.c-spreadPage .c-logo {
+	flex-direction: row;
+}
+
+.c-spreadPage .o-section {
+	padding-left: var(--global-whitespace-lg);
+	padding-right: var(--global-whitespace-lg);
+}
+
+/* .c-spreadPage > .o-header {
+	height: 20vh;
+} */
+
+/* .c-spreadPage-noIcon > .o-header {
+	height: 15vh;
+}
+*/
+.c-spreadPage .o-header {
+	height: auto;
+	margin-top: 40px;
+}
+
+.c-spreadPage .c-form {
+	width: fit content;
+	height: fit-content;
+	margin: auto;
+	box-shadow: none;
+	display: flex;
+	flex-direction: column;
+}
+@media (min-width: 1200px) {
+	.c-spreadPage-noIcon > .o-header {
+		height: 20vh;
+	}
+
+	.c-spreadPage .c-content {
+		flex-direction: column;
+	}
+}
 /*
   Component: Label
   ---
   Custom label
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 */
 .c-label {
 	margin-bottom: 0;
 	font-size: var(--global-fontsize-md);
-<<<<<<< HEAD
-
-=======
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 	padding: 0 0 var(--global-whitespace-xs);
 	line-height: calc(var(--global-fontsize-md) * 1.5);
 	color: var(--label-color, var(--global-color-omega));
@@ -986,16 +787,25 @@ Component: Spread
 	justify-content: space-between;
 }
 
-<<<<<<< HEAD
-/*
-    Component: Custom input
-    ---
-    Custom input
-=======
-.c-label-profilePic {
+.c-label__profilepic {
 	font-size: var(--global-fontsize-md);
+	font-weight: 600;
 }
-
+.c-label__profile {
+	margin-bottom: 0;
+	font-size: var(--global-fontsize-md);
+	font-weight: 600;
+	padding: 0 0 var(--global-whitespace-xs);
+	line-height: var(--global-fontsize-md);
+	color: var(--label-color, var(--global-color-omega));
+	display: flex;
+	justify-content: space-between;
+}
+.c-label__profile + p {
+	font-size: var(--global-fontsize-md);
+	display: flex;
+	flex-wrap: initial;
+}
 /*
     Component: error
 */
@@ -1014,7 +824,6 @@ Component: Spread
   Component: Custom input
   ---
   Custom input
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 */
 .c-input {
 	-webkit-appearance: none;
@@ -1024,19 +833,8 @@ Component: Spread
 	background-color: var(--global-color-neutral-xx-light);
 	font-family: inherit;
 	font-size: var(--global-fontsize-md);
-<<<<<<< HEAD
-	line-height: var(--lineheight-input, calc(var(--global-fontsize-md) * 1.5)); /*24px*/
-	padding: 9px 8px;
-	outline: none;
-	transition: all var(--global-transitionTiming-alpha);
-	border-radius: var(--global-borderRadius);
-	border: var(--input-border);
-}
-
-/* .c-input:hover {
-=======
 	line-height: var(--lineheight-input, calc(var(--global-fontsize-md) * 1.5));
-	/*24px*/
+
 	padding: 9px var(--global-baseline);
 	outline: none;
 	transition: all var(--global-transitionTiming-alpha);
@@ -1064,39 +862,27 @@ Component: Spread
 	line-height: 20px;
 	padding: var(--global-baseline);
 }
+.c-input-time {
+	width: 90px;
+}
 
 .c-input:hover {
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
-	box-shadow: var(--input-hover-boxShadow, 0 0 0 1px var(--global-color-alpha-dark-x));
+	box-shadow: var(--input-focus-boxShadow, 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75));
 }
 
 .c-input:focus,
 .c-input:active {
-<<<<<<< HEAD
-	box-shadow: var(--input-focus-boxShadow, 0 0 0 3px var(--global-color-alpha-dark-x-transparent), 0 0 0 1px var(--global-color-alpha-dark-x));
-} */
-
-/**/
-.c-buttonrow {
-	display: flex;
-	justify-content: center;
-	padding-top: 48px;
-}
-
-/*
-    Component: Button
-    ---
-    Custom button
-*/
-
-.c-button {
-	border-radius: var(--global-borderRadius);
-
-=======
 	border: var(--input-border, 1px solid var(--global-color-omega));
 	box-shadow: var(--input-focus-boxShadow, 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75));
 }
-
+@media (min-width: 1200px) {
+	.c-input-description {
+		font-size: var(--global-fontsize-md);
+	}
+	.c-new-step {
+		font-size: var(--global-fontsize-md);
+	}
+}
 /*
     Component: Custom Select
     ---
@@ -1120,8 +906,8 @@ Component: Spread
 } */
 
 .c-custom-select__symbol {
-	width: 24px;
-	height: 24px;
+	width: var(--global-whitespace);
+	height: var(--global-whitespace);
 	position: absolute;
 	top: 12px;
 	right: 12px;
@@ -1137,6 +923,7 @@ Component: Spread
 	border-radius: var(--global-borderRadius-sm);
 }
 /*Search*/
+
 .c-input-search {
 	padding-bottom: var(--global-whitespace-md);
 }
@@ -1151,9 +938,51 @@ Component: Spread
 	background-image: url(/magnifying-glass.svg) center / contain no-repeat;
 }
 
+.c-search-input {
+	position: relative;
+}
+
+.c-search:before {
+	content: '';
+	position: absolute;
+	display: block;
+	left: 10px;
+	top: 0;
+	bottom: 0;
+	width: var(--global-whitespace);
+	background: url('magnifying-glass.svg') center / contain no-repeat;
+}
+
+.c-search-list {
+	width: 100%;
+	background-color: var(--global-color-neutral-xx-light);
+	margin: var(--global-whitespace-md) 0 var(--global-whitespace) 0;
+	outline: none;
+	border-radius: var(--global-borderRadius);
+	border: var(--input-border);
+}
+
+.c-search-list__item {
+	width: 100%;
+	background-color: var(--global-color-neutral-xx-light);
+	height: var(--global-whitespace-xl);
+	outline: none;
+	border-radius: var(--global-borderRadius);
+	border: var(--input-border);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: var(--global-baseline);
+	border: 1px solid var(--global-color-omega);
+}
+.c-input-points {
+	width: 50%;
+	padding: 9px var(--global-baseline);
+}
 .c-input-list {
 	padding-bottom: var(--global-whitespace-md);
 }
+
 .c-register {
 	display: flex;
 	justify-content: flex-end;
@@ -1166,6 +995,7 @@ Component: Spread
 	justify-content: center;
 	padding-top: var(--global-whitespace-lg);
 	margin-bottom: var(--global-whitespace);
+	max-width: 100%;
 }
 
 /*
@@ -1175,24 +1005,12 @@ Component: Spread
 */
 .c-button {
 	border-radius: var(--global-borderRadius-sm);
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
 	font-size: var(--global-fontsize-md);
 	line-height: calc(var(--global-fontsize-md) * 1.5);
 	display: flex;
 	align-items: center;
 }
-<<<<<<< HEAD
-.c-backbutton {
-	border: var(--global-borderWidth) solid var(--global-color-alpha);
-	color: var(--global-color-alpha);
-	height: 48px;
-	width: 120px;
-
-	justify-content: space-around;
-	margin-right: 4px;
-}
-=======
 
 .c-backbutton {
 	border: var(--global-borderWidth) solid var(--global-color-alpha);
@@ -1209,10 +1027,15 @@ Component: Spread
 
 .c-backbutton-long {
 	width: 100%;
-	padding-right: 88px;
+	padding-right: 30%;
 	margin-bottom: 64px;
+	background-color: var(--global-color-alpha);
+	fill: white;
 }
 
+.c-backbutton-long .c-backbutton__text {
+	color: white;
+}
 .c-popup-form--card > .c-backbutton {
 	width: 100%;
 }
@@ -1223,49 +1046,78 @@ Component: Spread
 	}
 }
 
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 .c-backbutton__arrow {
-	width: 24px;
-	height: 24px;
+	width: var(--global-whitespace);
+	height: var(--global-whitespace);
 	fill: var(--global-color-alpha);
 }
 
 .c-submitbutton {
 	background-color: var(--global-color-alpha);
 	color: var(--global-color-neutral-xxx-light);
-	height: 48px;
-<<<<<<< HEAD
-	width: 176px;
-
-=======
+	height: var(--global-whitespace-xl);
 	width: 100%;
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 	justify-content: center;
-	margin-left: 4px;
+	margin-left: var(--global-whitespace-xs);
 }
-
-<<<<<<< HEAD
-/*
-    Component: link
-    ---
-    Custom link
-=======
+.c-submitbutton__arrow {
+	width: var(--global-whitespace);
+	height: var(--global-whitespace);
+	transform: scaleX(-1) translateX(-10px);
+	fill: var(--global-color-neutral-xxxx-light);
+}
 .c-popup-form--card > .c-submitbutton {
 	width: 100%;
 	margin-left: 0;
 	margin-bottom: calc(var(--global-baseline) * 2);
 }
-
+.c-submitbutton-long {
+	width: 100%;
+}
 .c-button__mainStepImage {
 	display: flex;
 	margin-bottom: var(--global-whitespace);
+}
+
+.c-upload {
+	display: flex;
+	justify-content: center;
+	margin: calc(var(--global-whitespace-xs) * 5);
+}
+
+.c-uploadbutton {
+	border: none;
+	color: var(--global-color-neutral-xxx-light);
+	background-color: #438787;
+	height: 36px;
+	width: calc(var(--global-whitespace) * 16);
+}
+
+.c-uploadbutton__arrowbox {
+	border-radius: var(--global-borderRadius);
+	background-color: var(--global-color-beta);
+	width: 36px;
+	height: 36px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.c-uploadbutton__arrow {
+	width: var(--global-whitespace);
+	height: var(--global-whitespace);
+	transform: rotate(90deg);
+	fill: var(--global-color-neutral-xxx-light);
+}
+
+.c-uploadbutton__text {
+	transform: translateX(10px);
 }
 
 /*
   Component: link
   ---
   Custom link
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 */
 .c-link {
 	text-decoration: underline;
@@ -1273,15 +1125,6 @@ Component: Spread
 }
 
 /* Component: choice
-<<<<<<< HEAD
-    ---
-	user can choose role*/
-
-.c-choices {
-}
-.c-choice {
-	border-radius: var(--global-borderRadius);
-=======
   ---
 user can choose role*/
 .c-choices {
@@ -1289,29 +1132,12 @@ user can choose role*/
 
 .c-choice {
 	border-radius: var(--global-borderRadius-sm);
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 	box-shadow: 0 0 0 1px rgba(252, 140, 113, 0.05), 0 8px 8px rgba(252, 140, 113, 0.5);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-evenly;
-<<<<<<< HEAD
-
-	height: 160px;
-	font-size: var(--global-fontsize-md);
-
-	margin: var(--global-whitespace-xl) 0;
-}
-
-/* Component: navigation client
-    ---
-	*/
-.c-navigationClient {
-	display: grid;
-	grid-template-columns: 56px 1fr 56px;
-
-=======
-	height: 160px;
+	height: calc(var(--global-baseline) * 20);
 	font-size: var(--global-fontsize-md);
 	margin: var(--global-whitespace-xl) 0;
 }
@@ -1322,14 +1148,53 @@ user can choose role*/
 	display: flex;
 	justify-content: center;
 }
+.c-symbol__clientProfiles {
+	margin: var(--global-whitespace-sm) 0;
+	display: flex;
+	justify-content: start;
+}
+.c-symbol__clientProfiles-client {
+	margin: 0 var(--global-whitespace-sm) var(--global-whitespace-sm) var(--global-whitespace-sm);
+	font-size: var(--global-fontsize-xs);
+	display: grid;
+	grid-template-rows: 40px auto;
+}
 
+.c-symbol__clientProfiles-client__symbol {
+	width: 40px;
+	height: 40px;
+	display: flex;
+	justify-self: center;
+	grid-row: 1;
+	position: relative;
+}
+
+.c-symbol__clientProfiles-client__name {
+	grid-row: 2;
+	display: flex;
+	justify-self: center;
+}
+
+.c-symbol__clientProfiles-client__delete {
+	position: absolute;
+	grid-row: 1;
+	right: 0;
+	top: 0;
+	transform: translate(5px, -2px);
+}
+
+.c-symbol__clientProfiles-client__addClient {
+	grid-row: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 /* Component: navigation client
   ---
 */
 .c-navigationClient {
 	display: grid;
 	grid-template-columns: 56px 1fr 56px;
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 	height: var(--global-whitespace-xl);
 	margin: var(--global-whitespace);
 }
@@ -1347,52 +1212,26 @@ user can choose role*/
 	justify-self: self-end;
 	font-size: var(--global-fontsize-xs);
 	height: 100%;
+	grid-column: 3;
 }
-<<<<<<< HEAD
-.c-logout__symbol {
-	height: 75%;
-}
-=======
 
 .c-logout__symbol {
 	height: 75%;
 }
 
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 .c-logout a {
 	color: var(--global-color-omega);
 }
 
 /*Component: date
-<<<<<<< HEAD
- ---
- picto representation of current date
-	*/
-
-=======
 ---
 picto representation of current date
 */
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 .c-date {
 	display: flex;
 	justify-content: space-evenly;
 	margin: var(--global-whitespace);
 	/* border: var(--global-borderWidth) solid var(--global-color-beta);
-<<<<<<< HEAD
-	border-radius: var(--global-borderRadius); */
-}
-
-/*Component: progressive Scheme
- ---
-
-	*/
-
-.c-progressiveSchemes {
-}
-
-.c-progressiveScheme {
-=======
 border-radius: var(--global-borderRadius); */
 }
 
@@ -1404,23 +1243,14 @@ border-radius: var(--global-borderRadius); */
 }
 
 .c-progressiveSchemes .c-progressiveScheme {
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 	background-color: var(--global-color-neutral-x-light-transparent);
 	height: 104px;
 	display: flex;
 	align-items: center;
-<<<<<<< HEAD
-
-	/* display: grid;
-	grid-template-columns: 56px 1fr;
-	align-items: center;
-	justify-items: center; */
-=======
 	/* display: grid;
 grid-template-columns: 56px 1fr;
 align-items: center;
 justify-items: center; */
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 	margin: var(--global-whitespace) 0;
 	padding: var(--global-baseline);
 }
@@ -1439,21 +1269,6 @@ justify-items: center; */
 	margin: 0 var(--global-baseline);
 }
 
-<<<<<<< HEAD
-/*Component: phone button
- ---
-client can get to contact list
-	*/
-
-.c-phonebutton {
-	background-color: var(--global-color-alpha);
-	border-radius: 23px;
-	height: 58px;
-	width: 104px;
-	display: flex;
-	justify-content: flex-end;
-
-=======
 /*Anja until phone button*/
 /*Component: ClientListButton
  Add clients to the clientlist
@@ -1480,12 +1295,26 @@ client can get to contact list
 	justify-content: center;
 	align-items: center;
 }
+/*Component: Calendar
+ A mentor has an overview of all his clients
 
+  */
+
+/* checken wat we hier nog van nodig hebben*/
+.c-calendar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 .c-calendar__arrow {
 	width: 9px;
-	height: 16px;
+	height: var(--global-whitespace-md);
 }
-
+.c-time {
+	display: flex;
+	align-items: center;
+	padding-top: var(--global-whitespace-sm);
+}
 .c-time__month {
 	text-align: center;
 }
@@ -1528,7 +1357,7 @@ client can get to contact list
 	width: 13.6%;
 	text-align: center;
 	margin-bottom: 5px;
-	font-size: 12px;
+	font-size: var(--global-fontsize-sm);
 	color: #777;
 }
 
@@ -1538,6 +1367,66 @@ client can get to contact list
 	background: var(--global-color-alpha);
 	color: white !important;
 }
+
+/* Component: chooce photo
+  ---
+user can choose a picto or photo for their stepplan or client*/
+.c-choose {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	grid-column-gap: var(--global-baseline);
+	grid-row-gap: var(--global-baseline);
+}
+
+.c-choose__picto {
+	place-self: center;
+	width: calc(var(--global-baseline) * 11);
+	height: calc(var(--global-baseline) * 11);
+}
+
+@media (min-width: 576px) {
+	.c-choose {
+		grid-template-columns: repeat(6, 1fr);
+	}
+}
+
+@media (min-width: 768px) {
+	.c-choose {
+		grid-template-columns: repeat(7, 1fr);
+	}
+}
+
+.c-client-report {
+	background-color: var(--global-color-neutral-xx-light);
+	border-radius: var(--global-borderRadius-md);
+	display: flex;
+	flex-direction: row;
+	padding: var(--global-whitespace-md);
+	max-width: 296px;
+}
+
+.c-report-description + .c-report-description {
+	margin-left: var(--global-whitespace-md);
+}
+
+.c-report-title {
+	margin-bottom: -12px;
+}
+
+.c-report-scheme {
+	margin-bottom: var(--global-whitespace-lg);
+	margin-left: var(--global-whitespace-lg);
+}
+
+@media (min-width: 992px) {
+	.c-report-schemes {
+		display: grid;
+		grid-template-columns: auto auto;
+		grid-template-rows: auto;
+	}
+}
+
 /*Component: ClientList
    A mentor has an overview of all his clients
 	  */
@@ -1550,9 +1439,10 @@ client can get to contact list
 	grid-template-columns: 64px 1fr 20px;
 	grid-template-rows: auto auto;
 	background-color: var(--global-color-neutral-x-light-transparent);
-	height: 80px;
+	height: calc(var(--global-baseline) * 10);
 	margin: var(--global-whitespace) 0;
 	padding: var(--global-baseline);
+	border-radius: var(--global-borderRadius-md);
 }
 
 .c-client__userPhoto {
@@ -1571,7 +1461,7 @@ client can get to contact list
 }
 
 .c-client-page {
-	padding: 0 40px 0 40px;
+	padding: 0 calc(var(--global-baseline) * 5) 0 calc(var(--global-baseline) * 5);
 }
 
 .c-client__delete {
@@ -1589,21 +1479,25 @@ client can get to contact list
 	}
 
 	.c-clients .c-client {
-		display: grid;
-		grid-template-columns: 64px 1fr 20px;
-		grid-template-rows: auto auto;
-		background-color: var(--global-color-neutral-x-light-transparent);
-		height: 80px;
 		width: 300px;
-		margin: var(--global-whitespace) 0;
-		padding: var(--global-baseline);
 	}
 }
 /*Component: PlanningList
  A mentor has an overview of the planning of today
   */
+.c-ascribeclient-page {
+	max-width: 310px;
+}
 .c-hour {
 	font-size: var(--global-fontsize);
+}
+.c-hour__specific {
+	font-size: var(--global-fontsize-sm);
+	grid-row: 1;
+	grid-column: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .c-plannings {
@@ -1614,9 +1508,10 @@ client can get to contact list
 	grid-template-columns: 64px 1fr 20px;
 	grid-template-rows: auto auto;
 	background-color: var(--global-color-neutral-x-light-transparent);
-	height: 80px;
+	height: calc(var(--global-baseline) * 10);
 	margin: var(--global-whitespace) 0;
 	padding: var(--global-baseline);
+	border-radius: var(--global-borderRadius-md);
 }
 
 .c-planning__userPhoto {
@@ -1625,6 +1520,10 @@ client can get to contact list
 
 .c-planning__picto {
 	grid-row: span 2;
+}
+.c-planning__picto-icon {
+	width: var(--global-whitespace-xl);
+	height: var(--global-whitespace-xl);
 }
 
 .c-planning__username {
@@ -1644,13 +1543,26 @@ client can get to contact list
 	display: flex;
 	align-items: center;
 }
-
+.c-planning__name-indClient {
+	font-size: var(--global-fontsize);
+	margin: 0 var(--global-baseline);
+	grid-row-start: 2;
+	grid-row-end: span 2;
+	grid-column: 2;
+	display: flex;
+	align-items: center;
+}
 .c-planning__check {
 	top: 0;
 	transform: translate(15px, -15px);
 	opacity: 0.1;
 }
-
+.c-planning__check {
+	grid-column: 3;
+	grid-row: 1;
+	transform: translate(15px, -7px);
+	opacity: 0.1;
+}
 .c-planning__check.c-planning__checked {
 	transform: translate(15px, -15px);
 	opacity: 1;
@@ -1659,7 +1571,8 @@ client can get to contact list
 .c-planning__delete {
 	grid-column: 3;
 	grid-row: 2;
-	transform: translatey(-15px);
+	grid-row-end: span 2;
+	/* transform: translatey(-15px);  -> niet nodig*/
 	display: flex;
 	align-items: center;
 }
@@ -1670,6 +1583,9 @@ client can get to contact list
 		grid-template-columns: auto auto;
 		grid-template-rows: auto;
 		margin-left: calc(var(--global-baseline) * 8);
+	}
+	.c-plannings .c-planning {
+		width: 300px;
 	}
 }
 /*Component: StepplansList
@@ -1683,9 +1599,10 @@ client can get to contact list
 	grid-template-columns: 64px 1fr 20px;
 	grid-template-rows: auto auto;
 	background-color: var(--global-color-neutral-x-light-transparent);
-	height: 80px;
+	height: calc(var(--global-baseline) * 10);
 	margin: var(--global-whitespace) 0;
 	padding: var(--global-baseline);
+	border-radius: var(--global-borderRadius-md);
 }
 
 .c-stepplan__picto {
@@ -1721,21 +1638,13 @@ client can get to contact list
 	}
 
 	.c-stepplans .c-stepplan {
-		display: grid;
-		grid-template-columns: 64px 1fr 20px;
-		grid-template-rows: auto auto;
-		background-color: var(--global-color-neutral-x-light-transparent);
-		height: 80px;
 		width: 300px;
-		margin: var(--global-whitespace) 0;
-		padding: var(--global-baseline);
 	}
 }
 
 /* Component: profile mentor
 	  ---
 	  */
-
 .c-mentor__logout {
 	display: grid;
 	grid-template-columns: 1fr 56px;
@@ -1743,27 +1652,56 @@ client can get to contact list
 	height: var(--global-whitespace-xl);
 	margin: var(--global-whitespace) var(--global-whitespace) var(--global-whitespace) 0;
 }
+.c-profileMentor {
+	display: flex;
+	flex-direction: column;
 
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+.c-navigationMentor {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: var(--global-whitespace-xl);
+	margin: var(--global-whitespace) var(--global-whitespace) var(--global-whitespace) 0;
+	width: 100%;
+	padding: var(--global-whitespace-lg) var(--global-whitespace-lg) 0 var(--global-whitespace-lg);
+}
+.c-navigationMentor .c-logout {
+	height: var(--global-whitespace-lg);
+	width: var(--global-whitespace-lg);
+	margin: 0 var(--global-whitespace);
+}
+@media (min-width: 992px) {
+	.c-navigationMentor {
+		position: absolute;
+		top: 0;
+		padding: 0;
+	}
+	.c-navigationMentor .c-logout {
+		height: var(--global-whitespace-lg);
+		width: var(--global-whitespace-lg);
+		position: absolute;
+		right: var(--global-whitespace-xl);
+		top: var(--global-whitespace-xl);
+	}
+}
 .c-modify {
 	font-size: inherit;
 	color: var(--global-color-omega);
 	text-decoration: underline;
 }
-
-@media (min-width: 992px) {
-	.c-stepplans {
-		display: grid;
-		grid-template-columns: auto auto;
-		grid-template-rows: auto;
-		margin-left: calc(var(--global-baseline) * 8);
-	}
+.c-modify-steps {
+	font-size: var(--global-fontsize-md);
+	color: var(--global-color-omega);
+	text-decoration: underline;
 }
-
 .c-profile__picture {
-	padding-bottom: 40px;
+	padding-bottom: calc(var(--global-baseline) * 5);
 	margin-left: -10px;
 }
-
 .c-label__profile {
 	margin-bottom: 0;
 	font-size: var(--global-fontsize-sm);
@@ -1774,7 +1712,6 @@ client can get to contact list
 	display: flex;
 	justify-content: space-between;
 }
-
 .c-profile__info {
 	font-size: var(--global-fontsize-sm);
 }
@@ -1786,19 +1723,16 @@ client can get to contact list
 .c-phonebutton {
 	background-color: var(--global-color-alpha);
 	border-radius: 23px;
-	height: 56px;
+	height: calc(var(--global-baseline) * 7);
 	width: 104px;
 	display: flex;
 	justify-content: flex-end;
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828
 	/*positioning telephone so that it stays in the same spot on the screen no matter how much you scroll*/
 	position: fixed;
 	top: 563;
 	left: -20;
 	padding-right: var(--global-whitespace-md);
 }
-<<<<<<< HEAD
-=======
 
 /*SingleStepClient page*/
 /*Component: header in screen step of progressive scheme client
@@ -1837,7 +1771,7 @@ the visualisation of 1 step for the client with picto, countsymbol and explanati
 	height: 304px;
 	width: 256px;
 	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
-	border-radius: 14px;
+	border-radius: var(--global-borderRadius-lg);
 	padding: auto;
 	margin-bottom: var(--global-whitespace-xl);
 }
@@ -1853,9 +1787,9 @@ the visualisation of 1 step for the client with picto, countsymbol and explanati
 	display: flex;
 	flex-direction: row;
 	background-color: #f9f9fa;
-	border-radius: 0px 8px 8px 8px;
+	border-radius: var(--global-borderRadius-md);
 	box-shadow: 0px 2px 4px rgba(165, 163, 191, 0.15);
-	padding: 16px;
+	padding: var(--global-whitespace-md);
 }
 
 .c-add-step {
@@ -1870,27 +1804,27 @@ the visualisation of 1 step for the client with picto, countsymbol and explanati
 	width: 100%;
 }
 
-.c-picto {
+.c-step-description--header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
-
 .c-step__explanation {
 	width: 256px;
 	text-align: center;
 }
 
-.c-topLeftLogo {
-	height: var(--global-whitespace-xl);
-	margin: var(--global-whitespace);
-}
-
-/*Component: footer
-  ---
-  navigation footer for client with visualisation of progress, phonebutton and overview steps button
-  */
 .c-single-step {
 	margin-bottom: calc(var(--global-baseline) * 3);
 }
-
+.c-step__explanation-mentor {
+	width: 256px;
+	text-align: center;
+	font-size: var(--global-fontsize-sm);
+	color: var(--global-color-neutral-x-dark);
+	display: flex;
+	justify-content: center;
+}
 /*Component: footer
 ---
 navigation footer for client with visualisation of progress, phonebutton and overview steps button
@@ -1899,7 +1833,7 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 	position: absolute;
 	width: 100%;
 	bottom: 0;
-	height: 64px;
+	height: calc(var(--global-baseline) * 8);
 }
 
 .c-footer__navbarClient {
@@ -1921,8 +1855,8 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 
 .c-footer__navbarClient .c-phonebutton {
 	border-radius: 100%;
-	height: 64px;
-	width: 64px;
+	height: calc(var(--global-baseline) * 8);
+	width: calc(var(--global-baseline) * 8);
 	display: flex;
 	justify-content: center;
 	position: static;
@@ -1943,10 +1877,10 @@ navigation footer for client with visualisation of progress, phonebutton and ove
 
 .c-stepsOverview__sybmol {
 	border: var(--global-borderWidth) solid var(--global-color-omega);
-	border-radius: 8px;
+	border-radius: var(--global-borderRadius-md);
 	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
-	height: 40px;
-	width: 40px;
+	height: calc(var(--global-baseline) * 5);
+	width: calc(var(--global-baseline) * 5);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -1977,27 +1911,55 @@ navigation footer for menu mentor
 	align-items: center;
 	margin-top: 10px;
 }
-
+.c-section_menu {
+	padding: 0 0 calc(var(--global-whitespace-xxl)) 0;
+}
 @media (min-width: 768px) {
 	.c-section_menu {
 		padding: 0 calc(var(--global-whitespace-xxl) * 2);
 	}
 	.c-section_menu-profile {
 		padding: 0 calc(var(--global-whitespace-xxl) * 2);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-self: center;
 	}
 }
-
+.c-topLeftLogo {
+	position: static;
+	margin: 0 var(--global-whitespace);
+}
+.c-topLeftLogo .c-logo__symbol {
+	height: var(--global-whitespace-lg);
+}
 @media (min-width: 992px) {
+	.c-navbar__mentor {
+		position: relative;
+	}
 	.c-topLeftLogo {
+		position: absolute;
+
+		top: 16;
+
 		display: flex;
-		justify-content: center;
-		height: var(--global-whitespace-xl);
-		margin: var(--global-whitespace);
+		height: fit-content;
+		margin: 0 0 calc(var(--global-baseline) * 7) 0;
+		width: 64px;
+	}
+	.c-topLeftLogo .c-logo__symbol {
+		height: var(--global-whitespace-lg);
+		margin: var(--global-whitespace-md);
+
+		z-index: 20;
+	}
+	.c-topLeftLogo .c-logo__symbol .c-icon {
 	}
 
 	/*niet veranderen!!!!*/
 	.c-section_menu {
 		padding: 0 0 calc(var(--global-whitespace-xxl)) 0;
+		margin-top: var(--global-whitespace-xxl);
 	}
 
 	.c-title__menu {
@@ -2029,12 +1991,19 @@ navigation footer for menu mentor
 		background-color: white;
 		height: 100%;
 		width: calc(var(--global-baseline) * 8);
+		transform: translateY(-100px);
 	}
 
 	.c-navbar__tabs {
 		display: flex;
 		flex-direction: column;
-		margin-top: calc(var(--global-whitespace-xl) * 2);
+
+		transform: translateY(240px);
+		justify-content: space-around;
+		height: 75%;
+		/* margin-top: calc(var(--global-whitespace-xl) * 2);
+		margin-bottom: calc(var(--global-whitespace-xxl) * 2); */
+		bottom: 0;
 	}
 }
 
@@ -2061,7 +2030,7 @@ navigation footer for menu mentor
 }
 
 .c-addPhonenumber p {
-	margin-top: 8px;
+	margin-top: var(--global-baseline);
 }
 
 .c-addContact {
@@ -2077,8 +2046,8 @@ navigation footer for menu mentor
 }
 
 .c-button__addStep {
-	margin-top: 32px;
-	margin-bottom: 16px;
+	margin-top: var(--global-whitespace-lg);
+	margin-bottom: var(--global-whitepace-md);
 }
 
 .c-button_addStepImage {
@@ -2087,8 +2056,8 @@ navigation footer for menu mentor
 
 /*overview steps of progressive scheme for client*/
 .c-overview__header {
-	margin-top: 24px;
-	height: 240px;
+	margin-top: var(--global-whitespace);
+	height: calc(var(--global-whitespace) * 10);
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -2096,8 +2065,8 @@ navigation footer for menu mentor
 }
 
 .c-overview__header .c-progressiveScheme__mainPicto {
-	height: 200px;
-	width: 200px;
+	height: calc(var(--global-baseline) * 25);
+	width: calc(var(--global-baseline) * 25);
 }
 
 .c-overview__header .c-progressiveScheme__mainPicto .c-icon {
@@ -2136,8 +2105,8 @@ navigation footer for menu mentor
 .c-overview__step .c-picto {
 	grid-row: span 2;
 	align-self: center;
-	width: 56px;
-	height: 56px;
+	width: calc(var(--global-baseline) * 7);
+	height: calc(var(--global-baseline) * 7);
 	border: var(--global-borderWidth) solid var(--global-color-omega);
 	border-radius: 100%;
 	display: flex;
@@ -2206,7 +2175,7 @@ gives client feedback by congratulating them on finishing a progressive scheme a
 .c-congrats__bar {
 	position: relative;
 	width: 100%;
-	height: 24px;
+	height: var(--global-whitespace);
 }
 
 .c-progressbar__front {
@@ -2235,7 +2204,7 @@ where client can see all their emergency contacts*/
 	display: flex;
 	align-items: center;
 	width: 100%;
-	height: 64px;
+	height: calc(var(--global-baseline) * 8);
 	margin-bottom: var(--global-whitespace);
 }
 
@@ -2245,7 +2214,7 @@ where client can see all their emergency contacts*/
 }
 
 .c-phone__img {
-	width: 32px;
+	width: var(--global-whitespace-lg);
 	height: 100%;
 }
 
@@ -2278,8 +2247,8 @@ each contact has a profile pic and name
 }
 
 .c-contact__profilepic {
-	height: 88px;
-	width: 88px;
+	height: calc(var(--global-baseline) * 11);
+	width: calc(var(--global-baseline) * 11);
 	margin: var(--global-baseline);
 }
 
@@ -2305,6 +2274,12 @@ mentor can see detail info of client and can choose between calendar, profile in
 	margin-top: var(--global-whitespace);
 }
 
+.c-topbarDetailProgressiveSteps {
+	display: grid;
+	grid-template-columns: 36px 1fr 36px;
+	grid-template-rows: 36px 32px;
+	margin-top: var(--global-whitespace);
+}
 .c-topbarDetailClient .c-navigation__close {
 	grid-column: 3;
 	margin: 0;
@@ -2328,8 +2303,8 @@ mentor can see detail info of client and can choose between calendar, profile in
 }
 
 .c-clientphoto {
-	width: 56px;
-	height: 56px;
+	width: calc(var(--global-baseline) * 7);
+	height: calc(var(--global-baseline) * 7);
 }
 .c-clientname {
 	font-size: var(--global-fontsize-lg);
@@ -2338,9 +2313,11 @@ mentor can see detail info of client and can choose between calendar, profile in
 /*component: diagram*/
 
 .c-bodyDetailClient {
-	height: 100vh - 140px;
-
+	height: calc(100vh - 140px);
 	margin: auto 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 .c-diagram {
 	display: flex;
@@ -2372,7 +2349,7 @@ mentor can see detail info of client and can choose between calendar, profile in
 	right: 12.5%;
 	width: 25%;
 }
-.c-planningClient {
+.c-diagram__circle .c-planningClient {
 	position: absolute;
 	width: 25%;
 	bottom: 12.5%;
@@ -2412,9 +2389,9 @@ mentor can see detail info of client and can choose between calendar, profile in
 }
 .c-contact__wrapper {
 	box-shadow: var(--input-focus-boxShadow, 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75));
-	border-radius: 14px;
-	padding: 16px;
-	margin-bottom: 16px;
+	border-radius: var(--global-borderRadius-lg);
+	padding: var(--global-whitespace-md);
+	margin-bottom: var(--global-whitespace-md);
 }
 
 .c-contact__wrapper + .c-addContact {
@@ -2438,12 +2415,26 @@ mentor can see detail info of client and can choose between calendar, profile in
 	width: 100%;
 	padding: 36px;
 	max-width: 552px;
-	line-height: 24px;
+	line-height: 24px; /*inherit*/
 	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
 }
 
 .c-popup-blur {
 	filter: blur(8px);
+}
+
+/*overzicht stappen client*/
+.c-step__countsymbol-symbol {
+	display: flex;
+	justify-content: space-between;
+}
+
+.c-step__countsymbol .c-step__countsymbol-margin {
+	margin-right: var(--global-whitespace-xs);
+}
+
+.c-step__name.c-step__name-moveright {
+	transform: translateX(var(--global-whitespace-lg));
 }
 
 /*
@@ -2754,11 +2745,6 @@ mentor can see detail info of client and can choose between calendar, profile in
 	--input-focus-boxShadow: 0 0 0 1px rgba(254, 94, 51, 0.05), 0 4px 4px rgba(254, 94, 51, 0.75);
 }
 
-@media (prefers-color-scheme: dark) {
-	.s-has-error {
-		--input-border: 1px solid var(--global-color-error);
-	}
-}
 .s-correct {
 	--global-color-error: var(--global-color-beta);
 }
@@ -2863,4 +2849,3 @@ mentor can see detail info of client and can choose between calendar, profile in
 		page-break-after: avoid;
 	}
 }
->>>>>>> ac18b9f6b67744e2c810692b65ba4829d47c2828

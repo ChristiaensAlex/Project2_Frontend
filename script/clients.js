@@ -22,6 +22,7 @@ const showAllClients = function(jsonObject) {
         </div>
       </div>`;
 	}
+	getElements();
 	ListenToClients(jsonObject);
 };
 
@@ -40,8 +41,6 @@ const ListenToClients = function(jsonObject) {
 	}
 };
 const getAPI = function(url) {
-	
-
 	fetch(url)
 		.then(function(response) {
 			if (!response.ok) {
