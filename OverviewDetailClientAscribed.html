@@ -1,0 +1,290 @@
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie-edhge" />
+    <title>Trek Je Plan - Stappenplannen Overzicht</title>
+    <meta name="description" content="De planning van 1 individuele client" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--STYLE-->
+    <link rel="stylesheet" href="screen.css" />
+    <link rel="stylesheet" href="normalize.css" />
+
+    <!--FONTS-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <!--SCRIPT-->
+    <script src="script/overviewAscribed.js"></script>
+    <!--FAVICON-->
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="favicon/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="favicon/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="favicon/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="favicon/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="favicon/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="favicon/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="favicon/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="favicon/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="favicon/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="favicon/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="favicon/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="favicon/manifest.json" />
+    <meta name="msapplication-TileColor" content="#1C5C5C" />
+    <meta
+      name="msapplication-TileImage"
+      content="favicon/ms-icon-144x144.png"
+    />
+    <meta name="theme-color" content="#1C5C5C" />
+  </head>
+
+  <body>
+    <div class="o-header">
+      <div class="c-logo">
+        <div class="c-logo__symbol">
+          <svg
+            class="c-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            height="48"
+            width="48"
+            viewBox="0 0 151.15 155.57"
+          >
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: #1d5c5d;
+                }
+              </style>
+            </defs>
+            <title>Asset 2</title>
+            <g id="Layer_2" data-name="Layer 2">
+              <g id="Layer_29" data-name="Layer 29">
+                <path
+                  class="cls-1"
+                  d="M108,34.58a1.2,1.2,0,0,0-1.69,0l-7.71,7.85L95.16,39l0,0a1.2,1.2,0,0,0-1.69,0,1.25,1.25,0,0,0,0,1.74l4.28,4.37a1.18,1.18,0,0,0,.85.36,1.2,1.2,0,0,0,.86-.36L108,36.34a1.25,1.25,0,0,0,0-1.74Z"
+                />
+                <path
+                  class="cls-1"
+                  d="M139.71,0H11.44A11.44,11.44,0,0,0,0,11.44V144.13a11.44,11.44,0,0,0,11.44,11.44H139.71a11.44,11.44,0,0,0,11.44-11.44V11.44A11.44,11.44,0,0,0,139.71,0ZM83.9,28.63v99.73h-17V51.17H38.54V28.49H83.9Zm17.19,22.54A11.34,11.34,0,1,1,112.6,39.83,11.42,11.42,0,0,1,101.09,51.17Z"
+                />
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <section class="c-section_menu">
+      <div class="o-row">
+        <div class="o-container  ">
+          <!-- <div class="c-title__menu">
+            <h3>
+              Chloë Devriese
+            </h3>
+          </div>
+          <div class="c-title__menu-alignleft">
+            <h3>
+              Stappenplan 1
+            </h3>
+          </div> -->
+          <div class="o-layout o-layout--justify-center">
+            <form class="c-ascribeclient-page o-layout__item">
+              <div class="js-frequency">
+                <p>
+                  <label class="c-label" for="Frequency"
+                    >Te verdienen muntjes
+                  </label>
+                  <input
+                    class="c-input-points"
+                    type="number"
+                    name="points"
+                    min="1"
+                    max="100"
+                    placeholder="1 tot 100"
+                  />
+                </p>
+                <p>
+                  <label class="c-label" for="Frequency">Herhaling </label>
+                  <span class="c-custom-select">
+                    <select
+                      class="c-input c-custom-select__input"
+                      name="Frequency"
+                      placeholder="keuze"
+                    >
+                      <option disabled selected hidden>Maak je keuze...</option>
+                      <option class="c-custom__option">Dagelijks</option>
+                      <option class="c-custom__option">Wekelijks</option>
+                    </select>
+                    <svg
+                      class="c-custom-select__symbol"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M7,10l5,5,5-5Z" />
+                    </svg>
+                  </span>
+                </p>
+
+                <div class="c-title__menu-alignleft">
+                  <h3>
+                    Stappenplan 2
+                  </h3>
+                </div>
+
+                <p>
+                  <label class="c-label" for="Frequency"
+                    >Te verdienen muntjes
+                  </label>
+                  <input
+                    class="c-input-points"
+                    type="number"
+                    name="points"
+                    min="1"
+                    max="100"
+                    placeholder="1 tot 100"
+                  />
+                </p>
+                <p>
+                  <label class="c-label" for="Frequency">Herhaling </label>
+                  <span class="c-custom-select">
+                    <select
+                      class="c-input c-custom-select__input"
+                      name="Frequency"
+                      placeholder="keuze"
+                    >
+                      <option disabled selected hidden>Maak je keuze...</option>
+                      <option class="c-custom__option">Dagelijks</option>
+                      <option class="c-custom__option">Wekelijks</option>
+                    </select>
+                    <svg
+                      class="c-custom-select__symbol"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M7,10l5,5,5-5Z" />
+                    </svg>
+                  </span>
+                </p>
+              </div>
+              <div class="c-buttonrow">
+                <a
+                  href="MultipleProgressiveStepListsToMultipleClients.html"
+                  class="o-button-reset c-button c-backbutton"
+                >
+                  <svg
+                    class=" c-backbutton__arrow"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    x="0px"
+                    y="0px"
+                    width="36"
+                    height="36"
+                    viewBox="0 0 400.004 400.004"
+                    style="enable-background:new 0 0 400.004 400.004;"
+                    xml:space="preserve"
+                  >
+                    <path
+                      d="M382.688,182.686H59.116l77.209-77.214c6.764-6.76,6.764-17.726,0-24.485c-6.764-6.764-17.73-6.764-24.484,0L5.073,187.757
+                                                    c-6.764,6.76-6.764,17.727,0,24.485l106.768,106.775c3.381,3.383,7.812,5.072,12.242,5.072c4.43,0,8.861-1.689,12.242-5.072
+                                                    c6.764-6.76,6.764-17.726,0-24.484l-77.209-77.218h323.572c9.562,0,17.316-7.753,17.316-17.315
+                                                    C400.004,190.438,392.251,182.686,382.688,182.686z"
+                    />
+                  </svg>
+                  <div class="c-backbutton__text">
+                    Terug
+                  </div>
+                </a>
+                <button
+                  class="o-button-reset c-button c-submitbutton js-submitbutton"
+                >
+                  <div>
+                    Volgende
+                  </div>
+                  <svg
+                    class=" c-submitbutton__arrow"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    x="0px"
+                    y="0px"
+                    width="36"
+                    height="36"
+                    viewBox="0 0 400.004 400.004"
+                    style="enable-background:new 0 0 400.004 400.004;"
+                    xml:space="preserve"
+                  >
+                    <path
+                      d="M382.688,182.686H59.116l77.209-77.214c6.764-6.76,6.764-17.726,0-24.485c-6.764-6.764-17.73-6.764-24.484,0L5.073,187.757
+                                                                            c-6.764,6.76-6.764,17.727,0,24.485l106.768,106.775c3.381,3.383,7.812,5.072,12.242,5.072c4.43,0,8.861-1.689,12.242-5.072
+                                                                            c6.764-6.76,6.764-17.726,0-24.484l-77.209-77.218h323.572c9.562,0,17.316-7.753,17.316-17.315
+                                                                            C400.004,190.438,392.251,182.686,382.688,182.686z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

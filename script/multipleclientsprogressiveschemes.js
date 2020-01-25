@@ -1,7 +1,7 @@
 let baseURL = 'https://localhost:44374/api/',
   mentorId,
-  psIds = [],
-  clientIds = []
+  allChosenClients = [],
+  allChosenPs = []
 const showClients = function (json, element) {
   i = 0
   for (object of json) {
@@ -55,15 +55,19 @@ const getSearchElements = function (element, string) {
       console.error(`Problem to process json $`)
     })
 }
-const ListenToSubmit = function () {
-  let payload = {}
-  for (id of clientIds) {
-    for (psid of psIds) {
-      let object = {
-          
-      }
+const ListenToSubmit = function (button) {
+  button.addEventListener('click', function (event) {
+    event.preventDefault()
+    let payload = {
+      allChosenPs: allChosenPs,
+      allChosenClients: allChosenClients
     }
-  }
+    console.log(payload)
+    sessionStorage.items = JSON.stringify(payload)
+    let ids = JSON.parse(sessionStorage.items)
+    console.log(ids)
+    window.location.href = 'OverviewDetailClientAscribed.html'
+  })
 }
 const ListenToSearch = function (search) {
   search.addEventListener('focus', function (event) {
@@ -86,13 +90,13 @@ const ListenToObjects = function (element) {
       //search.value = `${chosenItem.firstName} ${chosenItem.lastName}`
       console.log(element)
       if (element == 'client') {
-        clientId = json[i].id
-        clientIds.push(clientId)
+        let chosenClient = json[i]
+        allChosenClients.push(chosenClient)
         console.log(clientIds)
       } else if (element == 'progressiveScheme') {
-        progressiveSchemeId = json[i].id
+        let chosenProgressiveScheme = json[i]
         console.log(progressiveSchemeId)
-        psIds.push(progressiveSchemeId)
+        allChosenPs.push(chosenProgressiveScheme)
         console.log(psIds)
       }
     })
