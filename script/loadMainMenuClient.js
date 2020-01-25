@@ -2,7 +2,7 @@ const weekdayclient = ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 
 const monthclient = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
 
 let baseURL = `https://localhost:44374/api/`,
-	clientId;
+	clientId, countSchemeNr;
 
 let showDateImages = function() {
 	let html = `<img class="c-icon" src="daysAndMonths_pictos/${weekdayclient[new Date().getDay()]}.png" alt="${weekdayclient[new Date().getDay()]}" />
@@ -10,10 +10,22 @@ let showDateImages = function() {
 	document.querySelector('.js-date').innerHTML = html;
 };
 
+const listenToClickScheme = function(json){
+	let progressiveScheme = document.querySelectorAll('.c-progressiveScheme'); 
+	progressiveScheme.forEach(element => 
+		element.addEventListener('click', function(){
+			let nr = this.getAttribute('schemenr'); 
+			console.log("Schemenr: " + nr);
+			clientSchemeId = json[nr].clientProgressiveSchemeId; 
+			sessionStorage.clientSchemeId = clientSchemeId;
+			window.location.href = 'SingleStepClient.html'; 
+		}));
+}
+
 let ShowProgressiveSchemesClient = function(json) {
 	let html = '';
-	for (object of json) {
-		html += `<div class="c-progressiveScheme ${object.done}">
+		for(let i= 0; i < json.length; i++){
+		html += `<div class="c-progressiveScheme ${json[i].done}" schemenr=${i}>
 							<div class="c-progressiveScheme__mainPicto">
 								<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44">
 									<g id="start-up" transform="translate(0 0)">
@@ -36,10 +48,10 @@ let ShowProgressiveSchemesClient = function(json) {
 								</svg>
 							</div>
 							<div class="c-progressiveScheme__name">
-								${object.schemeName}
+								${json[i].schemeName}
 							</div>
 						</div> `;
-	}
+					}
 	// for (let i = 0; i < dataArraySchemeName.length; i++) {
 	// 	console.log(dataArrayChecked);
 	// 	html += `<div class="c-progressiveScheme ${dataArrayChecked[i]}">
@@ -70,6 +82,7 @@ let ShowProgressiveSchemesClient = function(json) {
 	// 					</div> `;
 	// }
 	document.querySelector('.js-progressiveSchemes').innerHTML = html;
+	listenToClickScheme(json);
 };
 
 // let processProgressiveSchemes = function(queryResponse) {
@@ -133,6 +146,7 @@ const getProgressiveSchemesClient = function(clientId) {
 			console.error(`Problem to process json $`);
 		});
 };
+
 const init = function() {
 	clientId = sessionStorage.clientId;
 	console.log(clientId);

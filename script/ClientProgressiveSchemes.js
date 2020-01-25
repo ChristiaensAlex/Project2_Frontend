@@ -251,4 +251,5 @@ document.addEventListener('DOMContentLoaded', function() {
 	ListenToSearch(search);
 	ListenToSelect(select);
 	ListenToSubmit(submit);
+	
 });

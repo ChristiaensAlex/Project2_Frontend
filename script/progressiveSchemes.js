@@ -1,15 +1,13 @@
-let progressiveSchemes, baseURL, addStepsForm, scheme, title, schemeTitle;
+let progressiveSchemes, stepPlans, baseURL, addStepsForm, scheme, updatedScheme, title, schemeTitle;
 const showAllProgressiveSchemes = function(jsonObject) {
 	for (i in jsonObject) {
-		progressiveSchemes.innerHTML += `<div class="c-stepplan">
+		progressiveSchemes.innerHTML += `<div class="c-stepplan" plannr=${i}>
         <div class="c-stepplan__picto">
             <img class="c-icon" src="wassen.png" alt="beta_picto_wassen" />
-
         </div>
         <div class="c-stepplan__name">
            ${jsonObject[i].name}
         </div>
-
         <div class="c-stepplan__pencil">
             <svg xmlns="http://www.w3.org/2000/svg" width="14.65" height="14.579"
                 viewBox="0 0 14.65 14.579">
@@ -19,9 +17,7 @@ const showAllProgressiveSchemes = function(jsonObject) {
                         transform="translate(0)" fill="#291f5f" />
                 </g>
             </svg>
-
         </div>
-
         <div class="c-stepplan__delete js-progressivescheme-delete">
             <svg xmlns="http://www.w3.org/2000/svg" width="19.492" height="24" viewBox="0 0 19.492 24">
                 <g id="bin" transform="translate(0.003 0.001)">
@@ -39,11 +35,24 @@ const showAllProgressiveSchemes = function(jsonObject) {
                         transform="translate(-154.217 -146.009)" fill="#28225f" />
                 </g>
             </svg>
-
         </div>
     </div>`;
 	}
 	getElements();
+};
+
+const showClientsFromProgressiveScheme = function(payload) {
+	let clients = payload.clients;
+	let clientSchemes = document.querySelector('.js-clientScheme');
+	for (i in clients) {
+		let OneClient = document.querySelector('.c-symbol__clientProfiles-client');
+		let clientClone = OneClient.cloneNode(true);
+		clientClone.classList.remove('u-hide');
+		let client = clients[i];
+		let clientName = document.querySelector('.c-symbol__clientProfiles-client__name');
+		clientName.innerHTML = client.firstName;
+		clientSchemes.appendChild(clientClone);
+	}
 };
 
 const getProgressiveSchemes = function() {
@@ -61,6 +70,16 @@ const getProgressiveSchemes = function() {
 			if (progressiveSchemes) {
 				showAllProgressiveSchemes(jsonObject);
 				console.log(jsonObject);
+				stepPlans = document.querySelectorAll('.c-stepplan');
+				for (stepPlan of stepPlans) {
+					stepPlan.addEventListener('click', function() {
+						let i = this.getAttribute('plannr');
+						planId = jsonObject[i].id;
+						sessionStorage.planId = planId;
+						console.log(planId);
+						window.location.href = 'DetailProgressiveStepsPlan.html';
+					});
+				}
 			}
 		})
 		.catch(function(error) {
@@ -68,8 +87,25 @@ const getProgressiveSchemes = function() {
 		});
 };
 
+const putProgressiveScheme = function(payload) {
+	let body = JSON.stringify(payload);
+	console.log(payload);
+	let schemeId = sessionStorage.planId;
+	fetch(`https://localhost:44374/api/progressiveScheme/${schemeId}`, {
+		method: 'PUT',
+		mode: 'cors',
+		cache: 'no-cache',
+		credentials: 'same-origin',
+		headers: { 'Content-Type': 'application/json' },
+		body: body
+	})
+		.then(data => {
+			console.log(data), (window.location.href = 'MentorHasProgressiveStepsList.html');
+		})
+		.catch(err => console.log(err));
+};
+
 const postProgressiveScheme = function(payload) {
-	console.log('In post');
 	let body = JSON.stringify(payload);
 	console.log(body);
 	let mentorId = '82B3CB09-AC76-47A1-B879-B7A370E265D7';
@@ -95,39 +131,72 @@ const getInputFieldsScheme = function() {
 	let step = '';
 	let stepsArr = [];
 	schemeTitle = title.value;
-	for (i = 0; i < stepNumber.length; i++) {
-		currentStep = stepNumber[i];
-		let currentStepNumber = currentStep.dataset.number;
-		let sequenceInt = parseInt(currentStepNumber);
-		step = {
-			descriptionStep: stepDescription[i].value,
-			pictoId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
-			sequence: sequenceInt
-		};
-		stepsArr.push(step);
-	}
 
-	scheme = {
-		pictoId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
-		name: schemeTitle,
-		totalSteps: stepNumber.length,
-		steps: stepsArr
-	};
-	postProgressiveScheme(scheme);
+	if (document.title == 'Trek Je Plan - Wijzig een stappenplan') {
+		let payload = [];
+		console.log(stepDescription[1]);
+		let counter = 1;
+		for (object of json.steps) {
+			object.descriptionStep = stepDescription[counter].value;
+			object.sequence = counter;
+			object.pictoId = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
+			console.log(object);
+			payload.push(object);
+			counter++;
+		}
+
+		console.log(stepNumber);
+		for (i = counter; i < stepNumber.length; i++) {
+			let step = {
+				descriptionStep: stepDescription[i].value,
+				sequence: counter,
+				pictoId: '3fa85f64-5717-4562-b3fc-2c963f66afa6'
+			};
+
+			payload.push(step);
+		}
+
+		updatedScheme = {
+			id: sessionStorage.planId,
+			pictoId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+			name: schemeTitle,
+			totalSteps: stepNumber.length - 1,
+			steps: payload
+		};
+		console.log(updatedScheme);
+		putProgressiveScheme(updatedScheme);
+	} else if (document.title == 'Trek Je Plan - Maak een nieuw stappenplan aan') {
+		for (i = 0; i < stepNumber.length; i++) {
+			currentStep = stepNumber[i];
+			let currentStepNumber = currentStep.dataset.number;
+			let sequenceInt = parseInt(currentStepNumber);
+			console.log(sequenceInt);
+			step = {
+				descriptionStep: stepDescription[i].value,
+				pictoId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+				sequence: sequenceInt
+			};
+			stepsArr.push(step);
+		}
+
+		scheme = {
+			pictoId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+			name: schemeTitle,
+			totalSteps: stepNumber.length,
+			steps: stepsArr
+		};
+		postProgressiveScheme(scheme);
+	}
 };
 
 const initProgressiveSchemes = function() {
 	progressiveSchemes = document.querySelector('.c-stepplans');
-
 	addStepsForm = document.querySelector('.js-form-addStep');
-
-	if (progressiveSchemes) {
+	mainImage = document.querySelector('.c-button_addStepImage');
+	if (document.title == 'Trek Je Plan - Stappenplannen Overzicht') {
 		getProgressiveSchemes();
 	} else if (addStepsForm) {
-		mainImage = document.querySelector('.c-button_addStepImage');
-		mainImageFilled = mainImage.value;
 		submitProgressiveScheme = document.querySelector('.c-submitbutton');
-		console.log(submitProgressiveScheme);
 		submitProgressiveScheme.addEventListener('click', function() {
 			// enige verplichte is PICTO nu default waarde
 			if (mainImage) {
