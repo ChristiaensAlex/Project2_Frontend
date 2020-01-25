@@ -12,7 +12,7 @@ let progressiveStepPlanEnd = function (isEnd) {
     end = isEnd;
 };
 
-const putStepFullFilled = function(currentStep){
+const putStepFullFilled = function(){
     // currentStep --> stap ervoor is dus checked meegeven in body 
     let url = `${baseURL}client/progressiveScheme/${clientProgressiveSchemeId}`; 
     fetch(url, {
@@ -23,8 +23,7 @@ const putStepFullFilled = function(currentStep){
 		headers: { 'Content-Type': 'application/json' },
 	})
 		.then(data => {
-            console.log(data);
-            console.log("Done: "+  currentStep); 
+            console.log(data); 
             getSteps(clientProgressiveSchemeId)
 		})
 		.catch(err => console.log(err));
@@ -42,34 +41,35 @@ const putStartTime = function(){
 	})
 		.then(data => {
             console.log(data);
-            console.log("Done: "+  currentStep); 
             getSteps(clientProgressiveSchemeId)
 		})
 		.catch(err => console.log(err));
 }
 
-const stepNumber = function (activeIndex) {
-    console.log("Start " + beginning);
-    console.log("End " + end);
+const stepNumber = function () {
+    console.log("Begin: " + beginning);
+    console.log("Eind: " + end); 
     if (beginning == true) {
         step = 1;
-        activeIndex = 0;
-
+        end = true; 
         putStartTime(); 
-        //putStepFullFilled(activeIndex); 
+        putStepFullFilled(); 
     }
+        //putStepFullFilled(activeIndex);
     else {
         step = activeIndex + 1;
-        putStepFullFilled(activeIndex);
+        putStepFullFilled(); 
     };
-    console.log(step);
     // step 1 is activeIndex = 0;
+    console.log("Begin: " + beginning);
+    console.log("Eind: " + end); 
 }
 
 
 const showStepsClient = function (json) {
     let html = '';
-    console.log(json.steps);
+    let title = document.querySelector('.c-progressiveScheme__name'); 
+    title.innerHTML = json.name; 
     for (object of json.steps) {
         html += `<div class="swiper-slide">
 						<div class="c-step">
@@ -86,7 +86,26 @@ const showStepsClient = function (json) {
 					</div>`;
     }
     document.querySelector('.js-steps').innerHTML = html;
-    mySwiper.update()
+    mySwiper.update();
+    let startTouch; 
+    let nextTouch; 
+    if (end == true){
+        console.log("Einde touch"); 
+    mySwiper.on('touchStart', function(e){
+        console.log("Start")
+        console.log(e);
+        startTouch = e.screenX; 
+        console.log(startTouch)
+    })
+    mySwiper.on('touchMove', function(e){
+        console.log(e);
+        if (startTouch > e.screenX){
+            window.location.href = 'FinishedProgressiveScheme.html';
+        }
+        
+    })
+}
+   
 };
 
 
@@ -105,19 +124,22 @@ const getSteps = function (clientProgressiveSchemeId) {
         })
         .then(function (jsonObject) {
             json = jsonObject;
-            console.log("Get"); 
-            console.log(json);
+            if (json.totalSteps == 1){
+                end = true; 
+            }
             showStepsClient(json);
+            
         })
         .catch(function (error) {
             console.error(`Problem to process json ${error}`);
         });
+       
 };
 
 
 document.addEventListener('DOMContentLoaded', function () {
     console.log('DOM loaded - SingleStepsClient');
-    clientProgressiveSchemeId = "829b18b0-0e92-43dd-8241-cef2feef76ad";
-    stepNumber(activeIndex);
+    clientProgressiveSchemeId = sessionStorage.clientSchemeId;
     getSteps(clientProgressiveSchemeId);
+    stepNumber();
 });
