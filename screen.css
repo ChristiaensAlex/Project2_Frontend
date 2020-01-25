@@ -636,12 +636,12 @@ body {
 	padding-bottom: var(--global-whitespace-md);
 }
 
-.c-title__AddClientsToProgressiveSteps {
+/* .c-title__AddClientsToProgressiveSteps {
 	display: flex;
 	font-size: var(--global-fontsize-md);
 	justify-content: space-between;
 	align-content: center;
-}
+} */
 
 .c-title__menu-alignleft {
 	display: flex;
@@ -927,7 +927,9 @@ Component: Spread
 .c-input-search {
 	padding-bottom: var(--global-whitespace-md);
 }
-
+.c-search-input{
+  margin-bottom: var(--global-whitespace-md);
+}
 .c-search__symbol {
 	position: absolute;
 	right: 8px;
