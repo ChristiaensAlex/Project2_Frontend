@@ -2,6 +2,7 @@ baseURL = 'https://localhost:44374/api/';
 var beginning;
 var end;
 let step;
+let activeIndex; 
 
 let progressiveStepPlanBeginning = function (isBeginning) {
     beginning = isBeginning;
@@ -11,21 +12,42 @@ let progressiveStepPlanEnd = function (isEnd) {
     end = isEnd;
 };
 
-let stepNumber = function (activeIndex) {
+const putStepFullFilled = function(currentStep){
+
+    // currentStep --> stap ervoor is dus checked meegeven in body 
+    let url = `${baseURL}client/progressiveScheme/${clientProgressiveSchemeId}`; 
+    fetch(url, {
+		method: 'PUT',
+		mode: 'cors',
+		cache: 'no-cache',
+		credentials: 'same-origin',
+		headers: { 'Content-Type': 'application/json' },
+		body: body
+	})
+		.then(data => {
+			console.log(data);
+		})
+		.catch(err => console.log(err));
+}
+
+const stepNumber = function (activeIndex) {
     console.log("Start " + beginning);
     console.log("End " + end);
     if (beginning == true) {
         step = 1;
+        activeIndex = 1; 
+        putStepFullFilled(activeIndex); 
     }
     else {
         step = activeIndex + 1;
+        putStepFullFilled(activeIndex);
     };
     console.log(step);
     // step 1 is activeIndex = 0;
 }
 
 
-let showStepsClient = function (json) {
+const showStepsClient = function (json) {
     let html = '';
     console.log(json.steps);
     for (object of json.steps) {
@@ -76,6 +98,6 @@ const getSteps = function (clientProgressiveSchemeId) {
 document.addEventListener('DOMContentLoaded', function () {
     console.log('DOM loaded - SingleStepsClient');
     clientProgressiveSchemeId = "829b18b0-0e92-43dd-8241-cef2feef76ad";
-    stepNumber();
+    stepNumber(activeIndex);
     getSteps(clientProgressiveSchemeId);
 });
