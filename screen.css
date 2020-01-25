@@ -2795,7 +2795,7 @@ mentor can see detail info of client and can choose between calendar, profile in
 	--global-color-error: var(--global-color-beta);
 }
 .u-hide {
-	display: none;
+	display: none !important;
 }
 /*------------------------------------*\
   #MEDIA

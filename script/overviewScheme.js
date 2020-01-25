@@ -23,6 +23,7 @@ const showStepsFromProgressiveScheme = function (payload) {
       progressiveSchemeSteps.append(arrowClone)
     }
   }
+  showClientsFromProgressiveScheme(payload); 
 }
 
 const fillInputsFromEditPlan = function (payload) {
@@ -55,7 +56,7 @@ const showOneProgressiveScheme = function (payload) {
   )
   let editPlanName = document.querySelector('.js-scheme-name')
   if (progressiveSchemeName) {
-    showClientsFromProgressiveScheme(payload)
+    console.log(payload)
     progressiveSchemeName.innerHTML = payload.name
     showStepsFromProgressiveScheme(payload)
   } else if (editPlanName) {
@@ -82,15 +83,9 @@ const getProgressiveSchemeById = function () {
       console.error(`Problem to process json ${error}`)
     })
 }
-const ListenToAddClient = function (button) {
-  button.addEventListener('click', function (event) {
-    window.location.href = 'AddClientToProgressiveScheme.html'
-  })
-}
+
 document.addEventListener('DOMContentLoaded', function () {
   console.log('DOM loaded - Overview progressive scheme ')
   baseURL = 'https://localhost:44374/api/'
-  addClientButton = document.querySelector('.js-button__addStep')
-  ListenToAddClient(addClientButton)
   getProgressiveSchemeById()
 })
