@@ -17,23 +17,18 @@ const ListenToDelete = function(element){
 }
 
 const getElements = function() {
-  console.log("Get Elements"); 
   deleteClient = document.querySelectorAll('.js-client-delete');
-  console.log(deleteClient); 
   background = document.querySelector('.js-background-popup');
   popup = document.querySelector('.c-popup-form');
   cancelButton = document.querySelector('.js-cancel');
   cancelButton.addEventListener('click', OnHandlerClickedCancel);
   deleteProgressiveScheme = document.querySelectorAll('.js-progressivescheme-delete');
-  console.log(deleteProgressiveScheme);
   if(typeof deleteClient != 'undefined' && deleteClient.length > 0){
-    console.log("Delete client"); 
     deleteClient.forEach(element => {
       ListenToDelete(element)}
       );
   }
   else if(typeof deleteProgressiveScheme != 'undefined' && deleteProgressiveScheme.length > 0){
-    console.log("HIER"); 
     deleteProgressiveScheme.forEach(element => {
       ListenToDelete(element)}
       );
@@ -41,6 +36,6 @@ const getElements = function() {
 };
 
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('DOM loaded');
+  console.log('DOM loaded - popup');
   getElements(); 
 });
