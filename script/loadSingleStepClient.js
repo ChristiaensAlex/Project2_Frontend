@@ -13,7 +13,6 @@ let progressiveStepPlanEnd = function (isEnd) {
 };
 
 const putStepFullFilled = function(currentStep){
-
     // currentStep --> stap ervoor is dus checked meegeven in body 
     let url = `${baseURL}client/progressiveScheme/${clientProgressiveSchemeId}`; 
     fetch(url, {
@@ -22,10 +21,29 @@ const putStepFullFilled = function(currentStep){
 		cache: 'no-cache',
 		credentials: 'same-origin',
 		headers: { 'Content-Type': 'application/json' },
-		body: body
 	})
 		.then(data => {
-			console.log(data);
+            console.log(data);
+            console.log("Done: "+  currentStep); 
+            getSteps(clientProgressiveSchemeId)
+		})
+		.catch(err => console.log(err));
+}
+
+const putStartTime = function(){
+
+    let url = `${baseURL}client/progressiveScheme/${clientProgressiveSchemeId}/startTime`; 
+    fetch(url, {
+		method: 'PUT',
+		mode: 'cors',
+		cache: 'no-cache',
+		credentials: 'same-origin',
+		headers: { 'Content-Type': 'application/json' },
+	})
+		.then(data => {
+            console.log(data);
+            console.log("Done: "+  currentStep); 
+            getSteps(clientProgressiveSchemeId)
 		})
 		.catch(err => console.log(err));
 }
@@ -35,8 +53,10 @@ const stepNumber = function (activeIndex) {
     console.log("End " + end);
     if (beginning == true) {
         step = 1;
-        activeIndex = 1; 
-        putStepFullFilled(activeIndex); 
+        activeIndex = 0;
+
+        putStartTime(); 
+        //putStepFullFilled(activeIndex); 
     }
     else {
         step = activeIndex + 1;
@@ -51,7 +71,6 @@ const showStepsClient = function (json) {
     let html = '';
     console.log(json.steps);
     for (object of json.steps) {
-        console.log(object.done);
         html += `<div class="swiper-slide">
 						<div class="c-step">
 							<div class="c-step__pictowrapper">
@@ -86,6 +105,7 @@ const getSteps = function (clientProgressiveSchemeId) {
         })
         .then(function (jsonObject) {
             json = jsonObject;
+            console.log("Get"); 
             console.log(json);
             showStepsClient(json);
         })

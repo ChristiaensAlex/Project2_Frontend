@@ -10,10 +10,21 @@ let showDateImages = function() {
 	document.querySelector('.js-date').innerHTML = html;
 };
 
+const listenToClickScheme = function(json){
+	let progressiveScheme = document.querySelectorAll('.c-progressiveScheme'); 
+	progressiveScheme.forEach(element => 
+		element.addEventListener('click', function(){
+			let nr = this.getAttribute('schemenr'); 
+			schemeId = json[nr].progressiveSchemeId; 
+			sessionStorage.schemeId = schemeId; 
+			window.location.href = 'SingleStepClient.html'; 
+		}));
+}
+
 let ShowProgressiveSchemesClient = function(json) {
 	let html = '';
 	for (object of json) {
-		html += `<div class="c-progressiveScheme ${object.done}">
+		html += `<div class="c-progressiveScheme ${object.done}" schemenr=0>
 							<div class="c-progressiveScheme__mainPicto">
 								<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44">
 									<g id="start-up" transform="translate(0 0)">
@@ -70,6 +81,7 @@ let ShowProgressiveSchemesClient = function(json) {
 	// 					</div> `;
 	// }
 	document.querySelector('.js-progressiveSchemes').innerHTML = html;
+	listenToClickScheme(json);
 };
 
 // let processProgressiveSchemes = function(queryResponse) {
@@ -133,6 +145,7 @@ const getProgressiveSchemesClient = function(clientId) {
 			console.error(`Problem to process json $`);
 		});
 };
+
 const init = function() {
 	clientId = sessionStorage.clientId;
 	console.log(clientId);
