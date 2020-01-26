@@ -275,7 +275,6 @@ const ListenToSinglePw = function() {
 			pwInput.addEventListener('input', doubleCheckPw);
 		}
 	});
-
 };
 
 const ListenToButton = function(button) {
@@ -316,7 +315,7 @@ const ListenToButton = function(button) {
 					password: passwordInput.value
 				};
 				postLoginMentorAPI(payload);
-				window.location.href = 'MentorHasClientList.html';
+				//window.location.href = 'MentorHasClientList.html';
 			} else {
 				if (!isValidEmailAddress(mailInput.value)) {
 					addErrors('email');

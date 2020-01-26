@@ -1,4 +1,3 @@
-
 const postLoginMentorAPI = function(payload) {
 	console.log('registerMentor');
 	let body = JSON.stringify(payload);
@@ -11,9 +10,21 @@ const postLoginMentorAPI = function(payload) {
 		headers: { 'Content-Type': 'application/json' },
 		body: body
 	})
-		.then(res => res.json())
+		.then(res => {
+			status = res.status;
+			return res.json();
+		})
+
 		.then(data => {
-			console.log(data), (sessionStorage.mentorId = data.id), console.log(sessionStorage.mentorId);
+			if (status == 200) {
+				removeErrors('email');
+				console.log(data), (sessionStorage.mentorId = data.id), console.log(sessionStorage.mentorId), (window.location.href = 'MentorHasClientList.html');
+			} else {
+				console.log(data);
+				addErrors('email'), (mailErrorMessage.innerText = data);
+			}
+
+			//
 		})
 		.catch(err => console.log(err));
 };
