@@ -47,6 +47,13 @@ const addErrors = function(field) {
 		iconPwError.classList.remove('u-hide');
 		iconPwCorrect.classList.add('u-hide');
 	}
+	if (field == 'username') {
+		usernameField.classList.add('s-has-error');
+		usernameField.classList.remove('s-correct');
+		usernameError.classList.remove('u-hide');
+		iconUsernameError.classList.remove('u-hide');
+		iconUsernameCorrect.classList.add('u-hide');
+	}
 };
 
 const removeErrors = function(field) {
@@ -73,6 +80,12 @@ const removeErrors = function(field) {
 		pwField.classList.add('s-correct');
 		iconPwError.classList.add('u-hide');
 		iconPwCorrect.classList.remove('u-hide');
+	}
+	if (field == 'username') {
+		usernameField.classList.remove('s-has-error');
+		usernameField.classList.add('s-correct');
+		iconUsernameError.classList.add('u-hide');
+		iconUsernameCorrect.classList.remove('u-hide');
 	}
 };
 
@@ -139,6 +152,18 @@ const doubleCheckPw = function() {
 	} else {
 		addErrors('pw');
 		pwErrormessage.innerText = 'Dit veld is verplicht.';
+		console.log('double check empty');
+	}
+};
+const doubleCheckUsername = function() {
+	console.log('double');
+	if (!isEmpty(username.value)) {
+		username.removeEventListener('input', doubleCheckUsername);
+		removeErrors('username');
+		usernameErrorMessage.innerText = 'Dit veld is verplicht.';
+	} else {
+		addErrors('username');
+		usernameErrorMessage.innerText = 'Dit veld is verplicht.';
 		console.log('double check empty');
 	}
 };
@@ -250,6 +275,7 @@ const ListenToSinglePw = function() {
 			pwInput.addEventListener('input', doubleCheckPw);
 		}
 	});
+
 };
 
 const ListenToButton = function(button) {

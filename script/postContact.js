@@ -12,7 +12,7 @@ const postContactAPI = function(payload, mentorId) {
 	})
 		.then(res => res.json())
 		.then(data => {
-			console.log(data), console.log(data); // (window.location.href = 'MentorHasClientList.html');
+			console.log(data), console.log(data), (window.location.href = 'MentorHasClientList.html');
 		})
 		.catch(err => console.log(err));
 };
@@ -42,7 +42,7 @@ const GetDomElements = function() {
 	console.log(submit);
 	phonenumber = document.querySelector('.js-phonenumber');
 	firstname = document.querySelector('.js-firstname');
-	sessionStorage.mentorId = 'EF4C3F22-6AC3-4143-B9CD-21A23F9EA1FE';
+	sessionStorage.mentorId = 'D3BFEE7D-1599-4D4F-A31F-8E1988F91470';
 	console.log(sessionStorage.mentorId);
 
 	ListenToSubmit();

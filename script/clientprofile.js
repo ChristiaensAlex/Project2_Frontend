@@ -1,7 +1,7 @@
 let firstname, lastname, username, password, extra, profilepic;
-const isEmpty = function(fieldValue) {
-	return !fieldValue || !fieldValue.length;
-};
+//const isEmpty = function(fieldValue) {
+//	return !fieldValue || !fieldValue.length;
+//};
 const putClientInfoAPI = function(url, payload) {
 	console.log('put client info');
 	let body = JSON.stringify(payload);
@@ -31,7 +31,7 @@ const showClientInfo = function(json) {
 	extra.value = json.infoClient;
 };
 
-const GetDomElements = function() {
+const GetDomElementsClient = function() {
 	firstname = document.querySelector('.js-firstnameClient');
 	lastname = document.querySelector('.js-lastnameClient');
 	username = document.querySelector('.js-username');
@@ -82,5 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	console.log('DOM loaded');
 	console.log(sessionStorage.clientId);
 	GetDomElements();
+	GetDomElementsClient();
 	getAPI(`https://localhost:44374/api/client/${sessionStorage.clientId}`);
 });
