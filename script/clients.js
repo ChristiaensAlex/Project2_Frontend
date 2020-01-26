@@ -3,6 +3,7 @@ let fullName, fullNameArr, clients;
 const showAllClients = function(jsonObject) {
 	for (i in jsonObject) {
 		let clientP = document.querySelector('.c-client')
+		console.log(clientP); 
 		let clientClone = clientP.cloneNode(true); 
 		clientClone.classList.remove('u-hide'); 
 		let client = jsonObject[i];
@@ -12,6 +13,7 @@ const showAllClients = function(jsonObject) {
 		clientName.innerHTML = `${client.firstName} ${client.lastName}`; 
 		clients.appendChild(clientClone); 
 	}; 
+  console.log(clients); 
 	getElements();
 	ListenToClients(jsonObject);
 };
