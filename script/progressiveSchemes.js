@@ -41,18 +41,44 @@ const showAllProgressiveSchemes = function(jsonObject) {
 	getElements();
 };
 
+const ListenToAddClient = function (button) {
+	button.addEventListener('click', function (event) {
+	  window.location.href = 'AddClientToProgressiveScheme.html'
+	})
+  }
+
 const showClientsFromProgressiveScheme = function(payload) {
 	let clients = payload.clients;
 	let clientSchemes = document.querySelector('.js-clientScheme');
 	for (i in clients) {
 		let OneClient = document.querySelector('.c-symbol__clientProfiles-client');
+		console.log('Geclonede');
+		console.log(OneClient)
 		let clientClone = OneClient.cloneNode(true);
+		console.log('Clone'); 
+		console.log(clientClone);
 		clientClone.classList.remove('u-hide');
 		let client = clients[i];
-		let clientName = document.querySelector('.c-symbol__clientProfiles-client__name');
+		let clientName = clientClone.querySelector('.c-symbol__clientProfiles-client__name');
 		clientName.innerHTML = client.firstName;
 		clientSchemes.appendChild(clientClone);
 	}
+	clientSchemes.innerHTML += `<button class="c-symbol__clientProfiles-client o-button-reset js-button__addStep">
+	<div class="c-symbol__clientProfiles-client__addClient">
+		<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13">
+			<g id="Group_1142" data-name="Group 1142" transform="translate(-161 -194)">
+				<circle id="Ellipse_146" data-name="Ellipse 146" cx="6.5" cy="6.5" r="6.5"
+					transform="translate(161 194)" fill="#1d5c5c" />
+				<path id="Path_285" data-name="Path 285"
+					d="M5.471,1.094,4.377,0,2.736,1.641,1.094,0,0,1.094,1.641,2.736,0,4.377,1.094,5.471,2.736,3.83,4.377,5.471,5.471,4.377,3.83,2.736Z"
+					transform="translate(167.519 197) rotate(45)" fill="#fff" />
+			</g>
+		</svg>
+	</div>
+</button>`;
+let addClientButton = document.querySelector('.js-button__addStep');
+console.log(addClientButton); 
+  ListenToAddClient(addClientButton);
 };
 
 const getProgressiveSchemes = function() {
@@ -193,7 +219,7 @@ const initProgressiveSchemes = function() {
 	progressiveSchemes = document.querySelector('.c-stepplans');
 	addStepsForm = document.querySelector('.js-form-addStep');
 	mainImage = document.querySelector('.c-button_addStepImage');
-	if (document.title == 'Trek Je Plan - Stappenplannen Overzicht') {
+	if (document.title == 'Trek Je Plan - Overzicht stappenplan - Mentor') {
 		getProgressiveSchemes();
 	} else if (addStepsForm) {
 		submitProgressiveScheme = document.querySelector('.c-submitbutton');
