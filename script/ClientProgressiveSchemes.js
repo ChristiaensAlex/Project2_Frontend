@@ -241,8 +241,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	//progressiveSchemeId = '52B05597-D586-4DF2-AB80-5DF8BF33B8D4';
 	//clientId = '1D32717C-4C22-40A2-650E-08D79A90ABFB';
+	progressiveSchemeId = sessionStorage.planId;
 	clientId = sessionStorage.clientId;
 	console.log(clientId);
+	console.log(progressiveSchemeId)
 	search = document.querySelector('.c-search-input');
 	console.log(search.name);
 

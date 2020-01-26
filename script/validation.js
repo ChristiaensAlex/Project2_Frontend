@@ -1,4 +1,4 @@
-let form, mailErrorMessage, mailField, mailInput, mailLabel, mailError, iconCorrect, iconError, passwordInput, passwordError, passwordField, iconPasswordCorrect, iconPasswordError, pw, passwordRepeatInput, passwordRepeatError, passwordRepeatField, iconPasswordRepeatCorrect, iconPasswordRepeatError, pwInput, pwError, pwErrormessage, iconPwCorrect, iconPwError, firstNameInput, lastNameInput;
+let form, mailErrorMessage, mailField, mailInput, mailLabel, mailError, iconCorrect, iconError, passwordInput, passwordError, passwordField, iconPasswordCorrect, iconPasswordError, passwordRepeatInput, passwordRepeatError, passwordRepeatField, iconPasswordRepeatCorrect, iconPasswordRepeatError, pwInput, pwError, pwErrormessage, iconPwCorrect, iconPwError, firstNameInput, lastNameInput;
 
 const isValidEmailAddress = function(emailAddress) {
 	// Basis manier om e-mailadres te checken.
@@ -380,11 +380,11 @@ const callListeners = function() {
 	}
 	if (pwField != null) {
 		console.log('pw-field');
-		pwInput = document.querySelector('.js-password');
-		pwErrormessage = document.querySelector('.js-password-errormessage');
-		pwError = document.querySelector('.js-password-error');
-		iconPwError = document.querySelector('.js-icon-password-error');
-		iconPwCorrect = document.querySelector('.js-icon-password');
+		pwInput = document.querySelector('.js-pw');
+		pwErrormessage = document.querySelector('.js-pw-errormessage');
+		pwError = document.querySelector('.js-pw-error');
+		iconPwError = document.querySelector('.js-icon-pw-error');
+		iconPwCorrect = document.querySelector('.js-icon-pw');
 		ListenToSinglePw();
 	}
 	// ListenToFocus();

@@ -41,11 +41,11 @@ const showAllProgressiveSchemes = function(jsonObject) {
 	getElements();
 };
 
-const ListenToAddClient = function (button) {
-	button.addEventListener('click', function (event) {
-	  window.location.href = 'AddClientToProgressiveScheme.html'
-	})
-  }
+const ListenToAddClient = function(button) {
+	button.addEventListener('click', function(event) {
+		window.location.href = 'AddClientToProgressiveScheme.html';
+	});
+};
 
 const showClientsFromProgressiveScheme = function(payload) {
 	let clients = payload.clients;
@@ -53,9 +53,9 @@ const showClientsFromProgressiveScheme = function(payload) {
 	for (i in clients) {
 		let OneClient = document.querySelector('.c-symbol__clientProfiles-client');
 		console.log('Geclonede');
-		console.log(OneClient)
+		console.log(OneClient);
 		let clientClone = OneClient.cloneNode(true);
-		console.log('Clone'); 
+		console.log('Clone');
 		console.log(clientClone);
 		clientClone.classList.remove('u-hide');
 		let client = clients[i];
@@ -76,13 +76,13 @@ const showClientsFromProgressiveScheme = function(payload) {
 		</svg>
 	</div>
 </button>`;
-let addClientButton = document.querySelector('.js-button__addStep');
-console.log(addClientButton); 
-  ListenToAddClient(addClientButton);
+	let addClientButton = document.querySelector('.js-button__addStep');
+	console.log(addClientButton);
+	ListenToAddClient(addClientButton);
 };
 
 const getProgressiveSchemes = function() {
-	let id = '82B3CB09-AC76-47A1-B879-B7A370E265D7';
+	let id = '206D076A-D443-40AD-AE3A-783350C2E0F7';
 	let url = `${baseURL}mentor/${id}/progressiveScheme`;
 	fetch(url)
 		.then(function(response) {
@@ -134,7 +134,7 @@ const putProgressiveScheme = function(payload) {
 const postProgressiveScheme = function(payload) {
 	let body = JSON.stringify(payload);
 	console.log(body);
-	let mentorId = '82B3CB09-AC76-47A1-B879-B7A370E265D7';
+	let mentorId = '206D076A-D443-40AD-AE3A-783350C2E0F7';
 	fetch(`https://localhost:44374/api/progressiveScheme/${mentorId}`, {
 		method: 'POST',
 		mode: 'cors',

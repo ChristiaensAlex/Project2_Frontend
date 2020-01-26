@@ -92,6 +92,7 @@ const AddExistingClient = function(payload, mentorId) {
 
 		.then(data => {
 			if (status == 200) {
+				removeErrors('username');
 				window.location.href = 'MentorHasClientList.html';
 			} else {
 				console.log(data);
