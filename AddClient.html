@@ -13,6 +13,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
 		<!--SCRIPT-->
 		<script src="script/createClient.js"></script>
+		<script src="script/validation.js"></script>
 		<!--FAVICON-->
 		<link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png" />
 		<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png" />
@@ -60,9 +61,26 @@
 						<form action="#" class="c-form js-form">
 							<div class="c-form__field">
 								<p class="c-title">Cliënt toevoegen</p>
-								<p class="">
+								<p class="js-username-field">
 									<label class="c-label" for="username">Gebruikersnaam</label>
 									<input type="text" class="c-input js-username" name="username" required />
+									<span class=" c-error js-username-error u-hide">
+										<svg class="c-icon js-icon-username-error u-hide" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+											<g id="Group_1123" data-name="Group 1123" transform="translate(-36 -411)">
+												<circle id="Ellipse_128" data-name="Ellipse 128" cx="10" cy="10" r="10" transform="translate(36 411)" fill="#fe5e33" />
+												<path id="Path_273" data-name="Path 273" d="M831,2272.4l-2.4-2.4-3.6,3.6-3.6-3.6-2.4,2.4,3.6,3.6-3.6,3.6,2.4,2.4,3.6-3.6,3.6,3.6,2.4-2.4-3.6-3.6Z" transform="translate(-779 -1855)" fill="#f9f6f6" stroke="#fd5f33" stroke-width="1" />
+											</g>
+										</svg>
+										<svg class="c-icon js-icon-username u-hide" xmlns="http://www.w3.org/2000/svg" width="20.278" height="19.963" viewBox="0 0 20.278 19.963">
+											<g id="Group_1089" data-name="Group 1089" transform="translate(-340.12 -355)">
+												<ellipse id="Ellipse_128" data-name="Ellipse 128" cx="10.139" cy="9.981" rx="10.139" ry="9.981" transform="translate(340.12 355)" fill="#1c5c5c" />
+												<path id="Fill_1" data-name="Fill 1" d="M4.251,8.665a.925.925,0,0,1-.663-.28L.275,5.008a.968.968,0,0,1,0-1.351.925.925,0,0,1,1.326,0l2.651,2.7L10.216.28a.925.925,0,0,1,1.325,0,.968.968,0,0,1,0,1.351L4.914,8.385a.926.926,0,0,1-.663.28" transform="translate(343.828 360.29)" fill="#fff" />
+											</g>
+										</svg>
+										<span class="c-label__errormessage js-username-errormessage">
+											Dit veld is verplicht.
+										</span>
+									</span>
 								</p>
 								<p>
 									<label for="password" class="c-label">Wachtwoord</label>
@@ -84,7 +102,7 @@ C400.004,190.438,392.251,182.686,382.688,182.686z"
 										Terug
 									</div>
 								</a>
-								<button class="o-button-reset c-button c-submitbutton js-submitbutton">Log in</button>
+								<button class="o-button-reset c-button c-submitbutton js-addClientButton">Log in</button>
 							</div>
 							<div class="c-link">
 								<a href="CreateClient.html">
