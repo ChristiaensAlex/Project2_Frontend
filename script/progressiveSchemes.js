@@ -145,7 +145,7 @@ const postProgressiveScheme = function(payload) {
 	})
 		.then(res => res.json())
 		.then(data => {
-			console.log(data), (window.location.href = 'MentorHasProgressiveStepsList.html');
+			console.log(data); // (window.location.href = 'MentorHasProgressiveStepsList.html');
 		})
 		.catch(err => console.log(err));
 };
@@ -206,7 +206,7 @@ const getInputFieldsScheme = function() {
 		}
 
 		scheme = {
-			pictoId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+			pictoFilleName: 'string',
 			name: schemeTitle,
 			totalSteps: stepNumber.length,
 			steps: stepsArr
