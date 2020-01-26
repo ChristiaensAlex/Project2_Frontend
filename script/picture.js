@@ -14,7 +14,6 @@ const postMainPicto = function(file, tags){
         mode: 'cors',
         cache: 'no-cache',
         credentials: 'same-origin',
-        headers: { 'Content-Type': 'application/json' },
         body: formData
         })
             .then(res => res.json())
@@ -59,7 +58,48 @@ const init = function(){
     
     
 }
+
+const showPictos = function(json){
+    for(i in json){
+        let pictos = document.querySelector('.c-choose'); 
+        let picto = document.querySelector('.c-choose__picto');
+        let pictoClone = picto.cloneNode(true); 
+        pictoClone.classList.remove('u-hide'); 
+        let pictoC = json[i]
+        let pictoSource = pictoClone.querySelector('.c-choose__picto-img');
+        console.log(pictoSource); 
+        pictoSource.src = `https://trekjeplan.blob.core.windows.net/pictos/${pictoC.name}`; 
+        pictos.appendChild(pictoClone); 
+    }
+}
+
+const getPictos = function(){
+    console.log("get"); 
+    let url = `${baseURL}picto`;
+    console.log(url)
+    fetch(url)
+    .then(function(response) {
+        if (!response.ok) {
+            throw Error(`Problem to fetch(). Status code: ${response.status}`);
+        } else {
+            return response.json();
+        }
+    })
+		.then(function(jsonObject) {
+			json = jsonObject;
+            console.log(jsonObject);
+            if(jsonObject){
+            showPictos(json); }
+			//showContacts(jsonObject);
+		})
+		.catch(function(error) {
+			console.log(error);
+			console.error(`Problem to process json $`);
+		});
+}
+
 document.addEventListener('DOMContentLoaded', function(){
     console.log('DOM loaded - Picture'); 
     init(); 
+    getPictos(); 
 })
