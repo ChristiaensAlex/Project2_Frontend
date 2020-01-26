@@ -7,7 +7,7 @@
 //     "infoClient": "string",
 //     "profilePictureId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
 //   }
-let firstname, lastname, username, password, passwordConfirm, extra;
+let firstname, lastname, username, password, passwordConfirm, extra, usernameErrorMessage, usernameField, usernameError, iconUsernameError, iconUsernameCorrect;
 const CreateClient = function(payload, mentorId) {
 	console.log('post contact' + mentorId);
 	let body = JSON.stringify(payload);
@@ -44,45 +44,81 @@ const AddExistingClient = function(payload, mentorId) {
 		})
 		.catch(err => console.log(err));
 };
+const ListenToUsername = function(username) {
+	usernameField = document.querySelector('.js-username-field');
+	usernameErrorMessage = document.querySelector('.js-username-errormessage');
+	usernameError = document.querySelector('.js-username-error');
+	iconUsernameError = document.querySelector('.js-icon-username-error');
+	iconUsernameCorrect = document.querySelector('.js-icon-username');
+
+	username.addEventListener('blur', function() {
+		if (isEmpty(username.value)) {
+			usernameErrorMessage.innerText = 'Dit veld is verplicht.';
+			addErrors('username');
+			username.addEventListener('input', doubleCheckUsername);
+		}
+	});
+};
 const ListenToSubmitButton = function(button) {
 	button.addEventListener('click', function(event) {
 		event.preventDefault();
-		mentorId = 'EF4C3F22-6AC3-4143-B9CD-21A23F9EA1FE';
-		if (firstname) {
-			let payload = {
-				firstName: firstname.value,
-				lastName: lastname.value,
-				username: username.value,
-				password: password.value,
-				confirmPassword: passwordConfirm.value,
-				infoClient: extra.value,
-				profilePictureId: '3fa85f64-5717-4562-b3fc-2c963f66afa6'
-			};
 
-			CreateClient(payload, mentorId);
+		mentorId = 'EF4C3F22-6AC3-4143-B9CD-21A23F9EA1FE';
+		if (!isEmpty(passwordInput.value) && isSamePassword(passwordInput.value, passwordRepeatInput.value) && !isEmpty(username.value)) {
+			console.log('form is good to go');
+			if (firstname.value) {
+				let payload = {
+					firstName: firstname.value,
+					lastName: lastname.value,
+					username: username.value,
+					password: passwordInput.value,
+					confirmPassword: passwordRepeatInput.value,
+					infoClient: extra.value,
+					profilePictureId: '3fa85f64-5717-4562-b3fc-2c963f66afa6'
+				};
+
+				CreateClient(payload, mentorId);
+			} else {
+				let payload = {
+					username: username.value,
+					password: passwordInput.value
+				};
+				console.log(payload);
+				AddExistingClient(payload, mentorId);
+			}
 		} else {
-			let payload = {
-				username: username.value,
-				password: password.value
-			};
-			console.log(payload);
-			AddExistingClient(payload, mentorId);
+			if (isEmpty(username.value)) {
+				addErrors('username');
+				username.addEventListener('input', doubleCheckUsername);
+			}
+			if (isEmpty(passwordInput.value)) {
+				addErrors('password');
+				passwordInput.addEventListener('input', doubleCheckPassword);
+			}
+			if (!isSamePassword(passwordInput.value, passwordRepeatInput.value)) {
+				addErrors('passwordRepeat');
+
+				passwordRepeatInput.addEventListener('input', doubleCheckPasswordRepeat);
+			}
 		}
 	});
 };
 
-const GetDomElements = function() {
+const GetDomElementsClient = function() {
 	firstname = document.querySelector('.js-firstnameClient');
 	lastname = document.querySelector('.js-lastnameClient');
 	username = document.querySelector('.js-username');
-	password = document.querySelector('.js-password');
-	passwordConfirm = document.querySelector('.js-passwordConfirm');
+	//password = document.querySelector('.js-password');
+	//passwordConfirm = document.querySelector('.js-passwordConfirm');
 	extra = document.querySelector('.js-extraClientInfo');
-	submitButton = document.querySelector('.js-submitbutton');
-
+	submitButton = document.querySelector('.js-createClientButton');
+	//ListenToPassword(password);
+	//ListenToPasswordRepeat(passwordConfirm);
+	ListenToUsername(username);
 	ListenToSubmitButton(submitButton);
 };
 document.addEventListener('DOMContentLoaded', function() {
 	console.log('DOM loaded');
+	GetDomElementsClient();
 	GetDomElements();
 });

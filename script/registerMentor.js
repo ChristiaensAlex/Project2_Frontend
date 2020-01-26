@@ -92,7 +92,8 @@ const initForgotPassword = function() {
 	iconError = document.querySelector('.js-icon-error');
 	if (submitReset) {
 		console.log('If 1');
-		submitReset.addEventListener('click', function() {
+		submitReset.addEventListener('click', function(event) {
+			event.preventDefault();
 			if (!isEmpty(emailResetInput.value) && isValidEmailAddress(emailResetInput.value)) {
 				console.log('If2');
 				removeErrors('email');
@@ -106,11 +107,11 @@ const initForgotPassword = function() {
 			}
 			// ELSE: Dit veld is verplicht
 		});
-		emailResetInput.addEventListener('blur', function(){
+		emailResetInput.addEventListener('blur', function() {
 			if (!isEmpty(emailResetInput.value) && isValidEmailAddress(emailResetInput.value)) {
 				console.log('If2');
 				removeErrors('email');
-				emailErrorMessage.innerHTML ="Dit is een geldig emailadres."
+				emailErrorMessage.innerHTML = 'Dit is een geldig emailadres.';
 				//GetResetPassword(emailResetInput.value);
 			} else if (isEmpty(emailResetInput.value)) {
 				emailErrorMessage.innerHTML = 'Dit veld is verplicht.';
@@ -119,7 +120,7 @@ const initForgotPassword = function() {
 				emailErrorMessage.innerHTML = 'Dit geen geldig emailadres.';
 				addErrors('email');
 			}
-		} )
+		});
 	}
 };
 
