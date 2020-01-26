@@ -82,8 +82,9 @@ console.log(addClientButton);
 };
 
 const getProgressiveSchemes = function() {
-	let id = '82B3CB09-AC76-47A1-B879-B7A370E265D7';
+	let id = '206d076a-d443-40ad-ae3a-783350c2e0f7';
 	let url = `${baseURL}mentor/${id}/progressiveScheme`;
+	console.log(url); 
 	fetch(url)
 		.then(function(response) {
 			if (!response.ok) {
@@ -96,7 +97,8 @@ const getProgressiveSchemes = function() {
 			if (progressiveSchemes) {
 				showAllProgressiveSchemes(jsonObject);
 				console.log(jsonObject);
-				stepPlans = document.querySelectorAll('.c-stepplan');
+				stepPlans = document.querySelectorAll('.c-stepplan__name');
+				console.log(jsonObject);
 				for (stepPlan of stepPlans) {
 					stepPlan.addEventListener('click', function() {
 						let i = this.getAttribute('plannr');
@@ -134,7 +136,7 @@ const putProgressiveScheme = function(payload) {
 const postProgressiveScheme = function(payload) {
 	let body = JSON.stringify(payload);
 	console.log(body);
-	let mentorId = '82B3CB09-AC76-47A1-B879-B7A370E265D7';
+	let mentorId = sessionStorage.mentorId;
 	fetch(`https://localhost:44374/api/progressiveScheme/${mentorId}`, {
 		method: 'POST',
 		mode: 'cors',
@@ -149,6 +151,10 @@ const postProgressiveScheme = function(payload) {
 		})
 		.catch(err => console.log(err));
 };
+
+const onHandlerClickedOpenChoosePhoto = function(){
+	window.location.href = 'ChoosePhoto.html'; 
+}
 
 const getInputFieldsScheme = function() {
 	title = document.querySelector('.js-scheme-name');
@@ -192,6 +198,9 @@ const getInputFieldsScheme = function() {
 		console.log(updatedScheme);
 		putProgressiveScheme(updatedScheme);
 	} else if (document.title == 'Trek Je Plan - Maak een nieuw stappenplan aan') {
+		let mainPicto = document.querySelector('.c-button__mainStepImage'); 
+	console.log(mainPicto);
+	mainPicto.addEventListener('click', onHandlerClickedOpenChoosePhoto); 
 		for (i = 0; i < stepNumber.length; i++) {
 			currentStep = stepNumber[i];
 			let currentStepNumber = currentStep.dataset.number;
@@ -219,8 +228,9 @@ const initProgressiveSchemes = function() {
 	progressiveSchemes = document.querySelector('.c-stepplans');
 	addStepsForm = document.querySelector('.js-form-addStep');
 	mainImage = document.querySelector('.c-button_addStepImage');
-	if (document.title == 'Trek Je Plan - Overzicht stappenplan - Mentor') {
+	if (document.title == 'Trek Je Plan - Stappenplannen Overzicht') {
 		getProgressiveSchemes();
+		
 	} else if (addStepsForm) {
 		submitProgressiveScheme = document.querySelector('.c-submitbutton');
 		submitProgressiveScheme.addEventListener('click', function() {
@@ -233,7 +243,12 @@ const initProgressiveSchemes = function() {
 	}
 };
 document.addEventListener('DOMContentLoaded', function() {
-	console.log('DOM loaded - Create progressive scheme ');
+	console.log('DOM loaded - Progressive scheme ');
 	baseURL = 'https://localhost:44374/api/';
 	initProgressiveSchemes();
+	let mainPicto = document.querySelector('.c-button__mainStepImage'); 
+	console.log(mainPicto);
+	if(mainPicto){
+	mainPicto.addEventListener('click', onHandlerClickedOpenChoosePhoto); 
+};
 });

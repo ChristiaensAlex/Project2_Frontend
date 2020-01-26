@@ -85,7 +85,7 @@ const getProfileElements = function() {
 
 document.addEventListener('DOMContentLoaded', function() {
 	console.log('DOM loaded - profile');
-	sessionStorage.mentorId = 'EF4C3F22-6AC3-4143-B9CD-21A23F9EA1FE';
+	sessionStorage.mentorId = 'a45a80c4-26c3-4ceb-8f73-9615367bf5c6';
 	mentorId = sessionStorage.mentorId;
 	getProfileElements();
 	getMentorProfile(mentorId);
