@@ -143,7 +143,7 @@ const doubleCheckPw = function() {
 	}
 };
 
-const ListenToMail = function() {
+const ListenToMail = function(mailInput) {
 	mailInput.addEventListener('focus', function() {
 		console.log('we zijn gefocused');
 		if (!isValidEmailAddress(mailInput.value)) {
@@ -173,7 +173,8 @@ const ListenToMail = function() {
 	});
 };
 
-const ListenToPassword = function() {
+const ListenToPassword = function(passwordInput) {
+	console.log(passwordInput);
 	passwordInput.addEventListener('focus', function() {
 		if (!isValidPassword(passwordInput.value)) {
 			console.log('password niet lang genoeg');
@@ -212,7 +213,7 @@ const ListenToPassword = function() {
 	});
 };
 
-const ListenToPasswordRepeat = function() {
+const ListenToPasswordRepeat = function(passwordRepeatInput) {
 	passwordRepeatInput.addEventListener('focus', function() {
 		if (!isSamePassword(passwordInput.value, passwordRepeatInput.value)) {
 			if (!isEmpty(passwordRepeatInput.value)) {
@@ -267,7 +268,6 @@ const ListenToButton = function(button) {
 					confirmPassword: passwordRepeatInput.value
 				};
 				postRegisterMentorAPI(payload);
-				
 			} else {
 				if (!isValidEmailAddress(mailInput.value)) {
 					addErrors('email');
@@ -340,16 +340,18 @@ const GetDomElements = function() {
 	// button
 	submitButton = document.querySelector('.js-submitbutton');
 	startButton = document.querySelector('.js-startbutton');
+	callListeners();
+};
 
-	console.log(mailField, mailLabel, mailInput, mailErrorMessage);
+const callListeners = function() {
 	if (mailField != null) {
-		ListenToMail();
+		ListenToMail(mailInput);
 	}
 	if (passwordField != null) {
-		ListenToPassword();
+		ListenToPassword(passwordInput);
 	}
 	if (passwordRepeatField != null) {
-		ListenToPasswordRepeat();
+		ListenToPasswordRepeat(passwordRepeatInput);
 	}
 	if (pwField != null) {
 		console.log('pw-field');
