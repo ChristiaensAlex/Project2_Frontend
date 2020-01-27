@@ -13,6 +13,7 @@
 	--global-color-beta: #1c5c5c;
 	--global-color-omega: #27255f;
 
+	--global-color-neutral-xxxxx-light: white;
 	--global-color-neutral-xxxx-light: white;
 	--global-color-neutral-xxx-light: #fafaff;
 	--global-color-neutral-xx-light: #ececf0;
@@ -60,11 +61,7 @@
 
 	--global-color-error: #fe5e33;
 	--global-input-error-boxShadowColor: #fe5e33;
-  --input-border: none;
-  
-  /**/
-  --global-previousCoins: 0;
-  --global-newCoins: 0; 
+	--input-border: none;
 }
 
 /*------------------------------------*\
@@ -176,9 +173,11 @@ li ul,
 li ol {
 	margin-bottom: 0;
 }
+
 ul {
 	list-style-type: none;
 }
+
 blockquote {
 	font-style: normal;
 	font-size: var(--global-fontsize-md);
@@ -285,139 +284,32 @@ body {
 /*
   Objects: section
   ---
-  Default markup for images to make them responsive
-  */
-  img {
-    max-width: 100%;
-    vertical-align: top;
-  }
-  
-  /*
-    Elements: typography
-    ---
-    Default markup for typographic elements
-  */
-  h1,
-  h2,
-  h3 {
-    font-weight: 700;
-  }
-  
-  h1 {
-    font-size: var(--global-fontsize-xl);
-    line-height: calc(var(--global-baseline) * 6);
-    margin: 0 0 var(--global-whitespace);
-  }
-  
-  h2 {
-    font-size: var(--global-fontsize-lg);
-    line-height: calc(var(--global-baseline) * 5);
-    margin: 0 0 var(--global-whitespace);
-  }
-  
-  h3 {
-    font-size: var(--global-fontsize-md);
-    line-height: calc(var(--global-baseline) * 4);
-    margin: 0 0 var(--global-whitespace);
-  }
-  
-  h4,
-  h5,
-  h6 {
-    font-size: var(--global-fontsize);
-    font-weight: 600;
-    line-height: calc(var(--global-baseline) * 3);
-    margin: 0 0 var(--global-whitespace);
-  }
-  
-  p,
-  ol,
-  ul,
-  dl,
-  table,
-  address,
-  figure {
-    margin: 0 0 var(--global-whitespace);
-  }
-  
-  ul,
-  ol {
-    padding-left: var(--global-whitespace);
-  }
-  
-  li ul,
-  li ol {
-    margin-bottom: 0;
-  }
-  
-  blockquote {
-    font-style: normal;
-    font-size: var(--global-fontsize-md);
-    line-height: calc(var(--global-baseline) * 6);
-    margin: 0 0 var(--global-whitespace);
-  }
-  
-  blockquote * {
-    font-size: inherit;
-    line-height: inherit;
-  }
-  
-  figcaption {
-    font-weight: 400;
-    font-size: var(--global-fontsize-sm);
-    line-height: calc(var(--global-baseline) * 2);
-    margin-top: var(--global-whitespace-xxs);
-  }
-  
-  hr {
-    border: 0;
-    height: var(--global-borderWidth);
-    background: var(--global-color-neutral-x-light);
-    margin: 0 0 var(--global-whitespace);
-  }
-  
-  a,
-  a:visited {
-    transition: all var(--global-transitionTiming-alpha);
-    color: var(--global-color-omega);
-    outline-color: var(--global-link-BoxShadowColor);
-    outline-width: medium;
-    outline-offset: 2px;
-    text-decoration: none;
-  }
-  
-  a:hover,
-  a:focus {
-    color: var(--global-color-alpha-light);
-  }
-  
-  a:active {
-    color: var(--global-color-alpha-dark);
-  }
-  
-  label,
-  input {
-    display: block;
-  }
-  
-  input::placeholder {
-    color: var(--color-placeholder, var(--global-color-neutral-x-light));
-  }
-  
-  body {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    margin: 0px;
-  
-    /* background-image: url(LoginMentor.png);
-    background-repeat: no-repeat;  */
-  }
-  
-  /*------------------------------------*\
-  #OBJECTS
-  \*------------------------------------*/
-  /*
+  Creates vertical whitespace between adjacent sections inside a row
+*/
+.o-section {
+	position: relative;
+}
+
+.o-section + .o-section {
+	padding-top: var(--global-whitespace);
+}
+
+@media (min-width: 768px) {
+	.o-section--lg + .o-section--lg,
+	.o-section--xl + .o-section--xl {
+		padding-top: var(--global-whitespace-lg);
+	}
+	.o-section {
+		margin: auto;
+	}
+}
+
+@media (min-width: 992px) {
+	.o-section--xl + .o-section--xl {
+		padding-top: var(--global-whitespace-xl);
+	}
+}
+/*
     Objects: Row
     ---
     Creates a horizontal row that stretches the viewport and adds padding around children
@@ -589,6 +481,7 @@ body {
 	/* Corrects inability to style clickable `input` types in iOS */
 	-webkit-appearance: none;
 }
+
 /*------------------------------------*\
   #COMPONENTS
   \*------------------------------------*/
@@ -672,6 +565,11 @@ body {
 	justify-content: center;
 }
 
+.swiper-container {
+	width: 600px;
+	height: 380px;
+}
+
 /*
     Component: forgotPassword
 */
@@ -747,12 +645,12 @@ body {
 	padding-bottom: var(--global-whitespace-md);
 }
 
-.c-title__AddClientsToProgressiveSteps {
+/* .c-title__AddClientsToProgressiveSteps {
 	display: flex;
 	font-size: var(--global-fontsize-md);
 	justify-content: space-between;
 	align-content: center;
-}
+} */
 
 .c-title__menu-alignleft {
 	display: flex;
@@ -769,13 +667,13 @@ body {
 /*
     Component: card
 */
+
 .c-card {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: calc(100vh - 92px);
 }
-
 @media (min-width: 1200px) {
 	.c-card {
 		height: 100vh;
@@ -816,6 +714,7 @@ body {
 	padding-left: var(--global-whitespace-md);
 	padding-right: var(--global-whitespace-lg);
 }
+
 @media (min-width: 768px) {
 	.c-form-AddStep {
 		padding-left: var(--global-whitespace);
@@ -929,7 +828,7 @@ Component: Spread
 }
 
 .c-error .c-icon {
-	margin-right: var(--global-baseline);
+	margin-right: 8px;
 }
 /*
   Component: Custom input
@@ -999,12 +898,12 @@ Component: Spread
     ---
     Custom select dropdown
 */
-
 .c-custom-select {
 	display: block;
 	position: relative;
 	border-radius: var(--global-borderRadius-sm);
 }
+
 .c-custom-select__input {
 	font-size: inherit;
 	color: inherit;
@@ -1015,7 +914,6 @@ Component: Spread
 	background-color: transparent;
 	border-radius: var(--global-borderRadius);
 } */
-
 .c-custom-select__symbol {
 	width: var(--global-whitespace);
 	height: var(--global-whitespace);
@@ -1033,12 +931,13 @@ Component: Spread
 .c-custom-select__input :last-child {
 	border-radius: var(--global-borderRadius-sm);
 }
-/*Search*/
 
 .c-input-search {
-	padding-bottom: var(--global-whitespace-md);
+	padding-botom: var(--global-whitespace-md);
 }
-
+.c-search-input {
+	margin-bottom: var(--global-whitespace-md);
+}
 .c-search__symbol {
 	position: absolute;
 	right: 8px;
@@ -1077,6 +976,11 @@ Component: Spread
 	justify-content: space-between;
 	padding: var(--global-baseline);
 	border: 1px solid var(--global-color-omega);
+}
+
+.c-input-points {
+	width: 50%;
+	padding: 9px var(--global-baseline);
 }
 .c-input-points {
 	width: 50%;
@@ -1136,7 +1040,7 @@ Component: Spread
   Custom button
 */
 .c-button {
-	border-radius: var(--global-borderRadius-sm);
+	border-radius: var(--global-borderRadius);
 	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
 	font-size: var(--global-fontsize-md);
 	line-height: calc(var(--global-fontsize-md) * 1.5);
@@ -1423,14 +1327,14 @@ justify-items: center; */
 
 	*/
 
-.c-button__addClient {
+*/ .c-button__addClient {
 	display: flex;
 	justify-content: space-between;
 	background-color: var(--global-color-neutral-x-light-transparent);
 	font-size: var(--global-fontsize-sm);
 	border-radius: var(--global-borderRadius-lg);
 	line-height: var(--global-fontsize-sm);
-	padding: var(--global-baseline) 0;
+	padding: 8px 0;
 	height: 100%;
 }
 
@@ -1443,6 +1347,7 @@ justify-items: center; */
 	justify-content: center;
 	align-items: center;
 }
+
 /*Component: Calendar
  A mentor has an overview of all his clients
 
@@ -1524,19 +1429,13 @@ user can choose a picto or photo for their stepplan or client*/
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: repeat(3, 1fr);
 	grid-column-gap: var(--global-baseline);
-  grid-row-gap: var(--global-baseline);
-  
+	grid-row-gap: var(--global-baseline);
 }
 
 .c-choose__picto {
 	place-self: center;
 	width: calc(var(--global-baseline) * 11);
-  height: calc(var(--global-baseline) * 11);
-  
-}
-
-.c-choose__picto-check{
-  position: relative;
+	height: calc(var(--global-baseline) * 11);
 }
 
 @media (min-width: 576px) {
@@ -1636,12 +1535,13 @@ user can choose a picto or photo for their stepplan or client*/
 		width: 300px;
 	}
 }
-/*Component: PlanningList
- A mentor has an overview of the planning of today
-  */
+
 .c-ascribeclient-page {
 	max-width: 310px;
 }
+/*Component: PlanningList
+ A mentor has an overview of the planning of today
+  */
 .c-hour {
 	font-size: var(--global-fontsize);
 }
@@ -2172,9 +2072,9 @@ navigation footer for menu mentor
 
 @media (min-width: 1200px) {
 	/* .c-section_menu{ 
-    padding: 0 calc(var(--global-whitespace-xxl)*6);
-    mag hier niet staan of fuck-up andere schermen
-  } */
+	padding: 0 calc(var(--global-whitespace-xxl)*6);
+	mag hier niet staan of fuck-up andere schermen
+} */
 	.c-section_menu-profile {
 		padding: 0 calc(var(--global-whitespace-xxl) * 6);
 	}
@@ -2336,34 +2236,23 @@ gives client feedback by congratulating them on finishing a progressive scheme a
 }
 
 .c-congrats__bar {
-  width: 100%;
-  height: var(--global-whitespace);
-  background-color: var(--global-color-neutral-xx-light);
-  border-radius: var(--global-borderRadius-lg);
+	position: relative;
+	width: 100%;
+	height: var(--global-whitespace);
 }
 
-.c-congrats__bar-progress{
-  width: 0; 
-  height: var(--global-whitespace);
-  background-color: var(--global-color-alpha);
-  z-index: 20 ;
-  border-radius: var(--global-borderRadius-lg) 0 0 var(--global-borderRadius-lg) ; 
-}
-
-@keyframes extension{
-  0%{
-    width: var(--global-previousCoins);
-  }
-  100%{
-    width: var(--global-newCoins); 
-  }
+.c-progressbar__front {
+	position: absolute;
+	left: 0;
+	height: 100%;
 }
 
 .c-progressbar__back {
-  width: 100%;
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
-
-
 
 /*conctactlist for client
 
@@ -2483,8 +2372,6 @@ mentor can see detail info of client and can choose between calendar, profile in
 .c-clientname {
 	font-size: var(--global-fontsize-lg);
 }
-
-/*component: diagram*/
 
 .c-bodyDetailClient {
 	height: calc(100vh - 140px);
@@ -2614,548 +2501,301 @@ mentor can see detail info of client and can choose between calendar, profile in
 /*
     Utilities: spacing
     ---
-    Custom button
+    Utility classes to put specific margins and paddings onto elements
+*/
+
+.u-pt-clear {
+	padding-top: 0 !important;
+}
+
+.u-mb-clear {
+	margin-bottom: 0 !important;
+}
+
+.u-mb-xs {
+	margin-bottom: var(--global-whitespace-xs) !important;
+}
+
+.u-mb-sm {
+	margin-bottom: var(--global-whitespace-sm) !important;
+}
+
+.u-mb-md {
+	margin-bottom: var(--global-whitespace-md) !important;
+}
+
+.u-mb-lg {
+	margin-bottom: var(--global-whitespace-lg) !important;
+}
+
+.u-mb-xl {
+	margin-bottom: var(--global-whitespace-xl) !important;
+}
+
+.u-mb-xl {
+	margin-bottom: var(--global-whitespace-xl) !important;
+}
+
+/*
+	  Utilities: max-width
+	  ---
+	  Utility classes to put specific max widths onto elements
   */
-  .c-button {
-    border-radius: var(--global-borderRadius-sm);
-    box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
-    font-size: var(--global-fontsize-md);
-    line-height: calc(var(--global-fontsize-md) * 1.5);
-    display: flex;
-    align-items: center;
-  }
-  
-  .c-backbutton {
-    border: var(--global-borderWidth) solid var(--global-color-alpha);
-    color: var(--global-color-alpha);
-    height: var(--global-whitespace-xl);
-    width: 75%;
-    justify-content: space-around;
-    margin-right: var(--global-whitespace-xs);
-  }
-  
-  .c-backbutton__text {
-    color: var(--global-color-alpha);
-  }
-  
-  .c-backbutton-long {
-    width: 100%;
-    padding-right: 30%;
-    margin-bottom: 64px;
-    background-color: var(--global-color-alpha);
-    fill: white;
-    color: white;
-  }
-  
-  .c-popup-form--card > .c-backbutton {
-    width: 100%;
-  }
-  
-  @media (min-width: 768px) {
-    .c-backbutton-long {
-      padding-right: 190px;
-    }
-  }
-  
-  .c-backbutton__arrow {
-    width: var(--global-whitespace);
-    height: var(--global-whitespace);
-    fill: var(--global-color-alpha);
-  }
-  
-  .c-submitbutton {
-    background-color: var(--global-color-alpha);
-    color: var(--global-color-neutral-xxx-light);
-    height: var(--global-whitespace-xl);
-    width: 100%;
-    justify-content: center;
-    margin-left: var(--global-whitespace-xs);
-  }
-  .c-submitbutton__arrow {
-    width: var(--global-whitespace);
-    height: var(--global-whitespace);
-    transform: scaleX(-1) translateX(-10px);
-    fill: var(--global-color-neutral-xxxxx-light);
-  }
-  .c-popup-form--card > .c-submitbutton {
-    width: 100%;
-    margin-left: 0;
-    margin-bottom: calc(var(--global-baseline) * 2);
-  }
-  .c-submitbutton-long {
-    width: 100%;
-  }
-  .c-button__mainStepImage {
-    display: flex;
-    margin-bottom: var(--global-whitespace);
-  }
-  
-  .c-upload {
-    display: flex;
-    justify-content: center;
-    margin: calc(var(--global-whitespace-xs) * 5);
-  }
-  
-  .c-uploadbutton {
-    border: none;
-    color: var(--global-color-neutral-xxx-light);
-    background-color: #438787;
-    height: 36px;
-    width: calc(var(--global-whitespace) * 16);
-  }
-  
-  .c-uploadbutton__arrowbox {
-    border-radius: var(--global-borderRadius);
-    background-color: var(--global-color-beta);
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .c-uploadbutton__arrow {
-    width: var(--global-whitespace);
-    height: var(--global-whitespace);
-    transform: rotate(90deg);
-    fill: var(--global-color-neutral-xxx-light);
-  }
-  
-  .c-uploadbutton__text {
-    transform: translateX(10px);
-  }
-  
-  /*
-    Component: link
-    ---
-    Custom link
+
+.u-max-width-xs {
+	max-width: 27em !important;
+}
+
+.u-max-width-sm {
+	max-width: 39em !important;
+}
+
+.u-max-width-md {
+	max-width: 50em !important;
+}
+
+.u-max-width-lg {
+	max-width: 63.5em !important;
+}
+
+.u-max-width-none {
+	max-width: none !important;
+}
+
+/*
+	  Utilities: align
+	  ---
+	  Utility classes align text or components
   */
-  .c-link {
-    text-decoration: underline;
-    text-align: end;
-  }
-  
-  /* Component: choice
-    ---
-  user can choose role*/
-  .c-choices {
-  }
-  
-  .c-choice {
-    border-radius: var(--global-borderRadius-sm);
-    box-shadow: 0 0 0 1px rgba(252, 140, 113, 0.05), 0 8px 8px rgba(252, 140, 113, 0.5);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    height: calc(var(--global-baseline) * 20);
-    font-size: var(--global-fontsize-md);
-    margin: var(--global-whitespace-xl) 0;
-  }
-  .c-choice div {
-    color: var(--global-color-alpha);
-  }
-  .c-symbol__choice {
-    display: flex;
-    justify-content: center;
-  }
-  
-  /* Component: navigation client
-    ---
+
+.u-align-text-center {
+	text-align: center;
+}
+
+.u-align-center {
+	margin: 0 auto;
+}
+
+/*
+	  Utilities: text
+	  Utility classes to create smaller or bigger test
   */
-  .c-navigationClient {
-    display: grid;
-    grid-template-columns: 56px 1fr 56px;
-    height: var(--global-whitespace-xl);
-    margin: var(--global-whitespace);
-  }
-  
-  .c-userphoto {
-    justify-self: self-end;
-    height: 100%;
-  }
-  
-  .c-icon {
-    height: 100%;
-  }
-  
-  .c-logout {
-    justify-self: self-end;
-    font-size: var(--global-fontsize-xs);
-    height: 100%;
-  }
-  
-  .c-logout__symbol {
-    height: 75%;
-  }
-  
-  .c-logout a {
-    color: var(--global-color-omega);
-  }
-  
-  /*Component: date
-  ---
-  picto representation of current date
+
+.u-text-sm {
+	font-size: 14px;
+}
+
+/*
+	  Utility: Widths
+	  ---
+	  Utility classes to put specific widths onto elements
+	  Will be mostly used on o-layout__item
   */
-  .c-date {
-    display: flex;
-    justify-content: space-evenly;
-    margin: var(--global-whitespace);
-    /* border: var(--global-borderWidth) solid var(--global-color-beta);
-  border-radius: var(--global-borderRadius); */
-  }
-  
-  /*Component: progressive Scheme
-  ---
-  
+
+.u-width-auto {
+	width: auto !important;
+}
+
+.u-1-of-2 {
+	width: 50% !important;
+}
+
+.u-1-of-3 {
+	width: 33.3333333333% !important;
+}
+
+.u-2-of-3 {
+	width: 66.6666666667% !important;
+}
+
+.u-1-of-4 {
+	width: 25% !important;
+}
+
+.u-3-of-4 {
+	width: 75% !important;
+}
+
+.u-1-of-5 {
+	width: 20% !important;
+}
+
+.u-2-of-5 {
+	width: 40% !important;
+}
+
+.u-3-of-5 {
+	width: 60% !important;
+}
+
+.u-4-of-5 {
+	width: 80% !important;
+}
+
+.u-1-of-6 {
+	width: 16.6666666667% !important;
+}
+
+.u-5-of-6 {
+	width: 83.3333333333% !important;
+}
+
+@media (min-width: 576px) {
+	.u-1-of-2-bp1 {
+		width: 50% !important;
+	}
+	.u-1-of-3-bp1 {
+		width: 33.3333333333% !important;
+	}
+	.u-2-of-3-bp1 {
+		width: 66.6666666667% !important;
+	}
+	.u-1-of-4-bp1 {
+		width: 25% !important;
+	}
+	.u-3-of-4-bp1 {
+		width: 75% !important;
+	}
+	.u-1-of-5-bp1 {
+		width: 20% !important;
+	}
+	.u-2-of-5-bp1 {
+		width: 40% !important;
+	}
+	.u-3-of-5-bp1 {
+		width: 60% !important;
+	}
+	.u-4-of-5-bp1 {
+		width: 80% !important;
+	}
+	.u-1-of-6-bp1 {
+		width: 16.6666666667% !important;
+	}
+	.u-5-of-6-bp1 {
+		width: 83.3333333333% !important;
+	}
+}
+
+@media (min-width: 768px) {
+	.u-1-of-2-bp2 {
+		width: 50% !important;
+	}
+	.u-1-of-3-bp2 {
+		width: 33.3333333333% !important;
+	}
+	.u-2-of-3-bp2 {
+		width: 66.6666666667% !important;
+	}
+	.u-1-of-4-bp2 {
+		width: 25% !important;
+	}
+	.u-3-of-4-bp2 {
+		width: 75% !important;
+	}
+	.u-1-of-5-bp2 {
+		width: 20% !important;
+	}
+	.u-2-of-5-bp2 {
+		width: 40% !important;
+	}
+	.u-3-of-5-bp2 {
+		width: 60% !important;
+	}
+	.u-4-of-5-bp2 {
+		width: 80% !important;
+	}
+	.u-1-of-6-bp2 {
+		width: 16.6666666667% !important;
+	}
+	.u-5-of-6-bp2 {
+		width: 83.3333333333% !important;
+	}
+}
+
+@media (min-width: 992px) {
+	.u-1-of-2-bp3 {
+		width: 50% !important;
+	}
+	.u-1-of-3-bp3 {
+		width: 33.3333333333% !important;
+	}
+	.u-2-of-3-bp3 {
+		width: 66.6666666667% !important;
+	}
+	.u-1-of-4-bp3 {
+		width: 25% !important;
+	}
+	.u-3-of-4-bp3 {
+		width: 75% !important;
+	}
+	.u-1-of-5-bp3 {
+		width: 20% !important;
+	}
+	.u-2-of-5-bp3 {
+		width: 40% !important;
+	}
+	.u-3-of-5-bp3 {
+		width: 60% !important;
+	}
+	.u-4-of-5-bp3 {
+		width: 80% !important;
+	}
+	.u-1-of-6-bp3 {
+		width: 16.6666666667% !important;
+	}
+	.u-5-of-6-bp3 {
+		width: 83.3333333333% !important;
+	}
+}
+
+@media (min-width: 1200px) {
+	.u-1-of-2-bp4 {
+		width: 50% !important;
+	}
+	.u-1-of-3-bp4 {
+		width: 33.3333333333% !important;
+	}
+	.u-2-of-3-bp4 {
+		width: 66.6666666667% !important;
+	}
+	.u-1-of-4-bp4 {
+		width: 25% !important;
+	}
+	.u-3-of-4-bp4 {
+		width: 75% !important;
+	}
+	.u-1-of-5-bp4 {
+		width: 20% !important;
+	}
+	.u-2-of-5-bp4 {
+		width: 40% !important;
+	}
+	.u-3-of-5-bp4 {
+		width: 60% !important;
+	}
+	.u-4-of-5-bp4 {
+		width: 80% !important;
+	}
+	.u-1-of-6-bp4 {
+		width: 16.6666666667% !important;
+	}
+	.u-5-of-6-bp4 {
+		width: 83.3333333333% !important;
+	}
+}
+
+/*
+	  Utility: Grid
+	  ---
+	 Utility classes to put specific column or row spans onto elements
+	 
   */
-  .c-progressiveSchemes {
-  }
-  
-  .c-progressiveSchemes .c-progressiveScheme {
-    background-color: var(--global-color-neutral-x-light-transparent);
-    height: 104px;
-    display: flex;
-    align-items: center;
-    /* display: grid;
-  grid-template-columns: 56px 1fr;
-  align-items: center;
-  justify-items: center; */
-    margin: var(--global-whitespace) 0;
-    padding: var(--global-baseline);
-  }
-  
-  .c-progressiveScheme__mainPicto {
-    /* display: flex; */
-    justify-content: center;
-    align-items: center;
-    margin: var(--global-baseline);
-  }
-  
-  .c-progressiveScheme__name {
-    display: flex;
-    align-self: center;
-    font-size: var(--global-fontsize-md);
-    margin: 0 var(--global-baseline);
-  }
-  
-  /*Anja until phone button*/
-  /*Component: ClientListButton
-   Add clients to the clientlist
-  
-    */
-  
-  .c-button__addClient {
-    display: flex;
-    justify-content: space-between;
-    background-color: var(--global-color-neutral-x-light-transparent);
-    font-size: var(--global-fontsize-sm);
-    border-radius: var(--global-borderRadius-lg);
-    line-height: var(--global-fontsize-sm);
-    padding: var(--global-baseline) 0;
-    height: 100%;
-  }
-  
-  .c-button__addClient-text {
-    padding: 0 14px;
-  }
-  
-  .c-button__addClient-symbol {
-    padding-right: var(--global-baseline);
-    justify-content: center;
-    align-items: center;
-  }
-  /*Component: Calendar
-   A mentor has an overview of all his clients
-  
-    */
-  
-  /* checken wat we hier nog van nodig hebben*/
-  .c-calendar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .c-calendar__arrow {
-    width: 9px;
-    height: var(--global-whitespace-md);
-  }
-  
-  .c-time__month {
-    text-align: center;
-  }
-  
-  .c-time__month ul {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .c-time__month .prev {
-    float: left;
-    padding-top: 10px;
-  }
-  
-  .c-time__month .next {
-    float: right;
-    padding-top: 10px;
-  }
-  
-  .c-time__week {
-    margin: 0;
-    padding: 10px 0;
-    color: var(--global-color-neutral-x-light);
-  }
-  
-  .c-time__week li {
-    display: inline-block;
-    width: 13.6%;
-    text-align: center;
-  }
-  
-  .c-time__days {
-    padding: 10px 0;
-    margin: 0;
-  }
-  
-  .c-time__days li {
-    list-style-type: none;
-    display: inline-block;
-    width: 13.6%;
-    text-align: center;
-    margin-bottom: 5px;
-    font-size: 12px;
-    color: #777;
-  }
-  
-  /* Highlight the "current" day */
-  .c-time__days li .active {
-    padding: 5px;
-    background: var(--global-color-alpha);
-    color: white !important;
-  }
-  /*Component: ClientList
-     A mentor has an overview of all his clients
-      */
-  
-  .c-clients {
-  }
-  
-  .c-clients .c-client {
-    display: grid;
-    grid-template-columns: 64px 1fr 20px;
-    grid-template-rows: auto auto;
-    background-color: var(--global-color-neutral-x-light-transparent);
-    height: calc(var(--global-baseline) * 10);
-    margin: var(--global-whitespace) 0;
-    padding: var(--global-baseline);
-    border-radius: var(--global-borderRadius-md);
-  }
-  
-  .c-client__userPhoto {
-    justify-content: center;
-    align-items: center;
-    margin: var(--global-baseline);
-    height: var(--global-whitespace-xl);
-    width: var(--global-whitespace-xl);
-  }
-  
-  .c-client__name {
-    display: flex;
-    align-self: center;
-    font-size: var(--global-fontsize-md);
-    margin: 0 var(--global-baseline);
-  }
-  
-  .c-client-page {
-    padding: 0 calc(var(--global-baseline) * 5) 0 calc(var(--global-baseline) * 5);
-  }
-  
-  .c-client__delete {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-  
-  @media (min-width: 992px) {
-    .c-clients {
-      display: grid;
-      grid-template-columns: auto auto;
-      grid-template-rows: auto;
-      margin-left: calc(var(--global-baseline) * 8);
-    }
-  
-    .c-clients .c-client {
-      width: 300px;
-    }
-  }
-  /*Component: PlanningList
-   A mentor has an overview of the planning of today
-    */
-  .c-hour {
-    font-size: var(--global-fontsize);
-  }
-  
-  .c-plannings {
-  }
-  
-  .c-plannings .c-planning {
-    display: grid;
-    grid-template-columns: 64px 1fr 20px;
-    grid-template-rows: auto auto;
-    background-color: var(--global-color-neutral-x-light-transparent);
-    height: calc(var(--global-baseline) * 10);
-    margin: var(--global-whitespace) 0;
-    padding: var(--global-baseline);
-    border-radius: var(--global-borderRadius-md);
-  }
-  
-  .c-planning__userPhoto {
-    grid-row: span 2;
-  }
-  
-  .c-planning__picto {
-    grid-row: span 2;
-  }
-  
-  .c-planning__username {
-    font-size: var(--global-fontsize);
-    margin: 0 var(--global-baseline);
-    grid-row: 1;
-    grid-column: 2;
-    display: flex;
-    align-items: center;
-  }
-  
-  .c-planning__name {
-    font-size: var(--global-fontsize-sm);
-    margin: 0 var(--global-baseline);
-    grid-row: 2;
-    grid-column: 2;
-    display: flex;
-    align-items: center;
-  }
-  
-  .c-planning__check {
-    top: 0;
-    transform: translate(15px, -15px);
-    opacity: 0.1;
-  }
-  
-  .c-planning__check.c-planning__checked {
-    transform: translate(15px, -15px);
-    opacity: 1;
-  }
-  
-  .c-planning__delete {
-    grid-column: 3;
-    grid-row: 2;
-    transform: translatey(-15px);
-    display: flex;
-    align-items: center;
-  }
-  
-  @media (min-width: 992px) {
-    .c-plannings {
-      display: grid;
-      grid-template-columns: auto auto;
-      grid-template-rows: auto;
-      margin-left: calc(var(--global-baseline) * 8);
-    }
-  }
-  /*Component: StepplansList
-     A mentor has an overview of all his stepplans
-      */
-  .c-stepplans {
-  }
-  
-  .c-stepplans .c-stepplan {
-    display: grid;
-    grid-template-columns: 64px 1fr 20px;
-    grid-template-rows: auto auto;
-    background-color: var(--global-color-neutral-x-light-transparent);
-    height: calc(var(--global-baseline) * 10);
-    margin: var(--global-whitespace) 0;
-    padding: var(--global-baseline);
-    border-radius: var(--global-borderRadius-md);
-  }
-  
-  .c-stepplan__picto {
-    grid-row: span 2;
-  }
-  
-  .c-stepplan__name {
-    font-size: var(--global-fontsize);
-    margin: 0 var(--global-baseline);
-    grid-row: span 2;
-    grid-column: span 1;
-    display: flex;
-    align-items: center;
-  }
-  
-  .c-stepplan__pencil {
-    display: flex;
-    align-items: center;
-  }
-  
-  .c-stepplan__delete {
-    grid-column: 3;
-    display: flex;
-    align-items: center;
-  }
-  
-  @media (min-width: 992px) {
-    .c-stepplans {
-      grid-template-columns: auto auto;
-      grid-template-rows: auto;
-      margin-left: calc(var(--global-baseline) * 8);
-    }
-  
-    .c-stepplans .c-stepplan {
-      width: 300px;
-    }
-  }
-  
-  /* Component: profile mentor
-      ---
-      */
-  
-  .c-mentor__logout {
-    display: grid;
-    grid-template-columns: 1fr 56px;
-  
-    height: var(--global-whitespace-xl);
-    margin: var(--global-whitespace) var(--global-whitespace) var(--global-whitespace) 0;
-  }
-  
-  .c-modify {
-    font-size: inherit;
-    color: var(--global-color-omega);
-    text-decoration: underline;
-  }
-  
-  .c-profile__picture {
-    padding-bottom: 40px;
-    margin-left: -10px;
-  }
-  
-  .c-label__profile {
-    margin-bottom: 0;
-    font-size: var(--global-fontsize-sm);
-    font-weight: 600;
-    padding: 0 0 var(--global-whitespace-xs);
-    line-height: var(--global-fontsize-md);
-    color: var(--label-color, var(--global-color-omega));
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .c-profile__info {
-    font-size: var(--global-fontsize-sm);
-  }
-  
-  /*Component: phone button
-  ---
-  client can get to contact list
+
+/*
+	  Utility: Colors
+	  ---
+	 Utility classes to change specific colors based on javascript 
+	 
   */
 
 .s-has-error {
@@ -3170,7 +2810,7 @@ mentor can see detail info of client and can choose between calendar, profile in
 	--global-color-error: var(--global-color-beta);
 }
 .u-hide {
-	display: none !important;
+	display: none;
 }
 /*------------------------------------*\
   #MEDIA
@@ -3183,1056 +2823,90 @@ mentor can see detail info of client and can choose between calendar, profile in
 	  These examples override the primary ('mobile first') styles.
 	  USE THEM INLINE!
   */
-  .c-step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .c-step__countsymbol {
-    position: absolute;
-    top: -12px;
-    left: -12px;
-  }
-  
-  .c-step__pictowrapper {
-    display: block;
-    position: relative;
-    height: 304px;
-    width: 256px;
-    box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
-    border-radius: 14px;
-    padding: auto;
-    margin-bottom: var(--global-whitespace-xl);
-  }
-  
-  .c-step__picto {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-  }
-  
-  .c-new-step {
-    display: flex;
-    flex-direction: row;
-    background-color: #f9f9fa;
-    border-radius: 0px 8px 8px 8px;
-    box-shadow: 0px 2px 4px rgba(165, 163, 191, 0.15);
-    padding: 16px;
-  }
-  
-  .c-add-step {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .c-step-description {
-    padding-left: var(--global-whitespace-md);
-    width: 100%;
-  }
-  
-  .c-step-description--header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .c-step__explanation {
-    width: 256px;
-    text-align: center;
-  }
-  
-  .c-single-step {
-    margin-bottom: calc(var(--global-baseline) * 3);
-  }
-  
-  /*Component: footer
-  ---
-  navigation footer for client with visualisation of progress, phonebutton and overview steps button
-  */
-  .c-footer {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    height: calc(var(--global-baseline) * 8);
-  }
-  
-  .c-footer__navbarClient {
-    box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 -5px 5px -5px rgba(170, 170, 179, 0.75);
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 100%;
-  }
-  
-  .c-footer__navbarClient .c-emergencycall {
-    position: absolute;
-    top: -32px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .c-footer__navbarClient .c-phonebutton {
-    border-radius: 100%;
-    height: calc(var(--global-baseline) * 8);
-    width: calc(var(--global-baseline) * 8);
-    display: flex;
-    justify-content: center;
-    position: static;
-    padding: 0;
-  }
-  
-  .c-steps__progress {
-    width: 25%;
-    display: flex;
-    justify-content: flex-start;
-  }
-  
-  .c-footer__steps-overview {
-    width: 25%;
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .c-stepsOverview__sybmol {
-    border: var(--global-borderWidth) solid var(--global-color-omega);
-    border-radius: 8px;
-    box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
-    height: calc(var(--global-baseline) * 5);
-    width: calc(var(--global-baseline) * 5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /*Component: footer
-   ---
-  navigation footer for menu mentor
-    */
-  .c-navbar {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    height: calc(var(--global-baseline) * 8);
-  }
-  
-  .c-navbar__mentor {
-    box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 -5px 5px -5px rgba(170, 170, 179, 0.75);
-    background-color: white;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-  }
-  
-  .c-navbar__tabs {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 10px;
-  }
-  .c-section_menu {
-    padding: 0 0 calc(var(--global-whitespace-xxl)) 0;
-  }
-  @media (min-width: 768px) {
-    .c-section_menu {
-      padding: 0 calc(var(--global-whitespace-xxl) * 2);
-    }
-    .c-section_menu-profile {
-      padding: 0 calc(var(--global-whitespace-xxl) * 2);
-    }
-  }
-  .c-topLeftLogo {
-    height: var(--global-whitespace-xl);
-    margin: var(--global-whitespace);
-  }
-  @media (min-width: 992px) {
-    .c-topLeftLogo {
-      display: flex;
-      justify-content: center;
-      height: var(--global-whitespace-xl);
-      margin: var(--global-whitespace);
-    }
-  
-    /*niet veranderen!!!!*/
-    .c-section_menu {
-      padding: 0 0 calc(var(--global-whitespace-xxl)) 0;
-    }
-  
-    .c-title__menu {
-      margin-left: calc(var(--global-baseline) * 8);
-    }
-  
-    .c-title__menu-profile {
-      margin-left: none;
-    }
-  
-    .c-tab {
-      padding: calc(var(--global-baseline) * 3.5) 0;
-    }
-  
-    .c-tab__text {
-      visibility: hidden;
-    }
-  
-    .c-navbar {
-      height: 100%;
-      top: 0;
-      left: 0;
-      width: calc(var(--global-baseline) * 8);
-    }
-  
-    .c-navbar__mentor {
-      border: var(--global-borderWidth) solid var(--global-color-neutral-xx-light);
-      border-width: 0 var(--global-borderWidth) 0 0;
-      background-color: white;
-      height: 100%;
-      width: calc(var(--global-baseline) * 8);
-    }
-  
-    .c-navbar__tabs {
-      display: flex;
-      flex-direction: column;
-      margin-top: calc(var(--global-whitespace-xl) * 2);
-    }
-  }
-  
-  @media (min-width: 1200px) {
-    /* .c-section_menu{ 
-      padding: 0 calc(var(--global-whitespace-xxl)*6);
-      mag hier niet staan of fuck-up andere schermen
-    } */
-    .c-section_menu-profile {
-      padding: 0 calc(var(--global-whitespace-xxl) * 6);
-    }
-  }
-  
-  /*Registration page mentor part 1*/
-  .c-progressRegistration {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: var(--global-whitespace-sm);
-  }
-  
-  /*Registration page mentor part 2*/
-  .c-button__addProfilePic {
-    margin-bottom: var(--global-whitespace-sm);
-  }
-  
-  .c-addPhonenumber p {
-    margin-top: var(--global-baseline);
-  }
-  
-  .c-addContact {
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .c-button__addContact {
-    display: flex;
-    justify-content: space-around;
-    width: 178px;
-    font-size: var(--global-fontsize-sm);
-  }
-  
-  .c-button__addStep {
-    margin-top: var(--global-whitespace-lg);
-    margin-bottom: var(--global-whitepace-md);
-  }
-  
-  .c-button_addStepImage {
-    display: flex;
-  }
-  
-  /*overview steps of progressive scheme for client*/
-  .c-overview__header {
-    margin-top: var(--global-whitespace);
-    height: 240px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    position: relative;
-  }
-  
-  .c-overview__header .c-progressiveScheme__mainPicto {
-    height: 200px;
-    width: 200px;
-  }
-  
-  .c-overview__header .c-progressiveScheme__mainPicto .c-icon {
-    height: 100%;
-    width: 100%;
-  }
-  
-  .c-overview__header .c-progressiveScheme__name {
-    font-size: var(--global-fontsize-lg);
-    position: absolute;
-    bottom: -16px;
-    left: 0;
-  }
-  
-  .c-overview__step {
-    margin: var(--global-whitespace) 0;
-    background-color: var(--global-color-neutral-xxx-light);
-    display: grid;
-    grid-template-columns: 56px 24px 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-column-gap: var(--global-baseline);
-    border-radius: var(--global-borderRadius-md);
-    position: relative;
-    padding: var(--global-baseline);
-  }
-  
-  .c-overview__step .c-step__countsymbol {
-    position: static;
-    align-self: center;
-  }
-  
-  .c-overview__step .c-step__name {
-    align-self: center;
-  }
-  
-  .c-overview__step .c-picto {
-    grid-row: span 2;
-    align-self: center;
-    width: calc(var(--global-baseline) * 7);
-    height: calc(var(--global-baseline) * 7);
-    border: var(--global-borderWidth) solid var(--global-color-omega);
-    border-radius: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .c-overview__step .c-picto img {
-    width: 80%;
-  }
-  
-  .c-checkmark {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-  }
-  
-  .c-downwardsArrow {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .c-downwardArrowAdd {
-    margin-top: var(--global-whitespace-lg);
-  }
-  
-  /*finished progressive scheme screen --> congratulates the user*/
-  /*Component: congrats
-  ---
-  gives client feedback by congratulating them on finishing a progressive scheme and shows how their progress bar fills up
-  */
-  .c-card__congrats {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 var(--global-whitespace-lg); 
-  }
-  
-  .c-congrats {
-    justify-self: center;
-    width: 100%;
-  }
-  
-  .c-congrats__body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  
-  .c-congrats__text {
-    text-align: center;
-  }
-  
-  .c-congrats__text > div {
-    font-size: var(--global-fontsize-lg);
-  }
-  
-  .c-congrats__img {
-    width: 194px;
-    height: 156px;
-    margin-bottom: var(--global-whitespace-lg);
-  }
-  
-  .c-congrats__bar {
-    width: 100%;
-    height: var(--global-whitespace);
-    background-color: var(--global-color-neutral-xx-light);
-    border-radius: var(--global-borderRadius-lg);
-  }
 
-  .c-congrats__bar-progress{
-    width: 0; 
-    height: var(--global-whitespace);
-    background-color: var(--global-color-alpha);
-    z-index: 20 ;
-    border-radius: var(--global-borderRadius-lg) 0 0 var(--global-borderRadius-lg) ; 
-  }
+/* Extra small devices (portrait phones, less than 576px)
+  No media query since this is the default in mobile first design
+  */
 
-  @keyframes extension{
-    0%{
-      width: var(--global-previousCoins);
-    }
-    100%{
-      width: var(--global-newCoins); 
-    }
-  }
-  
-  .c-progressbar__back {
-    width: 100%;
-  }
-  
-  /*conctactlist for client
-  
-  where client can see all their emergency contacts*/
-  .c-navigation__close {
-    margin-top: var(--global-whitespace);
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .c-phone {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: calc(var(--global-baseline) * 8);
-    margin-bottom: var(--global-whitespace);
-  }
-  
-  .c-phone h1 {
-    margin-bottom: 0;
-    margin-left: var(--global-whitespace-md);
-  }
-  
-  .c-phone__img {
-    width: var(--global-whitespace-lg);
-    height: 100%;
-  }
-  
-  .c-phone__img .c-icon {
-    fill: var(--global-color-omega);
-    height: 100%;
-    width: 100%;
-  }
-  
-  /*Component: contactlist*/
-  .c-contactlist {
-    display: flex;
-    justify-content: center;
-  }
-  
-  /*Component: contact
-  ---
-  clients can call a contact by touching the contact
-  each contact has a profile pic and name
+/* Small devices (landscape phones, 576px and up)
+  @media (min-width: 576px) {}
   */
-  .c-contact {
-    display: flex;
-    align-items: center;
-    background-color: var(--global-color-neutral-x-light-transparent);
-    height: 104px;
-    width: 296px;
-    max-width: 640px;
-    margin-bottom: var(--global-whitespace);
-    border-radius: var(--global-borderRadius-md);
-  }
-  
-  .c-contact__profilepic {
-    height: 88px;
-    width: 88px;
-    margin: var(--global-baseline);
-  }
-  
-  .c-contact__profilepic .c-icon {
-    height: 100%;
-    width: 100%;
-  }
-  
-  .c-contact__name {
-    font-size: var(--global-fontsize-lg);
-    margin-left: var(--global-whitespace-lg);
-  }
-  
-  /*detailinfoclient page
-  ---
-  mentor can see detail info of client and can choose between calendar, profile info and feedback
+
+/* Medium devices (tablets, 768px and up)
+  @media (min-width: 768px) {}
   */
-  /*component: topbar*/
-  .c-topbarDetailClient {
-    display: grid;
-    grid-template-columns: 36px 1fr 36px;
-    grid-template-rows: 36px 104px;
-    margin-top: var(--global-whitespace);
-  }
-  
-  .c-topbarDetailClient .c-navigation__close {
-    grid-column: 3;
-    margin: 0;
-  }
-  
-  .c-topbarDetailClient .c-logo__symbol {
-    height: 36px;
-    width: 36px;
-  }
-  
-  .c-logo__symbol .c-icon {
-    height: 100%;
-    width: 100%;
-  }
-  
-  .c-topbarDetailClient .c-client {
-    grid-column: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .c-clientphoto {
-    width: calc(var(--global-baseline) * 7);
-    height: calc(var(--global-baseline) * 7);
-  }
-  .c-clientname {
-    font-size: var(--global-fontsize-lg);
-  }
-  
-  /*component: diagram*/
-  
-  .c-bodyDetailClient {
-    height: 100vh - 140px;
-  
-    margin: auto 0;
-  }
-  .c-diagram {
-    display: flex;
-    justify-content: center;
-    /* margin-top: var(--global-whitespace-xl); */
-    width: 100%;
-    height: min-content;
-  }
-  .c-diagram__circle {
-    max-height: 320px;
-    max-width: 320px;
-    width: 100%;
-    position: relative;
-  }
-  
-  .c-diagram a {
-    color: var(--global-color-omega);
-  }
-  
-  .c-rapport {
-    position: absolute;
-    top: 25%;
-    left: 12.5%;
-    width: 25%;
-  }
-  .c-diagram__circle .c-profile {
-    position: absolute;
-    top: 25%;
-    right: 12.5%;
-    width: 25%;
-  }
-  .c-planningClient {
-    position: absolute;
-    width: 25%;
-    bottom: 12.5%;
-    left: 37.5%;
-  }
-  
-  /*page edit profile */
-  
-  .c-password-field {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-  }
-  .c-password-field .c-password__edit {
-    text-decoration: underline;
-    color: inherit;
-    font-size: var(--global-fontsize-sm);
-  }
-  
-  .c-contact__wrapper .c-profile {
-    display: grid;
-    grid-template-columns: 1fr 24px;
-    grid-template-rows: 48px 1fr;
-  }
-  .c-contact__wrapper .c-profile :first-child {
-  }
-  
-  .c-contact__wrapper .c-profile .c-button__addProfilePic {
-    grid-row: 2;
-    grid-column: 1;
-    display: flex;
-    justify-content: flex-start;
-  }
-  .c-delete {
-    width: var(--global-whitespace);
-    height: var(--global-whitespace);
-  }
-  .c-contact__wrapper {
-    box-shadow: var(--input-focus-boxShadow, 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75));
-    border-radius: var(--global-borderRadius-lg);
-    padding: var(--global-whitespace-md);
-    margin-bottom: var(--global-whitespace-md);
-  }
-  
-  .c-contact__wrapper + .c-addContact {
-    display: flex;
-    justify-content: center;
-    font-size: inherit;
-  }
-  /*
-    Popup
+
+/* Large devices (landscape tablets, desktops, 992px and up)
+  @media (min-width: 992px) {}
   */
-  .c-popup-form {
-    display: none;
-    position: absolute;
-    top: 168;
-    left: 36;
-    right: 36;
-  }
-  .c-popup-form--card {
-    background-color: var(--global-color-neutral-xxxx-light);
-    border-radius: var(--global-borderRadius-lg);
-    width: 100%;
-    padding: 36px;
-    max-width: 552px;
-    line-height: 24px; /*inherit*/
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-  }
-  
-  .c-popup-blur {
-    filter: blur(8px);
-  }
-  
-  /*
-      Utilities: spacing
-      ---
-      Utility classes to put specific margins and paddings onto elements
+
+/* Extra large devices (large desktops, 1200px and up)
+  @media (min-width: 1200px) {}
   */
-  
-  .u-pt-clear {
-    padding-top: 0 !important;
-  }
-  
-  .u-mb-clear {
-    margin-bottom: 0 !important;
-  }
-  
-  .u-mb-xs {
-    margin-bottom: var(--global-whitespace-xs) !important;
-  }
-  
-  .u-mb-sm {
-    margin-bottom: var(--global-whitespace-sm) !important;
-  }
-  
-  .u-mb-md {
-    margin-bottom: var(--global-whitespace-md) !important;
-  }
-  
-  .u-mb-lg {
-    margin-bottom: var(--global-whitespace-lg) !important;
-  }
-  
-  .u-mb-xl {
-    margin-bottom: var(--global-whitespace-xl) !important;
-  }
-  
-  .u-mb-xl {
-    margin-bottom: var(--global-whitespace-xl) !important;
-  }
-  
-  /*
-      Utilities: max-width
-      ---
-      Utility classes to put specific max widths onto elements
-    */
-  
-  .u-max-width-xs {
-    max-width: 27em !important;
-  }
-  
-  .u-max-width-sm {
-    max-width: 39em !important;
-  }
-  
-  .u-max-width-md {
-    max-width: 50em !important;
-  }
-  
-  .u-max-width-lg {
-    max-width: 63.5em !important;
-  }
-  
-  .u-max-width-none {
-    max-width: none !important;
-  }
-  
-  /*
-      Utilities: align
-      ---
-      Utility classes align text or components
-    */
-  
-  .u-align-text-center {
-    text-align: center;
-  }
-  
-  .u-align-center {
-    margin: 0 auto;
-  }
-  
-  /*
-      Utilities: text
-      Utility classes to create smaller or bigger test
-    */
-  
-  .u-text-sm {
-    font-size: 14px;
-  }
-  
-  /*
-      Utility: Widths
-      ---
-      Utility classes to put specific widths onto elements
-      Will be mostly used on o-layout__item
-    */
-  
-  .u-width-auto {
-    width: auto !important;
-  }
-  
-  .u-1-of-2 {
-    width: 50% !important;
-  }
-  
-  .u-1-of-3 {
-    width: 33.3333333333% !important;
-  }
-  
-  .u-2-of-3 {
-    width: 66.6666666667% !important;
-  }
-  
-  .u-1-of-4 {
-    width: 25% !important;
-  }
-  
-  .u-3-of-4 {
-    width: 75% !important;
-  }
-  
-  .u-1-of-5 {
-    width: 20% !important;
-  }
-  
-  .u-2-of-5 {
-    width: 40% !important;
-  }
-  
-  .u-3-of-5 {
-    width: 60% !important;
-  }
-  
-  .u-4-of-5 {
-    width: 80% !important;
-  }
-  
-  .u-1-of-6 {
-    width: 16.6666666667% !important;
-  }
-  
-  .u-5-of-6 {
-    width: 83.3333333333% !important;
-  }
-  
-  @media (min-width: 576px) {
-    .u-1-of-2-bp1 {
-      width: 50% !important;
-    }
-    .u-1-of-3-bp1 {
-      width: 33.3333333333% !important;
-    }
-    .u-2-of-3-bp1 {
-      width: 66.6666666667% !important;
-    }
-    .u-1-of-4-bp1 {
-      width: 25% !important;
-    }
-    .u-3-of-4-bp1 {
-      width: 75% !important;
-    }
-    .u-1-of-5-bp1 {
-      width: 20% !important;
-    }
-    .u-2-of-5-bp1 {
-      width: 40% !important;
-    }
-    .u-3-of-5-bp1 {
-      width: 60% !important;
-    }
-    .u-4-of-5-bp1 {
-      width: 80% !important;
-    }
-    .u-1-of-6-bp1 {
-      width: 16.6666666667% !important;
-    }
-    .u-5-of-6-bp1 {
-      width: 83.3333333333% !important;
-    }
-  }
-  
-  @media (min-width: 768px) {
-    .u-1-of-2-bp2 {
-      width: 50% !important;
-    }
-    .u-1-of-3-bp2 {
-      width: 33.3333333333% !important;
-    }
-    .u-2-of-3-bp2 {
-      width: 66.6666666667% !important;
-    }
-    .u-1-of-4-bp2 {
-      width: 25% !important;
-    }
-    .u-3-of-4-bp2 {
-      width: 75% !important;
-    }
-    .u-1-of-5-bp2 {
-      width: 20% !important;
-    }
-    .u-2-of-5-bp2 {
-      width: 40% !important;
-    }
-    .u-3-of-5-bp2 {
-      width: 60% !important;
-    }
-    .u-4-of-5-bp2 {
-      width: 80% !important;
-    }
-    .u-1-of-6-bp2 {
-      width: 16.6666666667% !important;
-    }
-    .u-5-of-6-bp2 {
-      width: 83.3333333333% !important;
-    }
-  }
-  
-  @media (min-width: 992px) {
-    .u-1-of-2-bp3 {
-      width: 50% !important;
-    }
-    .u-1-of-3-bp3 {
-      width: 33.3333333333% !important;
-    }
-    .u-2-of-3-bp3 {
-      width: 66.6666666667% !important;
-    }
-    .u-1-of-4-bp3 {
-      width: 25% !important;
-    }
-    .u-3-of-4-bp3 {
-      width: 75% !important;
-    }
-    .u-1-of-5-bp3 {
-      width: 20% !important;
-    }
-    .u-2-of-5-bp3 {
-      width: 40% !important;
-    }
-    .u-3-of-5-bp3 {
-      width: 60% !important;
-    }
-    .u-4-of-5-bp3 {
-      width: 80% !important;
-    }
-    .u-1-of-6-bp3 {
-      width: 16.6666666667% !important;
-    }
-    .u-5-of-6-bp3 {
-      width: 83.3333333333% !important;
-    }
-  }
-  
-  @media (min-width: 1200px) {
-    .u-1-of-2-bp4 {
-      width: 50% !important;
-    }
-    .u-1-of-3-bp4 {
-      width: 33.3333333333% !important;
-    }
-    .u-2-of-3-bp4 {
-      width: 66.6666666667% !important;
-    }
-    .u-1-of-4-bp4 {
-      width: 25% !important;
-    }
-    .u-3-of-4-bp4 {
-      width: 75% !important;
-    }
-    .u-1-of-5-bp4 {
-      width: 20% !important;
-    }
-    .u-2-of-5-bp4 {
-      width: 40% !important;
-    }
-    .u-3-of-5-bp4 {
-      width: 60% !important;
-    }
-    .u-4-of-5-bp4 {
-      width: 80% !important;
-    }
-    .u-1-of-6-bp4 {
-      width: 16.6666666667% !important;
-    }
-    .u-5-of-6-bp4 {
-      width: 83.3333333333% !important;
-    }
-  }
-  
-  /*
-      Utility: Grid
-      ---
-     Utility classes to put specific column or row spans onto elements
-     
-    */
-  
-  /*
-      Utility: Colors
-      ---
-     Utility classes to change specific colors based on javascript 
-     
-    */
-  
-  .s-has-error {
-    --label-color: var(--global-color-error);
-    --input-border: var(--global-borderWidth) solid var(--global-color-error);
-  
-    --input-hover-boxShadow: 0 0 0 1px rgba(254, 94, 51, 0.05), 0 4px 4px rgba(254, 94, 51, 0.75);
-    --input-focus-boxShadow: 0 0 0 1px rgba(254, 94, 51, 0.05), 0 4px 4px rgba(254, 94, 51, 0.75);
-  }
-  
-  @media (prefers-color-scheme: dark) {
-    .s-has-error {
-      --input-border: 1px solid var(--global-color-error);
-    }
-  }
-  .s-correct {
-    --global-color-error: var(--global-color-beta);
-  }
-  .u-hide {
-    display: none;
-  }
-  /*------------------------------------*\
-    #MEDIA
-    \*------------------------------------*/
-  
-  /*
-      Media Queries
-      ---
-      EXAMPLE Media Queries for Responsive Design.
-      These examples override the primary ('mobile first') styles.
-      USE THEM INLINE!
-    */
-  
-  /* Extra small devices (portrait phones, less than 576px)
-    No media query since this is the default in mobile first design
-    */
-  
-  /* Small devices (landscape phones, 576px and up)
-    @media (min-width: 576px) {}
-    */
-  
-  /* Medium devices (tablets, 768px and up)
-    @media (min-width: 768px) {}
-    */
-  
-  /* Large devices (landscape tablets, desktops, 992px and up)
-    @media (min-width: 992px) {}
-    */
-  
-  /* Extra large devices (large desktops, 1200px and up)
-    @media (min-width: 1200px) {}
-    */
-  
-  /*
-      Print styles.
-      ---
-      Inlined to avoid the additional HTTP request:
-      http://www.phpied.com/delay-loading-your-print-css/
-    */
-  
-  @media print {
-    *,
-    *:before,
-    *:after {
-      background: transparent !important;
-      color: #000 !important;
-      /* Black prints faster:
-        http://www.sanbeiji.com/archives/953 */
-      box-shadow: none !important;
-      text-shadow: none !important;
-    }
-    a,
-    a:visited {
-      text-decoration: underline;
-    }
-    a[href]:after {
-      content: ' (' attr(href) ')';
-    }
-    abbr[title]:after {
-      content: ' (' attr(title) ')';
-    }
-    /*
-      * Don't show links that are fragment identifiers,
-      * or use the `javascript:` pseudo protocol
-      */
-    a[href^='#']:after,
-    a[href^='javascript:']:after {
-      content: '';
-    }
-    pre {
-      white-space: pre-wrap !important;
-    }
-    pre,
-    blockquote {
-      border: 1px solid #999;
-      page-break-inside: avoid;
-    }
-    /*
-      * Printing Tables:
-      * http://css-discuss.incutio.com/wiki/Printing_Tables
-      */
-    thead {
-      display: table-header-group;
-    }
-    tr,
-    img {
-      page-break-inside: avoid;
-    }
-    p,
-    h2,
-    h3 {
-      orphans: 3;
-      widows: 3;
-    }
-    h2,
-    h3 {
-      page-break-after: avoid;
-    }
-  }
-  
+
+/*
+	  Print styles.
+	  ---
+	  Inlined to avoid the additional HTTP request:
+	  http://www.phpied.com/delay-loading-your-print-css/
+  */
+
+@media print {
+	*,
+	*:before,
+	*:after {
+		background: transparent !important;
+		color: #000 !important;
+		/* Black prints faster:
+		  http://www.sanbeiji.com/archives/953 */
+		box-shadow: none !important;
+		text-shadow: none !important;
+	}
+	a,
+	a:visited {
+		text-decoration: underline;
+	}
+	a[href]:after {
+		content: ' (' attr(href) ')';
+	}
+	abbr[title]:after {
+		content: ' (' attr(title) ')';
+	}
+	/*
+	  * Don't show links that are fragment identifiers,
+	  * or use the `javascript:` pseudo protocol
+	  */
+	a[href^='#']:after,
+	a[href^='javascript:']:after {
+		content: '';
+	}
+	pre {
+		white-space: pre-wrap !important;
+	}
+	pre,
+	blockquote {
+		border: 1px solid #999;
+		page-break-inside: avoid;
+	}
+	/*
+	  * Printing Tables:
+	  * http://css-discuss.incutio.com/wiki/Printing_Tables
+	  */
+	thead {
+		display: table-header-group;
+	}
+	tr,
+	img {
+		page-break-inside: avoid;
+	}
+	p,
+	h2,
+	h3 {
+		orphans: 3;
+		widows: 3;
+	}
+	h2,
+	h3 {
+		page-break-after: avoid;
+	}
+}
