@@ -1,5 +1,6 @@
 const postLoginMentorAPI = function (payload) {
 	let body = JSON.stringify(payload);
+	console.log(body)
 	fetch('https://trekjeplan.azurewebsites.net/api/AuthMentor/Login', {
 		method: 'POST',
 		mode: 'cors',
@@ -14,6 +15,7 @@ const postLoginMentorAPI = function (payload) {
 		})
 
 		.then(data => {
+			console.log(data)
 			if (status == 200) {
 				removeErrors('email');
 				setSession(data);
@@ -32,7 +34,7 @@ const setSession = function (res) {
 	console.log(res);
 	localStorage.setItem('token', res.token);
 	readTokeDataFromLocalStorage();
-	window.location.href = 'MentorHasClientList.html';
+	//window.location.href = 'MentorHasClientList.html';
 }
 
 

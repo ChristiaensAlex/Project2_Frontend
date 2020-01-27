@@ -1422,17 +1422,15 @@ user can choose a picto or photo for their stepplan or client*/
 	height: calc(var(--global-baseline) * 11);
 }
 
-.c-choose__picto-check{
-  position: relative;
+.c-choose__picto-check {
+	position: relative;
 }
-
 
 @media (min-width: 576px) {
 	.c-choose {
 		grid-template-columns: repeat(5, 1fr);
 	}
 }
-
 
 .c-client-report {
 	background-color: var(--global-color-neutral-xx-light);
@@ -2190,6 +2188,7 @@ gives client feedback by congratulating them on finishing a progressive scheme a
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	margin: 0 var(--global-whitespace-lg);
 }
 
 .c-congrats {
@@ -2218,7 +2217,7 @@ gives client feedback by congratulating them on finishing a progressive scheme a
 	margin-bottom: var(--global-whitespace-lg);
 }
 
-.c-congrats__bar {
+/* .c-congrats__bar {
 	position: relative;
 	width: 100%;
 	height: var(--global-whitespace);
@@ -2235,6 +2234,34 @@ gives client feedback by congratulating them on finishing a progressive scheme a
 	left: 0;
 	width: 100%;
 	height: 100%;
+} */
+
+.c-congrats__bar {
+	width: 100%;
+	height: var(--global-whitespace);
+	background-color: var(--global-color-neutral-xx-light);
+	border-radius: var(--global-borderRadius-lg);
+}
+
+.c-congrats__bar-progress {
+	width: 0;
+	height: var(--global-whitespace);
+	background-color: var(--global-color-alpha);
+	z-index: 20;
+	border-radius: var(--global-borderRadius-lg) 0 0 var(--global-borderRadius-lg);
+}
+
+@keyframes extension {
+	0% {
+		width: var(--global-previousCoins);
+	}
+	100% {
+		width: var(--global-newCoins);
+	}
+}
+
+.c-progressbar__back {
+	width: 100%;
 }
 
 /*conctactlist for client
