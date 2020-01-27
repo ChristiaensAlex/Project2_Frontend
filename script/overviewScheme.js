@@ -23,7 +23,7 @@ const showStepsFromProgressiveScheme = function (payload) {
       progressiveSchemeSteps.append(arrowClone)
     }
   }
-  showClientsFromProgressiveScheme(payload); 
+  showClientsFromProgressiveScheme(payload);
 }
 
 const fillInputsFromEditPlan = function (payload) {
@@ -86,6 +86,6 @@ const getProgressiveSchemeById = function () {
 
 document.addEventListener('DOMContentLoaded', function () {
   console.log('DOM loaded - Overview progressive scheme ')
-  baseURL = 'https://localhost:44374/api/'
+  baseURL = 'https://trekjeplan.azurewebsites.net/api/'
   getProgressiveSchemeById()
 })

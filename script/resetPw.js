@@ -1,12 +1,12 @@
 let emailResetInput, submitReset;
-const isValidEmailAddress = function(emailAddress) {
+const isValidEmailAddress = function (emailAddress) {
 	// Basis manier om e-mailadres te checken.
 	return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailAddress);
 };
-const isEmpty = function(fieldValue) {
+const isEmpty = function (fieldValue) {
 	return !fieldValue || !fieldValue.length;
 };
-const addErrors = function(field) {
+const addErrors = function (field) {
 	if (field == 'email') {
 		emailField.classList.add('s-has-error');
 		emailError.classList.remove('u-hide');
@@ -16,7 +16,7 @@ const addErrors = function(field) {
 	}
 };
 
-const removeErrors = function(field) {
+const removeErrors = function (field) {
 	if (field == 'email') {
 		emailField.classList.remove('s-has-error');
 		emailField.classList.add('s-correct');
@@ -25,9 +25,9 @@ const removeErrors = function(field) {
 	}
 };
 
-const GetResetPassword = function(email) {
+const GetResetPassword = function (email) {
 	console.log('Reset password: ' + email);
-	const baseURL = 'https://localhost:44374/api/';
+	const baseURL = 'https://trekjeplan.azurewebsites.net/api/';
 	const url = `${baseURL}AuthMentor/ForgotPassword/${email}`;
 	fetch(url)
 		.then(res => {
@@ -47,7 +47,7 @@ const GetResetPassword = function(email) {
 			(emailErrorMessage.innerHTML = `${data}`), console.log(data);
 		});
 };
-const initForgotPassword = function() {
+const initForgotPassword = function () {
 	console.log('Init');
 	emailResetInput = document.querySelector('.js-email-resetInput');
 	submitReset = document.querySelector('.js-submit-reset');
@@ -60,7 +60,7 @@ const initForgotPassword = function() {
 	iconError = document.querySelector('.js-icon-error');
 	if (submitReset) {
 		console.log('If 1');
-		submitReset.addEventListener('click', function(event) {
+		submitReset.addEventListener('click', function (event) {
 			event.preventDefault();
 			if (!isEmpty(emailResetInput.value) && isValidEmailAddress(emailResetInput.value)) {
 				console.log('If2');
@@ -75,7 +75,7 @@ const initForgotPassword = function() {
 			}
 			// ELSE: Dit veld is verplicht
 		});
-		emailResetInput.addEventListener('blur', function() {
+		emailResetInput.addEventListener('blur', function () {
 			if (!isEmpty(emailResetInput.value) && isValidEmailAddress(emailResetInput.value)) {
 				console.log('If2');
 				removeErrors('email');
@@ -92,7 +92,7 @@ const initForgotPassword = function() {
 	}
 };
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 	console.log('DOM loaded - register mentor');
 	initForgotPassword();
 });

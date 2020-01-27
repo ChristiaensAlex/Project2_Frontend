@@ -1,4 +1,4 @@
-let baseURL = 'https://localhost:44374/api/',
+let baseURL = 'https://trekjeplan.azurewebsites.net/api/',
 	mentorId,
 	json,
 	url,
@@ -9,7 +9,7 @@ let baseURL = 'https://localhost:44374/api/',
 	numberOfDays,
 	backPage;
 
-const postCP = function(url, payload) {
+const postCP = function (url, payload) {
 	console.log('add client to progressive scheme');
 	let body = JSON.stringify(payload);
 	console.log(body);
@@ -27,7 +27,7 @@ const postCP = function(url, payload) {
 		})
 		.catch(err => console.log(err));
 };
-const showClients = function(json, element) {
+const showClients = function (json, element) {
 	i = 0;
 	for (object of json) {
 		document.querySelector('.c-search').innerHTML += `<div class="c-search-list__item" data-number="${i}">${object.firstName} ${object.lastName}</div>`;
@@ -37,7 +37,7 @@ const showClients = function(json, element) {
 	ListenToObjects(element);
 };
 
-const showProgressiveSchemes = function(json, element) {
+const showProgressiveSchemes = function (json, element) {
 	i = 0;
 	for (object of json) {
 		document.querySelector('.c-search').innerHTML += `<div class="c-search-list__item" data-number="${i}">${object.name}</div>`;
@@ -47,10 +47,10 @@ const showProgressiveSchemes = function(json, element) {
 	ListenToObjects(element);
 };
 
-const getSearchElements = function(element, string) {
+const getSearchElements = function (element, string) {
 	let url = `${baseURL}mentor/${mentorId}/${element}?search=${string}`;
 	fetch(url)
-		.then(function(response) {
+		.then(function (response) {
 			if (!response.ok) {
 				throw Error(`Problem to fetch(). Status code: ${response.status}`);
 			} else {
@@ -60,7 +60,7 @@ const getSearchElements = function(element, string) {
 				return arr;
 			}
 		})
-		.then(function(jsonObject) {
+		.then(function (jsonObject) {
 			json = jsonObject;
 			console.log(jsonObject);
 			if (element == 'client') {
@@ -72,13 +72,13 @@ const getSearchElements = function(element, string) {
 				console.log('ps');
 			}
 		})
-		.catch(function(error) {
+		.catch(function (error) {
 			console.log(error);
 			console.error(`Problem to process json $`);
 		});
 };
 
-const makePayload = function(frequency) {
+const makePayload = function (frequency) {
 	let payload = [];
 	let points = document.querySelector('.js-points').value;
 	let startDate = document.querySelector('.js-startDate').value;
@@ -137,7 +137,7 @@ const makePayload = function(frequency) {
 	}
 };
 
-const getDayOfWeek = function(day) {
+const getDayOfWeek = function (day) {
 	switch (day) {
 		case 'Ma':
 			return 'monday';
@@ -155,8 +155,8 @@ const getDayOfWeek = function(day) {
 			return 'sunday';
 	}
 };
-const ListenToSearch = function() {
-	search.addEventListener('change', function(event) {
+const ListenToSearch = function () {
+	search.addEventListener('change', function (event) {
 		console.log(this.value);
 		getSearchElements(search.name, this.value);
 		// if (search.name == "Client"){
@@ -167,8 +167,8 @@ const ListenToSearch = function() {
 		// }
 	});
 };
-const ListenToSelect = function(select) {
-	select.addEventListener('change', function() {
+const ListenToSelect = function (select) {
+	select.addEventListener('change', function () {
 		console.log(this.value);
 		frequency = this.value;
 		switch (frequency) {
@@ -190,15 +190,15 @@ const ListenToSelect = function(select) {
 	});
 };
 
-const ListenToNumberOfDays = function(number) {
-	number.addEventListener('change', function() {
+const ListenToNumberOfDays = function (number) {
+	number.addEventListener('change', function () {
 		numberOfDays = this.value;
 		console.log('numberofdays' + numberOfDays);
 	});
 };
-const listenToDays = function(days) {
+const listenToDays = function (days) {
 	for (day of days) {
-		day.addEventListener('click', function() {
+		day.addEventListener('click', function () {
 			console.log(this.innerHTML);
 			let day = getDayOfWeek(this.innerHTML);
 			chosenDays.push(day);
@@ -206,18 +206,18 @@ const listenToDays = function(days) {
 		});
 	}
 };
-const ListenToSubmit = function(button) {
-	button.addEventListener('click', function(e) {
+const ListenToSubmit = function (button) {
+	button.addEventListener('click', function (e) {
 		e.preventDefault();
 		makePayload(frequency);
 	});
 };
-const ListenToObjects = function(element) {
+const ListenToObjects = function (element) {
 	objects = document.querySelectorAll('.c-search-list__item');
 	console.log(element);
 	for (object of objects) {
 		console.log(object);
-		object.addEventListener('click', function(event) {
+		object.addEventListener('click', function (event) {
 			console.log(this);
 			i = this.dataset.number;
 			i = parseInt(i);
@@ -235,7 +235,7 @@ const ListenToObjects = function(element) {
 		});
 	}
 };
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 	console.log('DOM loaded - contact');
 	mentorId = 'EF4C3F22-6AC3-4143-B9CD-21A23F9EA1FE';
 

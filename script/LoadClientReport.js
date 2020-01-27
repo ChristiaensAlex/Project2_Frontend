@@ -1,6 +1,6 @@
-let baseURL = `https://localhost:44374/api/`;
+let baseURL = `https://trekjeplan.azurewebsites.net/api/`;
 
-let showClientReport = function(json) {
+let showClientReport = function (json) {
 	let html = '';
 
 	for (object of json.rapportDetailList) {
@@ -23,10 +23,10 @@ let showClientReport = function(json) {
 	document.querySelector('.js-report-schemes').innerHTML = html;
 };
 
-const getClientReport = function(clientId) {
+const getClientReport = function (clientId) {
 	let url = `${baseURL}client/${clientId}/rapport`;
 	fetch(url)
-		.then(function(response) {
+		.then(function (response) {
 			if (!response.ok) {
 				throw Error(`Problem to fetch(). Status code: ${response.status}`);
 			} else {
@@ -36,24 +36,24 @@ const getClientReport = function(clientId) {
 				return arr;
 			}
 		})
-		.then(function(jsonObject) {
+		.then(function (jsonObject) {
 			json = jsonObject;
 			console.log(jsonObject);
 			showClientReport(jsonObject);
 		})
-		.catch(function(error) {
+		.catch(function (error) {
 			console.log(error);
 			console.error(`Problem to process json $`);
 		});
 };
 
-const init = function() {
+const init = function () {
 	clientId = sessionStorage.clientId;
 	console.log(clientId);
 
 	getClientReport(clientId);
 };
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 	console.info('domcontentloaded');
 	init();
 });

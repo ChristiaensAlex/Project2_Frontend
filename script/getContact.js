@@ -1,7 +1,7 @@
-let baseURL = 'https://localhost:44374/api/',
+let baseURL = 'https://trekjeplan.azurewebsites.net/api/',
 	json,
 	mentorId;
-const putContacts = function(payload, mentorId) {
+const putContacts = function (payload, mentorId) {
 	console.log('put client info');
 	let body = JSON.stringify(payload);
 	console.log(body);
@@ -21,7 +21,7 @@ const putContacts = function(payload, mentorId) {
 		// })
 		.catch(err => console.log(err));
 };
-const showContacts = function(jsonObject) {
+const showContacts = function (jsonObject) {
 	html = '';
 	i = 1;
 	for (object of jsonObject) {
@@ -103,10 +103,10 @@ const showContacts = function(jsonObject) {
 	ListToRemoveButton();
 	//ListenToPencil(jsonObject);
 };
-const getContacts = function(id) {
+const getContacts = function (id) {
 	let url = `${baseURL}mentor/${id}/contact`;
 	fetch(url)
-		.then(function(response) {
+		.then(function (response) {
 			if (!response.ok) {
 				throw Error(`Problem to fetch(). Status code: ${response.status}`);
 			} else {
@@ -116,18 +116,18 @@ const getContacts = function(id) {
 				return arr;
 			}
 		})
-		.then(function(jsonObject) {
+		.then(function (jsonObject) {
 			json = jsonObject;
 			console.log(jsonObject);
 			showContacts(jsonObject);
 		})
-		.catch(function(error) {
+		.catch(function (error) {
 			console.log(error);
 			console.error(`Problem to process json $`);
 		});
 };
 
-const getContactElements = function() {
+const getContactElements = function () {
 	submit = document.querySelector('.js-submitButton');
 	phonenumber = document.querySelector('.js-phonenumber');
 	firstname = document.querySelector('.js-firstname');
@@ -147,11 +147,11 @@ const getContactElements = function() {
 // 	}
 // };
 
-const EditContact = function(chosenContact) {
+const EditContact = function (chosenContact) {
 	console.log(chosenContact);
 };
 
-const removefromDB = function(i) {
+const removefromDB = function (i) {
 	i = parseInt(i) - 1;
 	console.log(i);
 	let contactId = json[i].id;
@@ -161,7 +161,7 @@ const removefromDB = function(i) {
 	fetch(url, {
 		method: 'DELETE'
 	})
-		.then(function(response) {
+		.then(function (response) {
 			if (response.ok) {
 				console.log(response.status);
 			} else {
@@ -173,8 +173,8 @@ const removefromDB = function(i) {
 		.then(data => console.log(data));
 };
 
-const ListenToSubmit = function(button) {
-	button.addEventListener('click', function(event) {
+const ListenToSubmit = function (button) {
+	button.addEventListener('click', function (event) {
 		event.preventDefault();
 		let payload = [];
 		allContacts = document.querySelectorAll('.js-single-step');
@@ -203,7 +203,7 @@ const ListenToSubmit = function(button) {
 		putContacts(payload, mentorId);
 	});
 };
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 	console.log('DOM loaded - contact');
 	mentorId = 'EF4C3F22-6AC3-4143-B9CD-21A23F9EA1FE';
 	getContactElements();

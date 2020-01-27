@@ -1,6 +1,6 @@
 const postLoginMentorAPI = function(payload) {
 	let body = JSON.stringify(payload);
-	fetch('https://localhost:44374/api/AuthMentor/Login', {
+	fetch('https://trekjeplan.azurewebsites.net/api/AuthMentor/Login', {
 		method: 'POST',
 		mode: 'cors',
 		cache: 'no-cache',

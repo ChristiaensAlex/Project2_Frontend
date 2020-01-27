@@ -1,5 +1,5 @@
 let progressiveSchemes, stepPlans, baseURL, addStepsForm, scheme, updatedScheme, title, schemeTitle;
-const showAllProgressiveSchemes = function(jsonObject) {
+const showAllProgressiveSchemes = function (jsonObject) {
 	for (i in jsonObject) {
 		progressiveSchemes.innerHTML += `<div class="c-stepplan" plannr=${i}>
         <div class="c-stepplan__picto">
@@ -41,13 +41,13 @@ const showAllProgressiveSchemes = function(jsonObject) {
 	getElements();
 };
 
-const ListenToAddClient = function(button) {
-	button.addEventListener('click', function(event) {
+const ListenToAddClient = function (button) {
+	button.addEventListener('click', function (event) {
 		window.location.href = 'AddClientToProgressiveScheme.html';
 	});
 };
 
-const showClientsFromProgressiveScheme = function(payload) {
+const showClientsFromProgressiveScheme = function (payload) {
 	let clients = payload.clients;
 	let clientSchemes = document.querySelector('.js-clientScheme');
 	for (i in clients) {
@@ -81,24 +81,24 @@ const showClientsFromProgressiveScheme = function(payload) {
 	ListenToAddClient(addClientButton);
 };
 
-const getProgressiveSchemes = function() {
+const getProgressiveSchemes = function () {
 	let id = '206D076A-D443-40AD-AE3A-783350C2E0F7';
 	let url = `${baseURL}mentor/${id}/progressiveScheme`;
 	fetch(url)
-		.then(function(response) {
+		.then(function (response) {
 			if (!response.ok) {
 				throw Error(`Problem to fetch(). Status code: ${response.status}`);
 			} else {
 				return response.json();
 			}
 		})
-		.then(function(jsonObject) {
+		.then(function (jsonObject) {
 			if (progressiveSchemes) {
 				showAllProgressiveSchemes(jsonObject);
 				console.log(jsonObject);
 				stepPlans = document.querySelectorAll('.c-stepplan');
 				for (stepPlan of stepPlans) {
-					stepPlan.addEventListener('click', function() {
+					stepPlan.addEventListener('click', function () {
 						let i = this.getAttribute('plannr');
 						planId = jsonObject[i].id;
 						sessionStorage.planId = planId;
@@ -108,16 +108,16 @@ const getProgressiveSchemes = function() {
 				}
 			}
 		})
-		.catch(function(error) {
+		.catch(function (error) {
 			console.error(`Problem to process json ${error}`);
 		});
 };
 
-const putProgressiveScheme = function(payload) {
+const putProgressiveScheme = function (payload) {
 	let body = JSON.stringify(payload);
 	console.log(payload);
 	let schemeId = sessionStorage.planId;
-	fetch(`https://localhost:44374/api/progressiveScheme/${schemeId}`, {
+	fetch(`https://trekjeplan.azurewebsites.net/api/progressiveScheme/${schemeId}`, {
 		method: 'PUT',
 		mode: 'cors',
 		cache: 'no-cache',
@@ -131,11 +131,11 @@ const putProgressiveScheme = function(payload) {
 		.catch(err => console.log(err));
 };
 
-const postProgressiveScheme = function(payload) {
+const postProgressiveScheme = function (payload) {
 	let body = JSON.stringify(payload);
 	console.log(body);
 	let mentorId = '206D076A-D443-40AD-AE3A-783350C2E0F7';
-	fetch(`https://localhost:44374/api/progressiveScheme/${mentorId}`, {
+	fetch(`https://trekjeplan.azurewebsites.net/api/progressiveScheme/${mentorId}`, {
 		method: 'POST',
 		mode: 'cors',
 		cache: 'no-cache',
@@ -150,7 +150,7 @@ const postProgressiveScheme = function(payload) {
 		.catch(err => console.log(err));
 };
 
-const getInputFieldsScheme = function() {
+const getInputFieldsScheme = function () {
 	title = document.querySelector('.js-scheme-name');
 	stepNumber = document.querySelectorAll('.js-single-step');
 	stepDescription = document.querySelectorAll('.js-input-description');
@@ -215,7 +215,7 @@ const getInputFieldsScheme = function() {
 	}
 };
 
-const initProgressiveSchemes = function() {
+const initProgressiveSchemes = function () {
 	progressiveSchemes = document.querySelector('.c-stepplans');
 	addStepsForm = document.querySelector('.js-form-addStep');
 	mainImage = document.querySelector('.c-button_addStepImage');
@@ -223,7 +223,7 @@ const initProgressiveSchemes = function() {
 		getProgressiveSchemes();
 	} else if (addStepsForm) {
 		submitProgressiveScheme = document.querySelector('.c-submitbutton');
-		submitProgressiveScheme.addEventListener('click', function() {
+		submitProgressiveScheme.addEventListener('click', function () {
 			// enige verplichte is PICTO nu default waarde
 			if (mainImage) {
 				mainImage.value = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
@@ -232,8 +232,8 @@ const initProgressiveSchemes = function() {
 		});
 	}
 };
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 	console.log('DOM loaded - Create progressive scheme ');
-	baseURL = 'https://localhost:44374/api/';
+	baseURL = 'https://trekjeplan.azurewebsites.net/api/';
 	initProgressiveSchemes();
 });

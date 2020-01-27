@@ -1,16 +1,16 @@
 const weekdayclient = ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'];
 const monthclient = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
 
-let baseURL = `https://localhost:44374/api/`,
+let baseURL = `https://trekjeplan.azurewebsites.net/api/`,
 	clientId;
 
-let showDateImages = function() {
+let showDateImages = function () {
 	let html = `<img class="c-icon" src="daysAndMonths_pictos/${weekdayclient[new Date().getDay()]}.png" alt="${weekdayclient[new Date().getDay()]}" />
 				<img class="c-icon" src="daysAndMonths_pictos/${monthclient[new Date().getMonth()]}.jpg" alt="${monthclient[new Date().getMonth()]}" />`;
 	document.querySelector('.js-date').innerHTML = html;
 };
 
-let ShowProgressiveSchemesClient = function(json) {
+let ShowProgressiveSchemesClient = function (json) {
 	let html = '';
 	for (object of json) {
 		html += `<div class="c-progressiveScheme ${object.done}">
@@ -40,16 +40,16 @@ let ShowProgressiveSchemesClient = function(json) {
 							</div>
 						</div> `;
 	}
-	
+
 	document.querySelector('.js-progressiveSchemes').innerHTML = html;
 };
 
 
 
-const getProgressiveSchemesClient = function(clientId) {
+const getProgressiveSchemesClient = function (clientId) {
 	let url = `${baseURL}client/${clientId}/progressiveScheme`;
 	fetch(url)
-		.then(function(response) {
+		.then(function (response) {
 			if (!response.ok) {
 				throw Error(`Problem to fetch(). Status code: ${response.status}`);
 			} else {
@@ -59,23 +59,23 @@ const getProgressiveSchemesClient = function(clientId) {
 				return arr;
 			}
 		})
-		.then(function(jsonObject) {
+		.then(function (jsonObject) {
 			json = jsonObject;
 			console.log(jsonObject);
 			ShowProgressiveSchemesClient(jsonObject);
 		})
-		.catch(function(error) {
+		.catch(function (error) {
 			console.log(error);
 			console.error(`Problem to process json $`);
 		});
 };
-const init = function() {
+const init = function () {
 	clientId = sessionStorage.clientId;
 	console.log(clientId);
 	getProgressiveSchemesClient(clientId);
 	showDateImages();
 };
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 	console.info('domcontentloaded');
 	init();
 });
