@@ -53,10 +53,6 @@ const init = function(){
             postMainPicto(mainPictoFile, pictoTags); 
         }
     })
-    console.log(pictoTags); 
-    console.log(mainPictoFile)
-    
-    
 }
 
 const showPictos = function(json){
@@ -73,9 +69,24 @@ const showPictos = function(json){
     }
 }
 
-const getPictos = function(){
+const showFilteredPictos = function(json){
+    console.log("Gefilterde");
+    let picto = document.querySelector('.c-choose__picto');
+    let pictos = document.querySelector('.c-choose'); 
+    pictos.innerHTML = ''; 
+    for(i in json){
+        let pictoClone = picto.cloneNode(true); 
+        pictoClone.classList.remove('u-hide'); 
+        let pictoC = json[i]
+        let pictoSource = pictoClone.querySelector('.c-choose__picto-img');
+        console.log(pictoSource); 
+        pictoSource.src = `https://trekjeplan.blob.core.windows.net/pictos/${pictoC.name}`; 
+        pictos.appendChild(pictoClone); 
+    }
+}
+
+const getPictos = function(url, filtered){
     console.log("get"); 
-    let url = `${baseURL}picto`;
     console.log(url)
     fetch(url)
     .then(function(response) {
@@ -88,8 +99,13 @@ const getPictos = function(){
 		.then(function(jsonObject) {
 			json = jsonObject;
             console.log(jsonObject);
+            console.log("Filtered" + filtered)
             if(jsonObject){
-            showPictos(json); }
+                if(filtered == true){
+                    showFilteredPictos(json);
+                }
+                else if(filtered == false){
+            showPictos(json); }}
 			//showContacts(jsonObject);
 		})
 		.catch(function(error) {
@@ -98,8 +114,20 @@ const getPictos = function(){
 		});
 }
 
+const listenToSearch = function(){
+    let searchPicto = document.querySelector('.c-input-search'); 
+    console.log(searchPicto)
+    searchPicto.addEventListener('input', function(){
+        console.log("Er verandert hier gelijk iets");
+        let url = `${baseURL}picto?search=${searchPicto.value}`; 
+        getPictos(url, true); 
+    })
+}
+
 document.addEventListener('DOMContentLoaded', function(){
     console.log('DOM loaded - Picture'); 
+    let url = `${baseURL}picto`;
     init(); 
-    getPictos(); 
+    getPictos(url, false); 
+    listenToSearch();
 })
