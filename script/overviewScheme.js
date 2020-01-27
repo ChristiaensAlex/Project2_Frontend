@@ -14,6 +14,10 @@ const showStepsFromProgressiveScheme = function (payload) {
     stepName.innerHTML = `Stap ${step.sequence}`
     let stepDescription = stepClone.querySelector('.c-step__explanation-mentor')
     stepDescription.innerHTML = step.descriptionStep
+    
+    let pictoStep = stepClone.querySelector('.c-picto');
+    pictoStep.innerHTML = `<img class="c-choose__picto-img" src="https://trekjeplan.blob.core.windows.net/pictos/${steps[i].pictoFilleName}" width="104px" height="auto"/>`; 
+    console.log(pictoStep); 
     progressiveSchemeSteps.append(stepClone)
     let count = steps.length - 1
     if (i != steps.length - 1) {

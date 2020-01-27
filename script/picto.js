@@ -62,7 +62,7 @@ const init = function(){
 const OnHandlerClickedShowPicto = function(imgSource){
     background.classList.remove('c-popup-blur');
     popup.style.display = 'none';
-    divElement.innerHTML = `<img class="c-choose__picto-img" src="${imgSource}" width="104px" height="auto"/>`
+    divElement.innerHTML = `<img class="c-selectedPicto" src="${imgSource}" width="104px" height="auto"/>`
 }
 
 const listenToSelectSubmit = function(selectedPicto){
@@ -113,7 +113,8 @@ const showPictos = function(json){
         console.log(pictoSource); 
         pictoClone.setAttribute('pictonr', i); 
         console.log(pictoClone.getAttribute('pictonr')); 
-        pictoSource.src = `https://trekjeplan.blob.core.windows.net/pictos/${pictoC.name}`; 
+        if(pictoC.name){
+        pictoSource.src = `https://trekjeplan.blob.core.windows.net/pictos/${pictoC.name}`; }
         pictos.appendChild(pictoClone); 
         
     }
@@ -150,6 +151,16 @@ const getPictos = function(url, filtered){
 		});
 }
 
+const listenToSearch = function(){
+    let searchPicto = document.querySelector('.c-input-search'); 
+    console.log(searchPicto)
+    searchPicto.addEventListener('input', function(){
+        console.log("Er verandert hier gelijk iets");
+        let url = `${baseURL}picto?search=${searchPicto.value}`; 
+        getPictos(url, true); 
+    })
+}
+
 document.addEventListener('DOMContentLoaded', function(){
     console.log('DOM loaded - Picto'); 
     let baseURL ='https://trekjeplan.azurewebsites.net/api/';
@@ -159,7 +170,6 @@ document.addEventListener('DOMContentLoaded', function(){
     init(); 
     
     getPictos(url, false); 
-    //listenToSearch();
-    //fillMainPicto();  
+    listenToSearch(); 
 
 })

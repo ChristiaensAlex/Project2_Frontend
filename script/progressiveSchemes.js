@@ -2,11 +2,15 @@ let progressiveSchemes, stepPlans, baseURL, addStepsForm, scheme, updatedScheme,
 let eventClicked;
 const showAllProgressiveSchemes = function(jsonObject) {
 	for (i in jsonObject) {
-		progressiveSchemes.innerHTML += `<div class="c-stepplan" plannr=${i}>
+		console.log(jsonObject[i].pictoFilleName); 
+		if(!jsonObject[i].pictoFilleName){
+			jsonObject[i].pictoFilleName = '23e5daf5-2eb6-4693-b245-3ee7f91e04af.jpg';
+		}
+		progressiveSchemes.innerHTML += `<div class="c-stepplan" >
         <div class="c-stepplan__picto">
-            <img class="c-icon" src="wassen.png" alt="beta_picto_wassen" />
+            <img class="c-icon" src="https://trekjeplan.blob.core.windows.net/pictos/${jsonObject[i].pictoFilleName}" alt="beta_picto_wassen" />
         </div>
-        <div class="c-stepplan__name">
+        <div class="c-stepplan__name" plannr=${i}>
            ${jsonObject[i].name}
         </div>
         <div class="c-stepplan__pencil">
@@ -99,11 +103,12 @@ const getProgressiveSchemes = function() {
 				showAllProgressiveSchemes(jsonObject);
 				console.log(jsonObject);
 				stepPlans = document.querySelectorAll('.c-stepplan__name');
-				console.log(jsonObject);
 				for (stepPlan of stepPlans) {
 					stepPlan.addEventListener('click', function() {
+						console.log(jsonObject); 
 						let i = this.getAttribute('plannr');
 						console.log(i);
+						console.log(jsonObject); 
 						planId = jsonObject[i].id;
 						sessionStorage.planId = planId;
 						console.log(planId);
@@ -167,6 +172,8 @@ const getInputFieldsScheme = function() {
 	title = document.querySelector('.js-scheme-name');
 	stepNumber = document.querySelectorAll('.js-single-step');
 	stepDescription = document.querySelectorAll('.js-input-description');
+	
+
 	let step = '';
 	let stepsArr = [];
 	schemeTitle = title.value;
@@ -176,9 +183,9 @@ const getInputFieldsScheme = function() {
 		console.log(stepDescription[1]);
 		let counter = 1;
 		for (object of json.steps) {
+			console.log(object); 
 			object.descriptionStep = stepDescription[counter].value;
 			object.sequence = counter;
-			object.pictoId = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
 			console.log(object);
 			payload.push(object);
 			counter++;
@@ -207,15 +214,24 @@ const getInputFieldsScheme = function() {
 	} else if (document.title == 'Trek Je Plan - Maak een nieuw stappenplan aan') {
 		
 		for (i = 0; i < stepNumber.length; i++) {
+			let imageDiv = document.querySelectorAll('.c-selectedPicto'); 
+	console.log(imageDiv);
+		let imageSource = imageDiv[0].src; 
+		let sourceArr = imageSource.split("/"); 
+		console.log(sourceArr); 
+		let lastElement = sourceArr.length - 1; 
+		let sourcePicto = sourceArr[lastElement];
+		console.log(sourcePicto); 
 			currentStep = stepNumber[i];
 			let currentStepNumber = currentStep.dataset.number;
 			let sequenceInt = parseInt(currentStepNumber);
 			console.log(sequenceInt);
 			step = {
 				descriptionStep: stepDescription[i].value,
-				pictoFilleName: 'cc0c66ea-f314-4fd2-b9de-69e80db4dc2e.png',
+				pictoFilleName: sourcePicto,
 				sequence: sequenceInt
 			};
+			console.log(step);
 			stepsArr.push(step);
 		}
 
@@ -225,7 +241,7 @@ const getInputFieldsScheme = function() {
 			totalSteps: stepNumber.length,
 			steps: stepsArr
 		};
-		postProgressiveScheme(scheme);
+		//postProgressiveScheme(scheme);
 	}
 };
 
