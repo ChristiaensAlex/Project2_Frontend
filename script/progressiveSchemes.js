@@ -1,4 +1,5 @@
-let progressiveSchemes, stepPlans, baseURL, addStepsForm, scheme, updatedScheme, title, schemeTitle, stepImages;
+let progressiveSchemes, stepPlans, baseURL, addStepsForm, scheme, updatedScheme, title, schemeTitle;
+let eventClicked;
 const showAllProgressiveSchemes = function(jsonObject) {
 	for (i in jsonObject) {
 		progressiveSchemes.innerHTML += `<div class="c-stepplan" plannr=${i}>
@@ -157,9 +158,9 @@ const postProgressiveScheme = function(payload) {
 		.catch(err => console.log(err));
 };
 
-const onHandlerClickedOpenChoosePhoto = function(){
-	window.location.href = 'ChoosePhoto.html'; 
-}
+// const onHandlerClickedOpenChoosePhoto = function(){
+// 	window.location.href = 'ChoosePhoto.html'; 
+// }
 
 const getInputFieldsScheme = function() {
 	console.log(stepImages); 
@@ -204,9 +205,7 @@ const getInputFieldsScheme = function() {
 		console.log(updatedScheme);
 		putProgressiveScheme(updatedScheme);
 	} else if (document.title == 'Trek Je Plan - Maak een nieuw stappenplan aan') {
-		let mainPicto = document.querySelector('.c-button__mainStepImage'); 
-	console.log(mainPicto);
-	mainPicto.addEventListener('click', onHandlerClickedOpenChoosePhoto); 
+		
 		for (i = 0; i < stepNumber.length; i++) {
 			currentStep = stepNumber[i];
 			let currentStepNumber = currentStep.dataset.number;
@@ -238,16 +237,15 @@ const initProgressiveSchemes = function() {
 		getProgressiveSchemes();
 		
 	} else if (addStepsForm) {
-	stepImages = document.querySelectorAll('.c-button_addStepImage');
-	if(stepImages){
-		stepImages.forEach(step => step.addEventListener('click', function(){
-			console.log(step); 
-			let clickedStepPicto = JSON.stringify(step); 
-			sessionStorage.clickedStepPicto = clickedStepPicto; 
-			console.log(JSON.parse(sessionStorage.clickedStepPicto));
-			loadImage(); 
-		})); 
-	}
+	// stepImages = document.querySelectorAll('.c-button_addStepImage');
+	// if(stepImages){
+	// 	stepImages.forEach(step => step.addEventListener('click', function(){
+	// 		let dataNumber = step.parentNode.parentNode.dataset.number;
+	// 		sessionStorage.clickedStepDataNumber = dataNumber; 
+	// 		//console.log(JSON.parse(sessionStorage.clickedStepPicto));
+	// 		loadImage(); 
+	// 	})); 
+	// }
 		submitProgressiveScheme = document.querySelector('.c-submitbutton');
 		submitProgressiveScheme.addEventListener('click', function() {
 			// enige verplichte is PICTO nu default waarde
@@ -262,10 +260,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	console.log('DOM loaded - Progressive scheme ');
 	baseURL = 'https://localhost:44374/api/';
 	initProgressiveSchemes();
-	let mainPicto = document.querySelector('.c-button__mainStepImage'); 
-	console.log(mainPicto);
-	if(mainPicto){
-		console.log(sessionStorage); 
-	mainPicto.addEventListener('click', onHandlerClickedOpenChoosePhoto); 
-};
+	// let mainPicto = document.querySelector('.c-button__mainStepImage'); 
+	// if(mainPicto){
+	// mainPicto.addEventListener('click', onHandlerClickedOpenChoosePhoto); 
+// };
 });

@@ -1532,9 +1532,11 @@ user can choose a picto or photo for their stepplan or client*/
 	place-self: center;
 	width: calc(var(--global-baseline) * 11);
   height: calc(var(--global-baseline) * 11);
-  
 }
 
+.c-choose__picto-image{
+padding-top: 100%; 
+}
 .c-choose__picto-check{
   position: relative;
 }
@@ -2572,25 +2574,6 @@ mentor can see detail info of client and can choose between calendar, profile in
 	display: flex;
 	justify-content: center;
 	font-size: inherit;
-}
-/*
-  Popup
-*/
-.c-popup-form {
-	display: none;
-	position: absolute;
-	top: 168;
-	left: 36;
-	right: 36;
-}
-.c-popup-form--card {
-	background-color: var(--global-color-neutral-xxxx-light);
-	border-radius: var(--global-borderRadius-lg);
-	width: 100%;
-	padding: 36px;
-	max-width: 552px;
-	line-height: 24px; /*inherit*/
-	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
 }
 
 .c-popup-blur {
@@ -3800,7 +3783,7 @@ mentor can see detail info of client and can choose between calendar, profile in
   .c-popup-form {
     display: none;
     position: absolute;
-    top: 168;
+    top: 36;
     left: 36;
     right: 36;
   }
@@ -3813,10 +3796,7 @@ mentor can see detail info of client and can choose between calendar, profile in
     line-height: 24px; /*inherit*/
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
   }
-  
-  .c-popup-blur {
-    filter: blur(8px);
-  }
+
   
   /*
       Utilities: spacing

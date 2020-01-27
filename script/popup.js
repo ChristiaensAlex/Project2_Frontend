@@ -1,19 +1,23 @@
-let deleteClient, background, deleteProgressiveScheme;
+let deleteClient, background, deleteProgressiveScheme, stepImages, mainImage, divElement;
 
 const OnHandlerClickedCancel = function() {
   background.classList.remove('c-popup-blur');
   popup.style.display = 'none';
 };
 
-const onHandlerClickedPopUp = function() {
+const onHandlerClickedPopUp = function(picto, element) {
   //background blurry
   background.classList.add('c-popup-blur');
   //popup appears
   popup.style.display = 'block';
+  if(picto == true){
+    divElement = element; 
+  }
 };
 
 const ListenToDelete = function(element){
-  element.addEventListener('click', onHandlerClickedPopUp); 
+  element.addEventListener('click',function(){
+    onHandlerClickedPopUp(false, element)}); 
 }
 
 const getElements = function() {
@@ -23,6 +27,9 @@ const getElements = function() {
   cancelButton = document.querySelector('.js-cancel');
   cancelButton.addEventListener('click', OnHandlerClickedCancel);
   deleteProgressiveScheme = document.querySelectorAll('.js-progressivescheme-delete');
+  stepImages = document.querySelectorAll('.c-button_addStepImage');
+  mainImage = document.querySelector('.c-button__mainStepImage');
+  console.log(mainImage); 
   if(typeof deleteClient != 'undefined' && deleteClient.length > 0){
     deleteClient.forEach(element => {
       ListenToDelete(element)}
@@ -32,6 +39,14 @@ const getElements = function() {
     deleteProgressiveScheme.forEach(element => {
       ListenToDelete(element)}
       );
+  }
+  else if(typeof stepImages != 'undefined' && stepImages.length > 0 && mainImage){
+    stepImages.forEach(element => {
+      element.addEventListener('click', function(){
+        onHandlerClickedPopUp(true, element)})}
+      );
+    mainImage.addEventListener('click', function(){
+      onHandlerClickedPopUp(true, mainImage)}); 
   }
 };
 
