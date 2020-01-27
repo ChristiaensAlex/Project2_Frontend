@@ -29,7 +29,6 @@ const getElements = function() {
   deleteProgressiveScheme = document.querySelectorAll('.js-progressivescheme-delete');
   stepImages = document.querySelectorAll('.c-button_addStepImage');
   mainImage = document.querySelector('.c-button__mainStepImage');
-  console.log(mainImage); 
   if(typeof deleteClient != 'undefined' && deleteClient.length > 0){
     deleteClient.forEach(element => {
       ListenToDelete(element)}

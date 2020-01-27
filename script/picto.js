@@ -5,13 +5,9 @@ const listenToSubmit = function(pictureName){
 }
 
 const postMainPicto = function(file, tags){
-    console.log("post"); 
-    console.log(file); 
     var formData = new FormData(); 
     formData.append("tags", tags); 
     formData.append("file", file); 
-    console.log("BASE"); 
-    console.log(baseURL); 
     let url = `${baseURL}picto`
     
     
@@ -24,8 +20,7 @@ const postMainPicto = function(file, tags){
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data); 
-                console.log(data.imageName)
+
                 listenToSubmit(data.imageName); 
                 showPictos(data); 
             })
@@ -59,20 +54,17 @@ const init = function(){
 }
 }
 
-const OnHandlerClickedShowPicto = function(imgSource){
+const OnHandlerClickedShowPicto = function(imgSource, dataImg){
     background.classList.remove('c-popup-blur');
     popup.style.display = 'none';
-    divElement.innerHTML = `<img class="c-selectedPicto" src="${imgSource}" width="104px" height="auto"/>`
+    divElement.innerHTML = `<img class="c-selectedPicto js-selected-picto" src="${imgSource}" width="104px" height="auto" data-img="${dataImg}"/>`
 }
 
 const listenToSelectSubmit = function(selectedPicto){
-    console.log("THIS"); 
     let selected = selectedPicto.querySelector('.c-choose__picto-img');
-    console.log(selected.src)
     let selectSubmit = document.querySelector('.c-submitbutton-picto'); 
-    console.log(selectSubmit); 
     selectSubmit.addEventListener('click', function(){
-        OnHandlerClickedShowPicto(selected.src)}); 
+        OnHandlerClickedShowPicto(selected.src, selected.dataset.img)}); 
 }
 
 
@@ -97,7 +89,6 @@ const listenToSelect = function(json){
             sessionStorage.mainPictoName = mainPictoName; 
           }
 
-          //console.log(sessionStorage.mainPictoName)
           listenToSelectSubmit(this);
         })
     }
@@ -110,11 +101,10 @@ const showPictos = function(json){
         pictoClone.classList.remove('u-hide'); 
         let pictoC = json[i]
         let pictoSource = pictoClone.querySelector('.c-choose__picto-img');
-        console.log(pictoSource); 
         pictoClone.setAttribute('pictonr', i); 
-        console.log(pictoClone.getAttribute('pictonr')); 
         if(pictoC.name){
         pictoSource.src = `https://trekjeplan.blob.core.windows.net/pictos/${pictoC.name}`; }
+        pictoSource.dataset.img = pictoC.name;
         pictos.appendChild(pictoClone); 
         
     }
@@ -123,8 +113,6 @@ const showPictos = function(json){
 }
 
 const getPictos = function(url, filtered){
-    console.log("get"); 
-    console.log(url)
     fetch(url)
     .then(function(response) {
         if (!response.ok) {
@@ -135,8 +123,6 @@ const getPictos = function(url, filtered){
     })
 		.then(function(jsonObject) {
 			json = jsonObject;
-            console.log(jsonObject);
-            console.log("Filtered" + filtered)
             if(jsonObject){
                 if(filtered == true){
                     showFilteredPictos(json);
@@ -153,9 +139,7 @@ const getPictos = function(url, filtered){
 
 const listenToSearch = function(){
     let searchPicto = document.querySelector('.c-input-search'); 
-    console.log(searchPicto)
     searchPicto.addEventListener('input', function(){
-        console.log("Er verandert hier gelijk iets");
         let url = `${baseURL}picto?search=${searchPicto.value}`; 
         getPictos(url, true); 
     })

@@ -1,8 +1,7 @@
-let progressiveSchemes, stepPlans, baseURL, addStepsForm, scheme, updatedScheme, title, schemeTitle;
+let progressiveSchemes, stepPlans, baseURL, addStepsForm, scheme, updatedScheme, title, schemeTitle, mainImg, stepImg;
 let eventClicked;
 const showAllProgressiveSchemes = function(jsonObject) {
 	for (i in jsonObject) {
-		console.log(jsonObject[i].pictoFilleName); 
 		if(!jsonObject[i].pictoFilleName){
 			jsonObject[i].pictoFilleName = '23e5daf5-2eb6-4693-b245-3ee7f91e04af.jpg';
 		}
@@ -57,11 +56,7 @@ const showClientsFromProgressiveScheme = function(payload) {
 	let clientSchemes = document.querySelector('.js-clientScheme');
 	for (i in clients) {
 		let OneClient = document.querySelector('.c-symbol__clientProfiles-client');
-		console.log('Geclonede');
-		console.log(OneClient)
 		let clientClone = OneClient.cloneNode(true);
-		console.log('Clone'); 
-		console.log(clientClone);
 		clientClone.classList.remove('u-hide');
 		let client = clients[i];
 		let clientName = clientClone.querySelector('.c-symbol__clientProfiles-client__name');
@@ -82,14 +77,12 @@ const showClientsFromProgressiveScheme = function(payload) {
 	</div>
 </button>`;
 let addClientButton = document.querySelector('.js-button__addStep');
-console.log(addClientButton); 
   ListenToAddClient(addClientButton);
 };
 
 const getProgressiveSchemes = function() {
 	let id = '206d076a-d443-40ad-ae3a-783350c2e0f7';
 	let url = `${baseURL}mentor/${id}/progressiveScheme`;
-	console.log(url); 
 	fetch(url)
 		.then(function(response) {
 			if (!response.ok) {
@@ -101,17 +94,12 @@ const getProgressiveSchemes = function() {
 		.then(function(jsonObject) {
 			if (progressiveSchemes) {
 				showAllProgressiveSchemes(jsonObject);
-				console.log(jsonObject);
 				stepPlans = document.querySelectorAll('.c-stepplan__name');
 				for (stepPlan of stepPlans) {
 					stepPlan.addEventListener('click', function() {
-						console.log(jsonObject); 
 						let i = this.getAttribute('plannr');
-						console.log(i);
-						console.log(jsonObject); 
 						planId = jsonObject[i].id;
 						sessionStorage.planId = planId;
-						console.log(planId);
 						window.location.href = 'DetailProgressiveStepsPlan.html';
 					});
 				}
@@ -124,7 +112,6 @@ const getProgressiveSchemes = function() {
 
 const putProgressiveScheme = function(payload) {
 	let body = JSON.stringify(payload);
-	console.log(payload);
 	let schemeId = sessionStorage.planId;
 	fetch(`https://localhost:44374/api/progressiveScheme/${schemeId}`, {
 		method: 'PUT',
@@ -157,8 +144,7 @@ const postProgressiveScheme = function(payload) {
 		.then(data => {
 			sessionStorage.mainPictoName = '';
 			sessionStorage.clickedStepPicto = '';
-			console.log(sessionStorage.mainPictoName); 
-			console.log(data);// (window.location.href = 'MentorHasProgressiveStepsList.html');
+			console.log(data),(window.location.href = 'MentorHasProgressiveStepsList.html');
 		})
 		.catch(err => console.log(err));
 };
@@ -168,10 +154,14 @@ const postProgressiveScheme = function(payload) {
 // }
 
 const getInputFieldsScheme = function() {
-	console.log(stepImages); 
+	console.log("getInputFieldsScheme")
+	mainImg = document.querySelector('.js-mainImg').querySelector('.js-selected-picto');
+	stepImg = document.querySelectorAll('.js-selected-picto');
 	title = document.querySelector('.js-scheme-name');
 	stepNumber = document.querySelectorAll('.js-single-step');
 	stepDescription = document.querySelectorAll('.js-input-description');
+	//console.log(stepImg)
+	//console.log(mainImg)
 	
 
 	let step = '';
@@ -180,18 +170,14 @@ const getInputFieldsScheme = function() {
 
 	if (document.title == 'Trek Je Plan - Wijzig een stappenplan') {
 		let payload = [];
-		console.log(stepDescription[1]);
 		let counter = 1;
 		for (object of json.steps) {
-			console.log(object); 
 			object.descriptionStep = stepDescription[counter].value;
 			object.sequence = counter;
-			console.log(object);
 			payload.push(object);
 			counter++;
 		}
 
-		console.log(stepNumber);
 		for (i = counter; i < stepNumber.length; i++) {
 			let step = {
 				descriptionStep: stepDescription[i].value,
@@ -209,41 +195,58 @@ const getInputFieldsScheme = function() {
 			totalSteps: stepNumber.length - 1,
 			steps: payload
 		};
-		console.log(updatedScheme);
 		putProgressiveScheme(updatedScheme);
 	} else if (document.title == 'Trek Je Plan - Maak een nieuw stappenplan aan') {
-		
+		let payload = [];
+
 		for (i = 0; i < stepNumber.length; i++) {
-			let imageDiv = document.querySelectorAll('.c-selectedPicto'); 
-	console.log(imageDiv);
-		let imageSource = imageDiv[0].src; 
-		let sourceArr = imageSource.split("/"); 
-		console.log(sourceArr); 
-		let lastElement = sourceArr.length - 1; 
-		let sourcePicto = sourceArr[lastElement];
-		console.log(sourcePicto); 
-			currentStep = stepNumber[i];
-			let currentStepNumber = currentStep.dataset.number;
-			let sequenceInt = parseInt(currentStepNumber);
-			console.log(sequenceInt);
-			step = {
+			
+			console.log(stepImg);
+			console.log(stepImg[i + 1]);
+			console.log(i);
+			let step = {
 				descriptionStep: stepDescription[i].value,
-				pictoFilleName: sourcePicto,
-				sequence: sequenceInt
+				sequence: i,
+				pictoFilleName: stepImg[i + 1].dataset.img
 			};
-			console.log(step);
-			stepsArr.push(step);
+
+			payload.push(step);
 		}
 
-		scheme = {
-			pictoFilleName: 'cc0c66ea-f314-4fd2-b9de-69e80db4dc2e.png',
+		postScheme = {
+			pictoFilleName: mainImg.dataset.img,
 			name: schemeTitle,
-			totalSteps: stepNumber.length,
-			steps: stepsArr
+			totalSteps: stepNumber.length - 1,
+			steps: payload
 		};
-		console.log("SCHEMA"); 
-		console.log(scheme); 
-		//postProgressiveScheme(scheme);
+
+		console.log(postScheme);
+
+		// for (i = 0; i < stepNumber.length; i++) {
+		// 	let imageDiv = document.querySelectorAll('.c-selectedPicto'); 
+		// 	let imageSource = imageDiv[0].src; 
+		// 	let sourceArr = imageSource.split("/"); 
+		// 	let lastElement = sourceArr.length - 1; 
+		// 	let sourcePicto = sourceArr[lastElement];
+		// 	currentStep = stepNumber[i];
+		// 	let currentStepNumber = currentStep.dataset.number;
+		// 	let sequenceInt = parseInt(currentStepNumber);
+		// 	step = {
+		// 		descriptionStep: stepDescription[i].value,
+		// 		pictoFilleName: sourcePicto,
+		// 		sequence: sequenceInt
+		// 	};
+		// 	stepsArr.push(step);
+		// }
+
+		// scheme = {
+		// 	pictoFilleName: 'cc0c66ea-f314-4fd2-b9de-69e80db4dc2e.png',
+		// 	name: schemeTitle,
+		// 	totalSteps: stepNumber.length,
+		// 	steps: stepsArr
+		// };
+
+		postProgressiveScheme(postScheme);
 	}
 };
 
