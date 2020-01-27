@@ -130,7 +130,17 @@
 						<textarea type="text" class="c-input c-input-client js-extraClientInfo" name="extraInfo"></textarea>
 					</p>
 					<p>Kies een profielfoto</p>
-					<button class="o-button-reset c-button__mainStepImage">
+					<div>
+						<div id="imageUpload" class="c-upload-image js-upload-img"
+						  [class.c-upload--no-image]="isCover">
+						  <input class="c-upload-image__input js-input-img" accept="image/x-png,image/jpeg" type="file"	 title="Choose a profile picture">
+						  <div class="c-upload-image__close js-remove-img " ></div>
+						</div>
+					  
+						<canvas id="canvas" class="canvas" width="600" height="300"></canvas>
+					  </div>
+					  
+					<!-- <button class="o-button-reset c-button__mainStepImage">
 						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="88" height="88" viewBox="0 0 96 99">
 							<defs>
 								<filter id="Rectangle_20" x="0" y="4" width="95" height="95" filterUnits="userSpaceOnUse">
@@ -155,7 +165,7 @@
 								</g>
 							</g>
 						</svg>
-					</button>
+					</button> -->
 					<div class="c-buttonrow">
 						<a href="AddClient.html" class="o-button-reset c-button c-backbutton">
 							<svg class=" c-backbutton__arrow" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="36" height="36" viewBox="0 0 400.004 400.004" style="enable-background:new 0 0 400.004 400.004;" xml:space="preserve">
