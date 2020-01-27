@@ -315,7 +315,7 @@ const ListenToButton = function(button) {
 					password: pwInput.value
 				};
 				postLoginMentorAPI(payload);
-				//window.location.href = 'MentorHasClientList.html';
+				window.location.href = 'MentorHasClientList.html';
 			} else {
 				if (!isValidEmailAddress(mailInput.value)) {
 					addErrors('email');

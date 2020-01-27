@@ -39,11 +39,11 @@ const isAuthenticated = function() {
     const expiresAt = new Date(localStorage.getItem('expires_at'));
 
     if (new Date() < expiresAt) {
-      this.readTokeDataFromLocalStorage();
+      readTokeDataFromLocalStorage();
 
       return true;
     }
-    this.logOut();
+    logOut();
     return false;
 
 
@@ -59,6 +59,7 @@ const isAuthenticated = function() {
 		let unix_timestamp = decoded.exp;
 		var date = new Date(unix_timestamp * 1000);
 		localStorage.setItem('expires_at', date);
+		localStorage.setItem('mentorId', mentorId);
 
     }
   }
@@ -67,6 +68,7 @@ const isAuthenticated = function() {
   const logOut = function() {
     localStorage.removeItem('token');
 	localStorage.removeItem('expires_at');
+	localStorage.removeItem('mentorId');
 	mentorId = null;
 
   }
