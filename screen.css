@@ -1426,17 +1426,13 @@ user can choose a picto or photo for their stepplan or client*/
   position: relative;
 }
 
+
 @media (min-width: 576px) {
 	.c-choose {
-		grid-template-columns: repeat(6, 1fr);
+		grid-template-columns: repeat(5, 1fr);
 	}
 }
 
-@media (min-width: 768px) {
-	.c-choose {
-		grid-template-columns: repeat(7, 1fr);
-	}
-}
 
 .c-client-report {
 	background-color: var(--global-color-neutral-xx-light);

@@ -71,6 +71,7 @@ const logOut = function () {
 	localStorage.removeItem('token');
 	localStorage.removeItem('expires_at');
 	localStorage.removeItem('mentorId');
+	localStorage.clear();
 	mentorId = null;
 
 }
