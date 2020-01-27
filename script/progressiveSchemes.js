@@ -82,7 +82,7 @@ const showClientsFromProgressiveScheme = function (payload) {
 };
 
 const getProgressiveSchemes = function () {
-	let id = '206D076A-D443-40AD-AE3A-783350C2E0F7';
+	let id = localStorage.getItem('mentorId');
 	let url = `${baseURL}mentor/${id}/progressiveScheme`;
 	fetch(url)
 		.then(function (response) {
@@ -134,7 +134,7 @@ const putProgressiveScheme = function (payload) {
 const postProgressiveScheme = function (payload) {
 	let body = JSON.stringify(payload);
 	console.log(body);
-	let mentorId = '206D076A-D443-40AD-AE3A-783350C2E0F7';
+	let mentorId = localStorage.getItem('mentorId');
 	fetch(`https://trekjeplan.azurewebsites.net/api/progressiveScheme/${mentorId}`, {
 		method: 'POST',
 		mode: 'cors',

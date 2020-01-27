@@ -59,7 +59,7 @@ const CreateClient = function (payload, mentorId) {
 	console.log('post contact' + mentorId);
 	let body = JSON.stringify(payload);
 	console.log(body);
-	fetch(`https://trekjeplan.azurewebsites.net/api/client${mentorId}`, {
+	fetch(`https://trekjeplan.azurewebsites.net/api/client/${mentorId}`, {
 		method: 'POST',
 		mode: 'cors',
 		cache: 'no-cache',
@@ -77,7 +77,7 @@ const AddExistingClient = function (payload, mentorId) {
 	console.log(' add existing client');
 	let body = JSON.stringify(payload);
 	console.log(body);
-	fetch(`https://trekjeplan.azurewebsites.net/api/clientLogin?mentorid=${mentorId}`, {
+	fetch(`https://trekjeplan.azurewebsites.net/api/Client/Login?mentorId=${mentorId}`, {
 		method: 'POST',
 		mode: 'cors',
 		cache: 'no-cache',
@@ -121,7 +121,7 @@ const ListenToSubmitButton = function (button) {
 	button.addEventListener('click', function (event) {
 		event.preventDefault();
 
-		mentorId = 'D3BFEE7D-1599-4D4F-A31F-8E1988F91470';
+		mentorId = localStorage.getItem('mentorId');
 		if (button == addClient) {
 			let payload = {
 				username: username.value,
@@ -179,7 +179,7 @@ const GetDomElementsClient = function () {
 	//ListenToPassword(password);
 	//ListenToPasswordRepeat(passwordConfirm);
 	ListenToUsername(username);
-	if (document.title == 'Trek Je Plan - Maak een nieuwe client aan') {
+	if (editClient) {
 		console.log('wijzig profiel');
 		GetDomElements();
 

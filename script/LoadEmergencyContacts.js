@@ -1,7 +1,7 @@
 let customHeaders = new Headers();
 customHeaders.append("Accept", "application/json");
 
-let MentorId = "ef4c3f22-6ac3-4143-b9cd-21a23f9ea1fe"
+let MentorId = localStorage.getItem('mentorId');
 
 
 URIContacts = `https://trekjeplan.azurewebsites.net/api/mentor/${MentorId}/contact`;

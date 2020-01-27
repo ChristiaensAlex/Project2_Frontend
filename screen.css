@@ -2157,8 +2157,8 @@ navigation footer for menu mentor
 	align-self: center;
 	width: calc(var(--global-baseline) * 7);
 	height: calc(var(--global-baseline) * 7);
-	border: var(--global-borderWidth) solid var(--global-color-omega);
-	border-radius: 100%;
+	/* border: var(--global-borderWidth) solid var(--global-color-omega);
+	border-radius: 100%; */
 	display: flex;
 	align-items: center;
 	justify-content: center;
