@@ -1422,6 +1422,10 @@ user can choose a picto or photo for their stepplan or client*/
 	height: calc(var(--global-baseline) * 11);
 }
 
+.c-choose__picto-check{
+  position: relative;
+}
+
 @media (min-width: 576px) {
 	.c-choose {
 		grid-template-columns: repeat(6, 1fr);

@@ -1,4 +1,4 @@
-const postLoginMentorAPI = function(payload) {
+const postLoginMentorAPI = function (payload) {
 	let body = JSON.stringify(payload);
 	fetch('https://trekjeplan.azurewebsites.net/api/AuthMentor/Login', {
 		method: 'POST',
@@ -28,47 +28,49 @@ const postLoginMentorAPI = function(payload) {
 };
 
 
-const setSession = function(res) {
-    localStorage.setItem('token', res.token);
-    readTokeDataFromLocalStorage();
+const setSession = function (res) {
+	console.log(res);
+	localStorage.setItem('token', res.token);
+	readTokeDataFromLocalStorage();
+	window.location.href = 'MentorHasClientList.html';
 }
 
 
-const isAuthenticated = function() {
+const isAuthenticated = function () {
 
-    const expiresAt = new Date(localStorage.getItem('expires_at'));
+	const expiresAt = new Date(localStorage.getItem('expires_at'));
 
-    if (new Date() < expiresAt) {
-      readTokeDataFromLocalStorage();
+	if (new Date() < expiresAt) {
+		readTokeDataFromLocalStorage();
 
-      return true;
-    }
-    logOut();
-    return false;
-
-
-  }
+		return true;
+	}
+	logOut();
+	return false;
 
 
- const readTokeDataFromLocalStorage = function() {
-    const token = localStorage.getItem('token');
-    if (token) {
+}
+
+
+const readTokeDataFromLocalStorage = function () {
+	const token = localStorage.getItem('token');
+	if (token) {
 		let decoded = jwt_decode(token);
 		mentorId = decoded.nameid;
-				
+
 		let unix_timestamp = decoded.exp;
 		var date = new Date(unix_timestamp * 1000);
 		localStorage.setItem('expires_at', date);
 		localStorage.setItem('mentorId', mentorId);
 
-    }
-  }
+	}
+}
 
 
-  const logOut = function() {
-    localStorage.removeItem('token');
+const logOut = function () {
+	localStorage.removeItem('token');
 	localStorage.removeItem('expires_at');
 	localStorage.removeItem('mentorId');
 	mentorId = null;
 
-  }
+}

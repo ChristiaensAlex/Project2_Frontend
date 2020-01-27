@@ -46,8 +46,9 @@ const getAPI = function (url) {
 		});
 };
 const initClients = function () {
-	mentorId = 'ef4c3f22-6ac3-4143-b9cd-21a23f9ea1fe';
-	getAPI(`https://trekjeplan.azurewebsites.net/api/client/`);
+	MentorId = localStorage.getItem('mentorId');
+	console.log(MentorId);
+	getAPI(`https://trekjeplan.azurewebsites.net/api/mentor/${MentorId}/client`);
 	clients = document.querySelector('.c-clients');
 };
 document.addEventListener('DOMContentLoaded', function () {

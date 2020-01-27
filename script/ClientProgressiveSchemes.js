@@ -237,7 +237,7 @@ const ListenToObjects = function (element) {
 };
 document.addEventListener('DOMContentLoaded', function () {
 	console.log('DOM loaded - contact');
-	mentorId = 'EF4C3F22-6AC3-4143-B9CD-21A23F9EA1FE';
+	mentorId = localStorage.mentorId;
 
 	//progressiveSchemeId = '52B05597-D586-4DF2-AB80-5DF8BF33B8D4';
 	//clientId = '1D32717C-4C22-40A2-650E-08D79A90ABFB';
