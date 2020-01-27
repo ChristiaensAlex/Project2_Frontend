@@ -241,6 +241,8 @@ const getInputFieldsScheme = function() {
 			totalSteps: stepNumber.length,
 			steps: stepsArr
 		};
+		console.log("SCHEMA"); 
+		console.log(scheme); 
 		//postProgressiveScheme(scheme);
 	}
 };
