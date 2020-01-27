@@ -37,18 +37,19 @@ const fillInputsFromEditPlan = function (payload) {
     let OneStep = document.querySelector('.c-first-step')
     let stepClone = OneStep.cloneNode(true)
     stepClone.classList.remove('u-hide')
-    console.log(stepClone)
     let step = steps[i]
     stepClone.dataset.number = parseInt(step.sequence)
     let stepNumber = stepClone.querySelector('.js-step-number')
 
-    console.log(parseInt(step.sequence))
     stepNumber.innerHTML = `Stap ${step.sequence}`
     let stepInputDescription = stepClone.querySelector('.js-input-description')
     stepInputDescription.innerHTML = step.descriptionStep
+    let imgdiv = stepClone.querySelector('.js-step-img')
+
+    imgdiv.innerHTML = `<img class="c-selectedPicto js-selected-picto" src="https://trekjeplan.blob.core.windows.net/pictos/${step.pictoFilleName}" width="104px" height="auto" data-img="${step.pictoFilleName}"/>`
     progressiveSchemeSteps.append(stepClone)
+
   }
-  console.log(allSteps)
   ListenToRemoveButton()
   buttonAddStep.addEventListener('click', AddToEditScheme)
 }
@@ -65,6 +66,7 @@ const showOneProgressiveScheme = function (payload) {
     showStepsFromProgressiveScheme(payload)
   } else if (editPlanName) {
     editPlanName.value = payload.name
+    document.querySelector(".js-mainImg").innerHTML = `<img class="c-selectedPicto js-selected-picto" src="https://trekjeplan.blob.core.windows.net/pictos/${payload.pictoFilleName}" width="104px" height="auto" data-img="${payload.pictoFilleName}"/>`
     fillInputsFromEditPlan(payload)
   }
 }
