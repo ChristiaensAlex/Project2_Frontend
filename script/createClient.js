@@ -9,25 +9,25 @@
 //   }
 let firstname, lastname, username, password, passwordConfirm, extra, usernameErrorMessage, usernameField, usernameError, iconUsernameError, iconUsernameCorrect;
 
-const getProfileClient = function(url) {
+const getProfileClient = function (url) {
 	fetch(url)
-		.then(function(response) {
+		.then(function (response) {
 			if (!response.ok) {
 				throw Error(`Problem to fetch(). Status code: ${response.status}`);
 			} else {
 				return response.json();
 			}
 		})
-		.then(function(jsonObject) {
+		.then(function (jsonObject) {
 			sessionStorage.Client = jsonObject;
 			showClientInfo(jsonObject);
 			console.log(jsonObject);
 		})
-		.catch(function(error) {
+		.catch(function (error) {
 			console.error(`Problem to process json ${error} `);
 		});
 };
-const putClientInfoAPI = function(url, payload) {
+const putClientInfoAPI = function (url, payload) {
 	console.log('put client info');
 	let body = JSON.stringify(payload);
 	console.log(body);
@@ -47,7 +47,7 @@ const putClientInfoAPI = function(url, payload) {
 		// })
 		.catch(err => console.log(err));
 };
-const showClientInfo = function(json) {
+const showClientInfo = function (json) {
 	firstname.value = json.firstName;
 	lastname.value = json.lastName;
 	username.value = json.username;
@@ -55,11 +55,11 @@ const showClientInfo = function(json) {
 	passwordRepeatInput.value = json.password;
 	extra.value = json.infoClient;
 };
-const CreateClient = function(payload, mentorId) {
+const CreateClient = function (payload, mentorId) {
 	console.log('post contact' + mentorId);
 	let body = JSON.stringify(payload);
 	console.log(body);
-	fetch(`https://localhost:44374/api/client/${mentorId}`, {
+	fetch(`https://trekjeplan.azurewebsites.net/api/client${mentorId}`, {
 		method: 'POST',
 		mode: 'cors',
 		cache: 'no-cache',
@@ -73,11 +73,11 @@ const CreateClient = function(payload, mentorId) {
 		})
 		.catch(err => console.log(err));
 };
-const AddExistingClient = function(payload, mentorId) {
+const AddExistingClient = function (payload, mentorId) {
 	console.log(' add existing client');
 	let body = JSON.stringify(payload);
 	console.log(body);
-	fetch(`https://localhost:44374/api/client/Login?mentorid=${mentorId}`, {
+	fetch(`https://trekjeplan.azurewebsites.net/api/clientLogin?mentorid=${mentorId}`, {
 		method: 'POST',
 		mode: 'cors',
 		cache: 'no-cache',
@@ -103,13 +103,13 @@ const AddExistingClient = function(payload, mentorId) {
 		})
 		.catch(err => console.log(err));
 };
-const ListenToUsername = function(username) {
+const ListenToUsername = function (username) {
 	usernameField = document.querySelector('.js-username-field');
 	usernameErrorMessage = document.querySelector('.js-username-errormessage');
 	usernameError = document.querySelector('.js-username-error');
 	iconUsernameError = document.querySelector('.js-icon-username-error');
 	iconUsernameCorrect = document.querySelector('.js-icon-username');
-	username.addEventListener('blur', function() {
+	username.addEventListener('blur', function () {
 		if (isEmpty(username.value)) {
 			usernameErrorMessage.innerText = 'Dit veld is verplicht.';
 			addErrors('username');
@@ -117,8 +117,8 @@ const ListenToUsername = function(username) {
 		}
 	});
 };
-const ListenToSubmitButton = function(button) {
-	button.addEventListener('click', function(event) {
+const ListenToSubmitButton = function (button) {
+	button.addEventListener('click', function (event) {
 		event.preventDefault();
 
 		mentorId = 'D3BFEE7D-1599-4D4F-A31F-8E1988F91470';
@@ -145,7 +145,7 @@ const ListenToSubmitButton = function(button) {
 				if (button == createClient) {
 					CreateClient(payload, mentorId);
 				} else if (button == editClient) {
-					putClientInfoAPI(`https://localhost:44374/api/client/${sessionStorage.clientId}`, payload);
+					putClientInfoAPI(`https://trekjeplan.azurewebsites.net/api/client/${sessionStorage.clientId}`, payload);
 				}
 			} else {
 				if (isEmpty(username.value)) {
@@ -166,7 +166,7 @@ const ListenToSubmitButton = function(button) {
 	});
 };
 
-const GetDomElementsClient = function() {
+const GetDomElementsClient = function () {
 	firstname = document.querySelector('.js-firstnameClient');
 	lastname = document.querySelector('.js-lastnameClient');
 	username = document.querySelector('.js-username');
@@ -183,7 +183,7 @@ const GetDomElementsClient = function() {
 		console.log('wijzig profiel');
 		GetDomElements();
 
-		getProfileClient(`https://localhost:44374/api/client/${sessionStorage.clientId}`);
+		getProfileClient(`https://trekjeplan.azurewebsites.net/api/client/${sessionStorage.clientId}`);
 		ListenToSubmitButton(editClient);
 	} else if (createClient) {
 		GetDomElements();
@@ -194,7 +194,7 @@ const GetDomElementsClient = function() {
 		ListenToSubmitButton(addClient);
 	}
 };
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 	console.log('DOM loaded');
 	GetDomElementsClient();
 
