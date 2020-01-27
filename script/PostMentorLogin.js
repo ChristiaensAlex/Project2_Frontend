@@ -1,7 +1,5 @@
 const postLoginMentorAPI = function(payload) {
-	console.log('registerMentor');
 	let body = JSON.stringify(payload);
-	console.log(body);
 	fetch('https://localhost:44374/api/AuthMentor/Login', {
 		method: 'POST',
 		mode: 'cors',
@@ -18,9 +16,9 @@ const postLoginMentorAPI = function(payload) {
 		.then(data => {
 			if (status == 200) {
 				removeErrors('email');
-				console.log(data), (sessionStorage.mentorId = data.id), console.log(sessionStorage.mentorId), (window.location.href = 'MentorHasClientList.html');
+				setSession(data);
+				//console.log(data), (sessionStorage.mentorId = data.id), console.log(sessionStorage.mentorId), (window.location.href = 'MentorHasClientList.html');
 			} else {
-				console.log(data);
 				addErrors('email'), (mailErrorMessage.innerText = data);
 			}
 
@@ -28,3 +26,47 @@ const postLoginMentorAPI = function(payload) {
 		})
 		.catch(err => console.log(err));
 };
+
+
+const setSession = function(res) {
+    localStorage.setItem('token', res.token);
+    readTokeDataFromLocalStorage();
+}
+
+
+const isAuthenticated = function() {
+
+    const expiresAt = new Date(localStorage.getItem('expires_at'));
+
+    if (new Date() < expiresAt) {
+      this.readTokeDataFromLocalStorage();
+
+      return true;
+    }
+    this.logOut();
+    return false;
+
+
+  }
+
+
+ const readTokeDataFromLocalStorage = function() {
+    const token = localStorage.getItem('token');
+    if (token) {
+		let decoded = jwt_decode(token);
+		mentorId = decoded.nameid;
+				
+		let unix_timestamp = decoded.exp;
+		var date = new Date(unix_timestamp * 1000);
+		localStorage.setItem('expires_at', date);
+
+    }
+  }
+
+
+  const logOut = function() {
+    localStorage.removeItem('token');
+	localStorage.removeItem('expires_at');
+	mentorId = null;
+
+  }

@@ -312,7 +312,7 @@ const ListenToButton = function(button) {
 			if (isValidEmailAddress(mailInput.value) && !isEmpty(pwInput.value)) {
 				let payload = {
 					email: mailInput.value,
-					password: passwordInput.value
+					password: pwInput.value
 				};
 				postLoginMentorAPI(payload);
 				//window.location.href = 'MentorHasClientList.html';
