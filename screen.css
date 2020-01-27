@@ -1524,13 +1524,19 @@ user can choose a picto or photo for their stepplan or client*/
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: repeat(3, 1fr);
 	grid-column-gap: var(--global-baseline);
-	grid-row-gap: var(--global-baseline);
+  grid-row-gap: var(--global-baseline);
+  
 }
 
 .c-choose__picto {
 	place-self: center;
 	width: calc(var(--global-baseline) * 11);
-	height: calc(var(--global-baseline) * 11);
+  height: calc(var(--global-baseline) * 11);
+  
+}
+
+.c-choose__picto-check{
+  position: relative;
 }
 
 @media (min-width: 576px) {
