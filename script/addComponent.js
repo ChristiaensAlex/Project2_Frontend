@@ -62,6 +62,7 @@ const onHandlerClickedAdd = function(e) {
 	e.preventDefault();
 	let inpStep = inputStep.cloneNode(true);
 	count = document.querySelectorAll('.js-single-step');
+	
 	inpStep.dataset.number = count.length + 1 ;
 	inpStep.style.display = 'block'; 
 	if (inpStep.querySelector('.js-step-number') && inpStep.querySelector('.js-input-description')) {
@@ -69,6 +70,18 @@ const onHandlerClickedAdd = function(e) {
 		inpStep.querySelector('.js-input-description').value = '';
 	}
 	allSteps.appendChild(inpStep);
+	stepImages = document.querySelectorAll('.c-button_addStepImage');
+	if(stepImages){
+		console.log("Images"); 
+		console.log(stepImages);
+		stepImages.forEach(step => step.addEventListener('click', function(){
+			console.log(step); 
+			let clickedStepPicto = JSON.stringify(step); 
+			sessionStorage.clickedStepPicto = clickedStepPicto; 
+			console.log(JSON.parse(sessionStorage.clickedStepPicto));
+			loadImage();
+			})); 
+	}
 	ListenToRemoveButton();
 };
 

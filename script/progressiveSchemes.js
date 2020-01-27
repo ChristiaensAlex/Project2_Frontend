@@ -1,4 +1,4 @@
-let progressiveSchemes, stepPlans, baseURL, addStepsForm, scheme, updatedScheme, title, schemeTitle;
+let progressiveSchemes, stepPlans, baseURL, addStepsForm, scheme, updatedScheme, title, schemeTitle, stepImages;
 const showAllProgressiveSchemes = function(jsonObject) {
 	for (i in jsonObject) {
 		progressiveSchemes.innerHTML += `<div class="c-stepplan" plannr=${i}>
@@ -102,6 +102,7 @@ const getProgressiveSchemes = function() {
 				for (stepPlan of stepPlans) {
 					stepPlan.addEventListener('click', function() {
 						let i = this.getAttribute('plannr');
+						console.log(i);
 						planId = jsonObject[i].id;
 						sessionStorage.planId = planId;
 						console.log(planId);
@@ -128,7 +129,7 @@ const putProgressiveScheme = function(payload) {
 		body: body
 	})
 		.then(data => {
-			console.log(data), (window.location.href = 'MentorHasProgressiveStepsList.html');
+			console.log(data),(window.location.href = 'MentorHasProgressiveStepsList.html');
 		})
 		.catch(err => console.log(err));
 };
@@ -136,7 +137,8 @@ const putProgressiveScheme = function(payload) {
 const postProgressiveScheme = function(payload) {
 	let body = JSON.stringify(payload);
 	console.log(body);
-	let mentorId = sessionStorage.mentorId;
+	let mentorId = '206D076A-D443-40AD-AE3A-783350C2E0F7'; 
+	sessionStorage.mentorId = mentorId;
 	fetch(`https://localhost:44374/api/progressiveScheme/${mentorId}`, {
 		method: 'POST',
 		mode: 'cors',
@@ -147,7 +149,10 @@ const postProgressiveScheme = function(payload) {
 	})
 		.then(res => res.json())
 		.then(data => {
-			console.log(data), (window.location.href = 'MentorHasProgressiveStepsList.html');
+			sessionStorage.mainPictoName = '';
+			sessionStorage.clickedStepPicto = '';
+			console.log(sessionStorage.mainPictoName); 
+			console.log(data);// (window.location.href = 'MentorHasProgressiveStepsList.html');
 		})
 		.catch(err => console.log(err));
 };
@@ -157,6 +162,7 @@ const onHandlerClickedOpenChoosePhoto = function(){
 }
 
 const getInputFieldsScheme = function() {
+	console.log(stepImages); 
 	title = document.querySelector('.js-scheme-name');
 	stepNumber = document.querySelectorAll('.js-single-step');
 	stepDescription = document.querySelectorAll('.js-input-description');
@@ -208,14 +214,14 @@ const getInputFieldsScheme = function() {
 			console.log(sequenceInt);
 			step = {
 				descriptionStep: stepDescription[i].value,
-				pictoId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+				pictoFilleName: 'cc0c66ea-f314-4fd2-b9de-69e80db4dc2e.png',
 				sequence: sequenceInt
 			};
 			stepsArr.push(step);
 		}
 
 		scheme = {
-			pictoId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+			pictoFilleName: 'cc0c66ea-f314-4fd2-b9de-69e80db4dc2e.png',
 			name: schemeTitle,
 			totalSteps: stepNumber.length,
 			steps: stepsArr
@@ -232,6 +238,16 @@ const initProgressiveSchemes = function() {
 		getProgressiveSchemes();
 		
 	} else if (addStepsForm) {
+	stepImages = document.querySelectorAll('.c-button_addStepImage');
+	if(stepImages){
+		stepImages.forEach(step => step.addEventListener('click', function(){
+			console.log(step); 
+			let clickedStepPicto = JSON.stringify(step); 
+			sessionStorage.clickedStepPicto = clickedStepPicto; 
+			console.log(JSON.parse(sessionStorage.clickedStepPicto));
+			loadImage(); 
+		})); 
+	}
 		submitProgressiveScheme = document.querySelector('.c-submitbutton');
 		submitProgressiveScheme.addEventListener('click', function() {
 			// enige verplichte is PICTO nu default waarde
@@ -249,6 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	let mainPicto = document.querySelector('.c-button__mainStepImage'); 
 	console.log(mainPicto);
 	if(mainPicto){
+		console.log(sessionStorage); 
 	mainPicto.addEventListener('click', onHandlerClickedOpenChoosePhoto); 
 };
 });

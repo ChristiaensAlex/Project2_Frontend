@@ -5,6 +5,8 @@ const postMainPicto = function(file, tags){
     var formData = new FormData(); 
     formData.append("tags", tags); 
     formData.append("file", file); 
+    console.log("BASE"); 
+    console.log(baseURL); 
     let url = `${baseURL}picto`
     
     
@@ -20,7 +22,7 @@ const postMainPicto = function(file, tags){
                 console.log(data); 
             })
             .catch(err => console.log(err));
-    };
+};
 
 const init = function(){
     const mainPicto = document.querySelector('.js-uploadMainPicto'); 
@@ -89,6 +91,9 @@ const showPictos = function(json){
         pictoSource.src = `https://trekjeplan.blob.core.windows.net/pictos/${pictoC.name}`; 
         pictos.appendChild(pictoClone); 
     }
+    let chosenPicto = JSON.parse(sessionStorage.clickedStepPicto)
+    console.log(chosenPicto)
+    console.log(sessionStorage.mainPictoName)
     listenToSelect(json);
 }
 
@@ -149,16 +154,36 @@ const listenToSearch = function(){
 }
 
 const fillMainPicto = function(){
-    console.log(sessionStorage.mainPictoName); 
-    if(document.title == 'Trek Je Plan - Maak een nieuw stappenplan aan'){
+    //console.log(sessionStorage.mainPictoName); 
+    console.log()
+    console.log(JSON.parse(sessionStorage.clickedStepPicto))
+    console.log("HISTORY")
+    console.log(history); 
+    console.log("stap waar ik op klikte");
+    let stepPicto = sessionStorage.clickedStepPicto;
+    console.log(stepPicto)
         console.log("in if")
+        if(sessionStorage.mainPictoName){
         let mainPictoImage = document.querySelector('.c-button__mainStepImage'); 
         console.log(mainPictoImage)
-        mainPictoImage.innerHTML=`<img src="https://trekjeplan.blob.core.windows.net/pictos/${sessionStorage.mainPictoName}" class='js-mainPicto' >`
-    }
+        mainPictoImage.innerHTML=`<img src="https://trekjeplan.blob.core.windows.net/pictos/${sessionStorage.mainPictoName}" class='js-mainPicto' >`; }
+    
+        
+        console.log(JSON.parse(stepPicto));
+        stepPicto.innerHTML = `<img src="https://trekjeplan.blob.core.windows.net/pictos/${sessionStorage.mainPictoName}" class='js-mainPicto' >`; 
+        
+    
 }
+
 const showMainPicto = function(){
     window.location.href = 'CreateProgressiveScheme.html'; 
+}
+
+const loadImage = function(){ 
+    window.location.href = 'ChoosePhoto.html'; 
+    console.log("STORAGE");
+    console.log(JSON.parse(sessionStorage.clickedStepPicto));
+    
 }
 
 const listenToSelectSubmit = function(){
@@ -168,6 +193,7 @@ const listenToSelectSubmit = function(){
 
 document.addEventListener('DOMContentLoaded', function(){
     console.log('DOM loaded - Picture'); 
+    let baseURL ='https://localhost:44374/api/';
     let url = `${baseURL}picto`;
     pictos = document.querySelector('.c-choose'); 
     picto = document.querySelector('.c-choose__picto');
@@ -175,8 +201,7 @@ document.addEventListener('DOMContentLoaded', function(){
     
     if(document.title =='Trek Je Plan - Kies een afbeelding'){
         getPictos(url, false); 
-    listenToSearch();
-}
-else if(document.title == 'Trek Je Plan - Maak een nieuw stappenplan aan'){
-fillMainPicto(); }
+        listenToSearch();
+    }else if(document.title == 'Trek Je Plan - Maak een nieuw stappenplan aan'){
+        fillMainPicto();  }
 })
