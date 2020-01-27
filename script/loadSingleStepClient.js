@@ -116,16 +116,33 @@ mySwiper.on('reachEnd', function() {
 	mySwiper.on('touchStart', function(e) {
 		console.log('Start');
 		console.log(e);
+		if(e.touches){
 		startTouch = e.touches[0].screenX;
 		console.log(startTouch);
+	}
+	else if(e.screenX)
+	startTouch = e.screenX;
 	});
 	mySwiper.on('touchMove', function(e) {
 		console.log('beweging');
 		console.log(e);
-		if (startTouch > e.touches[0].screenX) {
-			console.log('eventje rechts');
-			window.location.href = 'FinishedProgressiveScheme.html';
+		let currentTouch; 
+		if (e.touches){
+			currentTouch = e.touches[0].screenX
+			if (startTouch > currentTouch) {
+				console.log('eventje rechts');
+				window.location.href = 'FinishedProgressiveScheme.html';
+			}
 		}
+		else if(e.screenX){
+			console.log("HIERZOOO")
+			currentTouch = e.screenX; 
+			if (startTouch > currentTouch) {
+				console.log('eventje rechts');
+				window.location.href = 'FinishedProgressiveScheme.html';
+			}
+		}
+		
 	});
 });
 
