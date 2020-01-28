@@ -2949,24 +2949,27 @@ mentor can see detail info of client and can choose between calendar, profile in
 }
 
 
-
-
-
-
 .c-upload-image{
 	position: relative;
-	border:3px solid white;
-	width: 170px;
-	height: 170px;
-	border-radius: 50%;
-	background-position: center center;
+	border: none;
+	width: 104px;
+	height: 104px;
+	border-radius: 5px;
+	background-position: bottom center;
 	background-repeat: no-repeat;
 	background-color: #ECECF0;
+	background-size: 70%;
+	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.c-upload-image--big {
+	background-size: 100%;
 }
 
   
 .c-upload--no-image {
 	background-size: cover;
+	background-position: center center;
  }
 
 .c-upload--no-image :hover .c-upload-image__close {
@@ -2987,22 +2990,29 @@ mentor can see detail info of client and can choose between calendar, profile in
   
   
   canvas {
-	width: 170px;
-	height: 170px;
+	width: 104px;
+	height: 104px;
 	display: none;
   }
-  
-  .c-upload-image__close {
+
+  .c-upload-image__close--icon {
 	position: absolute;
-	top: 3px;
-	right: 8px;
-	width: 32px;
-	height: 32px;
+	top: -13px;
+    right: -13px;
+    width: 28px;
+    height: 28px;
 	border-radius: 100%;
 	border: 1px solid transparent;
 	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
 	cursor: pointer;
 	transition: all 15ms ease-out;
-	background: url('close-icon--red.svg') no-repeat center center/ 15px 15px, white;
+  }
+  
+  .c-upload-image__close {
+	transform: rotate(45deg);
+	background: url('add-icon.svg') no-repeat center center/ 15px 15px, #E0DEE6;
   }
 
+  .c-upload-image__select {
+	background: url('add-icon.svg') no-repeat center center/ 15px 15px, #E0DEE6;
+  }

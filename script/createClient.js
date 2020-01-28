@@ -48,6 +48,17 @@ const putClientInfoAPI = function (url, payload) {
 		.catch(err => console.log(err));
 };
 const showClientInfo = function (json) {
+	console.log(uploadImgDiv)
+
+
+	
+	if(json.profilePicture.includes('profile-icon.svg')){
+		uploadImgDiv.classList.remove("c-upload-image--big");
+	}else {
+		uploadImgDiv.style.backgroundImage = `url(${json.profilePicture})`;
+		uploadImgDiv.classList.add("c-upload-image--big")
+	}
+	
 	firstname.value = json.firstName;
 	lastname.value = json.lastName;
 	username.value = json.username;
@@ -140,7 +151,7 @@ const ListenToSubmitButton = function (button) {
 					password: passwordInput.value,
 					confirmPassword: passwordRepeatInput.value,
 					infoClient: extra.value,
-					profilePictureId: '3fa85f64-5717-4562-b3fc-2c963f66afa6'
+					profilePicture: uploadedImg
 				};
 				if (button == createClient) {
 					CreateClient(payload, mentorId);
@@ -176,6 +187,7 @@ const GetDomElementsClient = function () {
 	createClient = document.querySelector('.js-createClientButton');
 	editClient = document.querySelector('.js-editClientbutton');
 	addClient = document.querySelector('.js-addClientButton');
+
 	//ListenToPassword(password);
 	//ListenToPasswordRepeat(passwordConfirm);
 	ListenToUsername(username);

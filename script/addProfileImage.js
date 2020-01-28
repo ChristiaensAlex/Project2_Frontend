@@ -15,8 +15,8 @@ const getElements = function() {
   
     canvas = document.querySelector(".canvas");
     ctx = canvas.getContext("2d");
-    canvas.width = 170;
-    canvas.width = 170;
+    canvas.width = 104;
+    canvas.width = 104;
     uploadImgDiv = document.querySelector('.js-upload-img');
 
     imgInput = document.querySelector('.js-input-img');
@@ -24,11 +24,6 @@ const getElements = function() {
 
     removeImgBtn = document.querySelector('.js-remove-img');
     removeImgBtn.addEventListener('click', removeProfileImg);
-
-
-    console.log(imgInput)
-    console.log(removeImgBtn)
-    console.log(uploadImgDiv)
 
     uploadedImg = selectedimg;
     if (selectedimg) {
@@ -41,8 +36,6 @@ const getElements = function() {
     }
 
     showUploadImg();
-
-
 };
 
 
@@ -92,22 +85,20 @@ const previewProfileImg =  function(event) {
     croppedImg = canvas.toDataURL('image/png');
 
     showcroppedImg();
-    //profileImg.emit(croppedImg);
   }
 
   const removeProfileImg = function() {
+    uploadImgDiv.classList.remove("c-upload-image--big");
     uploadedImg = 'profile-icon.svg';
     showUploadImg();
     croppedImg = '';
     showcroppedImg();
-    //profileImg.emit(this.croppedImg);
     isCover = false;
     checkIsCover();
   }
 
 
   const checkIsCover = function() {
-
       if (isCover){
         uploadImgDiv.classList.add('c-upload--no-image');
       }else {
@@ -117,7 +108,6 @@ const previewProfileImg =  function(event) {
   }
 
   const showUploadImg = function(){
-    console.log(uploadImgDiv)
     uploadImgDiv.style.backgroundImage = `url(${uploadedImg})`;
   }
 
@@ -125,9 +115,11 @@ const previewProfileImg =  function(event) {
   const showcroppedImg= function(){
    
     if(croppedImg == ''){
-      removeImgBtn.classList.add("u-hide")
+      removeImgBtn.classList.remove("c-upload-image__close")
+      removeImgBtn.classList.add("c-upload-image__select")
     }else {
-      removeImgBtn.classList.remove("u-hide")  
+      removeImgBtn.classList.add("c-upload-image__close")  
+      removeImgBtn.classList.remove("c-upload-image__select")  
     }
 }
 
