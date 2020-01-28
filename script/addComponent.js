@@ -67,9 +67,17 @@ const onHandlerClickedAdd = function(e) {
 	count = document.querySelectorAll('.js-single-step');
 	inpStep.dataset.number = count.length + 1;
 	inpStep.style.display = 'block';
+	console.log('inpstep');
 	if (inpStep.querySelector('.js-step-number') && inpStep.querySelector('.js-input-description')) {
 		inpStep.querySelector('.js-step-number').innerHTML = inpStep.dataset.number;
 		inpStep.querySelector('.js-input-description').value = '';
+	}
+
+	let phone = inpStep.querySelector('.js-phonenumber');
+	let firstname = inpStep.querySelector('.js-firstname');
+	if (phone && firstname) {
+		phone.value = '';
+		firstname.value = '';
 	}
 	allSteps.appendChild(inpStep);
 	ListenToRemoveButton();

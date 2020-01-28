@@ -27,7 +27,7 @@ const OnHandlerClickedCancel = function() {
 	popup.style.display = 'none';
 };
 
-const onHandlerClickedPopUp = function(element) {
+const onHandlerClickedPopUp = function(picto, element) {
 	//background blurry
 
 	background.classList.add('c-popup-blur');
@@ -50,6 +50,9 @@ const onHandlerClickedPopUp = function(element) {
 		let url = 'https://trekjeplan.azurewebsites.net/api/client';
 		removefromDB(url, deletedClient.id);
 	});
+	if (picto == true) {
+		divElement = element;
+	}
 };
 
 const ListenToDelete = function(element) {
