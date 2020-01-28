@@ -110,7 +110,7 @@ const getProgressiveSchemes = function() {
 const putProgressiveScheme = function(payload) {
 	let body = JSON.stringify(payload);
 	let schemeId = sessionStorage.planId;
-	fetch(`https://localhost:44374/api/progressiveScheme/${schemeId}`, {
+	fetch(`${baseURL}progressiveScheme/${schemeId}`, {
 		method: 'PUT',
 		mode: 'cors',
 		cache: 'no-cache',
@@ -130,7 +130,7 @@ const postProgressiveScheme = function(payload) {
 	let body = JSON.stringify(payload);
 	console.log(body);
 	let mentorId = localStorage.getItem('mentorId');
-	fetch(`https://localhost:44374/api/progressiveScheme/${mentorId}`, {
+	fetch(`${baseURL}progressiveScheme/${mentorId}`, {
 		method: 'POST',
 		mode: 'cors',
 		cache: 'no-cache',
