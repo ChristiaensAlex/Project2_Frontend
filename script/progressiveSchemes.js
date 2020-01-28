@@ -113,6 +113,7 @@ const getProgressiveSchemes = function() {
 const putProgressiveScheme = function(payload) {
 	let body = JSON.stringify(payload);
 	let schemeId = sessionStorage.planId;
+	console.log(payload)
 	fetch(`https://localhost:44374/api/progressiveScheme/${schemeId}`, {
 		method: 'PUT',
 		mode: 'cors',
@@ -122,6 +123,8 @@ const putProgressiveScheme = function(payload) {
 		body: body
 	})
 		.then(data => {
+			sessionStorage.mainPictoName = '';
+			sessionStorage.clickedStepPicto = '';
 			console.log(data),(window.location.href = 'MentorHasProgressiveStepsList.html');
 		})
 		.catch(err => console.log(err));
@@ -160,20 +163,19 @@ const getInputFieldsScheme = function() {
 	title = document.querySelector('.js-scheme-name');
 	stepNumber = document.querySelectorAll('.js-single-step');
 	stepDescription = document.querySelectorAll('.js-input-description');
-	//console.log(stepImg)
-	//console.log(mainImg)
-	
 
-	let step = '';
-	let stepsArr = [];
+	console.log(stepDescription)
 	schemeTitle = title.value;
 
 	if (document.title == 'Trek Je Plan - Wijzig een stappenplan') {
 		let payload = [];
 		let counter = 1;
 		for (object of json.steps) {
+			console.log(counter);
+			console.log(object)
 			object.descriptionStep = stepDescription[counter].value;
 			object.sequence = counter;
+			object.pictoFilleName = stepImg[counter].dataset.img
 			payload.push(object);
 			counter++;
 		}
@@ -182,31 +184,30 @@ const getInputFieldsScheme = function() {
 			let step = {
 				descriptionStep: stepDescription[i].value,
 				sequence: counter,
-				pictoId: '3fa85f64-5717-4562-b3fc-2c963f66afa6'
+				pictoFilleName: stepImg[counter + 1].dataset.img
 			};
 
 			payload.push(step);
 		}
 
 		updatedScheme = {
-			id: sessionStorage.planId,
-			pictoId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+			id: sessionStorage.planId, 
+			pictoFilleName: mainImg.dataset.img,
 			name: schemeTitle,
 			totalSteps: stepNumber.length - 1,
 			steps: payload
 		};
+
 		putProgressiveScheme(updatedScheme);
+
 	} else if (document.title == 'Trek Je Plan - Maak een nieuw stappenplan aan') {
 		let payload = [];
 
 		for (i = 0; i < stepNumber.length; i++) {
-			
-			console.log(stepImg);
-			console.log(stepImg[i + 1]);
-			console.log(i);
+
 			let step = {
 				descriptionStep: stepDescription[i].value,
-				sequence: i,
+				sequence: i + 1,
 				pictoFilleName: stepImg[i + 1].dataset.img
 			};
 
@@ -219,33 +220,6 @@ const getInputFieldsScheme = function() {
 			totalSteps: stepNumber.length - 1,
 			steps: payload
 		};
-
-		console.log(postScheme);
-
-		// for (i = 0; i < stepNumber.length; i++) {
-		// 	let imageDiv = document.querySelectorAll('.c-selectedPicto'); 
-		// 	let imageSource = imageDiv[0].src; 
-		// 	let sourceArr = imageSource.split("/"); 
-		// 	let lastElement = sourceArr.length - 1; 
-		// 	let sourcePicto = sourceArr[lastElement];
-		// 	currentStep = stepNumber[i];
-		// 	let currentStepNumber = currentStep.dataset.number;
-		// 	let sequenceInt = parseInt(currentStepNumber);
-		// 	step = {
-		// 		descriptionStep: stepDescription[i].value,
-		// 		pictoFilleName: sourcePicto,
-		// 		sequence: sequenceInt
-		// 	};
-		// 	stepsArr.push(step);
-		// }
-
-		// scheme = {
-		// 	pictoFilleName: 'cc0c66ea-f314-4fd2-b9de-69e80db4dc2e.png',
-		// 	name: schemeTitle,
-		// 	totalSteps: stepNumber.length,
-		// 	steps: stepsArr
-		// };
-
 		postProgressiveScheme(postScheme);
 	}
 };

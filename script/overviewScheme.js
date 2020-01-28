@@ -51,6 +51,7 @@ const fillInputsFromEditPlan = function (payload) {
 
   }
   ListenToRemoveButton()
+  getElements(); 
   buttonAddStep.addEventListener('click', AddToEditScheme)
 }
 

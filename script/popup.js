@@ -25,9 +25,12 @@ const getElements = function() {
   background = document.querySelector('.js-background-popup');
   popup = document.querySelector('.c-popup-form');
   cancelButton = document.querySelector('.js-cancel');
-  cancelButton.addEventListener('click', OnHandlerClickedCancel);
+  if (cancelButton)  {
+    cancelButton.addEventListener('click', OnHandlerClickedCancel);
+  }
   deleteProgressiveScheme = document.querySelectorAll('.js-progressivescheme-delete');
   stepImages = document.querySelectorAll('.c-button_addStepImage');
+  console.log(stepImages)
   mainImage = document.querySelector('.c-button__mainStepImage');
   if(typeof deleteClient != 'undefined' && deleteClient.length > 0){
     deleteClient.forEach(element => {

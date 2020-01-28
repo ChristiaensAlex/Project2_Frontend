@@ -12,6 +12,7 @@ const getFormElements = function() {
 	buttonAddContact = document.querySelector('.c-button__addContact');
 	count = document.querySelectorAll('.js-single-step');
 	if (document.title == "Trek Je Plan - Maak een nieuw stappenplan aan") {
+		console.log(buttonAddStep)
 		buttonAddStep.addEventListener('click', onHandlerClickedAdd);
 	} else if (buttonAddContact) {
 		buttonAddContact.addEventListener('click', onHandlerClickedAdd);
@@ -23,6 +24,7 @@ const getFormElements = function() {
 };
 
 const onHandlerClickedRemove = function(e) {
+	console.log(json)
 	e.preventDefault();
 	if (e.currentTarget.parentNode.parentNode.parentNode.querySelector('.c-contact__wrapper')) {
 		removefromDB(e.currentTarget.parentNode.parentNode.parentNode.dataset.number);
@@ -31,21 +33,29 @@ const onHandlerClickedRemove = function(e) {
 		allSteps.removeChild(e.currentTarget.parentNode.parentNode.parentNode.parentNode);
 		let stepNumbers = document.querySelectorAll('.js-single-step');
 		let stepNumbersArr = Array.from(stepNumbers);
+		console.log(stepNumbersArr)
 		stepNumbersArr.forEach(i => {
 			nummer2 = i.getAttribute('data-number');
 			nummer = i.dataset.number;
 
 			if (i.dataset.number >= e.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.number) {
+				//console.log(nummer);
 				nummer = parseInt(nummer) - 1;
 				if(document.title == "Trek Je Plan - Maak een nieuw stappenplan aan"){
 				i.querySelector('.js-step-number').innerHTML = nummer;}
 				else if(document.title =="Trek Je Plan - Wijzig een stappenplan"){
 					i.querySelector('.js-step-number').innerHTML = "Stap " + nummer;
 				}
-			} else {
 			}
 		});
+		let dataNumber = e.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.number;
+		if (json && json.steps){
+			json.steps.splice(dataNumber - 1, 1);
+			console.log(json);
+		}
+
 	}
+	//getElements();
 	// if( <= ){
 
 	// }
@@ -100,8 +110,10 @@ const onHandlerClickedAdd = function(e) {
 };
 
 const AddToEditScheme = function(e){
+	console.log('hoithro')
 	e.preventDefault();
 	let inpStep = inputStep.cloneNode(true);
+	inpStep.classList.remove("u-hide");
 	count = document.querySelectorAll('.js-single-step');
 	inpStep.dataset.number = count.length ;
 	inpStep.style.display = 'block'; 
@@ -110,6 +122,7 @@ const AddToEditScheme = function(e){
 		inpStep.querySelector('.js-input-description').value = '';
 	}
 	allSteps.appendChild(inpStep);
+	//getElements();
 	ListenToRemoveButton();
 	
 }
