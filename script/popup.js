@@ -17,11 +17,11 @@ const onHandlerClickedPopUp = function(element) {
 			console.log(deletedClient);
 			// hier de delete functie aanspreken voor de client
 		});
-  }
-  else if (deleteProgressiveScheme) {
+	} else if (deleteProgressiveScheme) {
 		document.querySelector('.js-deleteButton').addEventListener('click', function() {
 			console.log(deletedClient);
 			// hier de delete functie aanspreken voor progressive scheme
+		});
 	}
 };
 
