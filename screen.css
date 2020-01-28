@@ -2277,6 +2277,15 @@ gives client feedback by congratulating them on finishing a progressive scheme a
 	width: 100%;
 	height: 100%;
 } */
+
+.c-star {
+	margin: 0 var(--global-whitespace-sm) var(--global-whitespace-sm) 0;
+	display: flex;
+	justify-content: flex-end;
+	fill: #ffc107;
+}
+
+
 .swiper-container {
 	width: 600px;
 	height: 380px;
