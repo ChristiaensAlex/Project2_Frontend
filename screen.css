@@ -1098,6 +1098,10 @@ Component: Spread
 	transform: scaleX(-1) translateX(-10px);
 	fill: var(--global-color-neutral-xxxx-light);
 }
+.c-submit-uploadPicto{
+  pointer-events: none;
+  opacity: 0.5; 
+}
 .c-popup-form--card > .c-submitbutton {
 	width: 100%;
 	margin-left: 0;
