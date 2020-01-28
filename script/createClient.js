@@ -52,7 +52,7 @@ const showClientInfo = function (json) {
 
 
 	
-	if(json.profilePicture.includes('profile-icon.svg')){
+	if(json.profilePicture && json.profilePicture.includes('profile-icon.svg')){
 		uploadImgDiv.classList.remove("c-upload-image--big");
 	}else {
 		uploadImgDiv.style.backgroundImage = `url(${json.profilePicture})`;

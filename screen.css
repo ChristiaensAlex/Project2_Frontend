@@ -3016,3 +3016,19 @@ mentor can see detail info of client and can choose between calendar, profile in
   .c-upload-image__select {
 	background: url('add-icon.svg') no-repeat center center/ 15px 15px, #E0DEE6;
   }
+
+  .c-client__userPhoto--img{
+	  width: 48px;
+	  height: 48px;
+	  border-radius: 50%;
+	  background-position: center center;
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	  background-color: #ECECF0;
+	  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  }
+
+  .c-client__userPhoto--no-img {
+	background-position: bottom center;
+	background-size: 70%;
+  }
