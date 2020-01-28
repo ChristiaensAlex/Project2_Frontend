@@ -1039,7 +1039,7 @@ Component: Spread
 }
 
 .c-input-search {
-	padding-botom: var(--global-whitespace-md);
+	padding-bottom: var(--global-whitespace-md);
 }
 .c-search-input {
 	margin-bottom: var(--global-whitespace-md);

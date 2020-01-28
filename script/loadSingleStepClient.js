@@ -58,7 +58,7 @@ const stepNumber = function () {
         //putStepFullFilled(activeIndex);
     else {
         step = activeIndex + 1;
-        putStepFullFilled(); 
+        putStepFullFilled(); 3
     };
     // step 1 is activeIndex = 0;
     console.log("Begin: " + beginning);

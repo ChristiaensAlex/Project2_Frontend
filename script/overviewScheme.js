@@ -31,6 +31,7 @@ const showStepsFromProgressiveScheme = function(payload) {
 };
 
 const fillInputsFromEditPlan = function(payload) {
+  console.log('fill inputs');
   let steps = payload.steps;
   let progressiveSchemeSteps = document.querySelector('.js-edit-scheme');
   for (i in steps) {

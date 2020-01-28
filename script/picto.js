@@ -63,6 +63,10 @@ const listenToSelectSubmit = function(selectedPicto) {
   let selectSubmit = document.querySelector('.c-submitbutton-picto');
   selectSubmit.addEventListener('click', function() {
     OnHandlerClickedShowPicto(selected.src, selected.dataset.img);
+    let checkmark = selectedPicto.querySelector('.c-picto-checked');
+    console.log('CHECK');
+    console.log(checkmark.style);
+    checkmark.style.display = 'none';
   });
 };
 
@@ -70,14 +74,15 @@ const listenToSelect = function(json) {
   let pictos = document.querySelectorAll('.c-choose__picto');
   for (eachPicto of pictos) {
     eachPicto.addEventListener('click', function() {
-      this.innerHTML += `<div class="c-picto__selected c-checkmark">
+      this.innerHTML += `<div class="c-picto-checked">
+        <div class="c-picto__selected c-checkmark">
             <svg xmlns="http://www.w3.org/2000/svg" width="20.278" height="19.963" viewBox="0 0 20.278 19.963">
               <g id="Group_1013" data-name="Group 1013" transform="translate(-325.12 -355)">
                 <ellipse id="Ellipse_128" data-name="Ellipse 128" cx="10.139" cy="9.981" rx="10.139" ry="9.981" transform="translate(325.12 355)" fill="#1c5c5c" />
                 <path id="Fill_1" data-name="Fill 1" d="M4.251,8.665a.925.925,0,0,1-.663-.28L.275,5.008a.968.968,0,0,1,0-1.351.925.925,0,0,1,1.326,0l2.651,2.7L10.216.28a.925.925,0,0,1,1.325,0,.968.968,0,0,1,0,1.351L4.914,8.385a.926.926,0,0,1-.663.28" transform="translate(328.828 360.29)" fill="#fff" />
               </g>
             </svg>
-          </div>`;
+          </div></div>`;
       let i = this.getAttribute('pictonr');
       if (sessionStorage.getItem('clickedStepDataNumber')) {
         let StepPictoName = json[i].name;
@@ -86,7 +91,6 @@ const listenToSelect = function(json) {
         let mainPictoName = json[i].name;
         sessionStorage.mainPictoName = mainPictoName;
       }
-
       listenToSelectSubmit(this);
     });
   }
