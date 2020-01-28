@@ -14,6 +14,7 @@
 		<!--SCRIPT-->
 		<script src="script/createClient.js"></script>
 		<script src="script/validation.js"></script>
+		<script src="script/addProfileImage.js"></script>
 		<!--FAVICON-->
 		<link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png" />
 		<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png" />
@@ -131,10 +132,9 @@
 					</p>
 					<p>Kies een profielfoto</p>
 					<div>
-						<div id="imageUpload" class="c-upload-image js-upload-img"
-						  [class.c-upload--no-image]="isCover">
+						<div id="imageUpload" class="c-upload-image js-upload-img ">
 						  <input class="c-upload-image__input js-input-img" accept="image/x-png,image/jpeg" type="file"	 title="Choose a profile picture">
-						  <div class="c-upload-image__close js-remove-img " ></div>
+						  <div class="c-upload-image__close js-remove-img u-hide" ></div>
 						</div>
 					  
 						<canvas id="canvas" class="canvas" width="600" height="300"></canvas>

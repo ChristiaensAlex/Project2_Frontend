@@ -2961,30 +2961,21 @@ mentor can see detail info of client and can choose between calendar, profile in
 	border-radius: 50%;
 	background-position: center center;
 	background-repeat: no-repeat;
-	background-color: rgba(255, 255, 255, .1);
+	background-color: #ECECF0;
 }
 
-  /* @media(max-width: 767.98px) {
-	.c-upload-image{
-	width: 150px;
-	height: 150px;
-	}
-  } */
-
-  /* @media (min-width: 768px) {
-
-  } */
   
-  .c-upload--no-image {
+.c-upload--no-image {
 	background-size: cover;
-  }
+ }
+
 .c-upload--no-image :hover .c-upload-image__close {
-		display: inline-block;
-		transition: all 15ms ease-out;
-	  }
+	display: inline-block;
+	transition: all 15ms ease-out;
+}
   
   
-  .c-upload-image__input{
+.c-upload-image__input{
 	position: absolute;
 	opacity: 0;
 	top: 0;
@@ -3002,7 +2993,6 @@ mentor can see detail info of client and can choose between calendar, profile in
   }
   
   .c-upload-image__close {
-	display: none;
 	position: absolute;
 	top: 3px;
 	right: 8px;
@@ -3013,12 +3003,6 @@ mentor can see detail info of client and can choose between calendar, profile in
 	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
 	cursor: pointer;
 	transition: all 15ms ease-out;
-	background: url('/assets/icons/close-icon--red.svg') no-repeat center center/ 15px 15px, white;
-
+	background: url('close-icon--red.svg') no-repeat center center/ 15px 15px, white;
   }
 
-  @media (min-width: 991.98px) {
-	.c-upload-image__close {
-	display: inline-block;
-	}
-}

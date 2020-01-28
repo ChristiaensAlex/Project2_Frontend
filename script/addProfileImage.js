@@ -1,7 +1,7 @@
 let imgInput;
 let removeImgBtn;
 let uploadImgDiv;
-let uploadedImg = '/assets/icons/profile-icon.svg';
+let uploadedImg = 'profile-icon.svg';
 let selectedimg  = '';
 let isCover = false
 let canvas;
@@ -12,20 +12,29 @@ let croppedImg;
 let profileImg;
 
 const getElements = function() {
-    imgInput = document.querySelector('.js-input-img');
-    imgInput.addEventListener('change', previewProfileImg());
-
-    removeImgBtn = document.querySelector('.js-remove-img');
-    removeImgBtn.addEventListener('click', removeProfileImg());
-
+  
+    canvas = document.querySelector(".canvas");
+    ctx = canvas.getContext("2d");
+    canvas.width = 170;
+    canvas.width = 170;
     uploadImgDiv = document.querySelector('.js-upload-img');
 
+    imgInput = document.querySelector('.js-input-img');
+    imgInput.addEventListener('change', previewProfileImg);
+
+    removeImgBtn = document.querySelector('.js-remove-img');
+    removeImgBtn.addEventListener('click', removeProfileImg);
+
+
+    console.log(imgInput)
+    console.log(removeImgBtn)
+    console.log(uploadImgDiv)
 
     uploadedImg = selectedimg;
     if (selectedimg) {
       uploadedImg = selectedimg;
     } else {
-      uploadedImg = '/assets/icons/profile-icon.svg';
+      uploadedImg = 'profile-icon.svg';
     }
     if (!uploadedImg.includes('profile-icon.svg')) {
       isCover = true;
@@ -33,16 +42,12 @@ const getElements = function() {
 
     showUploadImg();
 
-    canvas = document.querySelector(".canvas");
-    ctx = canvas.getContext("2d");
-    canvas.nativeElement.width = 170;
-    canvas.nativeElement.width = 170;
 
 };
 
 
 const previewProfileImg =  function(event) {
-    ctx.clearRect(0, 0, canvas.nativeElement.width, canvas.nativeElement.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     file = event.target.files[0];
     reader = new FileReader();
@@ -52,7 +57,6 @@ const previewProfileImg =  function(event) {
     if (file) {
       reader.readAsDataURL(file);
       isCover = true;
-      checkIsCover();
     }
 
     reader.onloadend = () => {
@@ -60,10 +64,12 @@ const previewProfileImg =  function(event) {
       image.crossOrigin = 'Anonymous';
       image.src = uploadedImg;
       showUploadImg();
+      checkIsCover();
+
     };
 
     image.onload = () => {
-      fit(ctx, image, false, canvas.nativeElement.width, canvas.nativeElement.height, image.width, image.height);
+      fit(ctx, image, false, canvas.width, canvas.height, image.width, image.height);
     };
   }
 
@@ -83,14 +89,14 @@ const previewProfileImg =  function(event) {
     offsetY = (parentHeight - height) * offsetY;
 
     ctx.drawImage(image, offsetX, offsetY, width, height);
-    croppedImg = canvas.nativeElement.toDataURL('image/png');
+    croppedImg = canvas.toDataURL('image/png');
 
     showcroppedImg();
     //profileImg.emit(croppedImg);
   }
 
   const removeProfileImg = function() {
-    uploadedImg = '/assets/icons/profile-icon.svg';
+    uploadedImg = 'profile-icon.svg';
     showUploadImg();
     croppedImg = '';
     showcroppedImg();
@@ -101,24 +107,27 @@ const previewProfileImg =  function(event) {
 
 
   const checkIsCover = function() {
+
       if (isCover){
-        uploadImgDiv.add.classList('c-upload--no-image');
+        uploadImgDiv.classList.add('c-upload--no-image');
       }else {
-        uploadImgDiv.remove.classList('c-upload--no-image');
+        uploadImgDiv.classList.remove('c-upload--no-image');
       }
   
   }
 
   const showUploadImg = function(){
+    console.log(uploadImgDiv)
     uploadImgDiv.style.backgroundImage = `url(${uploadedImg})`;
   }
 
 
   const showcroppedImg= function(){
+   
     if(croppedImg == ''){
-      imgInput.classList.add("u-hide")
+      removeImgBtn.classList.add("u-hide")
     }else {
-      imgInput.classList.remove("u-hide")  
+      removeImgBtn.classList.remove("u-hide")  
     }
 }
 
