@@ -1322,7 +1322,7 @@ justify-items: center; */
 
 	*/
 
-*/ .c-button__addClient {
+.c-button__addClient {
 	display: flex;
 	justify-content: space-between;
 	background-color: var(--global-color-neutral-x-light-transparent);
@@ -1482,7 +1482,7 @@ user can choose a picto or photo for their stepplan or client*/
 
 .c-clients .c-client {
 	display: grid;
-	grid-template-columns: 64px 1fr 20px;
+	grid-template-columns: 1fr 20px;
 	grid-template-rows: auto auto;
 	background-color: var(--global-color-neutral-x-light-transparent);
 	height: calc(var(--global-baseline) * 10);
@@ -1490,7 +1490,10 @@ user can choose a picto or photo for their stepplan or client*/
 	padding: var(--global-baseline);
 	border-radius: var(--global-borderRadius-md);
 }
-
+.c-client__info {
+	display: flex;
+	grid-row: span 2;
+}
 .c-client__userPhoto {
 	justify-content: center;
 	align-items: center;
@@ -1643,7 +1646,7 @@ user can choose a picto or photo for their stepplan or client*/
 
 .c-stepplans .c-stepplan {
 	display: grid;
-	grid-template-columns: 64px 1fr 20px;
+	grid-template-columns: 1fr 20px;
 	grid-template-rows: auto auto;
 	background-color: var(--global-color-neutral-x-light-transparent);
 	height: calc(var(--global-baseline) * 10);
@@ -1652,6 +1655,10 @@ user can choose a picto or photo for their stepplan or client*/
 	border-radius: var(--global-borderRadius-md);
 }
 
+.c-stepplan__info {
+	display: flex;
+	grid-row: span 2;
+}
 .c-stepplan__picto {
 	grid-row: span 2;
 }
@@ -1671,9 +1678,10 @@ user can choose a picto or photo for their stepplan or client*/
 }
 
 .c-stepplan__delete {
-	grid-column: 3;
+	grid-column: 2;
 	display: flex;
 	align-items: center;
+	height: var(--global-whitespace);
 }
 
 @media (min-width: 992px) {

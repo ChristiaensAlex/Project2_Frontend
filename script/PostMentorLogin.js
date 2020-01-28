@@ -1,6 +1,6 @@
-const postLoginMentorAPI = function (payload) {
+const postLoginMentorAPI = function(payload) {
 	let body = JSON.stringify(payload);
-	console.log(body)
+	console.log(body);
 	fetch('https://trekjeplan.azurewebsites.net/api/AuthMentor/Login', {
 		method: 'POST',
 		mode: 'cors',
@@ -15,7 +15,7 @@ const postLoginMentorAPI = function (payload) {
 		})
 
 		.then(data => {
-			console.log(data)
+			console.log(data);
 			if (status == 200) {
 				removeErrors('email');
 				setSession(data);
@@ -29,17 +29,14 @@ const postLoginMentorAPI = function (payload) {
 		.catch(err => console.log(err));
 };
 
-
-const setSession = function (res) {
+const setSession = function(res) {
 	console.log(res);
 	localStorage.setItem('token', res.token);
 	readTokeDataFromLocalStorage();
-	//window.location.href = 'MentorHasClientList.html';
-}
+	window.location.href = 'MentorHasClientList.html';
+};
 
-
-const isAuthenticated = function () {
-
+const isAuthenticated = function() {
 	const expiresAt = new Date(localStorage.getItem('expires_at'));
 
 	if (new Date() < expiresAt) {
@@ -49,12 +46,9 @@ const isAuthenticated = function () {
 	}
 	logOut();
 	return false;
+};
 
-
-}
-
-
-const readTokeDataFromLocalStorage = function () {
+const readTokeDataFromLocalStorage = function() {
 	const token = localStorage.getItem('token');
 	if (token) {
 		let decoded = jwt_decode(token);
@@ -64,16 +58,13 @@ const readTokeDataFromLocalStorage = function () {
 		var date = new Date(unix_timestamp * 1000);
 		localStorage.setItem('expires_at', date);
 		localStorage.setItem('mentorId', mentorId);
-
 	}
-}
+};
 
-
-const logOut = function () {
+const logOut = function() {
 	localStorage.removeItem('token');
 	localStorage.removeItem('expires_at');
 	localStorage.removeItem('mentorId');
 	localStorage.clear();
 	mentorId = null;
-
-}
+};

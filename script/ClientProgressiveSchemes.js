@@ -9,7 +9,7 @@ let baseURL = 'https://trekjeplan.azurewebsites.net/api/',
 	numberOfDays,
 	backPage;
 
-const postCP = function (url, payload) {
+const postCP = function(url, payload) {
 	console.log('add client to progressive scheme');
 	let body = JSON.stringify(payload);
 	console.log(body);
@@ -23,34 +23,38 @@ const postCP = function (url, payload) {
 	})
 		.then(res => res.json())
 		.then(data => {
-			console.log(data), console.log(data), (window.location.href = backPage);
+			console.log(data), console.log(data);//, (window.location.href = backPage);
 		})
 		.catch(err => console.log(err));
 };
-const showClients = function (json, element) {
+const showClients = function(json, element) {
 	i = 0;
+	let html = '';
 	for (object of json) {
-		document.querySelector('.c-search').innerHTML += `<div class="c-search-list__item" data-number="${i}">${object.firstName} ${object.lastName}</div>`;
+		html += `<div class="c-search-list__item" data-number="${i}">${object.firstName} ${object.lastName}</div>`;
 		console.log(i);
 		i++;
 	}
+	document.querySelector('.js-clients').innerHTML = html;
 	ListenToObjects(element);
 };
 
-const showProgressiveSchemes = function (json, element) {
+const showProgressiveSchemes = function(json, element) {
 	i = 0;
+	let html = '';
 	for (object of json) {
-		document.querySelector('.c-search').innerHTML += `<div class="c-search-list__item" data-number="${i}">${object.name}</div>`;
+		html += `<div class="c-search-list__item" data-number="${i}">${object.name}</div>`;
 		console.log(i);
 		i++;
 	}
+	document.querySelector('.js-progressiveSchemes').innerHTML = html;
 	ListenToObjects(element);
 };
 
-const getSearchElements = function (element, string) {
+const getSearchElements = function(element, string) {
 	let url = `${baseURL}mentor/${mentorId}/${element}?search=${string}`;
 	fetch(url)
-		.then(function (response) {
+		.then(function(response) {
 			if (!response.ok) {
 				throw Error(`Problem to fetch(). Status code: ${response.status}`);
 			} else {
@@ -60,7 +64,7 @@ const getSearchElements = function (element, string) {
 				return arr;
 			}
 		})
-		.then(function (jsonObject) {
+		.then(function(jsonObject) {
 			json = jsonObject;
 			console.log(jsonObject);
 			if (element == 'client') {
@@ -72,13 +76,13 @@ const getSearchElements = function (element, string) {
 				console.log('ps');
 			}
 		})
-		.catch(function (error) {
+		.catch(function(error) {
 			console.log(error);
 			console.error(`Problem to process json $`);
 		});
 };
 
-const makePayload = function (frequency) {
+const makePayload = function(frequency) {
 	let payload = [];
 	let points = document.querySelector('.js-points').value;
 	let startDate = document.querySelector('.js-startDate').value;
@@ -137,7 +141,7 @@ const makePayload = function (frequency) {
 	}
 };
 
-const getDayOfWeek = function (day) {
+const getDayOfWeek = function(day) {
 	switch (day) {
 		case 'Ma':
 			return 'monday';
@@ -155,50 +159,54 @@ const getDayOfWeek = function (day) {
 			return 'sunday';
 	}
 };
-const ListenToSearch = function () {
-	search.addEventListener('change', function (event) {
+const ListenToSearch = function(search) {
+	//let searchPicto = document.querySelector('.c-input-search');
+
+	console.log(search);
+	search.addEventListener('input', function() {
+		console.log('Er verandert hier gelijk iets');
 		console.log(this.value);
+		console.log(search.name);
+		//  let url = `${baseURL}picto?search=${searchPicto.value}`;
 		getSearchElements(search.name, this.value);
-		// if (search.name == "Client"){
-		// 	getClients(this.value);
-		// }
-		// else if(search.name =="ProgressiveScheme"){
-		// 	getProgressiveSchemes(this.value);
-		// }
+		//getPictos(url, true);
 	});
 };
-const ListenToSelect = function (select) {
-	select.addEventListener('change', function () {
+const ListenToSelect = function(select) {
+	select.addEventListener('change', function() {
 		console.log(this.value);
 		frequency = this.value;
 		switch (frequency) {
 			case 'Dagelijks':
 				return;
 			case 'Elke ... dagen':
-				this.parentElement.innerHTML += `<div class="c-numberOfDays"><label class="c-label" for="numberOfDays">Elke&nbsp 
+				console.log(this.parentElement.parentElement);
+				console.log(this.parentElement.parentElement.querySelector('.js-specificFrequency'));
+				this.parentElement.parentElement.querySelector('.js-specificFrequency').innerHTML = `<div class="c-numberOfDays"><label class="c-label" for="numberOfDays">Elke&nbsp 
                 <input class="c-input c-numberOfDays-input js-numberOfDays" type="number" name="numberOfDays" min="1" max="6" placeholder="1 tot 6" /> &nbspdagen</label></div>`;
 				let numberOfDaysInput = document.querySelector('.js-numberOfDays');
 				ListenToNumberOfDays(numberOfDaysInput);
 				return;
 			case 'Wekelijks':
-				this.parentElement.innerHTML += `<div class="c-days"> <span class= "c-day" >Ma</span> <span class= "c-day">Di</span> <span class= "c-day">Wo</span> <span class= "c-day">Do</span> <span class= "c-day">Vr</span> <span class= "c-day">Za</span>
+				this.parentElement.parentElement.querySelector('.js-specificFrequency').innerHTML = `<div class="c-days"> <span class= "c-day" >Ma</span> <span class= "c-day">Di</span> <span class= "c-day">Wo</span> <span class= "c-day">Do</span> <span class= "c-day">Vr</span> <span class= "c-day">Za</span>
                 <span class= "c-day">Zo</span> </div>`;
 				let allDays = document.querySelectorAll('.c-day');
+				console.log(allDays);
 				listenToDays(allDays);
 				return;
 		}
 	});
 };
 
-const ListenToNumberOfDays = function (number) {
-	number.addEventListener('change', function () {
+const ListenToNumberOfDays = function(number) {
+	number.addEventListener('change', function() {
 		numberOfDays = this.value;
 		console.log('numberofdays' + numberOfDays);
 	});
 };
-const listenToDays = function (days) {
+const listenToDays = function(days) {
 	for (day of days) {
-		day.addEventListener('click', function () {
+		day.addEventListener('click', function() {
 			console.log(this.innerHTML);
 			let day = getDayOfWeek(this.innerHTML);
 			chosenDays.push(day);
@@ -206,18 +214,18 @@ const listenToDays = function (days) {
 		});
 	}
 };
-const ListenToSubmit = function (button) {
-	button.addEventListener('click', function (e) {
+const ListenToSubmit = function(button) {
+	button.addEventListener('click', function(e) {
 		e.preventDefault();
 		makePayload(frequency);
 	});
 };
-const ListenToObjects = function (element) {
+const ListenToObjects = function(element) {
 	objects = document.querySelectorAll('.c-search-list__item');
 	console.log(element);
 	for (object of objects) {
 		console.log(object);
-		object.addEventListener('click', function (event) {
+		object.addEventListener('click', function(event) {
 			console.log(this);
 			i = this.dataset.number;
 			i = parseInt(i);
@@ -235,7 +243,7 @@ const ListenToObjects = function (element) {
 		});
 	}
 };
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
 	console.log('DOM loaded - contact');
 	mentorId = localStorage.getItem('mentorId');
 
@@ -244,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	progressiveSchemeId = sessionStorage.planId;
 	clientId = sessionStorage.clientId;
 	console.log(clientId);
-	console.log(progressiveSchemeId)
+	console.log(progressiveSchemeId);
 	search = document.querySelector('.c-search-input');
 	console.log(search.name);
 

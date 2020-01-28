@@ -1,22 +1,15 @@
 let progressiveSchemes, stepPlans, baseURL, addStepsForm, scheme, updatedScheme, title, schemeTitle;
-const showAllProgressiveSchemes = function (jsonObject) {
-	for (i in jsonObject) {
-		progressiveSchemes.innerHTML += `<div class="c-stepplan" plannr=${i}>
+const showAllProgressiveSchemes = function(jsonObject) {
+	i = 0;
+	for (object of jsonObject) {
+		progressiveSchemes.innerHTML += `<div class="c-stepplan" >
+		<div class= "c-stepplan__info " plannr=${i}>
         <div class="c-stepplan__picto">
             <img class="c-icon" src="wassen.png" alt="beta_picto_wassen" />
         </div>
         <div class="c-stepplan__name">
            ${jsonObject[i].name}
         </div>
-        <div class="c-stepplan__pencil">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14.65" height="14.579"
-                viewBox="0 0 14.65 14.579">
-                <g id="pencil-edit-button" transform="translate(-0.001 -1.289)">
-                    <path id="Path_288" data-name="Path 288"
-                        d="M9.11,3.722,12.09,6.7,4.547,14.245l-2.978-2.98ZM14.352,3,13.023,1.674a1.319,1.319,0,0,0-1.863,0L9.887,2.947l2.98,2.98,1.485-1.485A1.016,1.016,0,0,0,14.352,3ZM.009,15.454a.339.339,0,0,0,.41.4l3.321-.805L.762,12.072Z"
-                        transform="translate(0)" fill="#291f5f" />
-                </g>
-            </svg>
         </div>
         <div class="c-stepplan__delete js-progressivescheme-delete">
             <svg xmlns="http://www.w3.org/2000/svg" width="19.492" height="24" viewBox="0 0 19.492 24">
@@ -36,18 +29,19 @@ const showAllProgressiveSchemes = function (jsonObject) {
                 </g>
             </svg>
         </div>
-    </div>`;
+	</div>`;
+		i++;
 	}
 	getElements();
 };
 
-const ListenToAddClient = function (button) {
-	button.addEventListener('click', function (event) {
+const ListenToAddClient = function(button) {
+	button.addEventListener('click', function(event) {
 		window.location.href = 'AddClientToProgressiveScheme.html';
 	});
 };
 
-const showClientsFromProgressiveScheme = function (payload) {
+const showClientsFromProgressiveScheme = function(payload) {
 	let clients = payload.clients;
 	let clientSchemes = document.querySelector('.js-clientScheme');
 	for (i in clients) {
@@ -81,25 +75,28 @@ const showClientsFromProgressiveScheme = function (payload) {
 	ListenToAddClient(addClientButton);
 };
 
-const getProgressiveSchemes = function () {
+const getProgressiveSchemes = function() {
 	let id = localStorage.getItem('mentorId');
 	let url = `${baseURL}mentor/${id}/progressiveScheme`;
 	fetch(url)
-		.then(function (response) {
+		.then(function(response) {
 			if (!response.ok) {
 				throw Error(`Problem to fetch(). Status code: ${response.status}`);
 			} else {
 				return response.json();
 			}
 		})
-		.then(function (jsonObject) {
+		.then(function(jsonObject) {
 			if (progressiveSchemes) {
 				showAllProgressiveSchemes(jsonObject);
 				console.log(jsonObject);
-				stepPlans = document.querySelectorAll('.c-stepplan');
+				stepPlans = document.querySelectorAll('.c-stepplan__info');
 				for (stepPlan of stepPlans) {
-					stepPlan.addEventListener('click', function () {
+					stepPlan.addEventListener('click', function() {
+						console.log(this);
 						let i = this.getAttribute('plannr');
+						console.log(i);
+						console.log(jsonObject[i]);
 						planId = jsonObject[i].id;
 						sessionStorage.planId = planId;
 						console.log(planId);
@@ -108,12 +105,12 @@ const getProgressiveSchemes = function () {
 				}
 			}
 		})
-		.catch(function (error) {
+		.catch(function(error) {
 			console.error(`Problem to process json ${error}`);
 		});
 };
 
-const putProgressiveScheme = function (payload) {
+const putProgressiveScheme = function(payload) {
 	let body = JSON.stringify(payload);
 	console.log(payload);
 	let schemeId = sessionStorage.planId;
@@ -131,7 +128,7 @@ const putProgressiveScheme = function (payload) {
 		.catch(err => console.log(err));
 };
 
-const postProgressiveScheme = function (payload) {
+const postProgressiveScheme = function(payload) {
 	let body = JSON.stringify(payload);
 	console.log(body);
 	let mentorId = localStorage.getItem('mentorId');
@@ -150,7 +147,7 @@ const postProgressiveScheme = function (payload) {
 		.catch(err => console.log(err));
 };
 
-const getInputFieldsScheme = function () {
+const getInputFieldsScheme = function() {
 	title = document.querySelector('.js-scheme-name');
 	stepNumber = document.querySelectorAll('.js-single-step');
 	stepDescription = document.querySelectorAll('.js-input-description');
@@ -215,7 +212,7 @@ const getInputFieldsScheme = function () {
 	}
 };
 
-const initProgressiveSchemes = function () {
+const initProgressiveSchemes = function() {
 	progressiveSchemes = document.querySelector('.c-stepplans');
 	addStepsForm = document.querySelector('.js-form-addStep');
 	mainImage = document.querySelector('.c-button_addStepImage');
@@ -223,7 +220,7 @@ const initProgressiveSchemes = function () {
 		getProgressiveSchemes();
 	} else if (addStepsForm) {
 		submitProgressiveScheme = document.querySelector('.c-submitbutton');
-		submitProgressiveScheme.addEventListener('click', function () {
+		submitProgressiveScheme.addEventListener('click', function() {
 			// enige verplichte is PICTO nu default waarde
 			if (mainImage) {
 				mainImage.value = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
@@ -232,7 +229,7 @@ const initProgressiveSchemes = function () {
 		});
 	}
 };
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
 	console.log('DOM loaded - Create progressive scheme ');
 	baseURL = 'https://trekjeplan.azurewebsites.net/api/';
 	initProgressiveSchemes();
