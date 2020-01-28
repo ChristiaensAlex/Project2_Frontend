@@ -11,7 +11,9 @@ const showAllClients = function(jsonObject) {
 		let clientInfo = clientClone.querySelector('.c-client__info');
 		clientInfo.setAttribute('clientnr', i);
 		let clientName = clientClone.querySelector('.c-client__name');
-		console.log(clientName);
+		let clientImage = clientClone.querySelector('.c-client__userPhoto--img');
+		console.log(client);
+		//clientImage.src = client.profilePicture;
 		clientName.innerHTML = `${client.firstName} ${client.lastName}`;
 		clients.appendChild(clientClone);
 	}
