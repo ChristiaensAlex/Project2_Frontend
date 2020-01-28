@@ -565,7 +565,6 @@ body {
 	justify-content: center;
 }
 
-.
 
 /*
     Component: forgotPassword
@@ -1806,7 +1805,8 @@ client can get to contact list
 	-o-filter: var(--blur-scheme);
 	-ms-filter: var(--blur-scheme);
 	filter: var(--blur-scheme);
-	background-color: var(--global-color-neutral-x-light-transparent);
+  background-color: var(--global-color-neutral-x-light-transparent);
+  pointer-events:none; 
 }
 
 /*Component: step
