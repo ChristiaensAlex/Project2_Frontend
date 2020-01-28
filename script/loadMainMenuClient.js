@@ -2,7 +2,8 @@ const weekdayclient = ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 
 const monthclient = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
 
 let baseURL = `https://trekjeplan.azurewebsites.net/api/`,
-	clientId;
+	clientId,
+	client;
 
 let showDateImages = function () {
 	let html = `<img class="c-icon" src="daysAndMonths_pictos/${weekdayclient[new Date().getDay()]}.png" alt="${weekdayclient[new Date().getDay()]}" />
@@ -69,11 +70,26 @@ const getProgressiveSchemesClient = function (clientId) {
 			console.error(`Problem to process json $`);
 		});
 };
+
+const showProfileImg = function (image) {
+	let clientImage = document.querySelector('.c-client__userPhoto--img');
+
+	clientImage.classList.add("c-client__userPhoto--no-img")
+	clientImage.style.backgroundImage = `url(profile-icon.svg) `;
+
+	if(image && ! image.includes('profile-icon.svg')){
+		clientImage.style.backgroundImage = `url(${image}), url(profile-icon.svg) `;
+		clientImage.classList.remove("c-client__userPhoto--no-img")
+	}
+}
+
 const init = function () {
 	clientId = sessionStorage.clientId;
-	console.log(clientId);
+	client = JSON.parse(sessionStorage.client);
+	console.log(client);
 	getProgressiveSchemesClient(clientId);
 	showDateImages();
+	showProfileImg(client.profilePicture);
 };
 document.addEventListener('DOMContentLoaded', function () {
 	console.info('domcontentloaded');
