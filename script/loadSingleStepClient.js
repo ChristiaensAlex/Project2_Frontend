@@ -1,4 +1,4 @@
-baseURL = 'https://localhost:44374/api/';
+baseURL = 'https:/trekjeplan.azurewebsites.net/api/';
 var beginning;
 var end;
 let step;
@@ -15,6 +15,26 @@ let progressiveStepPlanEnd = function(isEnd) {
 const putStepFullFilled = function() {
 	// currentStep --> stap ervoor is dus checked meegeven in body
 	let url = `${baseURL}client/progressiveScheme/${clientProgressiveSchemeId}`;
+	// fetch(url)
+	// 	.then(function(response) {
+	// 		if (!response.ok) {
+	// 			throw Error(`Problem to fetch(). Status code: ${response.status}`);
+	// 		} else {
+	// 			let arr = new Array();
+	// 			arr = response.json();
+	// 			console.log(arr);
+	// 			return arr;
+	// 		}
+	// 	})
+	// 	.then(function(jsonObject) {
+	// 		json = jsonObject;
+	// 		console.log(jsonObject);
+	// 		ShowProgressiveSchemesClient(jsonObject);
+	// 	})
+	// 	.catch(function(error) {
+	// 		console.log(error);
+	// 		console.error(`Problem to process json $`);
+	// 	});
 	fetch(url, {
 		method: 'PUT',
 		mode: 'cors',
@@ -22,8 +42,12 @@ const putStepFullFilled = function() {
 		credentials: 'same-origin',
 		headers: { 'Content-Type': 'application/json' }
 	})
+		.then(response => {
+			return response.json()})
 		.then(data => {
-			console.log(data);
+			sessionStorage.coinsToEarn = data.coinsToEarn;
+			console.log("SESSION")
+			console.log(sessionStorage.coinsToEarn)
 			getSteps(clientProgressiveSchemeId);
 		})
 		.catch(err => console.log(err));
@@ -48,20 +72,21 @@ const putStartTime = function() {
 const stepNumber = function() {
 	console.log('Begin: ' + beginning);
 	console.log('Eind: ' + end);
-	if (beginning == true) {
+	mySwiper.on('reachBeginning', function(){
 		step = 1;
 		end = true;
 		putStartTime();
 		putStepFullFilled();
-	}
+	})
 	//putStepFullFilled(activeIndex);
-	else {
+	mySwiper.on('progress', function(){ 
 		step = activeIndex + 1;
 		putStepFullFilled();
-	}
+	
 	// step 1 is activeIndex = 0;
 	console.log('Begin: ' + beginning);
 	console.log('Eind: ' + end);
+})
 };
 
 const showStepsClient = function(json) {
@@ -69,11 +94,13 @@ const showStepsClient = function(json) {
 	let title = document.querySelector('.c-progressiveScheme__name');
 	title.innerHTML = json.name;
 	for (object of json.steps) {
+		console.log('OBJECT');
+		console.log(object); 
 		html += `<div class="swiper-slide">
 						<div class="c-step">
 							<div class="c-step__pictowrapper">
 								<div class="c-step__picto">
-									<img class="c-picto" src="StartStap1.png"
+									<img class="c-picto" src="https://trekjeplan.blob.core.windows.net/pictos/${object.pictoFilleName}"
 										alt="Swipe de picto om door te gaan naar de volgende stap" />
 								</div>
 							</div>
@@ -174,6 +201,7 @@ const getSteps = function(clientProgressiveSchemeId) {
 document.addEventListener('DOMContentLoaded', function() {
 	console.log('DOM loaded - SingleStepsClient');
 	clientProgressiveSchemeId = sessionStorage.clientSchemeId;
+	console.log(clientProgressiveSchemeId);
 	getSteps(clientProgressiveSchemeId);
 	stepNumber();
 });

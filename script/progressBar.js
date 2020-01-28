@@ -1,8 +1,13 @@
-let baseURL = "https://localhost:44374/api/", frontBar, root; 
+let baseURL = "https:/trekjeplan.azurewebsites.net/api/", frontBar, root, clientTotalCoins; 
 
 const drawEndbar = function(){
-    let earnedCoins = 30; 
-    let newLengthFrontBar = earnedCoins; 
+    console.log(sessionStorage.coinsToEarn);
+    let storage = sessionStorage.coinsToEarn;
+    let earnedCoins = parseInt(storage); 
+    let newLengthFrontBar = clientTotalCoins + earnedCoins; 
+    console.log(clientTotalCoins);
+    console.log(earnedCoins)
+    console.log(newLengthFrontBar)
     frontBar.style.width = newLengthFrontBar + "%"; 
     frontBar.style.animation = "extension 2s"; 
     root.style.setProperty('--global-newCoins', newLengthFrontBar+ "%"); 
@@ -37,7 +42,8 @@ const getCurrentCoins = function(id){
                 json = jsonObject;
                 console.log(json);
                 json.forEach(element =>{ 
-                    if(element.id == id){ 
+                    if(element.id == id){
+                        clientTotalCoins = parseInt(element.clientTotalCoins); 
                         drawStartBar(element.clientTotalCoins); 
                     }
                 }); 
@@ -49,8 +55,7 @@ const getCurrentCoins = function(id){
     
 }
 const initProgressBar = function(){
-    let clientId = '3b0e727c-d59b-4188-17d4-08d79c1917ed'; 
-    getCurrentCoins(clientId); 
+    getCurrentCoins(sessionStorage.clientId); 
     // SESSIONSTORAGE: INGELOGDE CLIENT
 }
 

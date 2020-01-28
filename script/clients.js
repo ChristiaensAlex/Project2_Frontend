@@ -10,6 +10,7 @@ const showAllClients = function(jsonObject) {
 		console.log(client.firstName);
 		let clientName = clientClone.querySelector('.c-client__name'); 
 		console.log(clientName); 
+		clientClone
 		clientName.innerHTML = `${client.firstName} ${client.lastName}`; 
 		clients.appendChild(clientClone); 
 	}; 

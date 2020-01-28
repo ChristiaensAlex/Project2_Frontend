@@ -1,7 +1,7 @@
 const weekdayclient = ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'];
 const monthclient = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
 
-let baseURL = `https://localhost:44374/api/`,
+let baseURL = `https://trekjeplan.azurewebsites.net/api/`,
 	clientId,
 	countSchemeNr;
 
@@ -27,6 +27,9 @@ const listenToClickScheme = function(json) {
 let ShowProgressiveSchemesClient = function(json) {
 	let html = '';
 	for (let i = 0; i < json.length; i++) {
+		if(!json[i].pictoFilleName){
+			json[i].pictoFilleName = '23e5daf5-2eb6-4693-b245-3ee7f91e04af.jpg';
+		}
 		html += `<div class="c-progressiveScheme ${json[i].done}" schemenr=${i}>
 							<div class="c-progressiveScheme__mainPicto">
 							<img class="c-icon" src="https://trekjeplan.blob.core.windows.net/pictos/${json[i].pictoFilleName}" alt="hoofdpicto stappenplan ${json[i].schemeName}" />
@@ -110,6 +113,7 @@ let ShowProgressiveSchemesClient = function(json) {
 
 const getProgressiveSchemesClient = function(clientId) {
 	let url = `${baseURL}client/${clientId}/progressiveScheme`;
+	console.log(url); 
 	fetch(url)
 		.then(function(response) {
 			if (!response.ok) {
@@ -134,7 +138,7 @@ const getProgressiveSchemesClient = function(clientId) {
 
 const init = function() {
 	clientId = `d7c383e6-260f-4961-d11a-08d7a2c8d35d`;
-	//clientId = sessionStorage.clientId;
+	sessionStorage.clientId = clientId;
 	console.log(clientId);
 	getProgressiveSchemesClient(clientId);
 	showDateImages();
