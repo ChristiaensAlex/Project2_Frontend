@@ -94,5 +94,5 @@ const getProgressiveSchemeById = function () {
 document.addEventListener('DOMContentLoaded', function () {
   console.log('DOM loaded - Overview progressive scheme ')
   baseURL = 'https://trekjeplan.azurewebsites.net/api/'
-  getProgressiveSchemeById()
+  //getProgressiveSchemeById()
 })

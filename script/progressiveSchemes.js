@@ -2,12 +2,12 @@ let progressiveSchemes, stepPlans, baseURL, addStepsForm, scheme, updatedScheme,
 let eventClicked;
 const showAllProgressiveSchemes = function(jsonObject) {
 	for (i in jsonObject) {
-		if(!jsonObject[i].pictoFilleName){
+		if (!jsonObject[i].pictoFilleName) {
 			jsonObject[i].pictoFilleName = '23e5daf5-2eb6-4693-b245-3ee7f91e04af.jpg';
 		}
 		progressiveSchemes.innerHTML += `<div class="c-stepplan" >
 		<div class= "c-stepplan__info " plannr=${i}> <div class="c-stepplan__picto">
-            <img class="c-icon" src="${jsonObject[i].pictoFilleName}" alt="beta_picto_wassen" />
+		<img class="c-choose__picto-img" src="https://trekjeplan.blob.core.windows.net/pictos/${jsonObject[i].pictoFilleName}" width="104px" height="auto"
         </div>
         <div class="c-stepplan__name">
            ${jsonObject[i].name}
@@ -73,6 +73,7 @@ const showClientsFromProgressiveScheme = function(payload) {
 };
 
 const getProgressiveSchemes = function() {
+	console.log('get');
 	let id = localStorage.getItem('mentorId');
 	let url = `${baseURL}mentor/${id}/progressiveScheme`;
 	fetch(url)
@@ -120,7 +121,7 @@ const putProgressiveScheme = function(payload) {
 		.then(data => {
 			sessionStorage.mainPictoName = '';
 			sessionStorage.clickedStepPicto = '';
-			console.log(data),(window.location.href = 'MentorHasProgressiveStepsList.html');
+			console.log(data), (window.location.href = 'MentorHasProgressiveStepsList.html');
 		})
 		.catch(err => console.log(err));
 };
@@ -141,24 +142,24 @@ const postProgressiveScheme = function(payload) {
 		.then(data => {
 			sessionStorage.mainPictoName = '';
 			sessionStorage.clickedStepPicto = '';
-			console.log(data),(window.location.href = 'MentorHasProgressiveStepsList.html');
+			console.log(data), (window.location.href = 'MentorHasProgressiveStepsList.html');
 		})
 		.catch(err => console.log(err));
 };
 
 // const onHandlerClickedOpenChoosePhoto = function(){
-// 	window.location.href = 'ChoosePhoto.html'; 
+// 	window.location.href = 'ChoosePhoto.html';
 // }
 
 const getInputFieldsScheme = function() {
-	console.log("getInputFieldsScheme")
+	console.log('getInputFieldsScheme');
 	mainImg = document.querySelector('.js-mainImg').querySelector('.js-selected-picto');
 	stepImg = document.querySelectorAll('.js-selected-picto');
 	title = document.querySelector('.js-scheme-name');
 	stepNumber = document.querySelectorAll('.js-single-step');
 	stepDescription = document.querySelectorAll('.js-input-description');
 
-	console.log(stepDescription)
+	console.log(stepDescription);
 	schemeTitle = title.value;
 
 	if (document.title == 'Trek Je Plan - Wijzig een stappenplan') {
@@ -166,10 +167,10 @@ const getInputFieldsScheme = function() {
 		let counter = 1;
 		for (object of json.steps) {
 			console.log(counter);
-			console.log(object)
+			console.log(object);
 			object.descriptionStep = stepDescription[counter].value;
 			object.sequence = counter;
-			object.pictoFilleName = stepImg[counter].dataset.img
+			object.pictoFilleName = stepImg[counter].dataset.img;
 			payload.push(object);
 			counter++;
 		}
@@ -185,7 +186,7 @@ const getInputFieldsScheme = function() {
 		}
 
 		updatedScheme = {
-			id: sessionStorage.planId, 
+			id: sessionStorage.planId,
 			pictoFilleName: mainImg.dataset.img,
 			name: schemeTitle,
 			totalSteps: stepNumber.length - 1,
@@ -193,12 +194,10 @@ const getInputFieldsScheme = function() {
 		};
 
 		putProgressiveScheme(updatedScheme);
-
 	} else if (document.title == 'Trek Je Plan - Maak een nieuw stappenplan aan') {
 		let payload = [];
 
 		for (i = 0; i < stepNumber.length; i++) {
-
 			let step = {
 				descriptionStep: stepDescription[i].value,
 				sequence: i + 1,
@@ -222,19 +221,19 @@ const initProgressiveSchemes = function() {
 	progressiveSchemes = document.querySelector('.c-stepplans');
 	addStepsForm = document.querySelector('.js-form-addStep');
 	mainImage = document.querySelector('.c-button_addStepImage');
-	if (document.title == 'Trek Je Plan - Stappenplannen Overzicht') {
+	console.log(document.title);
+	if (document.title == 'Trek Je Plan - Overzicht stappenplan - Mentor') {
 		getProgressiveSchemes();
-		
 	} else if (addStepsForm) {
-	// stepImages = document.querySelectorAll('.c-button_addStepImage');
-	// if(stepImages){
-	// 	stepImages.forEach(step => step.addEventListener('click', function(){
-	// 		let dataNumber = step.parentNode.parentNode.dataset.number;
-	// 		sessionStorage.clickedStepDataNumber = dataNumber; 
-	// 		//console.log(JSON.parse(sessionStorage.clickedStepPicto));
-	// 		loadImage(); 
-	// 	})); 
-	// }
+		// stepImages = document.querySelectorAll('.c-button_addStepImage');
+		// if(stepImages){
+		// 	stepImages.forEach(step => step.addEventListener('click', function(){
+		// 		let dataNumber = step.parentNode.parentNode.dataset.number;
+		// 		sessionStorage.clickedStepDataNumber = dataNumber;
+		// 		//console.log(JSON.parse(sessionStorage.clickedStepPicto));
+		// 		loadImage();
+		// 	}));
+		// }
 		submitProgressiveScheme = document.querySelector('.c-submitbutton');
 		submitProgressiveScheme.addEventListener('click', function() {
 			// enige verplichte is PICTO nu default waarde
@@ -249,8 +248,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	console.log('DOM loaded - Create progressive scheme ');
 	baseURL = 'https://trekjeplan.azurewebsites.net/api/';
 	initProgressiveSchemes();
-	// let mainPicto = document.querySelector('.c-button__mainStepImage'); 
+	// let mainPicto = document.querySelector('.c-button__mainStepImage');
 	// if(mainPicto){
-	// mainPicto.addEventListener('click', onHandlerClickedOpenChoosePhoto); 
-// };
+	// mainPicto.addEventListener('click', onHandlerClickedOpenChoosePhoto);
+	// };
 });
