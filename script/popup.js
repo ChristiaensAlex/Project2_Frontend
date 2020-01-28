@@ -68,6 +68,7 @@ const getElements = function() {
 	cancelButton = document.querySelector('.js-cancel');
 	cancelButton.addEventListener('click', OnHandlerClickedCancel);
 	deleteProgressiveScheme = document.querySelectorAll('.js-progressivescheme-delete');
+	deletePlanButton = document.querySelector('.c-planning__delete');
 	if (typeof deleteClient != 'undefined' && deleteClient.length > 0) {
 		deleteClient.forEach(element => {
 			ListenToDelete(element);
@@ -76,6 +77,9 @@ const getElements = function() {
 		deleteProgressiveScheme.forEach(element => {
 			ListenToDelete(element);
 		});
+	} else if (deletePlanButton) {
+		console.log(deletePlanButton);
+		ListenToDelete(deletePlanButton);
 	}
 };
 
