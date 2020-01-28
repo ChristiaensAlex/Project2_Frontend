@@ -11,8 +11,7 @@ const getFormElements = function() {
 	buttonAddStep = document.querySelector('.js-button-addStep');
 	buttonAddContact = document.querySelector('.c-button__addContact');
 	count = document.querySelectorAll('.js-single-step');
-	if (document.title == "Trek Je Plan - Maak een nieuw stappenplan aan") {
-		console.log(buttonAddStep)
+	if (document.title == 'Trek Je Plan - Maak een nieuw stappenplan aan') {
 		buttonAddStep.addEventListener('click', onHandlerClickedAdd);
 	} else if (buttonAddContact) {
 		buttonAddContact.addEventListener('click', onHandlerClickedAdd);
@@ -41,10 +40,13 @@ const onHandlerClickedRemove = function(e) {
 			if (i.dataset.number >= e.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.number) {
 				//console.log(nummer);
 				nummer = parseInt(nummer) - 1;
-				if(document.title == "Trek Je Plan - Maak een nieuw stappenplan aan"){
-				i.querySelector('.js-step-number').innerHTML = nummer;}
-				else if(document.title =="Trek Je Plan - Wijzig een stappenplan"){
-					i.querySelector('.js-step-number').innerHTML = "Stap " + nummer;
+				if (document.title == 'Trek Je Plan - Maak een nieuw stappenplan aan') {
+					i.querySelector('.js-step-number').innerHTML = nummer;
+
+					i.setAttribute('data-number', nummer);
+				} else if (document.title == 'Trek Je Plan - Wijzig een stappenplan') {
+					i.querySelector('.js-step-number').innerHTML = 'Stap ' + nummer;
+					i.setAttribute('data-number', nummer);
 				}
 			}
 		});
@@ -65,9 +67,8 @@ const onHandlerClickedAdd = function(e) {
 	e.preventDefault();
 	let inpStep = inputStep.cloneNode(true);
 	count = document.querySelectorAll('.js-single-step');
-	
-	inpStep.dataset.number = count.length + 1 ;
-	inpStep.style.display = 'block'; 
+	inpStep.dataset.number = count.length + 1;
+	inpStep.style.display = 'block';
 	if (inpStep.querySelector('.js-step-number') && inpStep.querySelector('.js-input-description')) {
 		inpStep.querySelector('.js-step-number').innerHTML = inpStep.dataset.number;
 		inpStep.querySelector('.c-button_addStepImage').innerHTML = `<div class="o-button-reset c-button__mainStepImage">
@@ -109,23 +110,23 @@ const onHandlerClickedAdd = function(e) {
 	ListenToRemoveButton();
 };
 
-const AddToEditScheme = function(e){
-	console.log('hoithro')
+const AddToEditScheme = function(e) {
 	e.preventDefault();
 	let inpStep = inputStep.cloneNode(true);
 	inpStep.classList.remove("u-hide");
 	count = document.querySelectorAll('.js-single-step');
-	inpStep.dataset.number = count.length ;
-	inpStep.style.display = 'block'; 
+	inpStep.dataset.number = count.length;
+	console.log('Inpstep nummer: ' + inpStep.dataset.number);
+	console.log(inpStep);
+	inpStep.style.display = 'block';
 	if (inpStep.querySelector('.js-step-number') && inpStep.querySelector('.js-input-description')) {
-		inpStep.querySelector('.js-step-number').innerHTML = "Stap " + inpStep.dataset.number;
+		inpStep.querySelector('.js-step-number').innerHTML = 'Stap ' + inpStep.dataset.number;
 		inpStep.querySelector('.js-input-description').value = '';
 	}
 	allSteps.appendChild(inpStep);
 	//getElements();
 	ListenToRemoveButton();
-	
-}
+};
 
 const ListenToRemoveButton = function() {
 	removeButton = document.querySelectorAll('.js-remove-button');
