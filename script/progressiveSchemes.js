@@ -1,16 +1,18 @@
-let progressiveSchemes, stepPlans, baseURL, addStepsForm, scheme, updatedScheme, title, schemeTitle;
+let progressiveSchemes, stepPlans, baseURL, addStepsForm, scheme, updatedScheme, title, schemeTitle, mainImg, stepImg;
+let eventClicked;
 const showAllProgressiveSchemes = function(jsonObject) {
-	i = 0;
-	for (object of jsonObject) {
+	for (i in jsonObject) {
+		if (!jsonObject[i].pictoFilleName) {
+			jsonObject[i].pictoFilleName = '23e5daf5-2eb6-4693-b245-3ee7f91e04af.jpg';
+		}
 		progressiveSchemes.innerHTML += `<div class="c-stepplan" >
-		<div class= "c-stepplan__info " plannr=${i}>
-        <div class="c-stepplan__picto">
-            <img class="c-icon" src="wassen.png" alt="beta_picto_wassen" />
+		<div class= "c-stepplan__info " plannr=${i}> <div class="c-stepplan__picto">
+		<img class="c-choose__picto-img" src="https://trekjeplan.blob.core.windows.net/pictos/${jsonObject[i].pictoFilleName}" width="104px" height="auto"
         </div>
         <div class="c-stepplan__name">
            ${jsonObject[i].name}
         </div>
-        </div>
+
         <div class="c-stepplan__delete js-progressivescheme-delete">
             <svg xmlns="http://www.w3.org/2000/svg" width="19.492" height="24" viewBox="0 0 19.492 24">
                 <g id="bin" transform="translate(0.003 0.001)">
@@ -29,8 +31,7 @@ const showAllProgressiveSchemes = function(jsonObject) {
                 </g>
             </svg>
         </div>
-	</div>`;
-		i++;
+    </div>`;
 	}
 	getElements();
 };
@@ -46,11 +47,7 @@ const showClientsFromProgressiveScheme = function(payload) {
 	let clientSchemes = document.querySelector('.js-clientScheme');
 	for (i in clients) {
 		let OneClient = document.querySelector('.c-symbol__clientProfiles-client');
-		console.log('Geclonede');
-		console.log(OneClient);
 		let clientClone = OneClient.cloneNode(true);
-		console.log('Clone');
-		console.log(clientClone);
 		clientClone.classList.remove('u-hide');
 		let client = clients[i];
 		let clientName = clientClone.querySelector('.c-symbol__clientProfiles-client__name');
@@ -76,6 +73,7 @@ const showClientsFromProgressiveScheme = function(payload) {
 };
 
 const getProgressiveSchemes = function() {
+	console.log('get');
 	let id = localStorage.getItem('mentorId');
 	let url = `${baseURL}mentor/${id}/progressiveScheme`;
 	fetch(url)
@@ -99,7 +97,6 @@ const getProgressiveSchemes = function() {
 						console.log(jsonObject[i]);
 						planId = jsonObject[i].id;
 						sessionStorage.planId = planId;
-						console.log(planId);
 						window.location.href = 'DetailProgressiveStepsPlan.html';
 					});
 				}
@@ -112,9 +109,8 @@ const getProgressiveSchemes = function() {
 
 const putProgressiveScheme = function(payload) {
 	let body = JSON.stringify(payload);
-	console.log(payload);
 	let schemeId = sessionStorage.planId;
-	fetch(`https://trekjeplan.azurewebsites.net/api/progressiveScheme/${schemeId}`, {
+	fetch(`${baseURL}progressiveScheme/${schemeId}`, {
 		method: 'PUT',
 		mode: 'cors',
 		cache: 'no-cache',
@@ -123,6 +119,8 @@ const putProgressiveScheme = function(payload) {
 		body: body
 	})
 		.then(data => {
+			sessionStorage.mainPictoName = '';
+			sessionStorage.clickedStepPicto = '';
 			console.log(data), (window.location.href = 'MentorHasProgressiveStepsList.html');
 		})
 		.catch(err => console.log(err));
@@ -132,7 +130,7 @@ const postProgressiveScheme = function(payload) {
 	let body = JSON.stringify(payload);
 	console.log(body);
 	let mentorId = localStorage.getItem('mentorId');
-	fetch(`https://trekjeplan.azurewebsites.net/api/progressiveScheme/${mentorId}`, {
+	fetch(`${baseURL}progressiveScheme/${mentorId}`, {
 		method: 'POST',
 		mode: 'cors',
 		cache: 'no-cache',
@@ -142,38 +140,46 @@ const postProgressiveScheme = function(payload) {
 	})
 		.then(res => res.json())
 		.then(data => {
-			console.log(data); // (window.location.href = 'MentorHasProgressiveStepsList.html');
+			sessionStorage.mainPictoName = '';
+			sessionStorage.clickedStepPicto = '';
+			console.log(data), (window.location.href = 'MentorHasProgressiveStepsList.html');
 		})
 		.catch(err => console.log(err));
 };
 
+// const onHandlerClickedOpenChoosePhoto = function(){
+// 	window.location.href = 'ChoosePhoto.html';
+// }
+
 const getInputFieldsScheme = function() {
+	console.log('getInputFieldsScheme');
+	mainImg = document.querySelector('.js-mainImg').querySelector('.js-selected-picto');
+	stepImg = document.querySelectorAll('.js-selected-picto');
 	title = document.querySelector('.js-scheme-name');
 	stepNumber = document.querySelectorAll('.js-single-step');
 	stepDescription = document.querySelectorAll('.js-input-description');
-	let step = '';
-	let stepsArr = [];
+
 	schemeTitle = title.value;
 
 	if (document.title == 'Trek Je Plan - Wijzig een stappenplan') {
 		let payload = [];
-		console.log(stepDescription[1]);
 		let counter = 1;
+		console.log(json);
 		for (object of json.steps) {
+
 			object.descriptionStep = stepDescription[counter].value;
 			object.sequence = counter;
-			object.pictoId = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
-			console.log(object);
+			object.pictoFilleName = stepImg[counter].dataset.img;
 			payload.push(object);
 			counter++;
 		}
 
-		console.log(stepNumber);
+		console.log(counter)
 		for (i = counter; i < stepNumber.length; i++) {
 			let step = {
 				descriptionStep: stepDescription[i].value,
 				sequence: counter,
-				pictoId: '3fa85f64-5717-4562-b3fc-2c963f66afa6'
+				pictoFilleName: stepImg[counter - 1].dataset.img
 			};
 
 			payload.push(step);
@@ -181,34 +187,35 @@ const getInputFieldsScheme = function() {
 
 		updatedScheme = {
 			id: sessionStorage.planId,
-			pictoId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+			pictoFilleName: mainImg.dataset.img,
 			name: schemeTitle,
 			totalSteps: stepNumber.length - 1,
 			steps: payload
 		};
+
+
 		console.log(updatedScheme);
 		putProgressiveScheme(updatedScheme);
 	} else if (document.title == 'Trek Je Plan - Maak een nieuw stappenplan aan') {
+		let payload = [];
+
 		for (i = 0; i < stepNumber.length; i++) {
-			currentStep = stepNumber[i];
-			let currentStepNumber = currentStep.dataset.number;
-			let sequenceInt = parseInt(currentStepNumber);
-			console.log(sequenceInt);
-			step = {
+			let step = {
 				descriptionStep: stepDescription[i].value,
-				pictoId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
-				sequence: sequenceInt
+				sequence: i + 1,
+				pictoFilleName: stepImg[i + 1].dataset.img
 			};
-			stepsArr.push(step);
+
+			payload.push(step);
 		}
 
-		scheme = {
-			pictoFilleName: 'string',
+		postScheme = {
+			pictoFilleName: mainImg.dataset.img,
 			name: schemeTitle,
-			totalSteps: stepNumber.length,
-			steps: stepsArr
+			totalSteps: stepNumber.length - 1,
+			steps: payload
 		};
-		postProgressiveScheme(scheme);
+		postProgressiveScheme(postScheme);
 	}
 };
 
@@ -216,9 +223,19 @@ const initProgressiveSchemes = function() {
 	progressiveSchemes = document.querySelector('.c-stepplans');
 	addStepsForm = document.querySelector('.js-form-addStep');
 	mainImage = document.querySelector('.c-button_addStepImage');
+	console.log(document.title);
 	if (document.title == 'Trek Je Plan - Overzicht stappenplan - Mentor') {
 		getProgressiveSchemes();
 	} else if (addStepsForm) {
+		// stepImages = document.querySelectorAll('.c-button_addStepImage');
+		// if(stepImages){
+		// 	stepImages.forEach(step => step.addEventListener('click', function(){
+		// 		let dataNumber = step.parentNode.parentNode.dataset.number;
+		// 		sessionStorage.clickedStepDataNumber = dataNumber;
+		// 		//console.log(JSON.parse(sessionStorage.clickedStepPicto));
+		// 		loadImage();
+		// 	}));
+		// }
 		submitProgressiveScheme = document.querySelector('.c-submitbutton');
 		submitProgressiveScheme.addEventListener('click', function() {
 			// enige verplichte is PICTO nu default waarde
@@ -233,4 +250,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	console.log('DOM loaded - Create progressive scheme ');
 	baseURL = 'https://trekjeplan.azurewebsites.net/api/';
 	initProgressiveSchemes();
+	// let mainPicto = document.querySelector('.c-button__mainStepImage');
+	// if(mainPicto){
+	// mainPicto.addEventListener('click', onHandlerClickedOpenChoosePhoto);
+	// };
 });
