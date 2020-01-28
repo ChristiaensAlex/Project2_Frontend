@@ -23,7 +23,6 @@ const getFormElements = function() {
 };
 
 const onHandlerClickedRemove = function(e) {
-	console.log(json)
 	e.preventDefault();
 	if (e.currentTarget.parentNode.parentNode.parentNode.querySelector('.c-contact__wrapper')) {
 		removefromDB(e.currentTarget.parentNode.parentNode.parentNode.dataset.number);
@@ -32,13 +31,11 @@ const onHandlerClickedRemove = function(e) {
 		allSteps.removeChild(e.currentTarget.parentNode.parentNode.parentNode.parentNode);
 		let stepNumbers = document.querySelectorAll('.js-single-step');
 		let stepNumbersArr = Array.from(stepNumbers);
-		console.log(stepNumbersArr)
 		stepNumbersArr.forEach(i => {
 			nummer2 = i.getAttribute('data-number');
 			nummer = i.dataset.number;
 
 			if (i.dataset.number >= e.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.number) {
-				//console.log(nummer);
 				nummer = parseInt(nummer) - 1;
 				if (document.title == 'Trek Je Plan - Maak een nieuw stappenplan aan') {
 					i.querySelector('.js-step-number').innerHTML = nummer;
@@ -53,7 +50,6 @@ const onHandlerClickedRemove = function(e) {
 		let dataNumber = e.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.number;
 		if (json && json.steps){
 			json.steps.splice(dataNumber - 1, 1);
-			console.log(json);
 		}
 
 	}
@@ -116,15 +112,14 @@ const AddToEditScheme = function(e) {
 	inpStep.classList.remove("u-hide");
 	count = document.querySelectorAll('.js-single-step');
 	inpStep.dataset.number = count.length;
-	console.log('Inpstep nummer: ' + inpStep.dataset.number);
-	console.log(inpStep);
+
 	inpStep.style.display = 'block';
 	if (inpStep.querySelector('.js-step-number') && inpStep.querySelector('.js-input-description')) {
 		inpStep.querySelector('.js-step-number').innerHTML = 'Stap ' + inpStep.dataset.number;
 		inpStep.querySelector('.js-input-description').value = '';
 	}
 	allSteps.appendChild(inpStep);
-	//getElements();
+	getElements();
 	ListenToRemoveButton();
 };
 

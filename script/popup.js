@@ -28,30 +28,31 @@ const OnHandlerClickedCancel = function() {
 };
 
 
-const onHandlerClickedPopUp = function(element) {
+const onHandlerClickedPopUp = function(picto, element) {
 	//background blurry
 
 	background.classList.add('c-popup-blur');
 	//popup appears
 	popup.style.display = 'block';
-	console.log('element' + element);
-	if (deleteClient) {
-		document.querySelector('.js-deleteButton').addEventListener('click', function() {
-			console.log(deletedClient);
-			// hier de delete functie aanspreken voor de client
-		});
-	} else if (deleteProgressiveScheme) {
-		document.querySelector('.js-deleteButton').addEventListener('click', function() {
-			console.log(deletedProgressiveScheme);
-			// hier de delete functie aanspreken voor progressive scheme
-		});
-	}
-	document.querySelector('.js-deleteButton').addEventListener('click', function() {
-		console.log(deletedClient.id);
-		let url = 'https://trekjeplan.azurewebsites.net/api/client';
-		removefromDB(url, deletedClient.id);
-  });
-  if(picto == true){
+
+// 	if (deleteClient) {
+// 		document.querySelector('.js-deleteButton').addEventListener('click', function() {
+// 			console.log(deletedClient);
+// 			// hier de delete functie aanspreken voor de client
+// 		});
+// 	} else if (deleteProgressiveScheme) {
+// 		document.querySelector('.js-deleteButton').addEventListener('click', function() {
+// 			console.log(deletedProgressiveScheme);
+// 			// hier de delete functie aanspreken voor progressive scheme
+// 		});
+// 	}
+// 	document.querySelector('.js-deleteButton').addEventListener('click', function() {
+// 		console.log(deletedClient.id);
+// 		let url = 'https://trekjeplan.azurewebsites.net/api/client';
+// 		removefromDB(url, deletedClient.id);
+//   });
+
+if(picto == true){
     divElement = element; 
   }
 };
@@ -70,8 +71,7 @@ const getElements = function() {
     cancelButton.addEventListener('click', OnHandlerClickedCancel);
   }
   deleteProgressiveScheme = document.querySelectorAll('.js-progressivescheme-delete');
-  stepImages = document.querySelectorAll('.c-button_addStepImage');
-  console.log(stepImages)
+  stepImages = document.querySelectorAll('.c-selectedPicto');
   mainImage = document.querySelector('.c-button__mainStepImage');
   if(typeof deleteClient != 'undefined' && deleteClient.length > 0){
     deleteClient.forEach(element => {

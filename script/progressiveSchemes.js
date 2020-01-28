@@ -110,7 +110,7 @@ const getProgressiveSchemes = function() {
 const putProgressiveScheme = function(payload) {
 	let body = JSON.stringify(payload);
 	let schemeId = sessionStorage.planId;
-	fetch(`https://trekjeplan.azurewebsites.net/api/progressiveScheme/${schemeId}`, {
+	fetch(`https://localhost:44374/api/progressiveScheme/${schemeId}`, {
 		method: 'PUT',
 		mode: 'cors',
 		cache: 'no-cache',
@@ -130,7 +130,7 @@ const postProgressiveScheme = function(payload) {
 	let body = JSON.stringify(payload);
 	console.log(body);
 	let mentorId = localStorage.getItem('mentorId');
-	fetch(`https://trekjeplan.azurewebsites.net/api/progressiveScheme/${mentorId}`, {
+	fetch(`https://localhost:44374/api/progressiveScheme/${mentorId}`, {
 		method: 'POST',
 		mode: 'cors',
 		cache: 'no-cache',
@@ -159,15 +159,14 @@ const getInputFieldsScheme = function() {
 	stepNumber = document.querySelectorAll('.js-single-step');
 	stepDescription = document.querySelectorAll('.js-input-description');
 
-	console.log(stepDescription);
 	schemeTitle = title.value;
 
 	if (document.title == 'Trek Je Plan - Wijzig een stappenplan') {
 		let payload = [];
 		let counter = 1;
+		console.log(json);
 		for (object of json.steps) {
-			console.log(counter);
-			console.log(object);
+
 			object.descriptionStep = stepDescription[counter].value;
 			object.sequence = counter;
 			object.pictoFilleName = stepImg[counter].dataset.img;
@@ -175,11 +174,12 @@ const getInputFieldsScheme = function() {
 			counter++;
 		}
 
+		console.log(counter)
 		for (i = counter; i < stepNumber.length; i++) {
 			let step = {
 				descriptionStep: stepDescription[i].value,
 				sequence: counter,
-				pictoFilleName: stepImg[counter + 1].dataset.img
+				pictoFilleName: stepImg[counter - 1].dataset.img
 			};
 
 			payload.push(step);
@@ -193,6 +193,8 @@ const getInputFieldsScheme = function() {
 			steps: payload
 		};
 
+
+		console.log(updatedScheme);
 		putProgressiveScheme(updatedScheme);
 	} else if (document.title == 'Trek Je Plan - Maak een nieuw stappenplan aan') {
 		let payload = [];

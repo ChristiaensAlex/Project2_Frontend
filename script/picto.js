@@ -57,6 +57,7 @@ const init = function(){
 const OnHandlerClickedShowPicto = function(imgSource, dataImg){
     background.classList.remove('c-popup-blur');
     popup.style.display = 'none';
+    console.log(divElement);
     divElement.innerHTML = `<img class="c-selectedPicto js-selected-picto" src="${imgSource}" width="104px" height="auto" data-img="${dataImg}"/>`
 }
 
@@ -122,7 +123,7 @@ const getPictos = function(url, filtered){
         }
     })
 		.then(function(jsonObject) {
-			json = jsonObject;
+			let json = jsonObject;
             if(jsonObject){
                 if(filtered == true){
                     showFilteredPictos(json);

@@ -54,7 +54,6 @@ const fillInputsFromEditPlan = function (payload) {
   getElements(); 
   buttonAddStep.addEventListener('click', AddToEditScheme)
 }
-
 const showOneProgressiveScheme = function (payload) {
   json = payload
   let progressiveSchemeName = document.querySelector(
@@ -94,5 +93,5 @@ const getProgressiveSchemeById = function () {
 document.addEventListener('DOMContentLoaded', function () {
   console.log('DOM loaded - Overview progressive scheme ')
   baseURL = 'https://trekjeplan.azurewebsites.net/api/'
-  //getProgressiveSchemeById()
+  getProgressiveSchemeById()
 })
