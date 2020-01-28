@@ -1,4 +1,4 @@
-let fullName, fullNameArr, clients;
+let fullName, fullNameArr, clients, json, deletedClient;
 
 const showAllClients = function(jsonObject) {
 	for (i in jsonObject) {
@@ -18,6 +18,18 @@ const showAllClients = function(jsonObject) {
 	console.log(clients);
 	getElements();
 	ListenToClients(jsonObject);
+	deletes = document.querySelectorAll('.js-client-delete');
+	ListenToDeletes(deletes);
+};
+const ListenToDeletes = function(deletes) {
+	for (let d of deletes) {
+		d.addEventListener('click', function(event) {
+			console.log('vuilbak geklikt');
+			let nr = this.parentElement.querySelector('.c-client__info').getAttribute('clientnr');
+			deletedClient = json[nr];
+			console.log(deletedClient);
+		});
+	}
 };
 
 const ListenToClients = function(jsonObject) {
@@ -43,6 +55,7 @@ const getAPI = function(url) {
 			}
 		})
 		.then(function(jsonObject) {
+			json = jsonObject;
 			showAllClients(jsonObject);
 		})
 		.catch(function(error) {
