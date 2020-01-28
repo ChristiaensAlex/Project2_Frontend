@@ -1,9 +1,9 @@
-let baseURL = 'https://localhost:44374/api/',
+let baseURL = 'https://trekjeplan.azurewebsites.net/api/',
 	firstName,
 	lastName,
 	email,
 	submitButton;
-const showProfileInfo = function(jsonObject) {
+const showProfileInfo = function (jsonObject) {
 	sessionStorage.mentorId = jsonObject.id;
 	if (submitButton) {
 		firstName.value = jsonObject.firstName;
@@ -15,26 +15,26 @@ const showProfileInfo = function(jsonObject) {
 		email.innerHTML = jsonObject.email;
 	}
 };
-const getMentorProfile = function(mentorId) {
+const getMentorProfile = function (mentorId) {
 	let url = `${baseURL}mentor/${mentorId}`;
 	fetch(url)
-		.then(function(response) {
+		.then(function (response) {
 			if (!response.ok) {
 				throw Error(`Problem to fetch(). Status code: ${response.status}`);
 			} else {
 				return response.json();
 			}
 		})
-		.then(function(jsonObject) {
+		.then(function (jsonObject) {
 			showProfileInfo(jsonObject);
 			console.log(jsonObject);
 		})
-		.catch(function(error) {
+		.catch(function (error) {
 			console.error(`Problem to process json ${error}`);
 		});
 };
 
-const EditMentorProfile = function(payload, mentorId) {
+const EditMentorProfile = function (payload, mentorId) {
 	console.log('put mentor info');
 	let body = JSON.stringify(payload);
 	console.log(body);
@@ -55,8 +55,8 @@ const EditMentorProfile = function(payload, mentorId) {
 		// })
 		.catch(err => console.log(err));
 };
-const ListenToSubmitButton = function(button) {
-	button.addEventListener('click', function(e) {
+const ListenToSubmitButton = function (button) {
+	button.addEventListener('click', function (e) {
 		e.preventDefault();
 		mentorId = sessionStorage.mentorId;
 		let payload = {
@@ -69,7 +69,7 @@ const ListenToSubmitButton = function(button) {
 		EditMentorProfile(payload, mentorId);
 	});
 };
-const getProfileElements = function() {
+const getProfileElements = function () {
 	submitButton = document.querySelector('.js-submitbutton');
 	if (submitButton) {
 		firstName = document.querySelector('.js-firstname');
@@ -83,10 +83,20 @@ const getProfileElements = function() {
 	}
 };
 
-document.addEventListener('DOMContentLoaded', function() {
+const logOut = function () {
+	logOutButton = document.querySelector('.js-logout');
+
+	logOutButton.addEventListener('click', function (e) {
+		localStorage.clear();
+		window.location.href = 'LoginMentor.html';
+	})
+};
+
+document.addEventListener('DOMContentLoaded', function () {
 	console.log('DOM loaded - profile');
-	sessionStorage.mentorId = 'a45a80c4-26c3-4ceb-8f73-9615367bf5c6';
+	sessionStorage.mentorId = localStorage.getItem('mentorId');
 	mentorId = sessionStorage.mentorId;
 	getProfileElements();
 	getMentorProfile(mentorId);
+	logOut();
 });

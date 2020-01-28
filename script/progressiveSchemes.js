@@ -6,22 +6,13 @@ const showAllProgressiveSchemes = function(jsonObject) {
 			jsonObject[i].pictoFilleName = '23e5daf5-2eb6-4693-b245-3ee7f91e04af.jpg';
 		}
 		progressiveSchemes.innerHTML += `<div class="c-stepplan" >
-        <div class="c-stepplan__picto">
-            <img class="c-icon" src="https://trekjeplan.blob.core.windows.net/pictos/${jsonObject[i].pictoFilleName}" alt="beta_picto_wassen" />
+		<div class= "c-stepplan__info " plannr=${i}> <div class="c-stepplan__picto">
+            <img class="c-icon" src="${jsonObject[i].pictoFilleName}" alt="beta_picto_wassen" />
         </div>
-        <div class="c-stepplan__name" plannr=${i}>
+        <div class="c-stepplan__name">
            ${jsonObject[i].name}
         </div>
-        <div class="c-stepplan__pencil">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14.65" height="14.579"
-                viewBox="0 0 14.65 14.579">
-                <g id="pencil-edit-button" transform="translate(-0.001 -1.289)">
-                    <path id="Path_288" data-name="Path 288"
-                        d="M9.11,3.722,12.09,6.7,4.547,14.245l-2.978-2.98ZM14.352,3,13.023,1.674a1.319,1.319,0,0,0-1.863,0L9.887,2.947l2.98,2.98,1.485-1.485A1.016,1.016,0,0,0,14.352,3ZM.009,15.454a.339.339,0,0,0,.41.4l3.321-.805L.762,12.072Z"
-                        transform="translate(0)" fill="#291f5f" />
-                </g>
-            </svg>
-        </div>
+
         <div class="c-stepplan__delete js-progressivescheme-delete">
             <svg xmlns="http://www.w3.org/2000/svg" width="19.492" height="24" viewBox="0 0 19.492 24">
                 <g id="bin" transform="translate(0.003 0.001)">
@@ -45,11 +36,11 @@ const showAllProgressiveSchemes = function(jsonObject) {
 	getElements();
 };
 
-const ListenToAddClient = function (button) {
-	button.addEventListener('click', function (event) {
-	  window.location.href = 'AddClientToProgressiveScheme.html'
-	})
-  }
+const ListenToAddClient = function(button) {
+	button.addEventListener('click', function(event) {
+		window.location.href = 'AddClientToProgressiveScheme.html';
+	});
+};
 
 const showClientsFromProgressiveScheme = function(payload) {
 	let clients = payload.clients;
@@ -76,12 +67,13 @@ const showClientsFromProgressiveScheme = function(payload) {
 		</svg>
 	</div>
 </button>`;
-let addClientButton = document.querySelector('.js-button__addStep');
-  ListenToAddClient(addClientButton);
+	let addClientButton = document.querySelector('.js-button__addStep');
+	console.log(addClientButton);
+	ListenToAddClient(addClientButton);
 };
 
 const getProgressiveSchemes = function() {
-	let id = '206d076a-d443-40ad-ae3a-783350c2e0f7';
+	let id = localStorage.getItem('mentorId');
 	let url = `${baseURL}mentor/${id}/progressiveScheme`;
 	fetch(url)
 		.then(function(response) {
@@ -94,10 +86,14 @@ const getProgressiveSchemes = function() {
 		.then(function(jsonObject) {
 			if (progressiveSchemes) {
 				showAllProgressiveSchemes(jsonObject);
-				stepPlans = document.querySelectorAll('.c-stepplan__name');
+				console.log(jsonObject);
+				stepPlans = document.querySelectorAll('.c-stepplan__info');
 				for (stepPlan of stepPlans) {
 					stepPlan.addEventListener('click', function() {
+						console.log(this);
 						let i = this.getAttribute('plannr');
+						console.log(i);
+						console.log(jsonObject[i]);
 						planId = jsonObject[i].id;
 						sessionStorage.planId = planId;
 						window.location.href = 'DetailProgressiveStepsPlan.html';
@@ -113,8 +109,7 @@ const getProgressiveSchemes = function() {
 const putProgressiveScheme = function(payload) {
 	let body = JSON.stringify(payload);
 	let schemeId = sessionStorage.planId;
-	console.log(payload)
-	fetch(`https://localhost:44374/api/progressiveScheme/${schemeId}`, {
+	fetch(`https://trekjeplan.azurewebsites.net/api/progressiveScheme/${schemeId}`, {
 		method: 'PUT',
 		mode: 'cors',
 		cache: 'no-cache',
@@ -133,9 +128,8 @@ const putProgressiveScheme = function(payload) {
 const postProgressiveScheme = function(payload) {
 	let body = JSON.stringify(payload);
 	console.log(body);
-	let mentorId = '206D076A-D443-40AD-AE3A-783350C2E0F7'; 
-	sessionStorage.mentorId = mentorId;
-	fetch(`https://localhost:44374/api/progressiveScheme/${mentorId}`, {
+	let mentorId = localStorage.getItem('mentorId');
+	fetch(`https://trekjeplan.azurewebsites.net/api/progressiveScheme/${mentorId}`, {
 		method: 'POST',
 		mode: 'cors',
 		cache: 'no-cache',
@@ -252,8 +246,8 @@ const initProgressiveSchemes = function() {
 	}
 };
 document.addEventListener('DOMContentLoaded', function() {
-	console.log('DOM loaded - Progressive scheme ');
-	baseURL = 'https://localhost:44374/api/';
+	console.log('DOM loaded - Create progressive scheme ');
+	baseURL = 'https://trekjeplan.azurewebsites.net/api/';
 	initProgressiveSchemes();
 	// let mainPicto = document.querySelector('.c-button__mainStepImage'); 
 	// if(mainPicto){

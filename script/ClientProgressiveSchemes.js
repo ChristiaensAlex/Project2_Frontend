@@ -1,4 +1,4 @@
-let baseURL = 'https://localhost:44374/api/',
+let baseURL = 'https://trekjeplan.azurewebsites.net/api/',
 	mentorId,
 	json,
 	url,
@@ -23,27 +23,31 @@ const postCP = function(url, payload) {
 	})
 		.then(res => res.json())
 		.then(data => {
-			console.log(data), console.log(data), (window.location.href = backPage);
+			console.log(data), console.log(data);//, (window.location.href = backPage);
 		})
 		.catch(err => console.log(err));
 };
 const showClients = function(json, element) {
 	i = 0;
+	let html = '';
 	for (object of json) {
-		document.querySelector('.c-search').innerHTML += `<div class="c-search-list__item" data-number="${i}">${object.firstName} ${object.lastName}</div>`;
+		html += `<div class="c-search-list__item" data-number="${i}">${object.firstName} ${object.lastName}</div>`;
 		console.log(i);
 		i++;
 	}
+	document.querySelector('.js-clients').innerHTML = html;
 	ListenToObjects(element);
 };
 
 const showProgressiveSchemes = function(json, element) {
 	i = 0;
+	let html = '';
 	for (object of json) {
-		document.querySelector('.c-search').innerHTML += `<div class="c-search-list__item" data-number="${i}">${object.name}</div>`;
+		html += `<div class="c-search-list__item" data-number="${i}">${object.name}</div>`;
 		console.log(i);
 		i++;
 	}
+	document.querySelector('.js-progressiveSchemes').innerHTML = html;
 	ListenToObjects(element);
 };
 
@@ -155,16 +159,17 @@ const getDayOfWeek = function(day) {
 			return 'sunday';
 	}
 };
-const ListenToSearch = function() {
-	search.addEventListener('change', function(event) {
+const ListenToSearch = function(search) {
+	//let searchPicto = document.querySelector('.c-input-search');
+
+	console.log(search);
+	search.addEventListener('input', function() {
+		console.log('Er verandert hier gelijk iets');
 		console.log(this.value);
+		console.log(search.name);
+		//  let url = `${baseURL}picto?search=${searchPicto.value}`;
 		getSearchElements(search.name, this.value);
-		// if (search.name == "Client"){
-		// 	getClients(this.value);
-		// }
-		// else if(search.name =="ProgressiveScheme"){
-		// 	getProgressiveSchemes(this.value);
-		// }
+		//getPictos(url, true);
 	});
 };
 const ListenToSelect = function(select) {
@@ -175,15 +180,18 @@ const ListenToSelect = function(select) {
 			case 'Dagelijks':
 				return;
 			case 'Elke ... dagen':
-				this.parentElement.innerHTML += `<div class="c-numberOfDays"><label class="c-label" for="numberOfDays">Elke&nbsp 
+				console.log(this.parentElement.parentElement);
+				console.log(this.parentElement.parentElement.querySelector('.js-specificFrequency'));
+				this.parentElement.parentElement.querySelector('.js-specificFrequency').innerHTML = `<div class="c-numberOfDays"><label class="c-label" for="numberOfDays">Elke&nbsp 
                 <input class="c-input c-numberOfDays-input js-numberOfDays" type="number" name="numberOfDays" min="1" max="6" placeholder="1 tot 6" /> &nbspdagen</label></div>`;
 				let numberOfDaysInput = document.querySelector('.js-numberOfDays');
 				ListenToNumberOfDays(numberOfDaysInput);
 				return;
 			case 'Wekelijks':
-				this.parentElement.innerHTML += `<div class="c-days"> <span class= "c-day" >Ma</span> <span class= "c-day">Di</span> <span class= "c-day">Wo</span> <span class= "c-day">Do</span> <span class= "c-day">Vr</span> <span class= "c-day">Za</span>
+				this.parentElement.parentElement.querySelector('.js-specificFrequency').innerHTML = `<div class="c-days"> <span class= "c-day" >Ma</span> <span class= "c-day">Di</span> <span class= "c-day">Wo</span> <span class= "c-day">Do</span> <span class= "c-day">Vr</span> <span class= "c-day">Za</span>
                 <span class= "c-day">Zo</span> </div>`;
 				let allDays = document.querySelectorAll('.c-day');
+				console.log(allDays);
 				listenToDays(allDays);
 				return;
 		}
@@ -237,12 +245,14 @@ const ListenToObjects = function(element) {
 };
 document.addEventListener('DOMContentLoaded', function() {
 	console.log('DOM loaded - contact');
-	mentorId = 'EF4C3F22-6AC3-4143-B9CD-21A23F9EA1FE';
+	mentorId = localStorage.getItem('mentorId');
 
 	//progressiveSchemeId = '52B05597-D586-4DF2-AB80-5DF8BF33B8D4';
 	//clientId = '1D32717C-4C22-40A2-650E-08D79A90ABFB';
+	progressiveSchemeId = sessionStorage.planId;
 	clientId = sessionStorage.clientId;
 	console.log(clientId);
+	console.log(progressiveSchemeId);
 	search = document.querySelector('.c-search-input');
 	console.log(search.name);
 

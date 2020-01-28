@@ -4,19 +4,19 @@ customHeaders.append('Accept', 'application/json');
 
 let now;
 
-MentorId = 'EF4C3F22-6AC3-4143-B9CD-21A23F9EA1FE';
+MentorId = localStorage.getItem('mentorId');
 //ClientId = '1d32717c-4c22-40a2-650e-08d79a90abfb';
 ClientId = sessionStorage.clientId;
-URIStart = 'https://localhost:44374/api/clientprogressiveScheme/';
-URIClient = `https://localhost:44374/api/client/${ClientId}`;
+URIStart = 'https://trekjeplan.azurewebsites.net/api/clientprogressiveScheme/';
+URIClient = `https://trekjeplan.azurewebsites.net/api/client/${ClientId}`;
 // console.log(URIClient);
 
-const init = function() {
+const init = function () {
 	DateToday();
 	getClientInfo(URIClient);
 };
 
-const DateToday = function(today) {
+const DateToday = function (today) {
 	today = new Date();
 	//"Tue Jan 28 2020 18:31:03 GMT+0100 (Central European Standard Time)"  omzetten naar 28%2F01%2F2020
 	now = ('0' + today.getDate()).slice(-2) + '%2F' + ('0' + (today.getMonth() + 1)).slice(-2) + '%2F' + today.getFullYear();
@@ -26,7 +26,7 @@ const DateToday = function(today) {
 	getProgressiveSchemes(URI);
 };
 
-const DateChoosen = function(date) {
+const DateChoosen = function (date) {
 	clickedDate = ('0' + date.getDate()).slice(-2) + '%2F' + ('0' + (date.getMonth() + 1)).slice(-2) + '%2F' + date.getFullYear();
 	// console.log(clickedDate);
 	URI = `${URIStart + MentorId}?clientId=${ClientId}&selectedDate=${clickedDate}`;
@@ -34,7 +34,7 @@ const DateChoosen = function(date) {
 	getProgressiveSchemes(URI);
 };
 
-const TitleDay = function(date) {
+const TitleDay = function (date) {
 	currentDay = new Date();
 	if (date.getDate() == currentDay.getDate() || date.getDate() == null) {
 		let html = '';
@@ -54,7 +54,7 @@ const TitleDay = function(date) {
 	}
 };
 
-const showNameClient = function(queryResponseClient, FirstName, LastName) {
+const showNameClient = function (queryResponseClient, FirstName, LastName) {
 	let html = '';
 	html += `<h3>
                     Planning ${FirstName + ' ' + LastName}
@@ -63,7 +63,7 @@ const showNameClient = function(queryResponseClient, FirstName, LastName) {
 	document.querySelector('.js-name__planning-individual-client').innerHTML = html;
 };
 
-let ShowProgressiveSchemes = function(queryResponse, dataArraySchemeName, dataArrayPictoId, dataArrayTime, dataArrayChecked) {
+let ShowProgressiveSchemes = function (queryResponse, dataArraySchemeName, dataArrayPictoId, dataArrayTime, dataArrayChecked) {
 	console.log(dataArraySchemeName + '------' + dataArrayPictoId + '------' + dataArrayTime + '------' + dataArrayChecked);
 	let html = '';
 	if (dataArraySchemeName === undefined || dataArraySchemeName.length == 0) {
@@ -125,7 +125,7 @@ let ShowProgressiveSchemes = function(queryResponse, dataArraySchemeName, dataAr
 	document.querySelector('.js-plannings__individual').innerHTML = html;
 };
 
-let ProcessProgressiveSchemes = function(queryResponse) {
+let ProcessProgressiveSchemes = function (queryResponse) {
 	dataArraySchemeName = [];
 	for (var addSchemeName of queryResponse) {
 		let SN = addSchemeName.schemeName;
@@ -163,7 +163,7 @@ let ProcessProgressiveSchemes = function(queryResponse) {
 	ShowProgressiveSchemes(queryResponse, dataArraySchemeName, dataArrayPictoId, dataArrayTime, dataArrayChecked);
 };
 
-let getProgressiveSchemes = async function(URI) {
+let getProgressiveSchemes = async function (URI) {
 	// Eerst bouwen we onze url op
 	const SERVER_ENDPOINT = `${URI}`;
 	// Met de fetch API proberen we de data op te halen.
@@ -174,13 +174,13 @@ let getProgressiveSchemes = async function(URI) {
 	ProcessProgressiveSchemes(queryResponse);
 };
 
-let showClientInfo = function(queryResponseClient) {
+let showClientInfo = function (queryResponseClient) {
 	let FirstName = queryResponseClient.firstName;
 	let LastName = queryResponseClient.lastName;
 	showNameClient(queryResponseClient, FirstName, LastName);
 };
 
-let getClientInfo = async function(URIClient) {
+let getClientInfo = async function (URIClient) {
 	// Eerst bouwen we onze url op
 	const SERVER_ENDPOINT = `${URIClient}`;
 	// Met de fetch API proberen we de data op te halen.
@@ -190,7 +190,7 @@ let getClientInfo = async function(URIClient) {
 	showClientInfo(queryResponseClient);
 };
 
-const fetchData = function(url) {
+const fetchData = function (url) {
 	fetch(url, { headers: customHeaders })
 		.then(r => r.json())
 		.then(data => data);
@@ -210,7 +210,7 @@ const fetchData = function(url) {
 //     "done": true
 // }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 	console.info('domcontentloaded');
 	init();
 });

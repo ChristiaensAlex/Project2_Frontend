@@ -1,28 +1,44 @@
-let fullName, fullNameArr, clients;
+let fullName, fullNameArr, clients, json, deletedClient;
 
 const showAllClients = function(jsonObject) {
 	for (i in jsonObject) {
-		let clientP = document.querySelector('.c-client')
-		console.log(clientP); 
-		let clientClone = clientP.cloneNode(true); 
-		clientClone.classList.remove('u-hide'); 
+		let clientP = document.querySelector('.c-client');
+		console.log(clientP);
+		let clientClone = clientP.cloneNode(true);
+		clientClone.classList.remove('u-hide');
 		let client = jsonObject[i];
 		console.log(client.firstName);
-		let clientName = clientClone.querySelector('.c-client__name'); 
-		console.log(clientName); 
-		clientName.innerHTML = `${client.firstName} ${client.lastName}`; 
-		clients.appendChild(clientClone); 
-	}; 
-  console.log(clients); 
+		let clientInfo = clientClone.querySelector('.c-client__info');
+		clientInfo.setAttribute('clientnr', i);
+		let clientName = clientClone.querySelector('.c-client__name');
+		console.log(clientName);
+		clientName.innerHTML = `${client.firstName} ${client.lastName}`;
+		clients.appendChild(clientClone);
+	}
+	console.log(clients);
 	getElements();
 	ListenToClients(jsonObject);
+	deletes = document.querySelectorAll('.js-client-delete');
+	ListenToDeletes(deletes);
+};
+const ListenToDeletes = function(deletes) {
+	for (let d of deletes) {
+		d.addEventListener('click', function(event) {
+			console.log('vuilbak geklikt');
+			let nr = this.parentElement.querySelector('.c-client__info').getAttribute('clientnr');
+			deletedClient = json[nr];
+			console.log(deletedClient);
+		});
+	}
 };
 
 const ListenToClients = function(jsonObject) {
-	clients = document.querySelectorAll('.js-client');
+	clients = document.querySelectorAll('.c-client__info');
 	for (client of clients) {
 		client.addEventListener('click', function(event) {
+			console.log(this);
 			let nr = this.getAttribute('clientnr');
+			console.log(nr);
 			clientId = jsonObject[nr].id;
 			sessionStorage.clientId = clientId;
 			window.location.href = 'DetailInfoClient.html';
@@ -39,6 +55,7 @@ const getAPI = function(url) {
 			}
 		})
 		.then(function(jsonObject) {
+			json = jsonObject;
 			showAllClients(jsonObject);
 		})
 		.catch(function(error) {
@@ -46,8 +63,9 @@ const getAPI = function(url) {
 		});
 };
 const initClients = function() {
-	mentorId = 'ef4c3f22-6ac3-4143-b9cd-21a23f9ea1fe';
-	getAPI(`https://localhost:44374/api/client/`);
+	MentorId = localStorage.getItem('mentorId');
+	console.log(MentorId);
+	getAPI(`https://trekjeplan.azurewebsites.net/api/mentor/${MentorId}/client`);
 	clients = document.querySelector('.c-clients');
 };
 document.addEventListener('DOMContentLoaded', function() {

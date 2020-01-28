@@ -1,9 +1,7 @@
-
 const postLoginMentorAPI = function(payload) {
-	console.log('registerMentor');
 	let body = JSON.stringify(payload);
 	console.log(body);
-	fetch('https://localhost:44374/api/AuthMentor/Login', {
+	fetch('https://trekjeplan.azurewebsites.net/api/AuthMentor/Login', {
 		method: 'POST',
 		mode: 'cors',
 		cache: 'no-cache',
@@ -11,9 +9,62 @@ const postLoginMentorAPI = function(payload) {
 		headers: { 'Content-Type': 'application/json' },
 		body: body
 	})
-		.then(res => res.json())
+		.then(res => {
+			status = res.status;
+			return res.json();
+		})
+
 		.then(data => {
-			console.log(data), (sessionStorage.mentorId = data.id), console.log(sessionStorage.mentorId);
+			console.log(data);
+			if (status == 200) {
+				removeErrors('email');
+				setSession(data);
+				//console.log(data), (sessionStorage.mentorId = data.id), console.log(sessionStorage.mentorId), (window.location.href = 'MentorHasClientList.html');
+			} else {
+				addErrors('email'), (mailErrorMessage.innerText = data);
+			}
+
+			//
 		})
 		.catch(err => console.log(err));
+};
+
+const setSession = function(res) {
+	console.log(res);
+	localStorage.setItem('token', res.token);
+	readTokeDataFromLocalStorage();
+	window.location.href = 'MentorHasClientList.html';
+};
+
+const isAuthenticated = function() {
+	const expiresAt = new Date(localStorage.getItem('expires_at'));
+
+	if (new Date() < expiresAt) {
+		readTokeDataFromLocalStorage();
+
+		return true;
+	}
+	logOut();
+	return false;
+};
+
+const readTokeDataFromLocalStorage = function() {
+	const token = localStorage.getItem('token');
+	if (token) {
+		let decoded = jwt_decode(token);
+		mentorId = decoded.nameid;
+
+		let unix_timestamp = decoded.exp;
+		var date = new Date(unix_timestamp * 1000);
+		localStorage.setItem('expires_at', date);
+		localStorage.setItem('mentorId', mentorId);
+	}
+};
+
+const logOut = function() {
+	localStorage.removeItem('token');
+	localStorage.removeItem('expires_at');
+	localStorage.removeItem('mentorId');
+	localStorage.clear();
+	mentorId = null;
 };

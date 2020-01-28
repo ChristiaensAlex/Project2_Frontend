@@ -7,10 +7,8 @@ const postMainPicto = function(file, tags){
     var formData = new FormData(); 
     formData.append("tags", tags); 
     formData.append("file", file); 
-    console.log("BASE"); 
-    console.log(baseURL); 
+
     let url = `${baseURL}picto`
-    
     
     fetch(url, {
         method: 'POST',
@@ -24,7 +22,7 @@ const postMainPicto = function(file, tags){
                 console.log(data); 
             })
             .catch(err => console.log(err));
-};
+    };
 
 const init = function(){
     const mainPicto = document.querySelector('.js-uploadMainPicto'); 
@@ -83,6 +81,9 @@ const listenToSelect = function(json){
 
           //console.log(sessionStorage.mainPictoName)
 
+        //   let mainPictoName = json[i].name; 
+        //   sessionStorage.mainPictoName = mainPictoName; 
+        //   console.log(sessionStorage.mainPictoName)
         })
     }
     listenToSelectSubmit();
@@ -99,9 +100,7 @@ const showPictos = function(json){
         console.log(pictoClone.getAttribute('pictonr')); 
         pictoSource.src = `https://trekjeplan.blob.core.windows.net/pictos/${pictoC.name}`; 
         pictos.appendChild(pictoClone); 
-        
     }
-
     listenToSelect(json);
 }
 
@@ -213,9 +212,9 @@ const showMainPicto = function(){
 
  
 
-const loadImage = function(){
-    window.location.href = 'ChoosePhoto.html'; 
-}
+// const loadImage = function(){
+//     window.location.href = 'ChoosePhoto.html'; 
+// }
 
 const listenToSelectSubmit = function(){
     let selectSubmit = document.querySelector('.c-submitbutton'); 
@@ -224,7 +223,7 @@ const listenToSelectSubmit = function(){
 
 document.addEventListener('DOMContentLoaded', function(){
     console.log('DOM loaded - Picture'); 
-    let baseURL ='https://localhost:44374/api/';
+    //let baseURL ='https://localhost:44374/api/';
     let url = `${baseURL}picto`;
     pictos = document.querySelector('.c-choose'); 
     picto = document.querySelector('.c-choose__picto');

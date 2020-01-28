@@ -1,8 +1,8 @@
-const postRegisterMentorAPI = function(payload) {
+const postRegisterMentorAPI = function (payload) {
 	console.log('post');
 	let body = JSON.stringify(payload);
 	console.log(body);
-	fetch('https://localhost:44374/api/AuthMentor/Register', {
+	fetch('https://trekjeplan.azurewebsites.net/api/AuthMentor/Register', {
 		method: 'POST',
 		mode: 'cors',
 		cache: 'no-cache',

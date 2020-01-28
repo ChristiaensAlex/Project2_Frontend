@@ -1,8 +1,8 @@
-const postContactAPI = function(payload, mentorId) {
+const postContactAPI = function (payload, mentorId) {
 	console.log('post contact' + mentorId);
 	let body = JSON.stringify(payload);
 	console.log(body);
-	fetch(`https://localhost:44374/api/mentor/${mentorId}/contact`, {
+	fetch(`https://trekjeplan.azurewebsites.net/api/mentor/${mentorId}/contact`, {
 		method: 'POST',
 		mode: 'cors',
 		cache: 'no-cache',
@@ -17,8 +17,8 @@ const postContactAPI = function(payload, mentorId) {
 		.catch(err => console.log(err));
 };
 
-const ListenToSubmit = function() {
-	submit.addEventListener('click', function(event) {
+const ListenToSubmit = function () {
+	submit.addEventListener('click', function (event) {
 		event.preventDefault();
 		let payload = [];
 		allContacts = document.querySelectorAll('.js-single-step');
@@ -37,18 +37,18 @@ const ListenToSubmit = function() {
 	});
 };
 
-const GetDomElements = function() {
+const GetDomElements = function () {
 	submit = document.querySelector('.js-submitButton');
 	console.log(submit);
 	phonenumber = document.querySelector('.js-phonenumber');
 	firstname = document.querySelector('.js-firstname');
-	sessionStorage.mentorId = 'D3BFEE7D-1599-4D4F-A31F-8E1988F91470';
+	sessionStorage.mentorId = localStorage.getItem('mentorId');
 	console.log(sessionStorage.mentorId);
 
 	ListenToSubmit();
 };
 
-const init = function() {
+const init = function () {
 	console.log('dom loaded');
 	// queryselectors ophalen
 	GetDomElements();

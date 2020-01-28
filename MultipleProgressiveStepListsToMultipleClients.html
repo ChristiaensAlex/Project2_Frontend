@@ -1,0 +1,221 @@
+<html lang="nl">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie-edhge" />
+		<title>Trek Je Plan - Stappenplannen Overzicht</title>
+		<meta name="description" content="De planning van 1 individuele client" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!--STYLE-->
+		<link rel="stylesheet" href="screen.css" />
+		<link rel="stylesheet" href="normalize.css" />
+
+		<!--FONTS-->
+		<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
+		<!--SCRIPT-->
+		<script src="script/multipleclientsprogressiveschemes.js"></script>
+		<!--FAVICON-->
+		<link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png" />
+		<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png" />
+		<link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png" />
+		<link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png" />
+		<link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png" />
+		<link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png" />
+		<link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png" />
+		<link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
+		<link rel="manifest" href="favicon/manifest.json" />
+		<meta name="msapplication-TileColor" content="#1C5C5C" />
+		<meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png" />
+		<meta name="theme-color" content="#1C5C5C" />
+	</head>
+
+	<body>
+		<div class="o-header">
+			<div class="c-logo">
+				<div class="c-logo__symbol">
+					<svg class="c-icon" xmlns="http://www.w3.org/2000/svg" height="48" width="48" viewBox="0 0 151.15 155.57">
+						<defs>
+							<style>
+								.cls-1 {
+									fill: #1d5c5d;
+								}
+							</style>
+						</defs>
+						<title>Asset 2</title>
+						<g id="Layer_2" data-name="Layer 2">
+							<g id="Layer_29" data-name="Layer 29">
+								<path class="cls-1" d="M108,34.58a1.2,1.2,0,0,0-1.69,0l-7.71,7.85L95.16,39l0,0a1.2,1.2,0,0,0-1.69,0,1.25,1.25,0,0,0,0,1.74l4.28,4.37a1.18,1.18,0,0,0,.85.36,1.2,1.2,0,0,0,.86-.36L108,36.34a1.25,1.25,0,0,0,0-1.74Z" />
+								<path class="cls-1" d="M139.71,0H11.44A11.44,11.44,0,0,0,0,11.44V144.13a11.44,11.44,0,0,0,11.44,11.44H139.71a11.44,11.44,0,0,0,11.44-11.44V11.44A11.44,11.44,0,0,0,139.71,0ZM83.9,28.63v99.73h-17V51.17H38.54V28.49H83.9Zm17.19,22.54A11.34,11.34,0,1,1,112.6,39.83,11.42,11.42,0,0,1,101.09,51.17Z" />
+							</g>
+						</g>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<div class="c-card">
+			<section class="c-section_menu">
+				<div class="o-row">
+					<div class="o-container">
+						<form>
+							<div class="c-title__menu">
+								<h3 class="c-title">
+									Meerdere cliënten aan meerdere stappenplannen toevoegen
+								</h3>
+							</div>
+
+							<p>
+								<label class="c-label" for="client">Selecteer clienten</label>
+								<span class="c-search js-client">
+									<input class="c-input c-search-input js-search-client" type="search" placeholder="" name="client" />
+
+									<svg class="c-search__symbol" xmlns="http://www.w3.org/2000/svg" width="25.716" height="25.717" viewBox="0 0 25.716 25.717">
+										<path id="magnifying-glass" d="M28.072,24.747,22.026,18.7a9.839,9.839,0,0,0,1.437-5.136,10.428,10.428,0,0,0-10.2-10.2,9.9,9.9,0,0,0-9.9,9.9,10.428,10.428,0,0,0,10.2,10.2,9.84,9.84,0,0,0,4.984-1.35l6.078,6.082a1.525,1.525,0,0,0,2.154,0l1.509-1.509c.594-.594.378-1.344-.216-1.938ZM6.406,13.259a6.851,6.851,0,0,1,6.851-6.853,7.383,7.383,0,0,1,7.158,7.158,6.854,6.854,0,0,1-6.853,6.853,7.386,7.386,0,0,1-7.157-7.158Z" transform="matrix(0.017, 1, -1, 0.017, 28.577, -3.418)" fill="#fff" />
+									</svg>
+									<div class="js-clients"></div>
+								</span>
+							</p>
+							<!-- <div class="c-search-list">
+                        <div class="c-search-list__item">
+                            <div>
+                                Chloë
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="19.492" height="24" viewBox="0 0 19.492 24">
+                                <g id="bin" transform="translate(0.003 0.001)">
+                                    <path id="Path_316" data-name="Path 316"
+                                        d="M222.96,154.7a.562.562,0,0,0-.562.562v10.623a.562.562,0,1,0,1.124,0V155.265A.562.562,0,0,0,222.96,154.7Zm0,0"
+                                        transform="translate(-209.901 -146.009)" fill="#28225f" />
+                                    <path id="Path_317" data-name="Path 317"
+                                        d="M104.961,154.7a.562.562,0,0,0-.562.562v10.623a.562.562,0,0,0,1.124,0V155.265A.562.562,0,0,0,104.961,154.7Zm0,0"
+                                        transform="translate(-98.534 -146.009)" fill="#28225f" />
+                                    <path id="Path_318" data-name="Path 318"
+                                        d="M1.593,7.144V20.992a3.1,3.1,0,0,0,.824,2.139A2.768,2.768,0,0,0,4.426,24H15.06a2.767,2.767,0,0,0,2.008-.868,3.1,3.1,0,0,0,.824-2.139V7.144a2.147,2.147,0,0,0-.551-4.222H14.464v-.7A2.208,2.208,0,0,0,12.238,0H7.248a2.208,2.208,0,0,0-2.226,2.22v.7H2.144a2.147,2.147,0,0,0-.551,4.222ZM15.06,22.875H4.426a1.78,1.78,0,0,1-1.709-1.883V7.193H16.769v13.8A1.78,1.78,0,0,1,15.06,22.875ZM6.146,2.219a1.083,1.083,0,0,1,1.1-1.1h4.991a1.083,1.083,0,0,1,1.1,1.1v.7H6.146Zm-4,1.827h15.2a1.012,1.012,0,0,1,0,2.023H2.144a1.012,1.012,0,1,1,0-2.023Zm0,0"
+                                        transform="translate(0)" fill="#28225f" />
+                                    <path id="Path_319" data-name="Path 319"
+                                        d="M163.96,154.7a.562.562,0,0,0-.562.562v10.623a.562.562,0,1,0,1.124,0V155.265A.562.562,0,0,0,163.96,154.7Zm0,0"
+                                        transform="translate(-154.217 -146.009)" fill="#28225f" />
+                                </g>
+                            </svg>
+
+                        </div>
+                    </div> -->
+
+							<p>
+								<label class="c-label" for="progressiveScheme">Selecteer stappenplannen</label>
+								<span class="c-search js-progressiveScheme">
+									<input class="c-input c-search-input js-search-progressiveScheme" type="search" placeholder="" name="progressiveScheme" autocomplete="on" />
+
+									<svg class="c-search__symbol" xmlns="http://www.w3.org/2000/svg" width="25.716" height="25.717" viewBox="0 0 25.716 25.717">
+										<path id="magnifying-glass" d="M28.072,24.747,22.026,18.7a9.839,9.839,0,0,0,1.437-5.136,10.428,10.428,0,0,0-10.2-10.2,9.9,9.9,0,0,0-9.9,9.9,10.428,10.428,0,0,0,10.2,10.2,9.84,9.84,0,0,0,4.984-1.35l6.078,6.082a1.525,1.525,0,0,0,2.154,0l1.509-1.509c.594-.594.378-1.344-.216-1.938ZM6.406,13.259a6.851,6.851,0,0,1,6.851-6.853,7.383,7.383,0,0,1,7.158,7.158,6.854,6.854,0,0,1-6.853,6.853,7.386,7.386,0,0,1-7.157-7.158Z" transform="matrix(0.017, 1, -1, 0.017, 28.577, -3.418)" fill="#fff" />
+									</svg>
+									<div class="js-progressiveSchemes"></div>
+								</span>
+							</p>
+							<div class="c-search-list">
+								<!--
+                        <div class="c-search-list__item">
+                            <div>
+                                Wassen
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="19.492" height="24" viewBox="0 0 19.492 24">
+                                <g id="bin" transform="translate(0.003 0.001)">
+                                    <path id="Path_316" data-name="Path 316"
+                                        d="M222.96,154.7a.562.562,0,0,0-.562.562v10.623a.562.562,0,1,0,1.124,0V155.265A.562.562,0,0,0,222.96,154.7Zm0,0"
+                                        transform="translate(-209.901 -146.009)" fill="#28225f" />
+                                    <path id="Path_317" data-name="Path 317"
+                                        d="M104.961,154.7a.562.562,0,0,0-.562.562v10.623a.562.562,0,0,0,1.124,0V155.265A.562.562,0,0,0,104.961,154.7Zm0,0"
+                                        transform="translate(-98.534 -146.009)" fill="#28225f" />
+                                    <path id="Path_318" data-name="Path 318"
+                                        d="M1.593,7.144V20.992a3.1,3.1,0,0,0,.824,2.139A2.768,2.768,0,0,0,4.426,24H15.06a2.767,2.767,0,0,0,2.008-.868,3.1,3.1,0,0,0,.824-2.139V7.144a2.147,2.147,0,0,0-.551-4.222H14.464v-.7A2.208,2.208,0,0,0,12.238,0H7.248a2.208,2.208,0,0,0-2.226,2.22v.7H2.144a2.147,2.147,0,0,0-.551,4.222ZM15.06,22.875H4.426a1.78,1.78,0,0,1-1.709-1.883V7.193H16.769v13.8A1.78,1.78,0,0,1,15.06,22.875ZM6.146,2.219a1.083,1.083,0,0,1,1.1-1.1h4.991a1.083,1.083,0,0,1,1.1,1.1v.7H6.146Zm-4,1.827h15.2a1.012,1.012,0,0,1,0,2.023H2.144a1.012,1.012,0,1,1,0-2.023Zm0,0"
+                                        transform="translate(0)" fill="#28225f" />
+                                    <path id="Path_319" data-name="Path 319"
+                                        d="M163.96,154.7a.562.562,0,0,0-.562.562v10.623a.562.562,0,1,0,1.124,0V155.265A.562.562,0,0,0,163.96,154.7Zm0,0"
+                                        transform="translate(-154.217 -146.009)" fill="#28225f" />
+                                </g>
+                            </svg>
+                        </div>
+
+                        <div class="c-search-list__item">
+                            <div>
+                                Tanden poetsen
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="19.492" height="24" viewBox="0 0 19.492 24">
+                                <g id="bin" transform="translate(0.003 0.001)">
+                                    <path id="Path_316" data-name="Path 316"
+                                        d="M222.96,154.7a.562.562,0,0,0-.562.562v10.623a.562.562,0,1,0,1.124,0V155.265A.562.562,0,0,0,222.96,154.7Zm0,0"
+                                        transform="translate(-209.901 -146.009)" fill="#28225f" />
+                                    <path id="Path_317" data-name="Path 317"
+                                        d="M104.961,154.7a.562.562,0,0,0-.562.562v10.623a.562.562,0,0,0,1.124,0V155.265A.562.562,0,0,0,104.961,154.7Zm0,0"
+                                        transform="translate(-98.534 -146.009)" fill="#28225f" />
+                                    <path id="Path_318" data-name="Path 318"
+                                        d="M1.593,7.144V20.992a3.1,3.1,0,0,0,.824,2.139A2.768,2.768,0,0,0,4.426,24H15.06a2.767,2.767,0,0,0,2.008-.868,3.1,3.1,0,0,0,.824-2.139V7.144a2.147,2.147,0,0,0-.551-4.222H14.464v-.7A2.208,2.208,0,0,0,12.238,0H7.248a2.208,2.208,0,0,0-2.226,2.22v.7H2.144a2.147,2.147,0,0,0-.551,4.222ZM15.06,22.875H4.426a1.78,1.78,0,0,1-1.709-1.883V7.193H16.769v13.8A1.78,1.78,0,0,1,15.06,22.875ZM6.146,2.219a1.083,1.083,0,0,1,1.1-1.1h4.991a1.083,1.083,0,0,1,1.1,1.1v.7H6.146Zm-4,1.827h15.2a1.012,1.012,0,0,1,0,2.023H2.144a1.012,1.012,0,1,1,0-2.023Zm0,0"
+                                        transform="translate(0)" fill="#28225f" />
+                                    <path id="Path_319" data-name="Path 319"
+                                        d="M163.96,154.7a.562.562,0,0,0-.562.562v10.623a.562.562,0,1,0,1.124,0V155.265A.562.562,0,0,0,163.96,154.7Zm0,0"
+                                        transform="translate(-154.217 -146.009)" fill="#28225f" />
+                                </g>
+                            </svg>
+                        </div>
+
+                        <div class="c-search-list__item">
+                            <div>
+                                Appelsiensap drinken
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="19.492" height="24" viewBox="0 0 19.492 24">
+                                <g id="bin" transform="translate(0.003 0.001)">
+                                    <path id="Path_316" data-name="Path 316"
+                                        d="M222.96,154.7a.562.562,0,0,0-.562.562v10.623a.562.562,0,1,0,1.124,0V155.265A.562.562,0,0,0,222.96,154.7Zm0,0"
+                                        transform="translate(-209.901 -146.009)" fill="#28225f" />
+                                    <path id="Path_317" data-name="Path 317"
+                                        d="M104.961,154.7a.562.562,0,0,0-.562.562v10.623a.562.562,0,0,0,1.124,0V155.265A.562.562,0,0,0,104.961,154.7Zm0,0"
+                                        transform="translate(-98.534 -146.009)" fill="#28225f" />
+                                    <path id="Path_318" data-name="Path 318"
+                                        d="M1.593,7.144V20.992a3.1,3.1,0,0,0,.824,2.139A2.768,2.768,0,0,0,4.426,24H15.06a2.767,2.767,0,0,0,2.008-.868,3.1,3.1,0,0,0,.824-2.139V7.144a2.147,2.147,0,0,0-.551-4.222H14.464v-.7A2.208,2.208,0,0,0,12.238,0H7.248a2.208,2.208,0,0,0-2.226,2.22v.7H2.144a2.147,2.147,0,0,0-.551,4.222ZM15.06,22.875H4.426a1.78,1.78,0,0,1-1.709-1.883V7.193H16.769v13.8A1.78,1.78,0,0,1,15.06,22.875ZM6.146,2.219a1.083,1.083,0,0,1,1.1-1.1h4.991a1.083,1.083,0,0,1,1.1,1.1v.7H6.146Zm-4,1.827h15.2a1.012,1.012,0,0,1,0,2.023H2.144a1.012,1.012,0,1,1,0-2.023Zm0,0"
+                                        transform="translate(0)" fill="#28225f" />
+                                    <path id="Path_319" data-name="Path 319"
+                                        d="M163.96,154.7a.562.562,0,0,0-.562.562v10.623a.562.562,0,1,0,1.124,0V155.265A.562.562,0,0,0,163.96,154.7Zm0,0"
+                                        transform="translate(-154.217 -146.009)" fill="#28225f" />
+                                </g>
+                            </svg>
+                        </div>
+                     -->
+							</div>
+							<div class="c-buttonrow">
+								<a href="MentorHasCalendar.html" class="o-button-reset c-button c-backbutton">
+									<svg class=" c-backbutton__arrow" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="36" height="36" viewBox="0 0 400.004 400.004" style="enable-background:new 0 0 400.004 400.004;" xml:space="preserve">
+										<path
+											d="M382.688,182.686H59.116l77.209-77.214c6.764-6.76,6.764-17.726,0-24.485c-6.764-6.764-17.73-6.764-24.484,0L5.073,187.757
+                c-6.764,6.76-6.764,17.727,0,24.485l106.768,106.775c3.381,3.383,7.812,5.072,12.242,5.072c4.43,0,8.861-1.689,12.242-5.072
+                c6.764-6.76,6.764-17.726,0-24.484l-77.209-77.218h323.572c9.562,0,17.316-7.753,17.316-17.315
+                C400.004,190.438,392.251,182.686,382.688,182.686z"
+										/>
+									</svg>
+									<div class="c-backbutton__text">
+										Terug
+									</div>
+								</a>
+								<button class="o-button-reset c-button c-submitbutton js-submitbutton">
+									<div>
+										Volgende
+									</div>
+									<svg class=" c-submitbutton__arrow" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="36" height="36" viewBox="0 0 400.004 400.004" style="enable-background:new 0 0 400.004 400.004;" xml:space="preserve">
+										<path
+											d="M382.688,182.686H59.116l77.209-77.214c6.764-6.76,6.764-17.726,0-24.485c-6.764-6.764-17.73-6.764-24.484,0L5.073,187.757
+                                        c-6.764,6.76-6.764,17.727,0,24.485l106.768,106.775c3.381,3.383,7.812,5.072,12.242,5.072c4.43,0,8.861-1.689,12.242-5.072
+                                        c6.764-6.76,6.764-17.726,0-24.484l-77.209-77.218h323.572c9.562,0,17.316-7.753,17.316-17.315
+                                        C400.004,190.438,392.251,182.686,382.688,182.686z"
+										/>
+									</svg>
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</section>
+		</div>
+	</body>
+</html>

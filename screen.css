@@ -13,6 +13,7 @@
 	--global-color-beta: #1c5c5c;
 	--global-color-omega: #27255f;
 
+	--global-color-neutral-xxxxx-light: white;
 	--global-color-neutral-xxxx-light: white;
 	--global-color-neutral-xxx-light: #fafaff;
 	--global-color-neutral-xx-light: #ececf0;
@@ -176,9 +177,11 @@ li ul,
 li ol {
 	margin-bottom: 0;
 }
+
 ul {
 	list-style-type: none;
 }
+
 blockquote {
 	font-style: normal;
 	font-size: var(--global-fontsize-md);
@@ -589,6 +592,7 @@ body {
 	/* Corrects inability to style clickable `input` types in iOS */
 	-webkit-appearance: none;
 }
+
 /*------------------------------------*\
   #COMPONENTS
   \*------------------------------------*/
@@ -747,12 +751,12 @@ body {
 	padding-bottom: var(--global-whitespace-md);
 }
 
-.c-title__AddClientsToProgressiveSteps {
+/* .c-title__AddClientsToProgressiveSteps {
 	display: flex;
 	font-size: var(--global-fontsize-md);
 	justify-content: space-between;
 	align-content: center;
-}
+} */
 
 .c-title__menu-alignleft {
 	display: flex;
@@ -769,13 +773,13 @@ body {
 /*
     Component: card
 */
+
 .c-card {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: calc(100vh - 92px);
 }
-
 @media (min-width: 1200px) {
 	.c-card {
 		height: 100vh;
@@ -816,6 +820,7 @@ body {
 	padding-left: var(--global-whitespace-md);
 	padding-right: var(--global-whitespace-lg);
 }
+
 @media (min-width: 768px) {
 	.c-form-AddStep {
 		padding-left: var(--global-whitespace);
@@ -929,7 +934,7 @@ Component: Spread
 }
 
 .c-error .c-icon {
-	margin-right: var(--global-baseline);
+	margin-right: 8px;
 }
 /*
   Component: Custom input
@@ -999,12 +1004,12 @@ Component: Spread
     ---
     Custom select dropdown
 */
-
 .c-custom-select {
 	display: block;
 	position: relative;
 	border-radius: var(--global-borderRadius-sm);
 }
+
 .c-custom-select__input {
 	font-size: inherit;
 	color: inherit;
@@ -1015,7 +1020,6 @@ Component: Spread
 	background-color: transparent;
 	border-radius: var(--global-borderRadius);
 } */
-
 .c-custom-select__symbol {
 	width: var(--global-whitespace);
 	height: var(--global-whitespace);
@@ -1033,12 +1037,13 @@ Component: Spread
 .c-custom-select__input :last-child {
 	border-radius: var(--global-borderRadius-sm);
 }
-/*Search*/
 
 .c-input-search {
-	padding-bottom: var(--global-whitespace-md);
+	padding-botom: var(--global-whitespace-md);
 }
-
+.c-search-input {
+	margin-bottom: var(--global-whitespace-md);
+}
 .c-search__symbol {
 	position: absolute;
 	right: 8px;
@@ -1077,6 +1082,11 @@ Component: Spread
 	justify-content: space-between;
 	padding: var(--global-baseline);
 	border: 1px solid var(--global-color-omega);
+}
+
+.c-input-points {
+	width: 50%;
+	padding: 9px var(--global-baseline);
 }
 .c-input-points {
 	width: 50%;
@@ -1136,7 +1146,7 @@ Component: Spread
   Custom button
 */
 .c-button {
-	border-radius: var(--global-borderRadius-sm);
+	border-radius: var(--global-borderRadius);
 	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
 	font-size: var(--global-fontsize-md);
 	line-height: calc(var(--global-fontsize-md) * 1.5);
@@ -1430,7 +1440,7 @@ justify-items: center; */
 	font-size: var(--global-fontsize-sm);
 	border-radius: var(--global-borderRadius-lg);
 	line-height: var(--global-fontsize-sm);
-	padding: var(--global-baseline) 0;
+	padding: 8px 0;
 	height: 100%;
 }
 
@@ -1443,6 +1453,7 @@ justify-items: center; */
 	justify-content: center;
 	align-items: center;
 }
+
 /*Component: Calendar
  A mentor has an overview of all his clients
 
@@ -1541,15 +1552,13 @@ padding-top: 100%;
   position: relative;
 }
 
-@media (min-width: 576px) {
-	.c-choose {
-		grid-template-columns: repeat(6, 1fr);
-	}
+.c-choose__picto-check {
+	position: relative;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 576px) {
 	.c-choose {
-		grid-template-columns: repeat(7, 1fr);
+		grid-template-columns: repeat(5, 1fr);
 	}
 }
 
@@ -1592,7 +1601,7 @@ padding-top: 100%;
 
 .c-clients .c-client {
 	display: grid;
-	grid-template-columns: 64px 1fr 20px;
+	grid-template-columns: 1fr 20px;
 	grid-template-rows: auto auto;
 	background-color: var(--global-color-neutral-x-light-transparent);
 	height: calc(var(--global-baseline) * 10);
@@ -1600,7 +1609,10 @@ padding-top: 100%;
 	padding: var(--global-baseline);
 	border-radius: var(--global-borderRadius-md);
 }
-
+.c-client__info {
+	display: flex;
+	grid-row: span 2;
+}
 .c-client__userPhoto {
 	justify-content: center;
 	align-items: center;
@@ -1638,12 +1650,13 @@ padding-top: 100%;
 		width: 300px;
 	}
 }
-/*Component: PlanningList
- A mentor has an overview of the planning of today
-  */
+
 .c-ascribeclient-page {
 	max-width: 310px;
 }
+/*Component: PlanningList
+ A mentor has an overview of the planning of today
+  */
 .c-hour {
 	font-size: var(--global-fontsize);
 }
@@ -1752,7 +1765,7 @@ padding-top: 100%;
 
 .c-stepplans .c-stepplan {
 	display: grid;
-	grid-template-columns: 64px 1fr 20px;
+	grid-template-columns: 1fr 20px;
 	grid-template-rows: auto auto;
 	background-color: var(--global-color-neutral-x-light-transparent);
 	height: calc(var(--global-baseline) * 10);
@@ -1761,6 +1774,10 @@ padding-top: 100%;
 	border-radius: var(--global-borderRadius-md);
 }
 
+.c-stepplan__info {
+	display: flex;
+	grid-row: span 2;
+}
 .c-stepplan__picto {
 	grid-row: span 2;
 }
@@ -1780,9 +1797,10 @@ padding-top: 100%;
 }
 
 .c-stepplan__delete {
-	grid-column: 3;
+	grid-column: 2;
 	display: flex;
 	align-items: center;
+	height: var(--global-whitespace);
 }
 
 @media (min-width: 992px) {
@@ -2174,9 +2192,9 @@ navigation footer for menu mentor
 
 @media (min-width: 1200px) {
 	/* .c-section_menu{ 
-    padding: 0 calc(var(--global-whitespace-xxl)*6);
-    mag hier niet staan of fuck-up andere schermen
-  } */
+	padding: 0 calc(var(--global-whitespace-xxl)*6);
+	mag hier niet staan of fuck-up andere schermen
+} */
 	.c-section_menu-profile {
 		padding: 0 calc(var(--global-whitespace-xxl) * 6);
 	}
@@ -2272,8 +2290,8 @@ navigation footer for menu mentor
 	align-self: center;
 	width: calc(var(--global-baseline) * 7);
 	height: calc(var(--global-baseline) * 7);
-	border: var(--global-borderWidth) solid var(--global-color-omega);
-	border-radius: 100%;
+	/* border: var(--global-borderWidth) solid var(--global-color-omega);
+	border-radius: 100%; */
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -2309,6 +2327,7 @@ gives client feedback by congratulating them on finishing a progressive scheme a
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	margin: 0 var(--global-whitespace-lg);
 }
 
 .c-congrats {
@@ -2337,32 +2356,51 @@ gives client feedback by congratulating them on finishing a progressive scheme a
 	margin-bottom: var(--global-whitespace-lg);
 }
 
-.c-congrats__bar {
-  width: 100%;
-  height: var(--global-whitespace);
-  background-color: var(--global-color-neutral-xx-light);
-  border-radius: var(--global-borderRadius-lg);
+/* .c-congrats__bar {
+	position: relative;
+	width: 100%;
+	height: var(--global-whitespace);
 }
 
-.c-congrats__bar-progress{
-  width: 0; 
-  height: var(--global-whitespace);
-  background-color: var(--global-color-alpha);
-  z-index: 20 ;
-  border-radius: var(--global-borderRadius-lg) 0 0 var(--global-borderRadius-lg) ; 
-}
-
-@keyframes extension{
-  0%{
-    width: var(--global-previousCoins);
-  }
-  100%{
-    width: var(--global-newCoins); 
-  }
+.c-progressbar__front {
+  position: absolute;
+  left: 0;
+  height: 100%;
 }
 
 .c-progressbar__back {
-  width: 100%;
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 100%;
+} */
+
+.c-congrats__bar {
+	width: 100%;
+	height: var(--global-whitespace);
+	background-color: var(--global-color-neutral-xx-light);
+	border-radius: var(--global-borderRadius-lg);
+}
+
+.c-congrats__bar-progress {
+	width: 0;
+	height: var(--global-whitespace);
+	background-color: var(--global-color-alpha);
+	z-index: 20;
+	border-radius: var(--global-borderRadius-lg) 0 0 var(--global-borderRadius-lg);
+}
+
+@keyframes extension {
+	0% {
+		width: var(--global-previousCoins);
+	}
+	100% {
+		width: var(--global-newCoins);
+	}
+}
+
+.c-progressbar__back {
+	width: 100%;
 }
 
 
@@ -2485,8 +2523,6 @@ mentor can see detail info of client and can choose between calendar, profile in
 .c-clientname {
 	font-size: var(--global-fontsize-lg);
 }
-
-/*component: diagram*/
 
 .c-bodyDetailClient {
 	height: calc(100vh - 140px);

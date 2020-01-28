@@ -1,8 +1,8 @@
 let deleteClient, background, deleteProgressiveScheme, stepImages, mainImage, divElement;
 
 const OnHandlerClickedCancel = function() {
-  background.classList.remove('c-popup-blur');
-  popup.style.display = 'none';
+	background.classList.remove('c-popup-blur');
+	popup.style.display = 'none';
 };
 
 const onHandlerClickedPopUp = function(picto, element) {
@@ -53,6 +53,6 @@ const getElements = function() {
 };
 
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('DOM loaded - popup');
-  getElements(); 
+	console.log('DOM loaded - popup');
+	getElements();
 });
