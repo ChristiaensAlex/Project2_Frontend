@@ -29,6 +29,7 @@ const showStepsFromProgressiveScheme = function(payload) {
 };
 
 const fillInputsFromEditPlan = function(payload) {
+	console.log(payload);
 	let steps = payload.steps;
 	let progressiveSchemeSteps = document.querySelector('.js-edit-scheme');
 	for (i in steps) {
@@ -64,6 +65,8 @@ const showOneProgressiveScheme = function(payload) {
 		progressiveSchemeName.innerHTML = payload.name;
 		showStepsFromProgressiveScheme(payload);
 	} else if (editPlanName) {
+		console.log('EDIT');
+		console.log(editPlanName);
 		editPlanName.value = payload.name;
 		document.querySelector('.js-mainImg').innerHTML = `<img class="c-selectedPicto js-selected-picto" src="https://trekjeplan.blob.core.windows.net/pictos/${payload.pictoFilleName}" width="104px" height="auto" data-img="${payload.pictoFilleName}"/>`;
 		fillInputsFromEditPlan(payload);
@@ -72,6 +75,7 @@ const showOneProgressiveScheme = function(payload) {
 
 const getProgressiveSchemeById = function(baseURL) {
 	let id = sessionStorage.planId;
+	console.log(id);
 	let url = `${baseURL}progressiveScheme/${id}`;
 	fetch(url)
 		.then(function(response) {
@@ -93,8 +97,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	console.log('DOM loaded - Overview progressive scheme ');
 	baseURL = 'https://trekjeplan.azurewebsites.net/api/';
 	console.log(document.title);
-	if (document.title == 'Trek Je Plan - Overzicht stappen in stappenplan - Mentor') {
+	if (document.title == 'Trek Je Plan - Overzicht stappen in stappenplan - Mentor' || document.title == 'Trek Je Plan - Wijzig een stappenplan') {
 		console.log('IN IF ');
-		getProgressiveSchemeById();
+		getProgressiveSchemeById(baseURL);
 	}
 });

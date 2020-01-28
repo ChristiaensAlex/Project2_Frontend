@@ -217,8 +217,11 @@ C400.004,190.438,392.251,182.686,382.688,182.686z"
 				
 			  </div>
 			  <div class="c-upload">
-				<input type="file" class="o-button-reset c-button c-uploadbutton js-uploadMainPicto" text="Uploaden">
-				<div class="c-uploadbutton__arrowbox">
+				  <div class="c-uploadbutton-design">
+					<input  class="o-button-reset c-button c-uploadbutton js-uploadMainPicto" type="file" text="Uploaden" name="picto"/>
+						
+					<label class="c-uploadbutton-design__text"   for="picto">Choose a file </label>
+					<span class="c-uploadbutton__arrowbox">
 					<svg class=" c-uploadbutton__arrow" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="36" height="36" viewBox="0 0 400.004 400.004" style="enable-background:new 0 0 400.004 400.004;" xml:space="preserve">
 					  <path
 						d="M382.688,182.686H59.116l77.209-77.214c6.764-6.76,6.764-17.726,0-24.485c-6.764-6.764-17.73-6.764-24.484,0L5.073,187.757
@@ -227,16 +230,17 @@ C400.004,190.438,392.251,182.686,382.688,182.686z"
 																																C400.004,190.438,392.251,182.686,382.688,182.686z"
 					  />
 					</svg>
-				  </div>
-				</input>
+				</span>
+			</div>
+				
 			  </div>
 			  <div>
-				<label for="imageTag">Tags (Gescheiden door ,) </label>
+				<label type="file"  for="imageTag">Tags (Gescheiden door ,) </label>
 				  <input type="text" class=" c-input js-tagInput" name="imageTag">
 				  
 			  </div>
 	
-			  <div class=" c-buttonrow">
+			  <div class=" c-buttonrow c-submit-uploadPicto">
 				<button class="o-button-reset c-button c-submitbutton c-submitbutton-long c-submitbutton-picto">
 				  <!-- moet lichter zijn totdat er een foto of pictogram gekozen is -->
 				  <div>

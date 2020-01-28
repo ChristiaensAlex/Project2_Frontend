@@ -6,13 +6,14 @@ const showAllProgressiveSchemes = function(jsonObject) {
 			jsonObject[i].pictoFilleName = '23e5daf5-2eb6-4693-b245-3ee7f91e04af.jpg';
 		}
 		progressiveSchemes.innerHTML += `<div class="c-stepplan" >
-		<div class= "c-stepplan__info " plannr=${i}> <div class="c-stepplan__picto">
-		<img class="c-choose__picto-img" src="https://trekjeplan.blob.core.windows.net/pictos/${jsonObject[i].pictoFilleName}" width="104px" height="auto"
+		<div class= "c-stepplan__info " plannr=${i}> 
+		<div class="c-stepplan__picto">
+		<img class="c-choose__picto-img" src="https://trekjeplan.blob.core.windows.net/pictos/${jsonObject[i].pictoFilleName}" width="104px" height="auto"/>
         </div>
         <div class="c-stepplan__name">
            ${jsonObject[i].name}
         </div>
-
+		</div>
         <div class="c-stepplan__delete js-progressivescheme-delete">
             <svg xmlns="http://www.w3.org/2000/svg" width="19.492" height="24" viewBox="0 0 19.492 24">
                 <g id="bin" transform="translate(0.003 0.001)">
@@ -166,7 +167,6 @@ const getInputFieldsScheme = function() {
 		let counter = 1;
 		console.log(json);
 		for (object of json.steps) {
-
 			object.descriptionStep = stepDescription[counter].value;
 			object.sequence = counter;
 			object.pictoFilleName = stepImg[counter].dataset.img;
@@ -174,7 +174,7 @@ const getInputFieldsScheme = function() {
 			counter++;
 		}
 
-		console.log(counter)
+		console.log(counter);
 		for (i = counter; i < stepNumber.length; i++) {
 			let step = {
 				descriptionStep: stepDescription[i].value,
@@ -192,7 +192,6 @@ const getInputFieldsScheme = function() {
 			totalSteps: stepNumber.length - 1,
 			steps: payload
 		};
-
 
 		console.log(updatedScheme);
 		putProgressiveScheme(updatedScheme);
@@ -240,7 +239,8 @@ const initProgressiveSchemes = function() {
 		submitProgressiveScheme.addEventListener('click', function() {
 			// enige verplichte is PICTO nu default waarde
 			if (mainImage) {
-				mainImage.value = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
+				console.log(mainImage.value);
+				// mainImage.value = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
 				getInputFieldsScheme();
 			}
 		});

@@ -1114,18 +1114,46 @@
   
   .c-upload {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     margin: calc(var(--global-whitespace-xs) * 5);
+
   }
   
   .c-uploadbutton {
+    
+    /* width: 0.1px;
+    height: 0.1px; */
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    
+  }
+
+  .c-uploadbutton-design{
     border: none;
     color: var(--global-color-neutral-xxx-light);
     background-color: #438787;
     height: 36px;
     width: calc(var(--global-whitespace) * 16);
+    position: relative;
+    text-align: center;
+    width: calc(100% - 24px);
   }
-  
+  .c-uploadbutton-design__text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .c-uploadbutton:focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+  }
   .c-uploadbutton__arrowbox {
     border-radius: var(--global-borderRadius);
     background-color: var(--global-color-beta);
@@ -1134,6 +1162,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    top: 0;
+    right:-18px;
   }
   
   .c-uploadbutton__arrow {
@@ -1673,6 +1704,7 @@
     grid-column: span 1;
     display: flex;
     align-items: center;
+    justify-self: center;
   }
   
   .c-stepplan__pencil {
