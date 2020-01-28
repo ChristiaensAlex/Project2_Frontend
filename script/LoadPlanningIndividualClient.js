@@ -4,7 +4,7 @@ customHeaders.append('Accept', 'application/json');
 
 let now;
 
-MentorId = 'EF4C3F22-6AC3-4143-B9CD-21A23F9EA1FE';
+MentorId = localStorage.getItem('mentorId');
 //ClientId = '1d32717c-4c22-40a2-650e-08d79a90abfb';
 ClientId = sessionStorage.clientId;
 URIStart = 'https://trekjeplan.azurewebsites.net/api/clientprogressiveScheme/';

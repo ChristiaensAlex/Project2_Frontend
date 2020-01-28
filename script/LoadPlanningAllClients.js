@@ -4,7 +4,7 @@ customHeaders.append("Accept", "application/json");
 
 let now;
 
-MentorId = localStorage.mentorId;
+MentorId = localStorage.getItem('mentorId');
 URIStart = "https://trekjeplan.azurewebsites.net/api/clientprogressiveScheme/";
 // console.log(URIClient);
 

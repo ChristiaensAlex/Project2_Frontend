@@ -37,11 +37,44 @@ const postResetPW = function (url, payload) {
 		.catch(err => console.log(err));
 };
 
-const ListenToSubmitButton = function (button) {
+const GetMentorInfo = function (mentorId) {
+	let url = `https://trekjeplan.azurewebsites.net/api/mentor/${mentorId}`;
+	fetch(url)
+		.then(function (response) {
+			if (!response.ok) {
+				throw Error(`Problem to fetch(). Status code: ${response.status}`);
+			} else {
+				let arr = new Array();
+				arr = response.json();
+				console.log(arr);
+				return arr;
+			}
+		})
+		.then(function (jsonObject) {
+			json = jsonObject;
+			console.log(jsonObject);
+			GetMentorEmail(jsonObject);
+		})
+		.catch(function (error) {
+			console.log(error);
+			console.error(`Problem to process json $`);
+		});
+
+};
+
+
+const GetMentorEmail = function (json) {
+	emailMentor = json.email;
+	console.log(emailMentor);
+	submit = document.querySelector('.js-changePwButton');
+	ListenToSubmitButton(submit, emailMentor);
+};
+
+const ListenToSubmitButton = function (button, emailMentor) {
 	button.addEventListener('click', function (event) {
 		event.preventDefault();
 		let payload = {
-			email: 'alexandra.christiaens@student.howest.be',
+			email: emailMentor,
 			oldPassword: pwInput.value,
 			password: passwordInput.value,
 			passwordComfirmation: passwordRepeatInput.value
@@ -54,6 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	//password = document.querySelector('.js-oldPassword');
 	// newPw = document.querySelector('.js-newPassword');
 	// confirmPw = document.querySelector('.js-passwordConfirm');
-	submit = document.querySelector('.js-changePwButton');
-	ListenToSubmitButton(submit);
+	sessionStorage.mentorId = localStorage.getItem('mentorId');
+	mentorId = sessionStorage.mentorId;
+	GetMentorInfo(mentorId);
 });

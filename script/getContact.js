@@ -205,7 +205,7 @@ const ListenToSubmit = function (button) {
 };
 document.addEventListener('DOMContentLoaded', function () {
 	console.log('DOM loaded - contact');
-	mentorId = 'EF4C3F22-6AC3-4143-B9CD-21A23F9EA1FE';
+	mentorId = localStorage.getItem('mentorId');
 	getContactElements();
 	getContacts(mentorId);
 });

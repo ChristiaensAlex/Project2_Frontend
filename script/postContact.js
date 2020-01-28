@@ -42,7 +42,7 @@ const GetDomElements = function () {
 	console.log(submit);
 	phonenumber = document.querySelector('.js-phonenumber');
 	firstname = document.querySelector('.js-firstname');
-	sessionStorage.mentorId = 'D3BFEE7D-1599-4D4F-A31F-8E1988F91470';
+	sessionStorage.mentorId = localStorage.getItem('mentorId');
 	console.log(sessionStorage.mentorId);
 
 	ListenToSubmit();
