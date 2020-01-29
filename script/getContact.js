@@ -223,10 +223,12 @@ const ListenToSubmit = function(button) {
 	button.addEventListener('click', function(event) {
 		event.preventDefault();
 		let payload = [];
-		allContacts = document.querySelectorAll('.js-single-step');
+		allContacts = document.querySelectorAll('.js-contact');
 		console.log(allContacts);
+		//delete allContacts[0];
 		counter = 0;
 		console.log(json);
+
 		for (object of json) {
 			object.firstName = allContacts[counter].querySelector('.js-firstname').value;
 			object.phoneNumber = allContacts[counter].querySelector('.js-phonenumber').value;
@@ -236,7 +238,7 @@ const ListenToSubmit = function(button) {
 			counter++;
 		}
 
-		for (i = counter; i < allContacts.length; i++) {
+		for (i = 0; i < allContacts.length; i++) {
 			let contact = {
 				firstName: allContacts[i].querySelector('.js-firstname').value,
 				phoneNumber: allContacts[i].querySelector('.js-phonenumber').value,
