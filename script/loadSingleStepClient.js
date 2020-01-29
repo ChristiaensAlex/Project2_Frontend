@@ -47,6 +47,7 @@ const putStepFullFilled = function() {
     headers: { 'Content-Type': 'application/json' }
   })
     .then(response => {
+      console.log(response.json());
       return response.json();
     })
     .then(data => {
@@ -59,6 +60,7 @@ const putStepFullFilled = function() {
 };
 
 const putStartTime = function() {
+  console.log('putStart');
   let url = `${baseURL}client/progressiveScheme/${clientProgressiveSchemeId}/startTime`;
   fetch(url, {
     method: 'PUT',
@@ -69,7 +71,7 @@ const putStartTime = function() {
   })
     .then(data => {
       console.log(data);
-      getSteps(clientProgressiveSchemeId);
+      //getSteps(clientProgressiveSchemeId);
     })
     .catch(err => console.log(err));
 };
@@ -98,9 +100,7 @@ const showStepsClient = function(json) {
 
   document.querySelector('.swiper-wrapper').innerHTML = html;
   mySwiper.update();
-  mySwiper.on('reachBeginning', function(e) {
-    console.log(e);
-  });
+  mySwiper.on('reachBeginning', function(e) {});
   // let startTouch;
   // let nextTouch;
   // if (end == true) {
@@ -126,7 +126,6 @@ mySwiper.on('reachEnd', function() {
   console.log('Einde touch');
   mySwiper.on('touchStart', function(e) {
     console.log('Start');
-    console.log(e);
     if (e.touches) {
       startTouch = e.touches[0].screenX;
       console.log(startTouch);
@@ -135,21 +134,19 @@ mySwiper.on('reachEnd', function() {
     }
   });
   mySwiper.on('touchMove', function(e) {
-    console.log('beweging');
-    console.log(e);
     let currentTouch;
+    if (activeIndex == 1) {
+      putStepFullFilled();
+    }
     if (e.touches) {
       currentTouch = e.touches[0].screenX;
       if (startTouch > currentTouch) {
-        console.log('eventje rechts');
-        window.location.href = 'FinishedProgressiveScheme.html';
+        //window.location.href = 'FinishedProgressiveScheme.html';
       }
     } else if (e.screenX) {
-      console.log('HIERZOOO');
       currentTouch = e.screenX;
       if (startTouch > currentTouch) {
-        console.log('eventje rechts');
-        window.location.href = 'FinishedProgressiveScheme.html';
+        //window.location.href = 'FinishedProgressiveScheme.html';
       }
     }
   });
