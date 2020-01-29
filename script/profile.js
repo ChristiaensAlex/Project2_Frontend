@@ -4,19 +4,10 @@ let baseURL = 'https://trekjeplan.azurewebsites.net/api/',
 	email,
 	submitButton;
 
-	
-const isValidEmailAddress = function (emailAddress) {
-	// Basis manier om e-mailadres te checken.
-	return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailAddress);
-};
-
-const isEmpty = function (fieldValue) {
-	return !fieldValue || !fieldValue.length;
-};
 const showProfileInfo = function(jsonObject) {
 	sessionStorage.mentorId = jsonObject.id;
-	console.log(submitButton);
-	if (submitButton) {
+	//console.log(submitButton);
+	if (editButton) {
 		console.log('invullen values');
 		firstName.value = jsonObject.firstName;
 		lastName.value = jsonObject.lastName;
@@ -67,29 +58,33 @@ const EditMentorProfile = function(payload, mentorId) {
 		// })
 		.catch(err => console.log(err));
 };
-const ListenToSubmitButton = function(button) {
-	button.addEventListener('click', function(e) {
-		e.preventDefault();
-		if 
-	
-		let payload = {
-			id: sessionStorage.mentorId,
-			firstName: firstName.value,
-			lastName: lastName.value,
-			email: email.value
-		};
-		console.log(payload);
-		EditMentorProfile(payload, mentorId);
-	});
-};
+// const ListenToSubmitButton = function(button) {
+// 	button.addEventListener('click', function(e) {
+// 		e.preventDefault();
+// 		if (!isEmpty(email.value) && isValidEmailAddress(email.value)) {
+// 			let payload = {
+// 				id: sessionStorage.mentorId,
+// 				firstName: firstName.value,
+// 				lastName: lastName.value,
+// 				email: email.value
+// 			};
+// 			console.log(payload);
+// 			EditMentorProfile(payload, mentorId);
+// 		}
+// 		else if(isEmpty(email.value)){
+// 			addErrors
+// 		}
+// 	});
+// };
 const getProfileElements = function() {
-	submitButton = document.querySelector('.js-submitbutton');
-	console.log(submitButton);
-	if (submitButton) {
+	// submitButton = document.querySelector('.js-submitbutton');
+	// console.log(submitButton);
+	console.log(editButton);
+	if (editButton) {
 		firstName = document.querySelector('.js-firstname');
 		lastName = document.querySelector('.js-lastname');
 		email = document.querySelector('.js-email');
-		ListenToSubmitButton(submitButton);
+		//	ListenToSubmitButton(submitButton);
 	} else {
 		firstName = document.querySelector('.js-profile-firstName');
 		lastName = document.querySelector('.js-profile-lastName');
