@@ -23,7 +23,7 @@ const postCP = function(url, payload) {
   })
     .then(res => res.json())
     .then(data => {
-      console.log(data), console.log(data), (window.location.href = backPage);
+      console.log(data), console.log(data), (window.location.href = 'DetailProgressiveStepsPlan.html');
     })
     .catch(err => console.log(err));
 };
