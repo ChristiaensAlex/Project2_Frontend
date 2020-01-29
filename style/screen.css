@@ -2050,7 +2050,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-self: center;
+      
     }
   }
   .c-topLeftLogo {
@@ -2444,7 +2444,15 @@
     display: grid;
     grid-template-columns: 36px 1fr 36px;
     grid-template-rows: 36px 32px;
-    margin-top: var(--global-whitespace);
+    margin-top: var(--global-whitespace-xl);
+    min-width: 100%;
+  }
+  .c-topbarDetailProgressiveSteps .c-logo__symbol{
+    height: 36px;
+  }
+  .c-topbarDetailProgressiveSteps .c-navigation__close{
+    grid-column: 3;
+    margin: 0;
   }
   .c-topbarDetailClient .c-navigation__close {
     grid-column: 3;
