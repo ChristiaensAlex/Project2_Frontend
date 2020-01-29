@@ -2,7 +2,8 @@ baseURL = 'https:/trekjeplan.azurewebsites.net/api/';
 var beginning;
 var end;
 let step;
-let activeIndex, startTouch;
+let startTouch;
+let touchEnd = false;
 
 let progressiveStepPlanBeginning = function(isBeginning) {
   beginning = isBeginning;
@@ -46,17 +47,35 @@ const putStepFullFilled = function() {
     credentials: 'same-origin',
     headers: { 'Content-Type': 'application/json' }
   })
-    .then(response => {
-      console.log(response.json());
-      return response.json();
+    .then(function(response) {
+      if (!response.ok) {
+        throw Error(`Problem to fetch(). Status code: ${response.status}`);
+      } else {
+        let arr = new Array();
+        arr = response.json();
+        return arr;
+      }
     })
-    .then(data => {
+    .then(function(data) {
       sessionStorage.coinsToEarn = data.coinsToEarn;
-      console.log('GET');
-      console.log(clientId);
-      //getClient(clientId);
+      touchEnd = true;
     })
-    .catch(err => console.log(err));
+    .catch(function(error) {
+      console.error(`Problem to process json ${error}`);
+    });
+};
+
+const putStepGoBack = function() {
+  let url = `${baseURL}client/progressiveScheme/${clientProgressiveSchemeId}/goBack`;
+  fetch(url, {
+    method: 'PUT',
+    mode: 'cors',
+    cache: 'no-cache',
+    credentials: 'same-origin',
+    headers: { 'Content-Type': 'application/json' }
+  }).catch(function(error) {
+    console.error(`Problem to process json ${error}`);
+  });
 };
 
 const putStartTime = function() {
@@ -71,7 +90,6 @@ const putStartTime = function() {
   })
     .then(data => {
       console.log(data);
-      //getSteps(clientProgressiveSchemeId);
     })
     .catch(err => console.log(err));
 };
@@ -104,30 +122,9 @@ const showStepsClient = function(json) {
 
   document.querySelector('.swiper-wrapper').innerHTML = html;
   mySwiper.update();
-  mySwiper.on('reachBeginning', function(e) {});
-  // let startTouch;
-  // let nextTouch;
-  // if (end == true) {
-  // 	console.log('Einde touch');
-  // 	mySwiper.on('touchStart', function(e) {
-  // 		console.log('Start');
-  // 		console.log(e);
-  // 		startTouch = e.screenX;
-  // 		console.log(startTouch);
-  // 	});
-  // 	mySwiper.on('touchMove', function(e) {
-  // 		console.log('beweging');
-  // 		console.log(e);
-  // 		if (startTouch > e.screenX) {
-  // 			console.log('eventje rechts');
-  // 			window.location.href = 'FinishedProgressiveScheme.html';
-  // 		}
-  // 	});
-  // }
+  mySwiper.slideTo(json.currentStep, 0);
 };
 mySwiper.on('reachEnd', function() {
-  console.log('einde'), console.log();
-  console.log('Einde touch');
   mySwiper.on('touchStart', function(e) {
     console.log('Start');
     if (e.touches) {
@@ -137,11 +134,10 @@ mySwiper.on('reachEnd', function() {
       startTouch = e.screenX;
     }
   });
+
   mySwiper.on('touchMove', function(e) {
     let currentTouch;
-    if (activeIndex == 1) {
-      putStepFullFilled();
-    }
+    putStepFullFilled();
     if (e.touches) {
       currentTouch = e.touches[0].screenX;
       if (startTouch > currentTouch) {
@@ -170,9 +166,6 @@ const getSteps = function(cpsId) {
     })
     .then(function(jsonObject) {
       json = jsonObject;
-      if (json.totalSteps == 1) {
-        end = true;
-      }
       showStepsClient(json);
     })
     .catch(function(error) {
@@ -194,12 +187,19 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 mySwiper.on('init', function() {
-  activeIndex = 1;
-  step = activeIndex;
   putStartTime();
 });
-mySwiper.on('slideChangeTransitionEnd', function() {
-  activeIndex = activeIndex + 1;
-  step = activeIndex;
-  putStepFullFilled();
+
+mySwiper.on('touchEnd', function() {
+  touchEnd = true;
+});
+
+mySwiper.on('slideNextTransitionEnd', function() {
+  if (touchEnd) {
+    putStepFullFilled();
+  }
+});
+
+mySwiper.on('slidePrevTransitionEnd', function() {
+  putStepGoBack();
 });

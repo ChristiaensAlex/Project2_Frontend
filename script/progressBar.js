@@ -28,7 +28,7 @@ const drawEndbar = function() {
   //getCurrentCoins(clientId);
   setTimeout(function() {
     window.location.href = 'MainMenuClient.html';
-  }, 3000);
+  }, 4000);
 };
 
 const drawStartBar = function(currentCoins) {
