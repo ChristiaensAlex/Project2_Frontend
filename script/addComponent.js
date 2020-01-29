@@ -1,75 +1,80 @@
 let form, buttonAddStep, removeButton, buttonAddStepBetween, inputStep, inputStepDescription, allSteps, count;
 
 const getFormElements = function() {
-	form = document.querySelector('.js-form-addStep');
-	if (form) {
-		form.noValidate = true; //input is not validated when submitted
-		// form.addEventListener('submit', onFormSubmit);
-	} else if (submit) {
-		submit.noValidate = true;
-	}
-	buttonAddStep = document.querySelector('.js-button-addStep');
-	buttonAddContact = document.querySelector('.c-button__addContact');
-	count = document.querySelectorAll('.js-single-step');
-	if (document.title == 'Trek Je Plan - Maak een nieuw stappenplan aan') {
-		buttonAddStep.addEventListener('click', onHandlerClickedAdd);
-	} else if (buttonAddContact) {
-		buttonAddContact.addEventListener('click', onHandlerClickedAdd);
-	} else if (document.title == 'Trek Je Plan - Wijzig een stappenplan') {
-		console.log('WIJZIG');
-		buttonAddStep.addEventListener('click', AddToEditScheme);
-	}
-	inputStep = document.querySelector('.js-single-step');
-	numberStep = document.querySelector('.js-step-number');
-	allSteps = document.querySelector('.js-all-steps');
-	inputStepDescription = document.querySelector('.js-input-description');
+  form = document.querySelector('.js-form-addStep');
+  if (form) {
+    form.noValidate = true; //input is not validated when submitted
+    // form.addEventListener('submit', onFormSubmit);
+  } else if (submit) {
+    submit.noValidate = true;
+  }
+  buttonAddStep = document.querySelector('.js-button-addStep');
+  buttonAddContact = document.querySelector('.c-button__addContact');
+  count = document.querySelectorAll('.js-single-step');
+  inputStep = document.querySelector('.js-single-step');
+  numberStep = document.querySelector('.js-step-number');
+  allSteps = document.querySelector('.js-all-steps');
+  inputStepDescription = document.querySelector('.js-input-description');
+
+  if (document.title == 'Trek Je Plan - Maak een nieuw stappenplan aan') {
+    buttonAddStep.addEventListener('click', onHandlerClickedAdd);
+  } else if (buttonAddContact) {
+    console.log(buttonAddContact);
+    buttonAddContact.addEventListener('click', onHandlerClickedAdd);
+  } else if (document.title == 'Trek Je Plan - Wijzig een stappenplan') {
+    console.log('WIJZIG');
+    buttonAddStep.addEventListener('click', AddToEditScheme);
+  }
 };
 
 const onHandlerClickedRemove = function(e) {
-	e.preventDefault();
-	if (e.currentTarget.parentNode.parentNode.parentNode.querySelector('.c-contact__wrapper')) {
-		removefromDB(e.currentTarget.parentNode.parentNode.parentNode.dataset.number);
-		allSteps.removeChild(e.currentTarget.parentNode.parentNode.parentNode);
-	} else {
-		allSteps.removeChild(e.currentTarget.parentNode.parentNode.parentNode.parentNode);
-		let stepNumbers = document.querySelectorAll('.js-single-step');
-		let stepNumbersArr = Array.from(stepNumbers);
-		stepNumbersArr.forEach(i => {
-			nummer2 = i.getAttribute('data-number');
-			nummer = i.dataset.number;
+  e.preventDefault();
+  if (e.currentTarget.parentNode.parentNode.parentNode.querySelector('.c-contact__wrapper')) {
+    removefromDB(e.currentTarget.parentNode.parentNode.parentNode.dataset.number);
+    allSteps.removeChild(e.currentTarget.parentNode.parentNode.parentNode);
+  } else {
+    allSteps.removeChild(e.currentTarget.parentNode.parentNode.parentNode.parentNode);
+    let stepNumbers = document.querySelectorAll('.js-single-step');
+    let stepNumbersArr = Array.from(stepNumbers);
+    stepNumbersArr.forEach(i => {
+      nummer2 = i.getAttribute('data-number');
+      nummer = i.dataset.number;
 
-			if (i.dataset.number >= e.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.number) {
-				nummer = parseInt(nummer) - 1;
-				if (document.title == 'Trek Je Plan - Maak een nieuw stappenplan aan') {
-					i.querySelector('.js-step-number').innerHTML = nummer;
+      if (i.dataset.number >= e.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.number) {
+        nummer = parseInt(nummer) - 1;
+        if (document.title == 'Trek Je Plan - Maak een nieuw stappenplan aan') {
+          i.querySelector('.js-step-number').innerHTML = nummer;
 
-					i.setAttribute('data-number', nummer);
-				} else if (document.title == 'Trek Je Plan - Wijzig een stappenplan') {
-					i.querySelector('.js-step-number').innerHTML = 'Stap ' + nummer;
-					i.setAttribute('data-number', nummer);
-				}
-			}
-		});
-		let dataNumber = e.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.number;
-		if (json && json.steps) {
-			json.steps.splice(dataNumber - 1, 1);
-		}
-	}
-	//getElements();
-	// if( <= ){
+          i.setAttribute('data-number', nummer);
+        } else if (document.title == 'Trek Je Plan - Wijzig een stappenplan') {
+          i.querySelector('.js-step-number').innerHTML = 'Stap ' + nummer;
+          i.setAttribute('data-number', nummer);
+        }
+      }
+    });
+    let dataNumber = e.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.number;
+    if (json && json.steps) {
+      json.steps.splice(dataNumber - 1, 1);
+    }
+  }
+  //getElements();
+  // if( <= ){
 
-	// }
+  // }
 };
 
 const onHandlerClickedAdd = function(e) {
-	e.preventDefault();
-	let inpStep = inputStep.cloneNode(true);
-	count = document.querySelectorAll('.js-single-step');
-	inpStep.dataset.number = count.length + 1;
-	inpStep.style.display = 'block';
-	if (inpStep.querySelector('.js-step-number') && inpStep.querySelector('.js-input-description')) {
-		inpStep.querySelector('.js-step-number').innerHTML = inpStep.dataset.number;
-		inpStep.querySelector('.c-button_addStepImage').innerHTML = `<div class="o-button-reset c-button__mainStepImage">
+  e.preventDefault();
+  console.log();
+  console.log(inputStep);
+  let inpStep = inputStep.cloneNode(true);
+  inpStep.classList.remove('u-hide');
+  count = document.querySelectorAll('.js-single-step');
+  inpStep.dataset.number = count.length + 1;
+  inpStep.style.display = 'block';
+  if (inpStep.querySelector('.js-step-number') && inpStep.querySelector('.js-input-description')) {
+    inpStep.querySelector('.js-step-number').innerHTML = inpStep.dataset.number;
+    inpStep.querySelector('.c-button_addStepImage').innerHTML = `<div class="o-button-reset c-button__mainStepImage">
 		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="77" height="77" viewBox="0 0 96 99">
 			<defs>
 				<filter id="Rectangle_20" x="0" y="4" width="95" height="95" filterUnits="userSpaceOnUse">
@@ -95,52 +100,52 @@ const onHandlerClickedAdd = function(e) {
 			</g>
 		</svg>
 	</div>`;
-		inpStep.querySelector('.js-input-description').value = '';
-	}
-	let phone = inpStep.querySelector('.js-phonenumber');
-	let firstname = inpStep.querySelector('.js-firstname');
-	if (phone && firstname) {
-		phone.value = '';
-		firstname.value = '';
-	}
+    inpStep.querySelector('.js-input-description').value = '';
+  }
+  let phone = inpStep.querySelector('.js-phonenumber');
+  let firstname = inpStep.querySelector('.js-firstname');
+  if (phone && firstname) {
+    phone.value = '';
+    firstname.value = '';
+  }
 
-	allSteps.appendChild(inpStep);
-	stepImages = document.querySelectorAll('.c-button_addStepImage');
-	if (stepImages) {
-		stepImages.forEach(element => {
-			element.addEventListener('click', function() {
-				onHandlerClickedPopUp(true, element);
-			});
-		});
-	}
-	ListenToRemoveButton();
+  allSteps.appendChild(inpStep);
+  stepImages = document.querySelectorAll('.c-button_addStepImage');
+  if (stepImages) {
+    stepImages.forEach(element => {
+      element.addEventListener('click', function() {
+        onHandlerClickedPopUp(true, element);
+      });
+    });
+  }
+  ListenToRemoveButton();
 };
 
 const AddToEditScheme = function(e) {
-	e.preventDefault();
-	let inpStep = inputStep.cloneNode(true);
-	inpStep.classList.remove('u-hide');
-	count = document.querySelectorAll('.js-single-step');
-	inpStep.dataset.number = count.length;
+  e.preventDefault();
+  let inpStep = inputStep.cloneNode(true);
+  inpStep.classList.remove('u-hide');
+  count = document.querySelectorAll('.js-single-step');
+  inpStep.dataset.number = count.length;
 
-	inpStep.style.display = 'block';
-	if (inpStep.querySelector('.js-step-number') && inpStep.querySelector('.js-input-description')) {
-		inpStep.querySelector('.js-step-number').innerHTML = 'Stap ' + inpStep.dataset.number;
-		inpStep.querySelector('.js-input-description').value = '';
-	}
-	allSteps.appendChild(inpStep);
-	getElements();
-	ListenToRemoveButton();
+  inpStep.style.display = 'block';
+  if (inpStep.querySelector('.js-step-number') && inpStep.querySelector('.js-input-description')) {
+    inpStep.querySelector('.js-step-number').innerHTML = 'Stap ' + inpStep.dataset.number;
+    inpStep.querySelector('.js-input-description').value = '';
+  }
+  allSteps.appendChild(inpStep);
+  getElements();
+  ListenToRemoveButton();
 };
 
 const ListenToRemoveButton = function() {
-	removeButton = document.querySelectorAll('.js-remove-button');
-	removeButton.forEach(element => {
-		element.addEventListener('click', onHandlerClickedRemove);
-	});
+  removeButton = document.querySelectorAll('.js-remove-button');
+  removeButton.forEach(element => {
+    element.addEventListener('click', onHandlerClickedRemove);
+  });
 };
 
 document.addEventListener('DOMContentLoaded', function() {
-	console.info('DOM loaded - addComponent');
-	getFormElements();
+  console.info('DOM loaded - addComponent');
+  getFormElements();
 });
