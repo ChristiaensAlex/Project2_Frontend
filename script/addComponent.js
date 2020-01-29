@@ -51,6 +51,7 @@ const onHandlerClickedRemove = function(e) {
 			}
 		});
 		let dataNumber = e.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.number;
+		console.log(json);
 		if (json && json.steps) {
 			json.steps.splice(dataNumber - 1, 1);
 		}
