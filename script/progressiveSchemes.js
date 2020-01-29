@@ -53,6 +53,17 @@ const showClientsFromProgressiveScheme = function(payload) {
 		let client = clients[i];
 		let clientName = clientClone.querySelector('.c-symbol__clientProfiles-client__name');
 		clientName.innerHTML = client.firstName;
+		let clientImage = clientClone.querySelector('.c-client__userPhoto--img');
+
+		console.log(client.profilePicture)
+		clientImage.classList.add("c-client__userPhoto--no-img")
+		clientImage.style.backgroundImage = `url(profile-icon.svg) `;
+
+		if(client.profilePicture && !client.profilePicture.includes('profile-icon.svg')){
+			clientImage.style.backgroundImage = `url(${client.profilePicture}), url(profile-icon.svg) `;
+			clientImage.classList.remove("c-client__userPhoto--no-img")
+		}
+
 		clientSchemes.appendChild(clientClone);
 	}
 	clientSchemes.innerHTML += `<button class="c-symbol__clientProfiles-client o-button-reset js-button__addStep">
