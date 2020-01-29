@@ -1884,6 +1884,7 @@
     -ms-filter: var(--blur-scheme);
     filter: var(--blur-scheme);
     background-color: var(--global-color-neutral-x-light-transparent);
+    pointer-events: none;
   }
   
   /*Component: step
@@ -2363,7 +2364,10 @@
     justify-content: flex-end;
     fill: #ffc107;
   }
-  
+  .swiper-container {
+    width: 600px;
+    height: 380px;
+  }
   /*conctactlist for client
   
   where client can see all their emergency contacts*/

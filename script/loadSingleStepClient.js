@@ -136,7 +136,6 @@ const showStepsClient = function(json) {
 	// 	});
 	// }
 };
-
 mySwiper.on('reachEnd', function() {
 	console.log('einde'), console.log();
 	console.log('Einde touch');

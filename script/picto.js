@@ -49,6 +49,7 @@ const init = function() {
 const OnHandlerClickedShowPicto = function(imgSource, dataImg) {
 	background.classList.remove('c-popup-blur');
 	popup.style.display = 'none';
+	console.log('ELEME?T');
 	console.log(divElement);
 	divElement.innerHTML = `<img class="c-selectedPicto js-selected-picto" src="${imgSource}" width="104px" height="auto" data-img="${dataImg}"/>`;
 };
@@ -58,10 +59,12 @@ const listenToSelectSubmit = function(selectedPicto) {
 	let selectSubmit = document.querySelector('.c-submitbutton-picto');
 	selectSubmit.addEventListener('click', function() {
 		OnHandlerClickedShowPicto(selected.src, selected.dataset.img);
-		let checkmark = selectedPicto.querySelector('.c-picto-checked');
-		console.log('CHECK');
-		console.log(checkmark.style);
-		checkmark.style.display = 'none';
+		//let checkmark = selectedPicto.querySelector('.c-picto-checked');
+		// console.log('CHECK');
+		// console.log(checkmark.style);
+		// checkmark.style.display = 'none';
+		let checkSelected = document.querySelector('.c-picto-checked');
+		checkSelected.style.display = 'none';
 	});
 };
 

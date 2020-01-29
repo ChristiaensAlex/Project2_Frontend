@@ -98,6 +98,7 @@ const getProgressiveSchemes = function() {
 						console.log(jsonObject[i]);
 						planId = jsonObject[i].id;
 						sessionStorage.planId = planId;
+						sessionStorage.planName = jsonObject[i].name;
 						window.location.href = 'DetailProgressiveStepsPlan.html';
 					});
 				}
