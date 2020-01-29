@@ -8,7 +8,7 @@ const showStepsProgressiveScheme = function (json) {
 		let ischecked = "";
 		let F = object.done;
 		if (F == true) {
-			ischecked = 'c-checkmark"';
+			ischecked = 'c-checkmark';
 		} else {
 			ischecked = 'c-checkmark c-checkmark__unchecked';
 		}
@@ -89,40 +89,10 @@ const getAllSteps = function (url) {
 		});
 };
 
-// let json = {
-// 	"id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-// 	"pictoFilleName": "string",
-// 	"name": "string",
-// 	"totalSteps": 3,
-// 	"steps": [
-// 		{
-// 			"id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-// 			"descriptionStep": "string",
-// 			"pictoFilleName": "string",
-// 			"sequence": 1,
-// 			"done": true
-// 		},
-// 		{
-// 			"id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-// 			"descriptionStep": "string",
-// 			"pictoFilleName": "string",
-// 			"sequence": 2,
-// 			"done": false
-// 		},
-// 		{
-// 			"id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-// 			"descriptionStep": "string",
-// 			"pictoFilleName": "string",
-// 			"sequence": 3,
-// 			"done": false
-// 		}
-// 	]
-// }
 
 document.addEventListener("DOMContentLoaded", function () {
 	console.info("domcontentloaded");
+	clientProgressiveSchemeId = sessionStorage.clientSchemeId;
 
-	clientProgressiveSchemeId = "B38500C3-91DC-4874-B12A-1DDF1925EF51";
-	getAllSteps(`https://localhost:44374/api/client/progressiveScheme/${clientProgressiveSchemeId}`);
-	// showStepsProgressiveScheme(json);
+	getAllSteps(`https://trekjeplan.azurewebsites.net/api/client/progressiveScheme/${clientProgressiveSchemeId}`);
 });
