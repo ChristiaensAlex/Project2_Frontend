@@ -1,6 +1,4 @@
-let //baseURL = 'https://trekjeplan.azurewebsites.net/api/',
-	json,
-	mentorId;
+let json, mentorId;
 const putContacts = function(payload, mentorId) {
 	console.log('put client info');
 	let body = JSON.stringify(payload);
@@ -143,7 +141,7 @@ const showContacts = function(jsonObject) {
 	}
 	document.querySelector('.js-all-steps').innerHTML += html;
 };
-const getContacts = function(id) {
+const getContacts = function(baseURL, id) {
 	let url = `${baseURL}mentor/${id}/contact`;
 	fetch(url)
 		.then(function(response) {
@@ -253,7 +251,8 @@ const ListenToSubmit = function(button) {
 };
 document.addEventListener('DOMContentLoaded', function() {
 	console.log('DOM loaded - contact');
+	baseURL = 'https://trekjeplan.azurewebsites.net/api/';
 	mentorId = localStorage.getItem('mentorId');
 	getContactElements();
-	getContacts(mentorId);
+	getContacts(baseURL, mentorId);
 });

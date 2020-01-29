@@ -248,6 +248,10 @@
     /* background-image: url(LoginMentor.png);
     background-repeat: no-repeat;  */
   }
+  form{
+    min-width: 280px;
+
+  }
   
   /*------------------------------------*\
   #OBJECTS
