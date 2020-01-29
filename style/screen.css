@@ -331,7 +331,14 @@
       margin: auto 0;
     }
   }
-  
+  .o-header__small{
+    height:var(--global-whitespace-xxl);
+    padding: calc(var(--global-baseline)*7);
+    margin: 0;
+  }
+  .o-header__small .c-logo__symbol{
+    height: calc(var(--global-baseline)*5);
+  }
   /*
     Objects: Layout
     ---
@@ -973,6 +980,7 @@
     border: 1px solid var(--global-color-omega);
   }
   
+  
   .c-input-points {
     width: 50%;
     padding: 9px var(--global-baseline);
@@ -1032,43 +1040,6 @@
     Utility classes to put specific margins and paddings onto elements
 */
 
-.u-pt-clear {
-	padding-top: 0 !important;
-}
-
-.u-mb-clear {
-	margin-bottom: 0 !important;
-}
-
-.u-mb-xs {
-	margin-bottom: var(--global-whitespace-xs) !important;
-}
-
-.u-mb-sm {
-	margin-bottom: var(--global-whitespace-sm) !important;
-}
-
-.u-mb-md {
-	margin-bottom: var(--global-whitespace-md) !important;
-}
-
-.u-mb-lg {
-	margin-bottom: var(--global-whitespace-lg) !important;
-}
-
-.u-mb-xl {
-	margin-bottom: var(--global-whitespace-xl) !important;
-}
-
-.u-mb-xl {
-	margin-bottom: var(--global-whitespace-xl) !important;
-}
-
-/*
-	  Utilities: max-width
-	  ---
-	  Utility classes to put specific max widths onto elements
-  */
   .c-button {
     border-radius: var(--global-borderRadius);
     box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
@@ -2065,6 +2036,10 @@
   }
   .c-section_menu {
     padding: 0 0 calc(var(--global-whitespace-xxl)) 0;
+
+  }
+  .c-section_menu .c-title{
+    margin-bottom: var(--global-whitespace-lg);
   }
   @media (min-width: 768px) {
     .c-section_menu {
@@ -2625,7 +2600,32 @@
   .c-step__name.c-step__name-moveright {
     transform: translateX(var(--global-whitespace-lg));
   }
+  /*multiple clients to multiple progressive schemes*/
+
+  .c-chosenClients {
+    background-color: var(--global-color-neutral-xx-light);
+    border-radius: var(--global-borderRadius-lg);
+    display: flex;
+    flex-direction: column;
+    padding: var(--global-whitespace-md);
+    margin-bottom: var(--global-whitespace-xl);
+  }
   
+  .c-chosenClients div {
+    padding: var(--global-baseline) 0;
+  }
+
+  .c-chosenProgressiveSchemes {
+    background-color: var(--global-color-neutral-xx-light);
+    border-radius: var(--global-borderRadius-lg);
+    display: flex;
+    flex-direction: column;
+    padding: var(--global-whitespace-md);
+  
+  }
+  .c-chosenProgressiveSchemes div {
+    padding: var(--global-baseline) 0;
+  }
   /*
       Utilities: spacing
       ---
