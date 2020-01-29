@@ -14,30 +14,6 @@ let progressiveStepPlanEnd = function(isEnd) {
 
 const getClient = function(id) {
   window.location.href = 'OverviewStepsForClient.html';
-  // json = sessionStorage.client;
-  // showStepsClient(json);
-
-  
-  // let url = `${baseURL}client/${id}`;
-  // fetch(url)
-  //   .then(function(response) {
-  //     if (!response.ok) {
-  //       throw Error(`Problem to fetch(). Status code: ${response.status}`);
-  //     } else {
-  //       let arr = new Array();
-  //       arr = response.json();
-  //       return arr;
-  //     }
-  //   })
-  //   .then(function(jsonObject) {
-  //     json = jsonObject;
-
-  //     console.log(json.totalSteps)
-  //     showStepsClient(json);
-  //   })
-  //   .catch(function(error) {
-  //     console.error(`Problem to process json ${error}`);
-  //   });
 };
 
 const putStepFullFilled = function() {
@@ -49,15 +25,21 @@ const putStepFullFilled = function() {
     credentials: 'same-origin',
     headers: { 'Content-Type': 'application/json' }
   })
-    .then(response => {
-      console.log(response.json());
-      return response.json();
-    })
-    .then(data => {
-      sessionStorage.coinsToEarn = data.coinsToEarn;
-      //getClient(clientId);
-    })
-    .catch(err => console.log(err));
+  .then(function(response) {
+    if (!response.ok) {
+      throw Error(`Problem to fetch(). Status code: ${response.status}`);
+    } else {
+      let arr = new Array();
+      arr = response.json();
+      return arr;
+    }
+  })
+  .then(function(data) {
+    sessionStorage.coinsToEarn = data.coinsToEarn;
+  })
+  .catch(function(error) {
+    console.error(`Problem to process json ${error}`);
+  });
 };
 
 const putStartTime = function() {
@@ -98,8 +80,10 @@ const showStepsClient = function(json) {
 
   document.querySelector('.swiper-wrapper').innerHTML = html;
   mySwiper.update();
-  mySwiper.on('reachBeginning', function(e) {});
+  activeIndex = json.currentStep ;
+  mySwiper.slideTo(json.currentStep, 0);
 };
+
 mySwiper.on('reachEnd', function() {
   console.log('einde');
   mySwiper.on('touchStart', function(e) {
@@ -142,9 +126,10 @@ const getSteps = function(cpsId) {
     })
     .then(function(jsonObject) {
       json = jsonObject;
-      if (json.totalSteps == 1) {
-        end = true;
-      }
+      console.log(json);
+      // if (json.totalSteps == 1) {
+      //   end = true;
+      // }
       showStepsClient(json);
     })
     .catch(function(error) {
@@ -160,11 +145,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   // activeIndex = 0;
-  // mySwiper.init();
+  mySwiper.init();
 
 
   let stepsOverview = document.querySelector('.c-stepsOverview__sybmol');
-  console.log(stepsOverview);
 
   stepsOverview.addEventListener('click', function() {
     getClient(clientId);
@@ -174,14 +158,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 mySwiper.on('init', function() {
-  activeIndex = 1;
-  step = activeIndex;
+  console.log("init");
+  //activeIndex = 1;
+  console.log(step)
   putStartTime();
 });
 
 
-mySwiper.on('slideChangeTransitionEnd', function() {
+mySwiper.on('slideNextTransitionEnd', function() {
   activeIndex = activeIndex + 1;
-  step = activeIndex;
   putStepFullFilled();
 });

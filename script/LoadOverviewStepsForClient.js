@@ -15,7 +15,7 @@ const showStepsProgressiveScheme = function (json) {
 
 		html += `<div class="c-overview__step">
 						<div class="c-picto">
-							<img src="StartStap1.png" alt="Swipe de picto om door te gaan naar de volgende stap" />
+							<img src="https://trekjeplan.blob.core.windows.net/pictos/${object.pictoFilleName}" alt="Swipe de picto om door te gaan naar de volgende stap" />
 						</div>
 						<div class="c-step__explanation">
 							${object.descriptionStep}

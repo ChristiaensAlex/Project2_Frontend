@@ -2277,6 +2277,10 @@
     top: -8px;
     right: -8px;
   }
+
+  .c-checkmark.c-checkmark__unchecked{
+    opacity: 0.1;
+  }
   
   .c-downwardsArrow {
     display: flex;
