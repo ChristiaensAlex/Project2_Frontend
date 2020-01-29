@@ -39,8 +39,11 @@ const ListenToClients = function(jsonObject) {
 			console.log(this);
 			let nr = this.getAttribute('clientnr');
 			console.log(nr);
+
 			clientId = jsonObject[nr].id;
 			sessionStorage.clientId = clientId;
+			sessionStorage.clientTotalCoins = jsonObject[nr].clientTotalCoins;
+
 			window.location.href = 'DetailInfoClient.html';
 		});
 	}
