@@ -15,27 +15,6 @@ let progressiveStepPlanEnd = function(isEnd) {
 
 const getClient = function(id) {
   window.location.href = 'OverviewStepsForClient.html';
-  let url = `${baseURL}client/${id}`;
-  fetch(url)
-    .then(function(response) {
-      if (!response.ok) {
-        throw Error(`Problem to fetch(). Status code: ${response.status}`);
-      } else {
-        let arr = new Array();
-        arr = response.json();
-        return arr;
-      }
-    })
-    .then(function(jsonObject) {
-      json = jsonObject;
-      if (json.totalSteps == 1) {
-        end = true;
-      }
-      showStepsClient(json);
-    })
-    .catch(function(error) {
-      console.error(`Problem to process json ${error}`);
-    });
 };
 
 const putStepFullFilled = function() {
@@ -79,7 +58,6 @@ const putStepGoBack = function() {
 };
 
 const putStartTime = function() {
-  console.log('putStart');
   let url = `${baseURL}client/progressiveScheme/${clientProgressiveSchemeId}/startTime`;
   fetch(url, {
     method: 'PUT',
@@ -98,8 +76,6 @@ const showStepsClient = function(json) {
   let html = '';
   let title = document.querySelector('.c-progressiveScheme__name');
   title.innerHTML = json.name;
-  console.log('JSON');
-  console.log(json.steps);
   for (o in json.steps) {
     html += `<div class="swiper-slide">
 						<div class="c-step">
@@ -124,12 +100,11 @@ const showStepsClient = function(json) {
   mySwiper.update();
   mySwiper.slideTo(json.currentStep, 0);
 };
+
 mySwiper.on('reachEnd', function() {
   mySwiper.on('touchStart', function(e) {
-    console.log('Start');
     if (e.touches) {
       startTouch = e.touches[0].screenX;
-      console.log(startTouch);
     } else if (e.screenX) {
       startTouch = e.screenX;
     }
@@ -141,12 +116,12 @@ mySwiper.on('reachEnd', function() {
     if (e.touches) {
       currentTouch = e.touches[0].screenX;
       if (startTouch > currentTouch) {
-        //window.location.href = 'FinishedProgressiveScheme.html';
+        window.location.href = 'FinishedProgressiveScheme.html';
       }
     } else if (e.screenX) {
       currentTouch = e.screenX;
       if (startTouch > currentTouch) {
-        //window.location.href = 'FinishedProgressiveScheme.html';
+        window.location.href = 'FinishedProgressiveScheme.html';
       }
     }
   });
@@ -177,10 +152,13 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log('DOM loaded - SingleStepsClient');
   clientProgressiveSchemeId = sessionStorage.clientSchemeId;
   clientId = sessionStorage.clientId;
-  activeIndex = 0;
   getSteps(clientProgressiveSchemeId);
+
+  // activeIndex = 0;
   mySwiper.init();
+
   let stepsOverview = document.querySelector('.c-stepsOverview__sybmol');
+
   stepsOverview.addEventListener('click', function() {
     getClient(clientId);
   });
