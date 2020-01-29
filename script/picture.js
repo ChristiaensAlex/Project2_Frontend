@@ -1,12 +1,14 @@
 let mainPictoFile, pictoTags, pictos, picto;  
+let imagesJson = {};
+
 const postMainPicto = function(file, tags){
     console.log("post"); 
     console.log(file); 
     var formData = new FormData(); 
     formData.append("tags", tags); 
     formData.append("file", file); 
+
     let url = `${baseURL}picto`
-    
     
     fetch(url, {
         method: 'POST',
@@ -69,9 +71,19 @@ const listenToSelect = function(json){
             </svg>
           </div>`;
           let i = this.getAttribute('pictonr'); 
-          let mainPictoName = json[i].name; 
-          sessionStorage.mainPictoName = mainPictoName; 
-          console.log(sessionStorage.mainPictoName)
+          if (sessionStorage.getItem("clickedStepDataNumber")){
+            let StepPictoName = json[i].name; 
+            sessionStorage.StepPictoName = StepPictoName; 
+          }else {
+            let mainPictoName = json[i].name; 
+            sessionStorage.mainPictoName = mainPictoName; 
+          }
+
+          //console.log(sessionStorage.mainPictoName)
+
+        //   let mainPictoName = json[i].name; 
+        //   sessionStorage.mainPictoName = mainPictoName; 
+        //   console.log(sessionStorage.mainPictoName)
         })
     }
     listenToSelectSubmit();
@@ -149,17 +161,60 @@ const listenToSearch = function(){
 }
 
 const fillMainPicto = function(){
-    console.log(sessionStorage.mainPictoName); 
-    if(document.title == 'Trek Je Plan - Maak een nieuw stappenplan aan'){
-        console.log("in if")
-        let mainPictoImage = document.querySelector('.c-button__mainStepImage'); 
-        console.log(mainPictoImage)
-        mainPictoImage.innerHTML=`<img src="https://trekjeplan.blob.core.windows.net/pictos/${sessionStorage.mainPictoName}" class='js-mainPicto' >`
-    }
+        if(sessionStorage.mainPictoName){
+            let json = {};
+            if (sessionStorage.imagesJson){
+                json = JSON.parse(sessionStorage.imagesJson);
+             }
+            json["mainpicto"]= sessionStorage.mainPictoName;
+
+            sessionStorage.setItem('imagesJson', JSON.stringify(json));
+
+            sessionStorage.removeItem("mainPictoName");
+        }
+        
+        if (sessionStorage.getItem("clickedStepDataNumber")){
+            let dataNumber = sessionStorage.getItem("clickedStepDataNumber").toString();
+           let json = {};
+           if (sessionStorage.imagesJson){
+               json = JSON.parse(sessionStorage.imagesJson);
+            }
+           json[dataNumber.toString()]= sessionStorage.StepPictoName;
+            sessionStorage.setItem('imagesJson', JSON.stringify(json));
+            sessionStorage.removeItem("clickedStepDataNumber")
+        }
+
+        if (sessionStorage.imagesJson){
+            let json = JSON.parse(sessionStorage.imagesJson);
+
+            const steps = document.querySelectorAll(".js-single-step")
+            steps.forEach(function(element , index) {
+                let jsonIndex = index + 1;
+                if(json[jsonIndex.toString()] != null){
+                    let stepChild = element.querySelector(".c-button_addStepImage");
+                    stepChild.innerHTML = `<img src="https://trekjeplan.blob.core.windows.net/pictos/${json[jsonIndex.toString()] }" class='js-mainPicto' >`;
+                }
+            });
+
+            if(json["mainpicto"] != null){
+                let mainPictoImage = document.querySelector('.c-button__mainStepImage'); 
+                mainPictoImage.innerHTML=`<img src="https://trekjeplan.blob.core.windows.net/pictos/${json["mainpicto"]}" class='js-mainPicto' >`;
+            }
+        }
+        
+        
+    
 }
+
 const showMainPicto = function(){
     window.location.href = 'CreateProgressiveScheme.html'; 
 }
+
+ 
+
+// const loadImage = function(){
+//     window.location.href = 'ChoosePhoto.html'; 
+// }
 
 const listenToSelectSubmit = function(){
     let selectSubmit = document.querySelector('.c-submitbutton'); 
@@ -168,6 +223,7 @@ const listenToSelectSubmit = function(){
 
 document.addEventListener('DOMContentLoaded', function(){
     console.log('DOM loaded - Picture'); 
+    //let baseURL ='https://localhost:44374/api/';
     let url = `${baseURL}picto`;
     pictos = document.querySelector('.c-choose'); 
     picto = document.querySelector('.c-choose__picto');
@@ -175,8 +231,7 @@ document.addEventListener('DOMContentLoaded', function(){
     
     if(document.title =='Trek Je Plan - Kies een afbeelding'){
         getPictos(url, false); 
-    listenToSearch();
-}
-else if(document.title == 'Trek Je Plan - Maak een nieuw stappenplan aan'){
-fillMainPicto(); }
+        listenToSearch();
+    }else if(document.title == 'Trek Je Plan - Maak een nieuw stappenplan aan'){
+        fillMainPicto();  }
 })

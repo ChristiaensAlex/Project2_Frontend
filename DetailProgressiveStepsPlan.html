@@ -1,322 +1,137 @@
 <html lang="nl">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie-edhge" />
-    <title>Trek Je Plan - Overzicht stappenplan - Mentor</title>
-    <meta
-      name="description"
-      content="Een overzicht van alle cliënten van 1 begeleider"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie-edhge" />
+		<title>Trek Je Plan - Overzicht stappen in stappenplan - Mentor</title>
+		<meta name="description" content="Een overzicht van alle stappen in een stappenplan" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!--STYLE-->
-    <link rel="stylesheet" href="screen.css" />
-    <link rel="stylesheet" href="normalize.css" />
+		<!--STYLE-->
+		<link rel="stylesheet" href="screen.css" />
+		<link rel="stylesheet" href="normalize.css" />
 
-    <!--FONTS-->
-    <link
-      href="https://fonts.googleapis.com/css?family=Poppins&display=swap"
-      rel="stylesheet"
-    />
-    <!--SCRIPT-->
+		<!--FONTS-->
+		<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
+		<!--SCRIPT-->
 
-    <script src="script/progressiveSchemes.js"></script>
-    <script src="script/overviewScheme.js"></script>
-    <!--FAVICON-->
-    <link
-      rel="apple-touch-icon"
-      sizes="57x57"
-      href="favicon/apple-icon-57x57.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="60x60"
-      href="favicon/apple-icon-60x60.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="72x72"
-      href="favicon/apple-icon-72x72.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="76x76"
-      href="favicon/apple-icon-76x76.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="114x114"
-      href="favicon/apple-icon-114x114.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="120x120"
-      href="favicon/apple-icon-120x120.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="144x144"
-      href="favicon/apple-icon-144x144.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="152x152"
-      href="favicon/apple-icon-152x152.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="favicon/apple-icon-180x180.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="favicon/android-icon-192x192.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="favicon/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="96x96"
-      href="favicon/favicon-96x96.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="favicon/favicon-16x16.png"
-    />
-    <!-- <link rel="manifest" href="favicon/manifest.json" /> -->
-    <meta name="msapplication-TileColor" content="#1C5C5C" />
-    <meta
-      name="msapplication-TileImage"
-      content="favicon/ms-icon-144x144.png"
-    />
-    <meta name="theme-color" content="#1C5C5C" />
-  </head>
+		<script src="script/progressiveSchemes.js"></script>
+		<script src="script/overviewScheme.js"></script>
+		<!--FAVICON-->
+		<link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png" />
+		<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png" />
+		<link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png" />
+		<link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png" />
+		<link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png" />
+		<link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png" />
+		<link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png" />
+		<link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
+		<!-- <link rel="manifest" href="favicon/manifest.json" /> -->
+		<meta name="msapplication-TileColor" content="#1C5C5C" />
+		<meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png" />
+		<meta name="theme-color" content="#1C5C5C" />
+	</head>
 
-  <body>
-    <section class="c-section_menu-profile">
-      <div class="o-row">
-        <div clas="o-container">
-          <div class="c-topbarDetailProgressiveSteps">
-            <div class="c-logo__symbol">
-              <svg
-                class="c-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                height="48"
-                width="48"
-                viewBox="0 0 151.15 155.57"
-              >
-                <defs>
-                  <style>
-                    .cls-1 {
-                      fill: #1d5c5d;
-                    }
-                  </style>
-                </defs>
-                <title>Asset 2</title>
-                <g id="Layer_2" data-name="Layer 2">
-                  <g id="Layer_29" data-name="Layer 29">
-                    <path
-                      class="cls-1"
-                      d="M108,34.58a1.2,1.2,0,0,0-1.69,0l-7.71,7.85L95.16,39l0,0a1.2,1.2,0,0,0-1.69,0,1.25,1.25,0,0,0,0,1.74l4.28,4.37a1.18,1.18,0,0,0,.85.36,1.2,1.2,0,0,0,.86-.36L108,36.34a1.25,1.25,0,0,0,0-1.74Z"
-                    />
-                    <path
-                      class="cls-1"
-                      d="M139.71,0H11.44A11.44,11.44,0,0,0,0,11.44V144.13a11.44,11.44,0,0,0,11.44,11.44H139.71a11.44,11.44,0,0,0,11.44-11.44V11.44A11.44,11.44,0,0,0,139.71,0ZM83.9,28.63v99.73h-17V51.17H38.54V28.49H83.9Zm17.19,22.54A11.34,11.34,0,1,1,112.6,39.83,11.42,11.42,0,0,1,101.09,51.17Z"
-                    />
-                  </g>
-                </g>
-              </svg>
-            </div>
+	<body>
+		<section class="c-section_menu-profile">
+			<div class="o-row">
+				<div clas="o-container">
+					<div class="c-topbarDetailProgressiveSteps">
+						<div class="c-logo__symbol">
+							<svg class="c-icon" xmlns="http://www.w3.org/2000/svg" height="48" width="48" viewBox="0 0 151.15 155.57">
+								<defs>
+									<style>
+										.cls-1 {
+											fill: #1d5c5d;
+										}
+									</style>
+								</defs>
+								<title>Asset 2</title>
+								<g id="Layer_2" data-name="Layer 2">
+									<g id="Layer_29" data-name="Layer 29">
+										<path class="cls-1" d="M108,34.58a1.2,1.2,0,0,0-1.69,0l-7.71,7.85L95.16,39l0,0a1.2,1.2,0,0,0-1.69,0,1.25,1.25,0,0,0,0,1.74l4.28,4.37a1.18,1.18,0,0,0,.85.36,1.2,1.2,0,0,0,.86-.36L108,36.34a1.25,1.25,0,0,0,0-1.74Z" />
+										<path class="cls-1" d="M139.71,0H11.44A11.44,11.44,0,0,0,0,11.44V144.13a11.44,11.44,0,0,0,11.44,11.44H139.71a11.44,11.44,0,0,0,11.44-11.44V11.44A11.44,11.44,0,0,0,139.71,0ZM83.9,28.63v99.73h-17V51.17H38.54V28.49H83.9Zm17.19,22.54A11.34,11.34,0,1,1,112.6,39.83,11.42,11.42,0,0,1,101.09,51.17Z" />
+									</g>
+								</g>
+							</svg>
+						</div>
 
-            <div class="c-navigation__close">
-              <a href="MentorHasProgressiveStepsList.html">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18.182"
-                  height="18.182"
-                  viewBox="0 0 18.182 18.182"
-                >
-                  <g
-                    id="Group_9"
-                    data-name="Group 9"
-                    transform="translate(-336.363 -77.878)"
-                  >
-                    <path
-                      id="Path_6"
-                      data-name="Path 6"
-                      d="M1612.485,99l14.646,14.647"
-                      transform="translate(-1274.354 -19.354)"
-                      fill="none"
-                      stroke="#27255f"
-                      stroke-linecap="round"
-                      stroke-width="2.5"
-                    />
-                    <path
-                      id="Path_7"
-                      data-name="Path 7"
-                      d="M0,0,14.647,14.647"
-                      transform="translate(352.778 79.646) rotate(90)"
-                      fill="none"
-                      stroke="#27255f"
-                      stroke-linecap="round"
-                      stroke-width="2.5"
-                    />
-                  </g>
-                </svg>
-              </a>
-            </div>
-          </div>
+						<div class="c-navigation__close">
+							<a href="MentorHasProgressiveStepsList.html">
+								<svg xmlns="http://www.w3.org/2000/svg" width="18.182" height="18.182" viewBox="0 0 18.182 18.182">
+									<g id="Group_9" data-name="Group 9" transform="translate(-336.363 -77.878)">
+										<path id="Path_6" data-name="Path 6" d="M1612.485,99l14.646,14.647" transform="translate(-1274.354 -19.354)" fill="none" stroke="#27255f" stroke-linecap="round" stroke-width="2.5" />
+										<path id="Path_7" data-name="Path 7" d="M0,0,14.647,14.647" transform="translate(352.778 79.646) rotate(90)" fill="none" stroke="#27255f" stroke-linecap="round" stroke-width="2.5" />
+									</g>
+								</svg>
+							</a>
+						</div>
+					</div>
 
-          <div class="c-title__menu-stepsplan">
-            <div class="js-progressiveScheme-name">
-              Start
-            </div>
-            <a href="EditProgressiveScheme.html" class="c-modify-steps">
-              Wijzigen
-            </a>
-          </div>
-          <div class="c-title__menu-profile">
-            Cliënten
-          </div>
-          <div class="c-symbol__clientProfiles js-clientScheme">
-            <div class="c-symbol__clientProfiles-client u-hide">
-              <div class="c-symbol__clientProfiles-client__symbol">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="40"
-                  height="40"
-                  viewBox="0 0 40 40"
-                >
-                  <rect
-                    id="rectangle-6"
-                    width="40"
-                    height="40"
-                    rx="20"
-                    fill="#bdc0c4"
-                  />
-                </svg>
-                <div class="c-symbol__clientProfiles-client__delete">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                  >
-                    <g
-                      id="Group_1018"
-                      data-name="Group 1018"
-                      transform="translate(74 -190)"
-                    >
-                      <g
-                        id="Group_1019"
-                        data-name="Group 1019"
-                        transform="translate(-137 18)"
-                      >
-                        <circle
-                          id="Ellipse_151"
-                          data-name="Ellipse 151"
-                          cx="5.658"
-                          cy="5.658"
-                          r="5.658"
-                          transform="matrix(0.695, -0.719, 0.719, 0.695, 63, 180.139)"
-                          fill="#e0dee6"
-                        />
-                        <path
-                          id="Path_292"
-                          data-name="Path 292"
-                          d="M6,1.2,4.8,0,3,1.8,1.2,0,0,1.2,1.8,3,0,4.8,1.2,6,3,4.2,4.8,6,6,4.8,4.2,3Z"
-                          transform="translate(68 177.105) rotate(-1)"
-                          fill="#fff"
-                        />
-                      </g>
-                    </g>
-                  </svg>
-                </div>
-                
-              </div>
+					<div class="c-title__menu-stepsplan">
+						<div class="js-progressiveScheme-name">
+							Start
+						</div>
+						<a href="EditProgressiveScheme.html" class="c-modify-steps">
+							Wijzigen
+						</a>
+					</div>
+					<div class="c-title__menu-profile">
+						Cliënten
+					</div>
+					<div class="c-symbol__clientProfiles js-clientScheme">
+						<div class="c-symbol__clientProfiles-client u-hide">
+							<div class="c-symbol__clientProfiles-client__symbol">
+								<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+									<rect id="rectangle-6" width="40" height="40" rx="20" fill="#bdc0c4" />
+								</svg>
+								<div class="c-symbol__clientProfiles-client__delete">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+										<g id="Group_1018" data-name="Group 1018" transform="translate(74 -190)">
+											<g id="Group_1019" data-name="Group 1019" transform="translate(-137 18)">
+												<circle id="Ellipse_151" data-name="Ellipse 151" cx="5.658" cy="5.658" r="5.658" transform="matrix(0.695, -0.719, 0.719, 0.695, 63, 180.139)" fill="#e0dee6" />
+												<path id="Path_292" data-name="Path 292" d="M6,1.2,4.8,0,3,1.8,1.2,0,0,1.2,1.8,3,0,4.8,1.2,6,3,4.2,4.8,6,6,4.8,4.2,3Z" transform="translate(68 177.105) rotate(-1)" fill="#fff" />
+											</g>
+										</g>
+									</svg>
+								</div>
+							</div>
 
-              <div class="c-symbol__clientProfiles-client__name">
-                Naam
-              </div>
-              
-            </div>
-           
-          </div>
+							<div class="c-symbol__clientProfiles-client__name">
+								Naam
+							</div>
+						</div>
+					</div>
 
-          <div class="c-title__menu-profile">
-            Stappenplan:
-          </div>
-          <div class="js-scheme-allSteps">
-            <div class="c-overview__step js-overview-step u-hide">
-              <div class="c-picto">
-                <img
-                  alt="Swipe de picto om door te gaan naar de volgende stap"
-                />
-              </div>
-              <div class="c-step__name"></div>
-              <div class="c-step__explanation-mentor"></div>
-            </div>
-            <div class="c-downwardsArrow u-hide">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="27.353"
-                viewBox="0 0 24 27.353"
-              >
-                <g
-                  id="Component_4_44"
-                  data-name="Component 4 – 44"
-                  transform="translate(0 27.353) rotate(-90)"
-                >
-                  <g
-                    id="Group_972"
-                    data-name="Group 972"
-                    transform="translate(4 6)"
-                  >
-                    <path
-                      id="Path_4"
-                      data-name="Path 4"
-                      d="M508.019,162.566l-6.2,6.2,6.2,6.2"
-                      transform="translate(-501.817 -162.566)"
-                      fill="none"
-                      stroke="#28225f"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="3"
-                    />
-                    <path
-                      id="Path_5"
-                      data-name="Path 5"
-                      d="M478.752,117.413h19.669"
-                      transform="translate(-476.569 -111.036)"
-                      fill="none"
-                      stroke="#28225f"
-                      stroke-linecap="round"
-                      stroke-width="3"
-                    />
-                  </g>
-                  <rect
-                    id="Rectangle_85"
-                    data-name="Rectangle 85"
-                    width="24"
-                    height="24"
-                    fill="none"
-                  />
-                </g>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </body>
+					<div class="c-title__menu-profile">
+						Stappenplan:
+					</div>
+					<div class="js-scheme-allSteps">
+						<div class="c-overview__step js-overview-step u-hide">
+							<div class="c-picto">
+								<img alt="Swipe de picto om door te gaan naar de volgende stap" />
+							</div>
+							<div class="c-step__name"></div>
+							<div class="c-step__explanation-mentor"></div>
+						</div>
+						<div class="c-downwardsArrow u-hide">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="27.353" viewBox="0 0 24 27.353">
+								<g id="Component_4_44" data-name="Component 4 – 44" transform="translate(0 27.353) rotate(-90)">
+									<g id="Group_972" data-name="Group 972" transform="translate(4 6)">
+										<path id="Path_4" data-name="Path 4" d="M508.019,162.566l-6.2,6.2,6.2,6.2" transform="translate(-501.817 -162.566)" fill="none" stroke="#28225f" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
+										<path id="Path_5" data-name="Path 5" d="M478.752,117.413h19.669" transform="translate(-476.569 -111.036)" fill="none" stroke="#28225f" stroke-linecap="round" stroke-width="3" />
+									</g>
+									<rect id="Rectangle_85" data-name="Rectangle 85" width="24" height="24" fill="none" />
+								</g>
+							</svg>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
 </html>

@@ -1,4 +1,4 @@
-let deleteClient, background, deleteProgressiveScheme;
+let deleteClient, background, deleteProgressiveScheme, stepImages, mainImage, divElement;
 
 const removefromDB = function(baseURL, id) {
 	// i = parseInt(i) - 1;
@@ -33,23 +33,24 @@ const onHandlerClickedPopUp = function(picto, element) {
 	background.classList.add('c-popup-blur');
 	//popup appears
 	popup.style.display = 'block';
-	console.log('element' + element);
-	if (deleteClient) {
-		document.querySelector('.js-deleteButton').addEventListener('click', function() {
-			console.log(deletedClient);
-			// hier de delete functie aanspreken voor de client
-		});
-	} else if (deleteProgressiveScheme) {
-		document.querySelector('.js-deleteButton').addEventListener('click', function() {
-			console.log(deletedProgressiveScheme);
-			// hier de delete functie aanspreken voor progressive scheme
-		});
-	}
-	document.querySelector('.js-deleteButton').addEventListener('click', function() {
-		console.log(deletedClient.id);
-		let url = 'https://trekjeplan.azurewebsites.net/api/client';
-		removefromDB(url, deletedClient.id);
-	});
+
+	// 	if (deleteClient) {
+	// 		document.querySelector('.js-deleteButton').addEventListener('click', function() {
+	// 			console.log(deletedClient);
+	// 			// hier de delete functie aanspreken voor de client
+	// 		});
+	// 	} else if (deleteProgressiveScheme) {
+	// 		document.querySelector('.js-deleteButton').addEventListener('click', function() {
+	// 			console.log(deletedProgressiveScheme);
+	// 			// hier de delete functie aanspreken voor progressive scheme
+	// 		});
+	// 	}
+	// 	document.querySelector('.js-deleteButton').addEventListener('click', function() {
+	// 		console.log(deletedClient.id);
+	// 		let url = 'https://trekjeplan.azurewebsites.net/api/client';
+	// 		removefromDB(url, deletedClient.id);
+	//   });
+
 	if (picto == true) {
 		divElement = element;
 	}
@@ -57,7 +58,7 @@ const onHandlerClickedPopUp = function(picto, element) {
 
 const ListenToDelete = function(element) {
 	element.addEventListener('click', function() {
-		onHandlerClickedPopUp(element);
+		onHandlerClickedPopUp(false, element);
 	});
 };
 
@@ -66,8 +67,14 @@ const getElements = function() {
 	background = document.querySelector('.js-background-popup');
 	popup = document.querySelector('.c-popup-form');
 	cancelButton = document.querySelector('.js-cancel');
-	cancelButton.addEventListener('click', OnHandlerClickedCancel);
+	if (cancelButton) {
+		cancelButton.addEventListener('click', OnHandlerClickedCancel);
+	}
 	deleteProgressiveScheme = document.querySelectorAll('.js-progressivescheme-delete');
+	deletePlanButton = document.querySelector('.c-planning__delete');
+	stepImages = document.querySelectorAll('.c-selectedPicto');
+	mainImage = document.querySelector('.c-button__mainStepImage');
+
 	if (typeof deleteClient != 'undefined' && deleteClient.length > 0) {
 		deleteClient.forEach(element => {
 			ListenToDelete(element);
@@ -75,6 +82,18 @@ const getElements = function() {
 	} else if (typeof deleteProgressiveScheme != 'undefined' && deleteProgressiveScheme.length > 0) {
 		deleteProgressiveScheme.forEach(element => {
 			ListenToDelete(element);
+		});
+	} else if (deletePlanButton) {
+		console.log(deletePlanButton);
+		ListenToDelete(deletePlanButton);
+	} else if (typeof stepImages != 'undefined' && stepImages.length > 0 && mainImage) {
+		stepImages.forEach(element => {
+			element.addEventListener('click', function() {
+				onHandlerClickedPopUp(true, element);
+			});
+		});
+		mainImage.addEventListener('click', function() {
+			onHandlerClickedPopUp(true, mainImage);
 		});
 	}
 };
