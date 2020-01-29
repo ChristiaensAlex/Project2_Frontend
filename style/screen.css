@@ -1688,12 +1688,12 @@
   
   .c-stepplans .c-stepplan {
     display: grid;
-    grid-template-columns: 1fr 20px;
-    grid-template-rows: auto auto;
+    grid-template-columns: 1fr 40px;
+    grid-template-rows: 24px 32px;
     background-color: var(--global-color-neutral-x-light-transparent);
     height: calc(var(--global-baseline) * 10);
     margin: var(--global-whitespace) 0 calc(var(--global-baseline) * 11) 0;
-    padding: var(--global-baseline);
+    padding: var(--global-baseline) ;
     border-radius: var(--global-borderRadius-md);
   }
   
@@ -1703,11 +1703,13 @@
   }
   .c-stepplan__picto {
     grid-row: span 2;
+    height: 56px;
+    width: 56px;
   }
   
   .c-stepplan__name {
     font-size: var(--global-fontsize);
-    margin: 0 var(--global-baseline);
+    margin: 0 var(--global-whitespace);
     grid-row: span 2;
     grid-column: span 1;
     display: flex;
@@ -1722,9 +1724,12 @@
   
   .c-stepplan__delete {
     grid-column: 2;
+    grid-row: span 2;
+    align-self: center;
     display: flex;
     align-items: center;
     height: var(--global-whitespace);
+    margin-right: 8px;
   }
   
   @media (min-width: 992px) {
