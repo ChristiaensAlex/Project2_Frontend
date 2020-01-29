@@ -1,4 +1,4 @@
-let form, mailErrorMessage, mailField, mailInput, mailLabel, mailError, iconCorrect, iconError, passwordInput, passwordError, passwordField, iconPasswordCorrect, iconPasswordError, passwordRepeatInput, passwordRepeatError, passwordRepeatField, iconPasswordRepeatCorrect, iconPasswordRepeatError, pwInput, pwError, pwErrormessage, iconPwCorrect, iconPwError, firstNameInput, lastNameInput, editButton;
+let form, mailErrorMessage, mailField, mailInput, mailLabel, mailError, iconCorrect, iconError, passwordInput, passwordError, passwordField, iconPasswordCorrect, iconPasswordError, passwordRepeatInput, passwordRepeatError, passwordRepeatField, iconPasswordRepeatCorrect, iconPasswordRepeatError, pwInput, pwError, pwErrormessage, iconPwCorrect, iconPwError, firstNameInput, lastNameInput;
 
 const isValidEmailAddress = function(emailAddress) {
 	// Basis manier om e-mailadres te checken.

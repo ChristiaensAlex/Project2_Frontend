@@ -2,7 +2,8 @@ let baseURL = 'https://trekjeplan.azurewebsites.net/api/',
 	firstName,
 	lastName,
 	email,
-	submitButton;
+	submitButton,
+	editButton;
 
 const showProfileInfo = function(jsonObject) {
 	sessionStorage.mentorId = jsonObject.id;
@@ -79,7 +80,7 @@ const EditMentorProfile = function(payload, mentorId) {
 const getProfileElements = function() {
 	// submitButton = document.querySelector('.js-submitbutton');
 	// console.log(submitButton);
-	console.log(editButton);
+	//console.log(editButton);
 	if (editButton) {
 		firstName = document.querySelector('.js-firstname');
 		lastName = document.querySelector('.js-lastname');
@@ -97,7 +98,7 @@ const logOut = function() {
 
 	logOutButton.addEventListener('click', function(e) {
 		//localStorage.clear();
-		window.location.href = 'LoginMentor.html';
+		window.location.href = 'index.html';
 	});
 };
 

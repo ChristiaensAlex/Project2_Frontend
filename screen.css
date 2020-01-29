@@ -634,6 +634,7 @@
     font-size: var(--global-fontsize-md);
     justify-content: space-between;
     align-content: center;
+    margin-top: var(--global-whitespace-xl);
   }
   .c-title__menu-stepsplan {
     display: flex;
@@ -1786,7 +1787,7 @@
   
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
   }
   .c-navigationMentor {
     display: flex;
@@ -2040,6 +2041,7 @@
     position: fixed;
     height: 100%;
     width: 100%;
+    position: fixed;
   }
   
   .c-navbar__tabs {
@@ -2071,12 +2073,22 @@
     height: var(--global-whitespace-lg);
   }
   @media (min-width: 992px) {
+    .c-navbar{
+      position: fixed;
+     
+      height: 100vh;
+      top: 0;
+      left: 0;
+      width: calc(var(--global-baseline) * 8);
+    }
     .c-navbar__mentor {
       position: relative;
+      height: 100vh;
+      transform: translateY(-100px);
     }
     .c-topLeftLogo {
-      position: absolute;
-  
+      position:fixed;
+      z-index: 10;
       top: 16;
   
       display: flex;
@@ -2115,21 +2127,21 @@
       visibility: hidden;
     }
   
-    .c-navbar {
+    /* .c-navbar {
       height: 100%;
       top: 0;
       left: 0;
       width: calc(var(--global-baseline) * 8);
-    }
+    } */
   
-    .c-navbar__mentor {
+    /* .c-navbar__mentor {
       border: var(--global-borderWidth) solid var(--global-color-neutral-xx-light);
       border-width: 0 var(--global-borderWidth) 0 0;
       background-color: white;
       height: 100%;
       width: calc(var(--global-baseline) * 8);
       transform: translateY(-100px);
-    }
+    } */
   
     .c-navbar__tabs {
       display: flex;
@@ -2544,6 +2556,10 @@
     display: grid;
     grid-template-columns: 1fr 24px;
     grid-template-rows: 48px 1fr;
+  }
+  .c-contact__wrapper .c-contact__info{
+    display: flex;
+    justify-content: space-around;
   }
   .c-contact__wrapper .c-profile :first-child {
   }
