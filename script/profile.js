@@ -3,9 +3,21 @@ let baseURL = 'https://trekjeplan.azurewebsites.net/api/',
 	lastName,
 	email,
 	submitButton;
-const showProfileInfo = function (jsonObject) {
+
+	
+const isValidEmailAddress = function (emailAddress) {
+	// Basis manier om e-mailadres te checken.
+	return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailAddress);
+};
+
+const isEmpty = function (fieldValue) {
+	return !fieldValue || !fieldValue.length;
+};
+const showProfileInfo = function(jsonObject) {
 	sessionStorage.mentorId = jsonObject.id;
+	console.log(submitButton);
 	if (submitButton) {
+		console.log('invullen values');
 		firstName.value = jsonObject.firstName;
 		lastName.value = jsonObject.lastName;
 		email.value = jsonObject.email;
@@ -15,26 +27,26 @@ const showProfileInfo = function (jsonObject) {
 		email.innerHTML = jsonObject.email;
 	}
 };
-const getMentorProfile = function (mentorId) {
+const getMentorProfile = function(mentorId) {
 	let url = `${baseURL}mentor/${mentorId}`;
 	fetch(url)
-		.then(function (response) {
+		.then(function(response) {
 			if (!response.ok) {
 				throw Error(`Problem to fetch(). Status code: ${response.status}`);
 			} else {
 				return response.json();
 			}
 		})
-		.then(function (jsonObject) {
+		.then(function(jsonObject) {
 			showProfileInfo(jsonObject);
 			console.log(jsonObject);
 		})
-		.catch(function (error) {
+		.catch(function(error) {
 			console.error(`Problem to process json ${error}`);
 		});
 };
 
-const EditMentorProfile = function (payload, mentorId) {
+const EditMentorProfile = function(payload, mentorId) {
 	console.log('put mentor info');
 	let body = JSON.stringify(payload);
 	console.log(body);
@@ -55,10 +67,11 @@ const EditMentorProfile = function (payload, mentorId) {
 		// })
 		.catch(err => console.log(err));
 };
-const ListenToSubmitButton = function (button) {
-	button.addEventListener('click', function (e) {
+const ListenToSubmitButton = function(button) {
+	button.addEventListener('click', function(e) {
 		e.preventDefault();
-		mentorId = sessionStorage.mentorId;
+		if 
+	
 		let payload = {
 			id: sessionStorage.mentorId,
 			firstName: firstName.value,
@@ -69,8 +82,9 @@ const ListenToSubmitButton = function (button) {
 		EditMentorProfile(payload, mentorId);
 	});
 };
-const getProfileElements = function () {
+const getProfileElements = function() {
 	submitButton = document.querySelector('.js-submitbutton');
+	console.log(submitButton);
 	if (submitButton) {
 		firstName = document.querySelector('.js-firstname');
 		lastName = document.querySelector('.js-lastname');
@@ -83,20 +97,23 @@ const getProfileElements = function () {
 	}
 };
 
-const logOut = function () {
+const logOut = function() {
 	logOutButton = document.querySelector('.js-logout');
 
-	logOutButton.addEventListener('click', function (e) {
-		localStorage.clear();
+	logOutButton.addEventListener('click', function(e) {
+		//localStorage.clear();
 		window.location.href = 'LoginMentor.html';
-	})
+	});
 };
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
 	console.log('DOM loaded - profile');
 	sessionStorage.mentorId = localStorage.getItem('mentorId');
 	mentorId = sessionStorage.mentorId;
+	console.log(mentorId);
 	getProfileElements();
 	getMentorProfile(mentorId);
-	logOut();
+	if (document.title == 'Trek Je Plan - Begeleidersprofiel') {
+		logOut();
+	}
 });
