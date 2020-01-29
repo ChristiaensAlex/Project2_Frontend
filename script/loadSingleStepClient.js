@@ -86,14 +86,18 @@ const showStepsClient = function(json) {
     html += `<div class="swiper-slide">
 						<div class="c-step">
 							<div class="c-step__pictowrapper">
-								<div class="c-step__picto">
+                <div class="c-step__picto">
+                  <div class="c-picto-container">
 									<img class="c-picto" src="https://trekjeplan.blob.core.windows.net/pictos/${json.steps[o].pictoFilleName}"
 										alt="Swipe de picto om door te gaan naar de volgende stap" />
-								</div>
+                    
+                    </div>
+                </div>
+                <div class="c-step__explanation">
+                    ${json.steps[o].descriptionStep}
+                  </div>
 							</div>
-							<p class="c-step__explanation">
-								${json.steps[o].descriptionStep}
-							</p>
+							
 						</div>
                     </div>`;
   }
