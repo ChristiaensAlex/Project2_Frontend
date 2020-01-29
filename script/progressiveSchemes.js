@@ -213,10 +213,11 @@ const getInputFieldsScheme = function() {
     postScheme = {
       pictoFilleName: mainImg.dataset.img,
       name: schemeTitle,
-      totalSteps: stepNumber.length - 1,
+      totalSteps: stepNumber.length,
       steps: payload
     };
 
+    console.log(postScheme);
     postProgressiveScheme(postScheme);
   }
 };
