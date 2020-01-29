@@ -13,6 +13,7 @@ let progressiveStepPlanEnd = function(isEnd) {
 };
 
 const getClient = function(id) {
+  window.location.href = 'OverviewStepsForClient.html';
   let url = `${baseURL}client/${id}`;
   fetch(url)
     .then(function(response) {
@@ -181,26 +182,23 @@ const getSteps = function(cpsId) {
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DOM loaded - SingleStepsClient');
   clientProgressiveSchemeId = sessionStorage.clientSchemeId;
-  console.log(clientProgressiveSchemeId);
   clientId = sessionStorage.clientId;
   activeIndex = 0;
-  console.log(clientId);
-  console.log(clientProgressiveSchemeId);
   getSteps(clientProgressiveSchemeId);
-
   mySwiper.init();
+  let stepsOverview = document.querySelector('.c-stepsOverview__sybmol');
+  stepsOverview.addEventListener('click', function() {
+    getClient(clientId);
+  });
 });
 
 mySwiper.on('init', function() {
   activeIndex = 1;
-  console.log(activeIndex);
   step = activeIndex;
-  console.log(step);
   putStartTime();
 });
 mySwiper.on('slideChangeTransitionEnd', function() {
   activeIndex = activeIndex + 1;
   step = activeIndex;
-  console.log(step);
   putStepFullFilled();
 });

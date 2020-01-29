@@ -1972,8 +1972,14 @@
     width: 100%;
     bottom: 0;
     height: calc(var(--global-baseline) * 8);
+    background: var(--global-color-neutral-xxxx-light); 
+    position: fixed; 
   }
   
+  .c-footer__main {
+    height: calc(var(--global-baseline) *11); 
+  }
+
   .c-footer__navbarClient {
     box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 -5px 5px -5px rgba(170, 170, 179, 0.75);
     position: relative;
@@ -1981,8 +1987,17 @@
     justify-content: space-around;
     align-items: center;
     height: 100%;
+  } 
+  .c-footer__main .c-footer__navbarClient{
+    padding: calc(var(--global-baseline)*7); 
   }
-  
+  .c-footer-progress{
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
   .c-footer__navbarClient .c-emergencycall {
     position: absolute;
     top: -32px;
