@@ -145,7 +145,9 @@ mySwiper.on('reachEnd', function() {
 		if (e.touches) {
 			startTouch = e.touches[0].screenX;
 			console.log(startTouch);
-		} else if (e.screenX) startTouch = e.screenX;
+		} else if (e.screenX) {
+			startTouch = e.screenX;
+		}
 	});
 	mySwiper.on('touchMove', function(e) {
 		console.log('beweging');
