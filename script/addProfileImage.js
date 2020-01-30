@@ -145,7 +145,8 @@ const previewProfileImg =  function(event, i) {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-	console.info('DOM loaded - addProfileImage');
+  console.info('DOM loaded - addProfileImage');
+  console.log("eorierihori")
 	getElements();
 });
 
