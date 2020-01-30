@@ -188,6 +188,7 @@ const ListenToSelect = function(selects) {
 			frequency = this.value;
 			switch (frequency) {
 				case 'Dagelijks':
+					this.parentElement.parentElement.querySelector('.js-specificFrequency').innerHTML = '';
 					return;
 				case 'Elke ... dagen':
 					//console.log(this.parentElement.parentElement);
