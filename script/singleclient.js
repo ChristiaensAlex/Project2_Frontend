@@ -2,6 +2,18 @@ let profiel;
 
 const showClient = function (json) {
 	document.querySelector('.c-clientname').innerHTML = `${json.firstName} ${json.lastName}`;
+	document.querySelector('.c-clientname').innerHTML = `${json.firstName} ${json.lastName}`;
+
+
+	let clientImage = document.querySelector('.c-client__userPhoto--img');
+
+	clientImage.classList.add("c-client__userPhoto--no-img")
+	clientImage.style.backgroundImage = `url(profile-icon.svg) `;
+
+	if(json.profilePicture && !json.profilePicture.includes('profile-icon.svg')){
+		clientImage.style.backgroundImage = `url(${json.profilePicture}), url(profile-icon.svg) `;
+		clientImage.classList.remove("c-client__userPhoto--no-img")
+	}
 };
 
 const getAPI = function (url) {

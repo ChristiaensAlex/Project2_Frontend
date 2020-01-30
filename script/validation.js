@@ -1,24 +1,24 @@
 let form, mailErrorMessage, mailField, mailInput, mailLabel, mailError, iconCorrect, iconError, passwordInput, passwordError, passwordField, iconPasswordCorrect, iconPasswordError, passwordRepeatInput, passwordRepeatError, passwordRepeatField, iconPasswordRepeatCorrect, iconPasswordRepeatError, pwInput, pwError, pwErrormessage, iconPwCorrect, iconPwError, firstNameInput, lastNameInput;
 
-const isValidEmailAddress = function (emailAddress) {
+const isValidEmailAddress = function(emailAddress) {
 	// Basis manier om e-mailadres te checken.
 	return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailAddress);
 };
 
-const isValidPassword = function (password) {
+const isValidPassword = function(password) {
 	return password.length >= 8;
 };
-const isEmpty = function (fieldValue) {
+const isEmpty = function(fieldValue) {
 	return !fieldValue || !fieldValue.length;
 };
 
-const isSamePassword = function (pw, repeatpw) {
+const isSamePassword = function(pw, repeatpw) {
 	console.log(pw, repeatpw);
 	result = pw == repeatpw;
 	console.log('pw gelijk: ' + result);
 	return result;
 };
-const addErrors = function (field) {
+const addErrors = function(field) {
 	if (field == 'email') {
 		mailField.classList.add('s-has-error');
 		mailError.classList.remove('u-hide');
@@ -56,7 +56,7 @@ const addErrors = function (field) {
 	}
 };
 
-const removeErrors = function (field) {
+const removeErrors = function(field) {
 	if (field == 'email') {
 		mailField.classList.remove('s-has-error');
 		mailField.classList.add('s-correct');
@@ -90,7 +90,7 @@ const removeErrors = function (field) {
 };
 
 /* -------------------------------------------------------------------------- */
-const doubleCheckEmailAddress = function () {
+const doubleCheckEmailAddress = function() {
 	if (isValidEmailAddress(mailInput.value)) {
 		// Stop met dit veld in de gaten te houden; het is in orde.
 		mailInput.removeEventListener('input', doubleCheckEmailAddress);
@@ -107,7 +107,7 @@ const doubleCheckEmailAddress = function () {
 	}
 };
 
-const doubleCheckPassword = function () {
+const doubleCheckPassword = function() {
 	if (isValidPassword(passwordInput.value)) {
 		passwordInput.removeEventListener('input', doubleCheckPassword);
 		removeErrors('password');
@@ -126,7 +126,7 @@ const doubleCheckPassword = function () {
 	}
 };
 
-const doubleCheckPasswordRepeat = function () {
+const doubleCheckPasswordRepeat = function() {
 	if (isSamePassword(passwordInput.value, passwordRepeatInput.value)) {
 		passwordRepeatInput.removeEventListener('input', doubleCheckPasswordRepeat);
 		removeErrors('passwordRepeat');
@@ -143,7 +143,7 @@ const doubleCheckPasswordRepeat = function () {
 	}
 };
 
-const doubleCheckPw = function () {
+const doubleCheckPw = function() {
 	console.log('double');
 	if (!isEmpty(pwInput.value)) {
 		pwInput.removeEventListener('input', doubleCheckPw);
@@ -155,7 +155,7 @@ const doubleCheckPw = function () {
 		console.log('double check empty');
 	}
 };
-const doubleCheckUsername = function () {
+const doubleCheckUsername = function() {
 	console.log('double');
 	if (!isEmpty(username.value)) {
 		username.removeEventListener('input', doubleCheckUsername);
@@ -168,8 +168,8 @@ const doubleCheckUsername = function () {
 	}
 };
 
-const ListenToMail = function (mailInput) {
-	mailInput.addEventListener('focus', function () {
+const ListenToMail = function(mailInput) {
+	mailInput.addEventListener('focus', function() {
 		console.log('we zijn gefocused');
 		if (!isValidEmailAddress(mailInput.value)) {
 			if (!isEmpty(mailInput.value)) {
@@ -181,7 +181,7 @@ const ListenToMail = function (mailInput) {
 			}
 		}
 	});
-	mailInput.addEventListener('blur', function () {
+	mailInput.addEventListener('blur', function() {
 		console.log('we zijn ontfocused');
 		if (!isValidEmailAddress(mailInput.value)) {
 			if (isEmpty(mailInput.value)) {
@@ -198,9 +198,9 @@ const ListenToMail = function (mailInput) {
 	});
 };
 
-const ListenToPassword = function (passwordInput) {
+const ListenToPassword = function(passwordInput) {
 	console.log(passwordInput);
-	passwordInput.addEventListener('focus', function () {
+	passwordInput.addEventListener('focus', function() {
 		if (!isValidPassword(passwordInput.value)) {
 			console.log('password niet lang genoeg');
 			if (!isEmpty(passwordInput.value)) {
@@ -218,7 +218,7 @@ const ListenToPassword = function (passwordInput) {
 			}
 		}
 	});
-	passwordInput.addEventListener('blur', function () {
+	passwordInput.addEventListener('blur', function() {
 		if (!isValidPassword(passwordInput.value)) {
 			if (isEmpty(passwordInput.value)) {
 				passwordErrormessage.innerText = 'Dit veld is verplicht.';
@@ -238,8 +238,8 @@ const ListenToPassword = function (passwordInput) {
 	});
 };
 
-const ListenToPasswordRepeat = function (passwordRepeatInput) {
-	passwordRepeatInput.addEventListener('focus', function () {
+const ListenToPasswordRepeat = function(passwordRepeatInput) {
+	passwordRepeatInput.addEventListener('focus', function() {
 		if (!isSamePassword(passwordInput.value, passwordRepeatInput.value)) {
 			if (!isEmpty(passwordRepeatInput.value)) {
 				passwordRepeatErrormessage.innerText = 'De wachtwoorden komen niet overeen.';
@@ -253,7 +253,7 @@ const ListenToPasswordRepeat = function (passwordRepeatInput) {
 			// }
 		}
 	});
-	passwordRepeatInput.addEventListener('blur', function () {
+	passwordRepeatInput.addEventListener('blur', function() {
 		if (!isSamePassword(passwordInput.value, passwordRepeatInput.value)) {
 			if (isEmpty(passwordRepeatInput.value)) {
 				passwordRepeatErrormessage.innerText = 'Dit veld is verplicht.';
@@ -267,8 +267,8 @@ const ListenToPasswordRepeat = function (passwordRepeatInput) {
 	});
 };
 
-const ListenToSinglePw = function () {
-	pwInput.addEventListener('blur', function () {
+const ListenToSinglePw = function() {
+	pwInput.addEventListener('blur', function() {
 		if (isEmpty(pwInput.value)) {
 			pwErrormessage.innerText = 'Dit veld is verplicht.';
 			addErrors('pw');
@@ -277,8 +277,8 @@ const ListenToSinglePw = function () {
 	});
 };
 
-const ListenToButton = function (button) {
-	button.addEventListener('click', function (event) {
+const ListenToButton = function(button) {
+	button.addEventListener('click', function(event) {
 		// We gaan de form zelf versturen wanneer nodig.
 		event.preventDefault();
 		if (button == submitButton) {
@@ -326,11 +326,26 @@ const ListenToButton = function (button) {
 					pwInput.addEventListener('input', doubleCheckPw);
 				}
 			}
+		} else if (button == editButton) {
+			console.log('checken of we goed zitten voor de put');
+			if (isValidEmailAddress(email.value)) {
+				let payload = {
+					id: sessionStorage.mentorId,
+					firstName: firstName.value,
+					lastName: lastName.value,
+					email: email.value
+				};
+				console.log(payload);
+				EditMentorProfile(payload, mentorId);
+			} else {
+				addErrors('email');
+				mailInput.addEventListener('input', doubleCheckEmailAddress);
+			}
 		}
 	});
 };
 
-const GetDomElements = function () {
+const GetDomElements = function() {
 	//email
 	form = document.querySelector('.js-form');
 	mailField = document.querySelector('.js-email-field');
@@ -365,10 +380,12 @@ const GetDomElements = function () {
 	// button
 	submitButton = document.querySelector('.js-submitbutton');
 	startButton = document.querySelector('.js-startbutton');
+	editButton = document.querySelector('.js-editProfileButton');
+	console.log(editButton);
 	callListeners();
 };
 
-const callListeners = function () {
+const callListeners = function() {
 	if (mailField != null) {
 		ListenToMail(mailInput);
 	}
@@ -393,12 +410,16 @@ const callListeners = function () {
 	} else if (startButton != null) {
 		console.log('startbutton');
 		ListenToButton(startButton);
+	} else if (editButton != null) {
+		console.log('editbutton');
+		ListenToButton(editButton);
 	}
 };
 
-const init = function () {
+const init = function() {
 	console.log('dom loaded');
 	// queryselectors ophalen
+
 	GetDomElements();
 };
 document.addEventListener('DOMContentLoaded', init);

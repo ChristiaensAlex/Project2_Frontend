@@ -11,7 +11,16 @@ const showAllClients = function(jsonObject) {
 		let clientInfo = clientClone.querySelector('.c-client__info');
 		clientInfo.setAttribute('clientnr', i);
 		let clientName = clientClone.querySelector('.c-client__name');
-		console.log(clientName);
+		let clientImage = clientClone.querySelector('.c-client__userPhoto--img');
+
+		clientImage.classList.add("c-client__userPhoto--no-img")
+		clientImage.style.backgroundImage = `url(profile-icon.svg) `;
+
+		if(client.profilePicture && !client.profilePicture.includes('profile-icon.svg')){
+			clientImage.style.backgroundImage = `url(${client.profilePicture}), url(profile-icon.svg) `;
+			clientImage.classList.remove("c-client__userPhoto--no-img")
+		}
+
 		clientName.innerHTML = `${client.firstName} ${client.lastName}`;
 		clients.appendChild(clientClone);
 	}

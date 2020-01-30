@@ -1035,7 +1035,8 @@ body {
 	justify-content: center;
 	padding-top: var(--global-whitespace-lg);
 	margin-bottom: var(--global-whitespace);
-	max-width: 100%;
+  max-width: 100%;
+  pointer-events: auto;
 }
 
 /*
@@ -1050,7 +1051,8 @@ body {
 	font-size: var(--global-fontsize-md);
 	line-height: calc(var(--global-fontsize-md) * 1.5);
 	display: flex;
-	align-items: center;
+  align-items: center;
+  pointer-events: auto;
 }
 
 .c-backbutton {
@@ -1059,11 +1061,13 @@ body {
 	height: var(--global-whitespace-xl);
 	width: 75%;
 	justify-content: space-around;
-	margin-right: var(--global-whitespace-xs);
+  margin-right: var(--global-whitespace-xs);
+  pointer-events: auto;
 }
 
 .c-backbutton__text {
-	color: var(--global-color-alpha);
+  color: var(--global-color-alpha);
+  pointer-events: auto;
 }
 
 .c-backbutton-long {
@@ -1071,11 +1075,12 @@ body {
 	padding-right: 30%;
 	margin-bottom: calc(var(--global-baseline) * 8);
 	background-color: var(--global-color-alpha);
-	fill: white;
+  fill: white;
+  pointer-events: auto;
 }
 
 .c-backbutton-long .c-backbutton__text {
-	color: white;
+  color: white;
 }
 .c-popup-form--card > .c-backbutton {
 	width: 100%;
@@ -1090,7 +1095,8 @@ body {
 .c-backbutton__arrow {
 	width: var(--global-whitespace);
 	height: var(--global-whitespace);
-	fill: var(--global-color-alpha);
+  fill: var(--global-color-alpha);
+  pointer-events: auto;
 }
 
 .c-submitbutton {
@@ -1100,17 +1106,19 @@ body {
 	width: 100%;
 	justify-content: center;
 	margin-left: var(--global-whitespace-xs);
-	max-width: 320px;
+  max-width: 320px;
+  pointer-events: auto;
 }
 .c-submitbutton__arrow {
 	width: var(--global-whitespace);
 	height: var(--global-whitespace);
 	transform: scaleX(-1) translateX(-10px);
-	fill: var(--global-color-neutral-xxxx-light);
+  fill: var(--global-color-neutral-xxxx-light);
+  pointer-events: auto;
 }
 .c-submit-uploadPicto {
 	pointer-events: none;
-	opacity: 0.5;
+  opacity: 0.5;
 }
 .c-popup-form--card > .c-submitbutton {
 	width: 100%;
@@ -1118,17 +1126,20 @@ body {
 	margin-bottom: calc(var(--global-baseline) * 2);
 }
 .c-submitbutton-long {
-	width: 100%;
+  width: 100%;
+  pointer-events: auto;
 }
 .c-button__mainStepImage {
 	display: flex;
-	margin-bottom: var(--global-whitespace);
+  margin-bottom: var(--global-whitespace);
+  pointer-events: auto;
 }
 
 .c-upload {
 	display: flex;
 	justify-content: flex-start;
-	margin: calc(var(--global-whitespace-xs) * 5);
+  margin: calc(var(--global-whitespace-xs) * 5);
+  pointer-events: auto;
 }
 
 .c-uploadbutton {
@@ -1138,7 +1149,8 @@ body {
 	overflow: hidden;
 	position: absolute;
 	z-index: 1;
-	width: 100%;
+  width: 100%;
+  pointer-events: auto;
 }
 
 .c-uploadbutton-design {
@@ -1149,7 +1161,8 @@ body {
 	width: calc(var(--global-whitespace) * 16);
 	position: relative;
 	text-align: center;
-	width: calc(100% - 24px);
+  width: calc(100% - 24px);
+  pointer-events: auto;
 }
 .c-uploadbutton-design__text {
 	display: flex;
@@ -1157,12 +1170,14 @@ body {
 	align-items: center;
 	height: 100%;
 	cursor: pointer;
-	z-index: 10;
+  z-index: 10;
+  pointer-events: auto;
 }
 
 .c-uploadbutton:focus + label {
 	outline: 1px dotted #000;
-	outline: -webkit-focus-ring-color auto 5px;
+  outline: -webkit-focus-ring-color auto 5px;
+  pointer-events: auto;
 }
 .c-uploadbutton__arrowbox {
 	border-radius: var(--global-borderRadius);
@@ -1174,30 +1189,35 @@ body {
 	justify-content: center;
 	position: absolute;
 	top: 0;
-	right: -18px;
+  right: -18px;
+  pointer-events: auto;
 }
 
 .c-uploadbutton__arrow {
 	width: var(--global-whitespace);
 	height: var(--global-whitespace);
 	transform: rotate(90deg);
-	fill: var(--global-color-neutral-xxx-light);
+  fill: var(--global-color-neutral-xxx-light);
+  pointer-events: auto;
 }
 
 .c-uploadbutton__text {
-	transform: translateX(10px);
+  transform: translateX(10px);
+  pointer-events: auto;
 }
 
 .c-upperAddButton {
 	display: flex;
 	justify-content: center;
-	margin: var(--global-whitespace) 0;
+  margin: var(--global-whitespace) 0;
+  pointer-events: auto;
 }
 .c-upperAddButton .c-submitbutton {
 	padding: 0 var(--global-whitespace-sm);
 }
 .c-rewardButton {
-	margin: var(--global-whitespace-sm) 0 var(--global-whitespace-lg) 0;
+  margin: var(--global-whitespace-sm) 0 var(--global-whitespace-lg) 0;
+  pointer-events: auto;
 }
 /*
     Component: link
@@ -1225,6 +1245,11 @@ body {
 	height: calc(var(--global-baseline) * 20);
 	font-size: var(--global-fontsize-md);
 	margin: var(--global-whitespace-xl) 0;
+}
+
+.c-choice a {
+  width: 100%;
+  height: 100%; 
 }
 .c-choice div {
 	color: var(--global-color-alpha);
@@ -1303,7 +1328,8 @@ body {
 	justify-self: self-end;
 	font-size: var(--global-fontsize-xs);
 	height: 100%;
-	grid-column: 3;
+  grid-column: 3;
+  pointer-events: auto;
 }
 
 .c-logout__symbol {
