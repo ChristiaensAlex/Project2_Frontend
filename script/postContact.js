@@ -12,7 +12,7 @@ const postContactAPI = function (payload, mentorId) {
 	})
 		.then(res => res.json())
 		.then(data => {
-			console.log(data), console.log(data), (window.location.href = 'MentorHasClientList.html');
+			console.log(data), console.log(data), (window.location.href = 'https://trekjeplan-front.azurewebsites.net/MentorHasClientList.html');
 		})
 		.catch(err => console.log(err));
 };

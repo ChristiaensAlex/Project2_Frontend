@@ -28,7 +28,7 @@ const loginClient = function(payload) {
         removeErrors('username');
         saveData(data);
 
-        window.location.href = 'MainMenuClient.html';
+        window.location.href = 'https://trekjeplan-front.azurewebsites.net/MainMenuClient.html';
       } else {
         console.log(data);
         addErrors('username'), (usernameErrorMessage.innerText = data);

@@ -112,12 +112,12 @@ mySwiper.on('reachEnd', function() {
     if (e.touches) {
       currentTouch = e.touches[0].screenX;
       if (startTouch > currentTouch) {
-        window.location.href = 'FinishedProgressiveScheme.html';
+        window.location.href = 'https://trekjeplan-front.azurewebsites.net/FinishedProgressiveScheme.html';
       }
     } else if (e.screenX) {
       currentTouch = e.screenX;
       if (startTouch > currentTouch) {
-        window.location.href = 'FinishedProgressiveScheme.html';
+        window.location.href = 'https://trekjeplan-front.azurewebsites.net/FinishedProgressiveScheme.html';
       }
     }
   });
