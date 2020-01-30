@@ -1,4 +1,3 @@
-baseURL = 'https:/trekjeplan.azurewebsites.net/api/';
 var beginning;
 var end;
 let step;
@@ -157,6 +156,8 @@ const openOverlay = function() {
 
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DOM loaded - SingleStepsClient');
+  let baseURL = 'https:/trekjeplan.azurewebsites.net/api/';
+
   clientProgressiveSchemeId = sessionStorage.clientSchemeId;
   clientId = sessionStorage.clientId;
   getSteps(clientProgressiveSchemeId);
