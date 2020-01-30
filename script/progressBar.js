@@ -28,7 +28,7 @@ const drawEndbar = function() {
   //getCurrentCoins(clientId);
   setTimeout(function() {
     window.location.href = 'MainMenuClient.html';
-  }, 4000);
+  }, 3000);
 };
 
 const drawStartBar = function(currentCoins) {
@@ -43,6 +43,8 @@ const drawStartBar = function(currentCoins) {
 };
 
 const getCurrentCoins = function(id) {
+  let baseURL = 'https://trekjeplan.azurewebsites.net/api/';
+
   let url = `${baseURL}client`;
   fetch(url)
     .then(function(response) {
@@ -74,6 +76,5 @@ const initProgressBar = function() {
 
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DOM Content Loaded - Progress bar');
-  let baseURL = 'https://trekjeplan.azurewebsites.net/api/';
   initProgressBar();
 });

@@ -1,7 +1,8 @@
 'use strict';
 let frequency,
 	chosenDays = [],
-	baseURL = 'https://localhost:44374/api/',
+	baseURL = 'https://trekjeplan.azurewebsites.net/api/',
+
 	//payload = [],
 	counter = 0,
 	chosenItems,
@@ -22,7 +23,7 @@ const postCP = function(url, payload) {
 		.then(res => res.json())
 		.then(data => {
 			console.log(data), console.log(data);
-			window.location.href = backPage;
+			window.location.href = 'MentorHasCalendar.html';
 		})
 		.catch(err => console.log(err));
 };
