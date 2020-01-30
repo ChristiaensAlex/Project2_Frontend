@@ -5,3 +5,5 @@ var mySwiper = new Swiper('.swiper-container', {
   }
 });
 console.log(mySwiper);
+
+console.log("sirgor");

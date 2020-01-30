@@ -4,6 +4,10 @@ let step;
 let startTouch;
 let touchEnd = false;
 
+
+
+
+
 let progressiveStepPlanBeginning = function(isBeginning) {
   beginning = isBeginning;
 };

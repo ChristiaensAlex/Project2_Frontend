@@ -55,6 +55,8 @@ let ShowProgressiveSchemes = function(queryResponse, dataArrayClientFirstName, d
   // console.log(dataArraySchemeName + "------" + dataArrayPictoId + "------" + dataArrayTime + "------" + dataArrayChecked);
   let html = '';
   if (dataArraySchemeName === undefined || dataArraySchemeName.length == 0) {
+
+
     html = `<div class="c-title__menu">
             <h3 class="c-hour">
                 Niets gepland deze dag
@@ -62,13 +64,22 @@ let ShowProgressiveSchemes = function(queryResponse, dataArrayClientFirstName, d
         </div>`;
   } else {
     for (let i = 0; i < dataArraySchemeName.length; i++) {
+      // let classPhoto;
+      // console.log(dataArrayTime[i]);
+      // if (!dataArrayTime[i].profilePicture.includes('profile-icon.svg')) {
+      //   classPhoto = '';
+      // } else {
+      //   classPhoto = 'c-client__userPhoto--no-img';
+      // }
       // console.log(dataArrayChecked);
       html += `<div class="c-planning" plannr=${i}>
                             <div class="c-hour__specific">
                                 ${dataArrayTime[i]}
                             </div>
                             <div class="c-planning__picto">
-                                <img class="c-planning__picto-icon"  alt="profielfoto" />
+                            <div class="c-client__userPhoto  js-client ">
+                                <div class="c-client__userPhoto--img c-client__userPhoto--no-img" alt="profielfoto"  style="background-image: url(profile-icon.svg)" ></div>  
+                            </div>
                             </div>
                             <div class="c-planning__username">
                                 ${dataArrayClientFirstName[i] + '' + dataArrayClientLastName[i]}
