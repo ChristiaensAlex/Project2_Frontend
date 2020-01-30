@@ -23,7 +23,7 @@ const postCP = function(url, payload) {
 	})
 		.then(res => res.json())
 		.then(data => {
-			console.log(data), console.log(data), (window.location.href = 'DetailProgressiveStepsPlan.html');
+			console.log(data), console.log(data), (window.location.href = 'https://trekjeplan-front.azurewebsites.net/DetailProgressiveStepsPlan.html');
 		})
 		.catch(err => console.log(err));
 };

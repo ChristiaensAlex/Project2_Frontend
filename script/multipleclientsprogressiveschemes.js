@@ -69,7 +69,7 @@ const ListenToSubmit = function(button) {
 		sessionStorage.items = JSON.stringify(payload);
 		let ids = JSON.parse(sessionStorage.items);
 		console.log(ids);
-		window.location.href = 'OverviewDetailClientAscribed.html';
+		window.location.href = 'https://trekjeplan-front.azurewebsites.net/OverviewDetailClientAscribed.html';
 	});
 };
 // const ListenToSearch = function (search) {

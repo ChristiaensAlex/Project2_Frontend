@@ -33,7 +33,7 @@ const setSession = function(res) {
 	console.log(res);
 	localStorage.setItem('token', res.token);
 	readTokeDataFromLocalStorage();
-	window.location.href = 'MentorHasClientList.html';
+	window.location.href = 'https://trekjeplan-front.azurewebsites.net/MentorHasClientList.html';
 };
 
 const isAuthenticated = function() {

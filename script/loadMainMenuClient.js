@@ -20,7 +20,7 @@ const listenToClickScheme = function(json) {
       console.log('Schemenr: ' + nr);
       clientSchemeId = json[nr].clientProgressiveSchemeId;
       sessionStorage.clientSchemeId = clientSchemeId;
-      window.location.href = 'SingleStepClient.html';
+      window.location.href = 'https://trekjeplan-front.azurewebsites.net/SingleStepClient.html';
     })
   );
 };

@@ -13,7 +13,7 @@ const putContacts = function(payload, mentorId) {
 	})
 		.then(res => {
 			console.log(res.status);
-			window.location.href = 'MentorHasProfile.html';
+			window.location.href = 'https://trekjeplan-front.azurewebsites.net/MentorHasProfile.html';
 		})
 		// .then(data => {
 		// 	console.log(data); // ;

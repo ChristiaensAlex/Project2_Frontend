@@ -50,7 +50,7 @@ const ListenToDeletes = function(deletes) {
 };
 const ListenToAddClient = function(button) {
   button.addEventListener('click', function(event) {
-    window.location.href = 'AddClientToProgressiveScheme.html';
+    window.location.href = 'https://trekjeplan-front.azurewebsites.net/AddClientToProgressiveScheme.html';
   });
 };
 
@@ -122,7 +122,7 @@ const getProgressiveSchemes = function() {
             planId = jsonObject[i].id;
             sessionStorage.planId = planId;
             sessionStorage.planName = jsonObject[i].name;
-            window.location.href = 'DetailProgressiveStepsPlan.html';
+            window.location.href = 'https://trekjeplan-front.azurewebsites.net/DetailProgressiveStepsPlan.html';
           });
         }
       }
@@ -146,7 +146,7 @@ const putProgressiveScheme = function(payload) {
     .then(data => {
       sessionStorage.mainPictoName = '';
       sessionStorage.clickedStepPicto = '';
-      console.log(data), (window.location.href = 'MentorHasProgressiveStepsList.html');
+      console.log(data), (window.location.href = 'https://trekjeplan-front.azurewebsites.net/MentorHasProgressiveStepsList.html');
     })
     .catch(err => console.log(err));
 };
@@ -167,7 +167,7 @@ const postProgressiveScheme = function(payload) {
     .then(data => {
       sessionStorage.mainPictoName = '';
       sessionStorage.clickedStepPicto = '';
-      console.log(data), (window.location.href = 'MentorHasProgressiveStepsList.html');
+      console.log(data), (window.location.href = 'https://trekjeplan-front.azurewebsites.net/MentorHasProgressiveStepsList.html');
     })
     .catch(err => console.log(err));
 };

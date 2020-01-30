@@ -52,7 +52,7 @@ const EditMentorProfile = function(payload, mentorId) {
 		body: body
 	})
 		.then(res => {
-			console.log(res.status)((window.location.href = 'EditProfileMentor2.html'));
+			console.log(res.status)((window.location.href = 'https://trekjeplan-front.azurewebsites.net/EditProfileMentor2.html'));
 		})
 		// .then(data => {
 		// 	console.log(data); // ;
@@ -98,7 +98,7 @@ const logOut = function() {
 
 	logOutButton.addEventListener('click', function(e) {
 		//localStorage.clear();
-		window.location.href = 'index.html';
+		window.location.href = 'https://trekjeplan-front.azurewebsites.net/index.html';
 	});
 };
 

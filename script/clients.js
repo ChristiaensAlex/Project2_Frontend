@@ -53,7 +53,7 @@ const ListenToClients = function(jsonObject) {
 			sessionStorage.clientId = clientId;
 			sessionStorage.clientTotalCoins = jsonObject[nr].clientTotalCoins;
 
-			window.location.href = 'DetailInfoClient.html';
+			window.location.href = 'https://trekjeplan-front.azurewebsites.net/DetailInfoClient.html';
 		});
 	}
 };
