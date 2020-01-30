@@ -12,20 +12,6 @@ let progressiveStepPlanEnd = function(isEnd) {
   end = isEnd;
 };
 
-baseURL = 'https:/trekjeplan.azurewebsites.net/api/';
-var beginning;
-var end;
-let step;
-let activeIndex, startTouch;
-
-let progressiveStepPlanBeginning = function(isBeginning) {
-  beginning = isBeginning;
-};
-
-let progressiveStepPlanEnd = function(isEnd) {
-  end = isEnd;
-};
-
 const getClient = function(id) {
   window.location.href = 'OverviewStepsForClient.html';
 };
