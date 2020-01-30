@@ -27,7 +27,7 @@ const drawEndbar = function() {
   }
   //getCurrentCoins(clientId);
   setTimeout(function() {
-    window.location.href = 'MainMenuClient.html';
+    window.location.href = 'https://trekjeplan-front.azurewebsites.net/MainMenuClient.html';
   }, 4000);
 };
 

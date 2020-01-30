@@ -12,7 +12,7 @@ const postRegisterMentorAPI = function (payload) {
 	})
 		.then(res => res.json())
 		.then(data => {
-			console.log(data), (sessionStorage.mentorId = data.id), console.log(sessionStorage.mentorId), (window.location.href = 'RegistrationMentor2.html');
+			console.log(data), (sessionStorage.mentorId = data.id), console.log(sessionStorage.mentorId), (window.location.href = 'https://trekjeplan-front.azurewebsites.net/RegistrationMentor2.html');
 		})
 		.catch(err => console.log(err));
 };
