@@ -279,7 +279,7 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 
-	max-width: calc(var(--global-baseline)*100) ;/*800px;*/ /*79.5 * 16px = 1272 */
+	max-width: calc(var(--global-baseline) * 100); /*800px;*/ /*79.5 * 16px = 1272 */
 	width: 100%;
 }
 
@@ -359,19 +359,19 @@ body {
 
 /* gutter modifiers, these affect o-layout__item too */
 .o-layout--gutter {
-	margin: 0 calc(var(--global-whitespace-xs)*(-3));/*-12px;*/
+	margin: 0 calc(var(--global-whitespace-xs) * (-3)); /*-12px;*/
 }
 
 .o-layout--gutter > .o-layout__item {
-	padding: 0 calc(var(--global-whitespace-xs)*3);/*12px;*/
+	padding: 0 calc(var(--global-whitespace-xs) * 3); /*12px;*/
 }
 
 .o-layout--gutter-sm {
-	margin: 0 calc(var(--global-whitespace)/ (-4));/*-6px;*/
+	margin: 0 calc(var(--global-whitespace) / (-4)); /*-6px;*/
 }
 
 .o-layout--gutter-sm > .o-layout__item {
-	padding: 0 calc(var(--global-whitespace)/4);/*6px;*/
+	padding: 0 calc(var(--global-whitespace) / 4); /*6px;*/
 }
 
 .o-layout--gutter-lg {
@@ -499,14 +499,14 @@ body {
 
 @media (min-width: 1200px) {
 	.c-content {
-		width: calc(var(--global-baseline)*125);/*1000px;*/
+		width: calc(var(--global-baseline) * 125); /*1000px;*/
 		display: flex;
 		justify-content: space-between;
 	}
 }
 @media (min-width: 1400px) {
 	.c-content {
-		width: calc(var(--global-baseline)*150);/*1200px;*/
+		width: calc(var(--global-baseline) * 150); /*1200px;*/
 		display: flex;
 		justify-content: space-between;
 	}
@@ -526,7 +526,7 @@ body {
 }
 
 .c-logo__symbol {
-	--logo-size: calc(var(--global-whitespace-xxl)/2);
+	--logo-size: calc(var(--global-whitespace-xxl) / 2);
 	height: var(--logo-size);
 	width: var(--logo-size);
 }
@@ -560,7 +560,7 @@ body {
 	}
 
 	.c-logo__symbol {
-		--logo-size-large: calc(var(--global-baseline)*30);
+		--logo-size-large: calc(var(--global-baseline) * 30);
 		width: 100%;
 		height: var(--logo-size-large);
 		margin-bottom: var(--global-whitespace);
@@ -606,7 +606,7 @@ body {
 }
 @media (min-width: 768px) {
 	.c-title.c-reset-description {
-		--logo-size-extra-large: calc(var(--global-baseline)*60);
+		--logo-size-extra-large: calc(var(--global-baseline) * 60);
 		font-size: var(--global-fontsize-xl);
 		text-align: center;
 		width: var(--logo-size-extra-large);
@@ -675,10 +675,9 @@ body {
 }
 
 .c-title--contacten {
-  text-align: left;
-  margin-top: calc(var(--global-baseline)*7);
-  font-size: var(--global-fontsize-xxl);
-
+	text-align: left;
+	margin-top: calc(var(--global-baseline) * 7);
+	font-size: var(--global-fontsize-xxl);
 }
 /*
       Component: card
@@ -705,7 +704,7 @@ body {
     Everything form related here. Including input, label and button
   */
 .c-form {
-	max-width: calc(var(--global-whitespace-lg)*20);
+	max-width: calc(var(--global-whitespace-lg) * 20);
 	height: fit-content;
 	margin: auto;
 }
@@ -755,7 +754,7 @@ body {
 }
 
 .c-spreadPage .c-logo__symbol {
-	--logo-size: calc(var(--global-whitespace-xxl)/2);
+	--logo-size: calc(var(--global-whitespace-xxl) / 2);
 	height: var(--logo-size);
 	width: var(--logo-size);
 }
@@ -889,11 +888,11 @@ body {
 .c-input-description {
 	height: var(--global-whitespace-xxl);
 	font-size: var(--global-fontsize-sm);
-	line-height: calc(var(--global-baseline)*2.5);/*20px;*/
+	line-height: calc(var(--global-baseline) * 2.5); /*20px;*/
 	padding: var(--global-baseline);
 }
 .c-input-time {
-	width: calc(var(--global-whitespace-xs)*22.5);/*90px;*/
+	width: calc(var(--global-whitespace-xs) * 22.5); /*90px;*/
 }
 
 .c-input:hover {
@@ -935,7 +934,7 @@ body {
     border-radius: var(--global-borderRadius);
   } */
 .c-custom-select__symbol {
-	--logo-position: calc(var(--global-whitespace-xs)*3);
+	--logo-position: calc(var(--global-whitespace-xs) * 3);
 	width: var(--global-whitespace);
 	height: var(--global-whitespace);
 	position: absolute;
@@ -1098,7 +1097,7 @@ body {
 
 @media (min-width: 768px) {
 	.c-backbutton-long {
-		padding-right: calc(var(--global-whitespace-xs)*47.5);/*190px;*/
+		padding-right: calc(var(--global-whitespace-xs) * 47.5); /*190px;*/
 	}
 }
 
@@ -1116,7 +1115,7 @@ body {
 	width: 100%;
 	justify-content: center;
 	margin-left: var(--global-whitespace-xs);
-	max-width: calc(var(--global-baseline)*40);/*320px;*/
+	max-width: calc(var(--global-baseline) * 40); /*320px;*/
 	pointer-events: auto;
 }
 .c-submitbutton__arrow {
@@ -1167,7 +1166,7 @@ body {
 	border: none;
 	color: var(--global-color-neutral-xxx-light);
 	background-color: #438787;
-	height: calc(var(--global-baseline)*4.5);/*36px;*/
+	height: calc(var(--global-baseline) * 4.5); /*36px;*/
 	width: calc(var(--global-whitespace) * 16);
 	position: relative;
 	text-align: center;
@@ -1190,11 +1189,11 @@ body {
 	pointer-events: auto;
 }
 .c-uploadbutton__arrowbox {
-	--arow-size: calc(var(--global-baseline)*4.5);
+	--arow-size: calc(var(--global-baseline) * 4.5);
 	border-radius: var(--global-borderRadius);
 	background-color: var(--global-color-beta);
-	width: var(--arow-size);/*36px;*/
-	height: var(--arow-size);/*36px;*/
+	width: var(--arow-size); /*36px;*/
+	height: var(--arow-size); /*36px;*/
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -1257,8 +1256,8 @@ body {
 }
 
 .c-choice a {
-  width: 100%;
-  height: 100%; 
+	width: 100%;
+	height: 100%;
 }
 .c-choice div {
 	color: var(--global-color-alpha);
@@ -1276,7 +1275,7 @@ body {
 	margin: 0 var(--global-whitespace-sm) var(--global-whitespace-sm) var(--global-whitespace-sm);
 	font-size: var(--global-fontsize-xs);
 	display: grid;
-	grid-template-rows: calc(var(--global-baseline)*5) auto; /*40px auto;*/
+	grid-template-rows: calc(var(--global-baseline) * 5) auto; /*40px auto;*/
 }
 
 .c-symbol__clientProfiles-client__symbol {
@@ -1313,7 +1312,7 @@ body {
     ---
   */
 .c-navigationClient {
-	--grid-size-client: calc(var(--global-baseline)*7);
+	--grid-size-client: calc(var(--global-baseline) * 7);
 	display: grid;
 	grid-template-columns: var(--grid-size-client) 1fr var(--grid-size-client);
 	height: var(--global-whitespace-xl);
@@ -1364,7 +1363,7 @@ body {
 }
 
 .c-date .c-icon {
-	--icon-size: calc(var(--global-baseline)*7.5);
+	--icon-size: calc(var(--global-baseline) * 7.5);
 	width: var(--icon-size);
 	height: var(--icon-size);
 }
@@ -1376,7 +1375,7 @@ body {
 
 .c-progressiveSchemes .c-progressiveScheme {
 	background-color: var(--global-color-neutral-x-light-transparent);
-	height: calc(var(--global-baseline)*13);/*104px;*/
+	height: calc(var(--global-baseline) * 13); /*104px;*/
 	display: flex;
 	align-items: center;
 	/* display: grid;
@@ -1419,7 +1418,7 @@ body {
 }
 
 .c-button__addClient-text {
-	padding: 0 calc(var(--global-whitespace-xs)*3.5);
+	padding: 0 calc(var(--global-whitespace-xs) * 3.5);
 }
 
 .c-button__addClient-symbol {
@@ -1448,7 +1447,6 @@ body {
     align-items: center;
     padding-top: var(--global-whitespace-sm);
   } */
-
 
 /* Component: chooce photo
     ---
@@ -1485,7 +1483,7 @@ body {
 	display: flex;
 	flex-direction: row;
 	padding: var(--global-whitespace-md);
-	max-width: calc(var(--global-baseline)*37);/*296px;*/
+	max-width: calc(var(--global-baseline) * 37); /*296px;*/
 }
 
 .c-report-description + .c-report-description {
@@ -1493,7 +1491,7 @@ body {
 }
 
 .c-report-title {
-	margin-bottom: calc(var(--global-whitespace-xs)*(-3));/*-12px;*/
+	margin-bottom: calc(var(--global-whitespace-xs) * (-3)); /*-12px;*/
 }
 
 .c-report-scheme {
@@ -1513,10 +1511,9 @@ body {
      A mentor has an overview of all his clients
       */
 
-
 .c-clients .c-client {
 	display: grid;
-	grid-template-columns: 1fr calc(var(--global-whitespace-xs)*5); /*20px*/
+	grid-template-columns: 1fr calc(var(--global-whitespace-xs) * 5); /*20px*/
 	grid-template-rows: auto auto;
 	background-color: var(--global-color-neutral-x-light-transparent);
 	height: calc(var(--global-baseline) * 10);
@@ -1562,12 +1559,12 @@ body {
 	}
 
 	.c-clients .c-client {
-		width: calc(var(--global-baseline)*37.5);/*300px;*/
+		width: calc(var(--global-baseline) * 37.5); /*300px;*/
 	}
 }
 
 .c-ascribeclient-page {
-	max-width: calc(var(--global-baseline)*38.75);/*310px;*/
+	max-width: calc(var(--global-baseline) * 38.75); /*310px;*/
 }
 /*Component: PlanningList
    A mentor has an overview of the planning of today
@@ -1586,7 +1583,7 @@ body {
 
 .c-plannings .c-planning {
 	display: grid;
-	grid-template-columns: calc(var(--global-baseline)*8) 1fr calc(var(--global-whitespace-xs)*5);
+	grid-template-columns: calc(var(--global-baseline) * 8) 1fr calc(var(--global-whitespace-xs) * 5);
 	grid-template-rows: auto auto;
 	background-color: var(--global-color-neutral-x-light-transparent);
 	height: calc(var(--global-baseline) * 10);
@@ -1666,7 +1663,7 @@ body {
 		margin-left: calc(var(--global-baseline) * 8);
 	}
 	.c-plannings .c-planning {
-		width: calc(var(--global-baseline)*37.5);/*300px;*/
+		width: calc(var(--global-baseline) * 37.5); /*300px;*/
 	}
 }
 /*Component: StepplansList
@@ -1675,8 +1672,8 @@ body {
 
 .c-stepplans .c-stepplan {
 	display: grid;
-	grid-template-columns: 1fr calc(var(--global-baseline)*5);/*40px;*/
-	grid-template-rows: calc(var(--global-whitespace-xs)*5) var(--global-whitespace-lg);/*24px 32px;*/
+	grid-template-columns: 1fr calc(var(--global-baseline) * 5); /*40px;*/
+	grid-template-rows: calc(var(--global-whitespace-xs) * 5) var(--global-whitespace-lg); /*24px 32px;*/
 	background-color: var(--global-color-neutral-x-light-transparent);
 	height: calc(var(--global-baseline) * 10);
 	margin: var(--global-whitespace) 0 calc(var(--global-baseline) * 11) 0;
@@ -1689,7 +1686,7 @@ body {
 	grid-row: span 2;
 }
 .c-stepplan__picto {
-	--stepplan-picto-size: calc(var(--global-baseline)*7);
+	--stepplan-picto-size: calc(var(--global-baseline) * 7);
 	grid-row: span 2;
 	height: var(--stepplan-picto-size);
 	width: var(--stepplan-picto-size);
@@ -1731,7 +1728,7 @@ body {
 	.c-stepplans {
 		display: grid;
 		grid-template-columns: 1fr 40px;
-		grid-template-rows: calc(var(--global-whitespace-xs)*5) var(--global-whitespace-lg);
+		grid-template-rows: calc(var(--global-whitespace-xs) * 5) var(--global-whitespace-lg);
 		/*background-color: var(--global-color-neutral-x-light-transparent);*/
 		height: calc(var(--global-baseline) * 10);
 		margin: var(--global-whitespace) 0 calc(var(--global-baseline) * 11) 0;
@@ -1744,10 +1741,10 @@ body {
 		grid-row: span 2;
 	}
 	.c-stepplan__picto {
-		--picto-size: calc(var(--global-baseline)*7);
+		--picto-size: calc(var(--global-baseline) * 7);
 		grid-row: span 2;
-		height: var(--picto-size);/*56px;*/
-		width: var(--picto-size);/*56px;*/
+		height: var(--picto-size); /*56px;*/
+		width: var(--picto-size); /*56px;*/
 	}
 
 	.c-stepplan__name {
@@ -1784,7 +1781,7 @@ body {
 		}
 
 		.c-stepplans .c-stepplan {
-			width: calc(var(--global-baseline)*37.5);/*300px;*/
+			width: calc(var(--global-baseline) * 37.5); /*300px;*/
 		}
 	}
 }
@@ -1794,7 +1791,7 @@ body {
       */
 .c-mentor__logout {
 	display: grid;
-	grid-template-columns: 1fr calc(var(--global-baseline)*7);/*56px;*/
+	grid-template-columns: 1fr calc(var(--global-baseline) * 7); /*56px;*/
 
 	height: var(--global-whitespace-xl);
 	margin: var(--global-whitespace) var(--global-whitespace) var(--global-whitespace) 0;
@@ -1869,13 +1866,13 @@ body {
 	background-color: var(--global-color-alpha);
 	border-radius: 23px;
 	height: calc(var(--global-baseline) * 7);
-	width: calc(var(--global-baseline)*13);/*104px;*/
+	width: calc(var(--global-baseline) * 13); /*104px;*/
 	display: flex;
 	justify-content: flex-end;
 	/*positioning telephone so that it stays in the same spot on the screen no matter how much you scroll*/
 	position: fixed;
-	bottom: calc(var(--global-baseline)*5);/*40;*/
-	left: calc(var(--global-whitespace-xs)*(-5));/*-20;*/
+	bottom: calc(var(--global-baseline) * 5); /*40;*/
+	left: calc(var(--global-whitespace-xs) * (-5)); /*-20;*/
 	padding-right: var(--global-whitespace-md);
 }
 
@@ -1915,7 +1912,7 @@ body {
 }
 
 .c-step__countsymbol {
-	--countsymbol-position: calc(var(--global-whitespace-xs)*(-3));
+	--countsymbol-position: calc(var(--global-whitespace-xs) * (-3));
 	position: absolute;
 	top: var(--countsymbol-position);
 	left: var(--countsymbol-position);
@@ -1924,8 +1921,8 @@ body {
 .c-step__pictowrapper {
 	display: block;
 	position: relative;
-	height: calc(var(--global-whitespace-lg)*9.5);/*304px;*/
-	width: calc(var(--global-whitespace-lg)*9.5);/*256px;*/
+	height: calc(var(--global-whitespace-lg) * 9.5); /*304px;*/
+	width: calc(var(--global-whitespace-lg) * 9.5); /*256px;*/
 	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
 	border-radius: var(--global-borderRadius-lg);
 	padding: auto;
@@ -1975,7 +1972,7 @@ body {
 	margin-bottom: calc(var(--global-baseline) * 3);
 }
 .c-step__explanation-mentor {
-	width: calc(var(--global-baseline)*32);/*256px;*/
+	width: calc(var(--global-baseline) * 32); /*256px;*/
 	text-align: center;
 	font-size: var(--global-fontsize-sm);
 	color: var(--global-color-neutral-x-dark);
@@ -2020,7 +2017,7 @@ body {
 
 .c-footer__navbarClient .c-emergencycall {
 	position: absolute;
-	top: calc(var(--global-whitespace-lg)*(-1));/*-32px;*/
+	top: calc(var(--global-whitespace-lg) * (-1)); /*-32px;*/
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -2048,7 +2045,6 @@ body {
 	justify-content: flex-end;
 }
 
-
 .c-stepsOverview__sybmol {
 	border: var(--global-borderWidth) solid var(--global-color-omega);
 	border-radius: var(--global-borderRadius-md);
@@ -2057,9 +2053,9 @@ body {
 	width: calc(var(--global-baseline) * 5);
 	display: flex;
 	justify-content: center;
-  align-items: center;
-  z-index: 3;
-  cursor: pointer;
+	align-items: center;
+	z-index: 3;
+	cursor: pointer;
 }
 
 /*Component: footer
@@ -2092,8 +2088,8 @@ body {
 	padding: 0 0 calc(var(--global-whitespace-xxl)) 0;
 }
 
-.c-section_menu .c-title{
-  margin-bottom: var(--global-whitespace-lg);
+.c-section_menu .c-title {
+	margin-bottom: var(--global-whitespace-lg);
 }
 
 @media (min-width: 768px) {
@@ -2138,7 +2134,7 @@ body {
 		display: flex;
 		height: fit-content;
 		margin: 0 0 calc(var(--global-baseline) * 7) 0;
-		width: calc(var(--global-baseline)*8);/*64px;*/
+		width: calc(var(--global-baseline) * 8); /*64px;*/
 	}
 	.c-topLeftLogo .c-logo__symbol {
 		height: var(--global-whitespace-lg);
@@ -2213,7 +2209,7 @@ body {
 .c-button__addContact {
 	display: flex;
 	justify-content: space-around;
-	width: calc(var(--global-whitespace-xs)*44.5);/*178px;*/
+	width: calc(var(--global-whitespace-xs) * 44.5); /*178px;*/
 	font-size: var(--global-fontsize-sm);
 }
 
@@ -2249,7 +2245,7 @@ body {
 .c-overview__header .c-progressiveScheme__name {
 	font-size: var(--global-fontsize-lg);
 	position: absolute;
-	bottom: calc(var(--global-whitespace-md)*(-1));/*-16px;*/
+	bottom: calc(var(--global-whitespace-md) * (-1)); /*-16px;*/
 	left: 0;
 }
 
@@ -2257,7 +2253,7 @@ body {
 	margin: var(--global-whitespace) 0;
 	background-color: var(--global-color-neutral-xxx-light);
 	display: grid;
-	grid-template-columns: calc(var(--global-baseline)*7) calc(var(--global-whitespace-xs)*5) 1fr;
+	grid-template-columns: calc(var(--global-baseline) * 7) calc(var(--global-whitespace-xs) * 5) 1fr;
 	grid-template-rows: 1fr 1fr;
 	grid-column-gap: var(--global-baseline);
 	border-radius: var(--global-borderRadius-md);
@@ -2291,7 +2287,7 @@ body {
 }
 
 .c-checkmark {
-	--checkmark-position: calc(var(--global-baseline)*(-1));
+	--checkmark-position: calc(var(--global-baseline) * (-1));
 	position: absolute;
 	top: var(--checkmark-position);
 	right: var(--checkmark-position);
@@ -2344,20 +2340,19 @@ body {
 	font-size: var(--global-fontsize-lg);
 }
 
-  .c-congrats__pig {
-    width: 550px;
-    height: 490px;
-  }
+.c-congrats__pig {
+	width: 550px;
+	height: 490px;
+}
 
-  @media (max-width: 992px) {
-    .c-congrats__pig {
-      width: 400px;
-      height: 360px;
-    }
-  }
+@media (max-width: 992px) {
+	.c-congrats__pig {
+		width: 400px;
+		height: 360px;
+	}
+}
 
-
-  /* .c-congrats__bar {
+/* .c-congrats__bar {
     position: relative;
     width: 100%;
     height: var(--global-whitespace);
@@ -2439,7 +2434,7 @@ body {
 .swiper-pagination-bullet {
 	width: var(--global-baseline);
 	height: var(--global-baseline);
-	margin: 0 calc(var(--global-baseline)/4);
+	margin: 0 calc(var(--global-baseline) / 4);
 	display: inline-block;
 	border-radius: 100%;
 	background: #000;
@@ -2498,9 +2493,9 @@ body {
 	display: flex;
 	align-items: center;
 	background-color: var(--global-color-neutral-x-light-transparent);
-	height: calc(var(--global-baseline)*13);/*104px;*/
-	width: calc(var(--global-baseline)*37);/*296px;*/
-	max-width: calc(var(--global-baseline)*80);/*640px;*/
+	height: calc(var(--global-baseline) * 13); /*104px;*/
+	width: calc(var(--global-baseline) * 37); /*296px;*/
+	max-width: calc(var(--global-baseline) * 80); /*640px;*/
 	margin-bottom: var(--global-whitespace);
 	border-radius: var(--global-borderRadius-md);
 }
@@ -2528,21 +2523,21 @@ body {
 /*component: topbar*/
 .c-topbarDetailClient {
 	display: grid;
-	grid-template-columns: calc(var(--global-baseline)*4.5) 1fr calc(var(--global-baseline)*4.5);
-	grid-template-rows: calc(var(--global-baseline)*4.5) calc(var(--global-baseline)*13);/*104px;*/
+	grid-template-columns: calc(var(--global-baseline) * 4.5) 1fr calc(var(--global-baseline) * 4.5);
+	grid-template-rows: calc(var(--global-baseline) * 4.5) calc(var(--global-baseline) * 13); /*104px;*/
 	margin-top: var(--global-whitespace);
 }
 
 .c-topbarDetailProgressiveSteps {
 	display: grid;
-	grid-template-columns: calc(var(--global-baseline)*4.5) 1fr calc(var(--global-baseline)*4.5);
-	grid-template-rows: calc(var(--global-baseline)*4.5) var(--global-whitespace-lg);
+	grid-template-columns: calc(var(--global-baseline) * 4.5) 1fr calc(var(--global-baseline) * 4.5);
+	grid-template-rows: calc(var(--global-baseline) * 4.5) var(--global-whitespace-lg);
 	margin-top: var(--global-whitespace-xl);
 	min-width: 100%;
 }
 
 .c-topbarDetailProgressiveSteps .c-logo__symbol {
-	height: calc(var(--global-baseline)*4.5);
+	height: calc(var(--global-baseline) * 4.5);
 }
 .c-topbarDetailProgressiveSteps .c-navigation__close {
 	grid-column: 3;
@@ -2555,8 +2550,8 @@ body {
 }
 
 .c-topbarDetailClient .c-logo__symbol {
-	height: calc(var(--global-baseline)*4.5);
-	width: calc(var(--global-baseline)*4.5);
+	height: calc(var(--global-baseline) * 4.5);
+	width: calc(var(--global-baseline) * 4.5);
 }
 
 .c-logo__symbol .c-icon {
@@ -2594,7 +2589,7 @@ body {
 	height: min-content;
 }
 .c-diagram__circle {
-	--circle-size: calc(var(--global-baseline)*40);/*320px;*/
+	--circle-size: calc(var(--global-baseline) * 40); /*320px;*/
 	max-height: var(--circle-size);
 	max-width: var(--circle-size);
 	width: 100%;
@@ -2639,10 +2634,9 @@ body {
 
 .c-contact__wrapper .c-profile {
 	display: grid;
-	grid-template-columns: 1fr calc(var(--global-whitespace-xs)*5);
+	grid-template-columns: 1fr calc(var(--global-whitespace-xs) * 5);
 	grid-template-rows: var(--global-fontsize-xl) 1fr;
 }
-
 
 .c-contact__wrapper .c-profile .c-button__addProfilePic {
 	grid-row: 2;
@@ -2680,9 +2674,9 @@ body {
 	background-color: var(--global-color-neutral-xxxx-light);
 	border-radius: var(--global-borderRadius-lg);
 	width: 100%;
-	padding: calc(var(--global-baseline)*4.5);/*36px;*/
-	max-width: calc(var(--global-baseline)*69);/*552px;*/
-	line-height: calc(var(--global-whitespace-xs)*5); /*24px inherit*/
+	padding: calc(var(--global-baseline) * 4.5); /*36px;*/
+	max-width: calc(var(--global-baseline) * 69); /*552px;*/
+	line-height: calc(var(--global-whitespace-xs) * 5); /*24px inherit*/
 	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
 }
 
@@ -2729,7 +2723,9 @@ body {
 .c-chosenProgressiveSchemes div {
 	padding: var(--global-baseline) 0;
 }
-
+.js-all-steps {
+	margin-bottom: var(--global-whitespace-xl);
+}
 /*
       Utilities: spacing
       ---

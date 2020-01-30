@@ -13,7 +13,7 @@ const putContacts = function(payload, mentorId) {
 	})
 		.then(res => {
 			console.log(res.status);
-			window.location.href = 'MentorHasClientList.html';
+			window.location.href = 'MentorHasProfile.html';
 		})
 		// .then(data => {
 		// 	console.log(data); // ;
@@ -25,11 +25,11 @@ const editContacts = function(jsonObject) {
 	i = 1;
 	for (object of jsonObject) {
 		let classPhoto;
-		console.log(object.profilePicture)
-		if(!object.profilePicture.includes('profile-icon.svg')){
-			classPhoto = "c-upload-image c-upload-image--big"
-		}else {
-			classPhoto = "c-upload-image"
+		console.log(object.profilePicture);
+		if (!object.profilePicture.includes('profile-icon.svg')) {
+			classPhoto = 'c-upload-image c-upload-image--big';
+		} else {
+			classPhoto = 'c-upload-image';
 		}
 
 		html += `<div class="js-single-step js-contact" data-number="${i}"> 
@@ -87,10 +87,10 @@ const showContacts = function(jsonObject) {
 	i = 1;
 	for (object of jsonObject) {
 		let classPhoto;
-		if(object.profilePicture && ! object.profilePicture.includes('profile-icon.svg')){
-			classPhoto = "c-upload-image c-upload-image--big"
-		}else {
-			classPhoto = "c-upload-image"
+		if (object.profilePicture && !object.profilePicture.includes('profile-icon.svg')) {
+			classPhoto = 'c-upload-image c-upload-image--big';
+		} else {
+			classPhoto = 'c-upload-image';
 		}
 		html += `<div class="js-single-step" data-number="${i}"> 
         <div class="c-contact__wrapper" >
@@ -110,8 +110,6 @@ const showContacts = function(jsonObject) {
 		i++;
 	}
 	document.querySelector('.js-all-steps').innerHTML += html;
-	
-
 };
 const getContacts = function(baseURL, id) {
 	let url = `${baseURL}mentor/${id}/contact`;
@@ -127,7 +125,7 @@ const getContacts = function(baseURL, id) {
 		})
 		.then(function(jsonObject) {
 			json = jsonObject;
-
+			console.log(jsonObject);
 			if (submit) {
 				editContacts(jsonObject);
 			} else {
@@ -162,9 +160,9 @@ const getContactElements = function() {
 // 	}
 // };
 
-const EditContact = function(chosenContact) {
-	console.log(chosenContact);
-};
+// const EditContact = function(chosenContact) {
+// 	console.log(chosenContact);
+// };
 
 const removefromDB = function(i) {
 	i = parseInt(i) - 1;
@@ -193,14 +191,14 @@ const ListenToSubmit = function(button) {
 		let payload = [];
 		allContacts = document.querySelectorAll('.js-contact');
 		//delete allContacts[0];
-		console.log(allContacts)
+		console.log(allContacts);
 		counter = 0;
 		console.log(json);
 
 		for (object of json) {
 			object.firstName = allContacts[counter].querySelector('.js-firstname').value;
 			object.phoneNumber = allContacts[counter].querySelector('.js-phonenumber').value;
-			object.profilePicture = 'profile-icon.svg'
+			object.profilePicture = 'profile-icon.svg';
 			payload.push(object);
 			counter++;
 		}
