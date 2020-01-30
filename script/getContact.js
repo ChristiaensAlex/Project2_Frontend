@@ -1,7 +1,5 @@
-let baseURL = 'https://trekjeplan.azurewebsites.net/api/',
-	json,
-	mentorId;
-const putContacts = function (payload, mentorId) {
+let json, mentorId;
+const putContacts = function(payload, mentorId) {
 	console.log('put client info');
 	let body = JSON.stringify(payload);
 	console.log(body);
@@ -14,35 +12,33 @@ const putContacts = function (payload, mentorId) {
 		body: body
 	})
 		.then(res => {
-			console.log(res.status)//((window.location.href = 'MentorHasClientList.html'));
+			console.log(res.status);
+			window.location.href = 'MentorHasProfile.html';
 		})
 		// .then(data => {
 		// 	console.log(data); // ;
 		// })
 		.catch(err => console.log(err));
 };
-const showContacts = function (jsonObject) {
+const editContacts = function(jsonObject) {
 	html = '';
 	i = 1;
 	for (object of jsonObject) {
-		console.log(object);
-		html += `<div class="js-single-step" data-number="${i}"> 
+		let classPhoto;
+		console.log(object.profilePicture);
+		if (!object.profilePicture.includes('profile-icon.svg')) {
+			classPhoto = 'c-upload-image c-upload-image--big';
+		} else {
+			classPhoto = 'c-upload-image';
+		}
+
+		html += `<div class="js-single-step js-contact" data-number="${i}"> 
         <div class="c-contact__wrapper" >
         <div class="c-profile" >
             <div>
                 Kies een profielfoto
             </div>
-            <div class="c-stepplan__pencil">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14.65" height="14.579"
-                    viewBox="0 0 14.65 14.579">
-                    <g id="pencil-edit-button" transform="translate(-0.001 -1.289)">
-                        <path id="Path_288" data-name="Path 288"
-                            d="M9.11,3.722,12.09,6.7,4.547,14.245l-2.978-2.98ZM14.352,3,13.023,1.674a1.319,1.319,0,0,0-1.863,0L9.887,2.947l2.98,2.98,1.485-1.485A1.016,1.016,0,0,0,14.352,3ZM.009,15.454a.339.339,0,0,0,.41.4l3.321-.805L.762,12.072Z"
-                            transform="translate(0)" fill="#291f5f" />
-                    </g>
-                </svg>
-    
-            </div>
+            
             <div class="c-delete  js-remove-button">
                 <svg class="c-icon" xmlns="http://www.w3.org/2000/svg" width="19.492" height="24" viewBox="0 0 19.492 24">
                     <g id="bin" transform="translate(0.003 0.001)">
@@ -52,33 +48,15 @@ const showContacts = function (jsonObject) {
                         <path id="Path_319" data-name="Path 319" d="M163.96,154.7a.562.562,0,0,0-.562.562v10.623a.562.562,0,1,0,1.124,0V155.265A.562.562,0,0,0,163.96,154.7Zm0,0" transform="translate(-154.217 -146.009)" fill="#28225f" />
                     </g>
                 </svg>
-            </div>
-            <button class="o-button-reset c-button__addProfilePic">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="96" height="99" viewBox="0 0 96 99">
-                    <defs>
-                        <filter id="Rectangle_20" x="0" y="4" width="95" height="95" filterUnits="userSpaceOnUse">
-                            <feOffset dy="3" input="SourceAlpha" />
-                            <feGaussianBlur stdDeviation="3" result="blur" />
-                            <feFlood flood-opacity="0.161" />
-                            <feComposite operator="in" in2="blur" />
-                            <feComposite in="SourceGraphic" />
-                        </filter>
-                    </defs>
-                    <g id="Group_954" data-name="Group 954" transform="translate(-271.5 -418.679)">
-                        <g transform="matrix(1, 0, 0, 1, 271.5, 418.68)" filter="url(#Rectangle_20)">
-                            <rect id="Rectangle_20-2" data-name="Rectangle 20" width="77" height="77" rx="5" transform="translate(9 10)" fill="#ececf0" />
-                        </g>
-                        <g id="Group_7" data-name="Group 7" transform="translate(293.5 448.679)">
-                            <path id="Path_238" data-name="Path 238" d="M52.208,35.483V28.656A13.656,13.656,0,0,0,38.553,15h-23.9A13.656,13.656,0,0,0,1,28.656v6.828" transform="translate(-1 21.282)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="4.5" />
-                            <ellipse id="Ellipse_70" data-name="Ellipse 70" cx="13.655" cy="13.656" rx="13.655" ry="13.656" transform="translate(12.174 0)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.5" />
-                        </g>
-                        <g id="Group_1088" data-name="Group 1088" transform="translate(239.5 113.679)">
-                            <circle id="Ellipse_140" data-name="Ellipse 140" cx="10" cy="10" r="10" transform="translate(108 305)" fill="#e0dee6" />
-                            <path id="Path_273" data-name="Path 273" d="M827,2271.6l-1.6-1.6-2.4,2.4-2.4-2.4-1.6,1.6,2.4,2.4-2.4,2.4,1.6,1.6,2.4-2.4,2.4,2.4,1.6-1.6-2.4-2.4Z" transform="translate(1144.012 -1874.738) rotate(45)" fill="#fff" />
-                        </g>
-                    </g>
-                </svg>
-            </button>
+			</div>
+			
+
+			<div id="imageUpload" class="js-upload-img ${classPhoto}" style="background-image: url(${object.profilePicture});">
+			  <input class="c-upload-image__input js-input-img" accept="image/x-png,image/jpeg" type="file"	 title="Choose a profile picture">
+			  <div class="c-upload-image__close js-remove-img  c-upload-image__close--icon c-upload-image__select" ></div>
+			</div>
+		  
+
         </div>
 
         <p class="js-firstname-field">
@@ -100,38 +78,73 @@ const showContacts = function (jsonObject) {
 	document.querySelector('.js-all-steps').innerHTML += html;
 
 	getFormElements();
-	ListToRemoveButton();
+	ListenToRemoveButton();
+	getElements();
 	//ListenToPencil(jsonObject);
 };
-const getContacts = function (id) {
+const showContacts = function(jsonObject) {
+	html = '';
+	i = 1;
+	for (object of jsonObject) {
+		let classPhoto;
+		if (object.profilePicture && !object.profilePicture.includes('profile-icon.svg')) {
+			classPhoto = 'c-upload-image c-upload-image--big';
+		} else {
+			classPhoto = 'c-upload-image';
+		}
+		html += `<div class="js-single-step" data-number="${i}"> 
+        <div class="c-contact__wrapper" >
+        <div class="c-contact__info" >
+         
+		<div class="${classPhoto}" alt="profielfoto" style="background-image: url(${object.profilePicture})" ></div>  
+		<div>
+		
+		<label class="c-label__profile">Voornaam:</label>
+		<p class="c-profile__info ">${object.firstName}</p>
+		<label class="c-label__profile">Telefoonnummer:</label>
+		<p class="c-profile__info ">${object.phoneNumber}</p>
+        </div>
+    </div>
+</div>
+</div></div>`;
+		i++;
+	}
+	document.querySelector('.js-all-steps').innerHTML += html;
+};
+const getContacts = function(baseURL, id) {
 	let url = `${baseURL}mentor/${id}/contact`;
 	fetch(url)
-		.then(function (response) {
+		.then(function(response) {
 			if (!response.ok) {
 				throw Error(`Problem to fetch(). Status code: ${response.status}`);
 			} else {
 				let arr = new Array();
 				arr = response.json();
-				console.log(arr);
 				return arr;
 			}
 		})
-		.then(function (jsonObject) {
+		.then(function(jsonObject) {
 			json = jsonObject;
 			console.log(jsonObject);
-			showContacts(jsonObject);
+			if (submit) {
+				editContacts(jsonObject);
+			} else {
+				showContacts(jsonObject);
+			}
 		})
-		.catch(function (error) {
+		.catch(function(error) {
 			console.log(error);
 			console.error(`Problem to process json $`);
 		});
 };
 
-const getContactElements = function () {
+const getContactElements = function() {
 	submit = document.querySelector('.js-submitButton');
 	phonenumber = document.querySelector('.js-phonenumber');
 	firstname = document.querySelector('.js-firstname');
-	ListenToSubmit(submit);
+	if (submit) {
+		ListenToSubmit(submit);
+	}
 };
 // const ListenToPencil = function(jsonObject) {
 // 	let pencils = document.querySelectorAll('.c-stepplan__pencil');
@@ -147,21 +160,20 @@ const getContactElements = function () {
 // 	}
 // };
 
-const EditContact = function (chosenContact) {
-	console.log(chosenContact);
-};
+// const EditContact = function(chosenContact) {
+// 	console.log(chosenContact);
+// };
 
-const removefromDB = function (i) {
+const removefromDB = function(i) {
 	i = parseInt(i) - 1;
-	console.log(i);
 	let contactId = json[i].id;
 	//contactId = 0;
-	console.log('removed: ' + contactId);
+
 	let url = `${baseURL}mentor/${mentorId}/contact/${contactId}`;
 	fetch(url, {
 		method: 'DELETE'
 	})
-		.then(function (response) {
+		.then(function(response) {
 			if (response.ok) {
 				console.log(response.status);
 			} else {
@@ -173,19 +185,20 @@ const removefromDB = function (i) {
 		.then(data => console.log(data));
 };
 
-const ListenToSubmit = function (button) {
-	button.addEventListener('click', function (event) {
+const ListenToSubmit = function(button) {
+	button.addEventListener('click', function(event) {
 		event.preventDefault();
 		let payload = [];
-		allContacts = document.querySelectorAll('.js-single-step');
+		allContacts = document.querySelectorAll('.js-contact');
+		//delete allContacts[0];
 		console.log(allContacts);
 		counter = 0;
 		console.log(json);
+
 		for (object of json) {
 			object.firstName = allContacts[counter].querySelector('.js-firstname').value;
 			object.phoneNumber = allContacts[counter].querySelector('.js-phonenumber').value;
-			object.profilePicture = 'string';
-			console.log(object);
+			object.profilePicture = 'profile-icon.svg';
 			payload.push(object);
 			counter++;
 		}
@@ -194,18 +207,18 @@ const ListenToSubmit = function (button) {
 			let contact = {
 				firstName: allContacts[i].querySelector('.js-firstname').value,
 				phoneNumber: allContacts[i].querySelector('.js-phonenumber').value,
-				profilePicture: 'profilepic'
+				profilePicture: 'profile-icon.svg'
 			};
 
 			payload.push(contact);
 		}
-
 		putContacts(payload, mentorId);
 	});
 };
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
 	console.log('DOM loaded - contact');
+	baseURL = 'https://trekjeplan.azurewebsites.net/api/';
 	mentorId = localStorage.getItem('mentorId');
 	getContactElements();
-	getContacts(mentorId);
+	getContacts(baseURL, mentorId);
 });

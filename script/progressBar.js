@@ -1,7 +1,4 @@
-let baseURL = 'https:/trekjeplan.azurewebsites.net/api/',
-  frontBar,
-  root,
-  clientTotalCoins;
+let frontBar, root, clientTotalCoins;
 // let clientId = "f9f0e169-890a-495d-a8fe-08d7a3514425";
 
 const drawEndbar = function() {
@@ -40,7 +37,9 @@ const drawStartBar = function(currentCoins) {
   frontBar.style.width = lengthFrontbar + '%';
   root = document.documentElement;
   root.style.setProperty('--global-previousCoins', lengthFrontbar + '%');
-  drawEndbar();
+  if (document.title == 'Trek Je Plan - Voltooid stappenplan') {
+    drawEndbar();
+  }
 };
 
 const getCurrentCoins = function(id) {
@@ -75,5 +74,6 @@ const initProgressBar = function() {
 
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DOM Content Loaded - Progress bar');
+  let baseURL = 'https://trekjeplan.azurewebsites.net/api/';
   initProgressBar();
 });

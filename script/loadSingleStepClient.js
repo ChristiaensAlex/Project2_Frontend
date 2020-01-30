@@ -5,18 +5,12 @@ let step;
 let startTouch;
 let touchEnd = false;
 
-
-
 let progressiveStepPlanBeginning = function(isBeginning) {
   beginning = isBeginning;
 };
 
 let progressiveStepPlanEnd = function(isEnd) {
   end = isEnd;
-};
-
-const getClient = function(id) {
-  window.location.href = 'OverviewStepsForClient.html';
 };
 
 const putStepFullFilled = function() {
@@ -28,24 +22,23 @@ const putStepFullFilled = function() {
     credentials: 'same-origin',
     headers: { 'Content-Type': 'application/json' }
   })
-  .then(function(response) {
-    if (!response.ok) {
-      throw Error(`Problem to fetch(). Status code: ${response.status}`);
-    } else {
-      let arr = new Array();
-      arr = response.json();
-      return arr;
-    }
-  })
-  .then(function(data) {
-    sessionStorage.coinsToEarn = data.coinsToEarn;
-    touchEnd = true;
-  })
-  .catch(function(error) {
-    console.error(`Problem to process json ${error}`);
-  });
+    .then(function(response) {
+      if (!response.ok) {
+        throw Error(`Problem to fetch(). Status code: ${response.status}`);
+      } else {
+        let arr = new Array();
+        arr = response.json();
+        return arr;
+      }
+    })
+    .then(function(data) {
+      sessionStorage.coinsToEarn = data.coinsToEarn;
+      touchEnd = true;
+    })
+    .catch(function(error) {
+      console.error(`Problem to process json ${error}`);
+    });
 };
-
 
 const putStepGoBack = function() {
   let url = `${baseURL}client/progressiveScheme/${clientProgressiveSchemeId}/goBack`;
@@ -55,8 +48,7 @@ const putStepGoBack = function() {
     cache: 'no-cache',
     credentials: 'same-origin',
     headers: { 'Content-Type': 'application/json' }
-  })
-  .catch(function(error) {
+  }).catch(function(error) {
     console.error(`Problem to process json ${error}`);
   });
 };
@@ -113,7 +105,7 @@ mySwiper.on('reachEnd', function() {
       startTouch = e.screenX;
     }
   });
-  
+
   mySwiper.on('touchMove', function(e) {
     let currentTouch;
     putStepFullFilled();
@@ -152,22 +144,32 @@ const getSteps = function(cpsId) {
     });
 };
 
+const closeOverlay = function() {
+  overlay.style.display = 'none';
+};
+
+const openOverlay = function() {
+  let overlay = document.querySelector('.c-overlay');
+  overlay.style.display = 'block';
+  let closeOverlay = document.querySelector('.c-navigation__close');
+  closeOverlay.addEventListener('click', closeOverlay);
+};
+
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DOM loaded - SingleStepsClient');
   clientProgressiveSchemeId = sessionStorage.clientSchemeId;
   clientId = sessionStorage.clientId;
   getSteps(clientProgressiveSchemeId);
-  mySwiper.init();
 
+  // activeIndex = 0;
+  mySwiper.init();
 
   let stepsOverview = document.querySelector('.c-stepsOverview__sybmol');
 
   stepsOverview.addEventListener('click', function() {
-    getClient(clientId);
+    openOverlay();
   });
-
 });
-
 
 mySwiper.on('init', function() {
   putStartTime();
@@ -178,12 +180,11 @@ mySwiper.on('touchEnd', function() {
 });
 
 mySwiper.on('slideNextTransitionEnd', function() {
-    if(touchEnd) {
-      putStepFullFilled();
-    }
-  });
-
+  if (touchEnd) {
+    putStepFullFilled();
+  }
+});
 
 mySwiper.on('slidePrevTransitionEnd', function() {
-    putStepGoBack();
- });
+  putStepGoBack();
+});

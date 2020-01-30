@@ -48,6 +48,15 @@ const putClientInfoAPI = function (url, payload) {
 		.catch(err => console.log(err));
 };
 const showClientInfo = function (json) {
+	console.log(uploadImgDiv)
+
+	if(json.profilePicture && json.profilePicture.includes('profile-icon.svg')){
+		uploadImgDiv[0].classList.remove("c-upload-image--big");
+	}else {
+		uploadImgDiv[0].style.backgroundImage = `url(${json.profilePicture})`;
+		uploadImgDiv[0].classList.add("c-upload-image--big")
+	}
+	
 	firstname.value = json.firstName;
 	lastname.value = json.lastName;
 	username.value = json.username;
@@ -132,6 +141,7 @@ const ListenToSubmitButton = function (button) {
 		} else {
 			if (!isEmpty(passwordInput.value) && isSamePassword(passwordInput.value, passwordRepeatInput.value) && !isEmpty(username.value)) {
 				console.log('form is good to go');
+				console.log(uploadedImg);
 
 				let payload = {
 					firstName: firstname.value,
@@ -140,7 +150,7 @@ const ListenToSubmitButton = function (button) {
 					password: passwordInput.value,
 					confirmPassword: passwordRepeatInput.value,
 					infoClient: extra.value,
-					profilePictureId: '3fa85f64-5717-4562-b3fc-2c963f66afa6'
+					profilePicture: uploadedImg[0]
 				};
 				if (button == createClient) {
 					CreateClient(payload, mentorId);
@@ -176,6 +186,7 @@ const GetDomElementsClient = function () {
 	createClient = document.querySelector('.js-createClientButton');
 	editClient = document.querySelector('.js-editClientbutton');
 	addClient = document.querySelector('.js-addClientButton');
+
 	//ListenToPassword(password);
 	//ListenToPasswordRepeat(passwordConfirm);
 	ListenToUsername(username);

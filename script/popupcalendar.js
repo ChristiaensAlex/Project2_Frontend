@@ -13,17 +13,17 @@ const onHandlerClickedPopUp = function() {
 };
 
 const getElements = function() {
-	deleteClientButton = document.querySelectorAll('.js-client-delete');
+	//deleteClientButton = document.querySelectorAll('.js-client-delete');
 	background = document.querySelector('.js-background-popup');
 	popup = document.querySelector('.c-popup-form');
 	cancelButton = document.querySelector('.js-cancel');
 	cancelButton.addEventListener('click', OnHandlerClickedCancel);
 	deleteCalendarButton = document.querySelector('.js-calendar-delete');
-	if (deleteClientButton) {
-		deleteClientButton.addEventListener('click', onHandlerClickedPopUp);
-	} else if (deleteCalendarButton) {
+	//if (deleteClientButton) {
+		//deleteClientButton.addEventListener('click', onHandlerClickedPopUp);
+	//} else if (deleteCalendarButton) {
 		deleteCalendarButton.addEventListener('click', onHandlerClickedPopUp);
-	}
+	//}
 };
 
 document.addEventListener('DOMContentLoaded', function() {

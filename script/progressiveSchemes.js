@@ -35,8 +35,19 @@ const showAllProgressiveSchemes = function(jsonObject) {
     </div>`;
   }
   getElements();
+  deletes = document.querySelectorAll('.js-progressivescheme-delete');
+  ListenToDeletes(deletes);
 };
-
+const ListenToDeletes = function(deletes) {
+  for (let d of deletes) {
+    d.addEventListener('click', function(event) {
+      console.log('vuilbak geklikt');
+      let nr = this.parentElement.querySelector('.c-stepplan__info').getAttribute('plannr');
+      deletedProgressiveScheme = json[nr];
+      console.log(deletedProgressiveScheme);
+    });
+  }
+};
 const ListenToAddClient = function(button) {
   button.addEventListener('click', function(event) {
     window.location.href = 'AddClientToProgressiveScheme.html';
@@ -53,6 +64,17 @@ const showClientsFromProgressiveScheme = function(payload) {
     let client = clients[i];
     let clientName = clientClone.querySelector('.c-symbol__clientProfiles-client__name');
     clientName.innerHTML = client.firstName;
+    let clientImage = clientClone.querySelector('.c-client__userPhoto--img');
+
+    console.log(client.profilePicture);
+    clientImage.classList.add('c-client__userPhoto--no-img');
+    clientImage.style.backgroundImage = `url(profile-icon.svg) `;
+
+    if (client.profilePicture && !client.profilePicture.includes('profile-icon.svg')) {
+      clientImage.style.backgroundImage = `url(${client.profilePicture}), url(profile-icon.svg) `;
+      clientImage.classList.remove('c-client__userPhoto--no-img');
+    }
+
     clientSchemes.appendChild(clientClone);
   }
   clientSchemes.innerHTML += `<button class="c-symbol__clientProfiles-client o-button-reset js-button__addStep">
@@ -89,6 +111,7 @@ const getProgressiveSchemes = function() {
       if (progressiveSchemes) {
         showAllProgressiveSchemes(jsonObject);
         console.log(jsonObject);
+        json = jsonObject;
         stepPlans = document.querySelectorAll('.c-stepplan__info');
         for (stepPlan of stepPlans) {
           stepPlan.addEventListener('click', function() {
