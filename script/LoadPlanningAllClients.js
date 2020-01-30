@@ -68,7 +68,7 @@ let ShowProgressiveSchemes = function(queryResponse, dataArrayClientFirstName, d
                                 ${dataArrayTime[i]}
                             </div>
                             <div class="c-planning__picto">
-                                <img class="c-planning__picto-icon" src="icon_Chloë.png" alt="profielfoto" />
+                                <img class="c-planning__picto-icon"  alt="profielfoto" />
                             </div>
                             <div class="c-planning__username">
                                 ${dataArrayClientFirstName[i] + '' + dataArrayClientLastName[i]}
@@ -112,11 +112,11 @@ let ShowProgressiveSchemes = function(queryResponse, dataArrayClientFirstName, d
                             </div>
                         </div>`;
 		}
+		getElements();
+		document.querySelector('.js-plannings__all').innerHTML = html;
+		deletes = document.querySelectorAll('.js-calendar-delete');
+		ListenToDeletes(deletes);
 	}
-	getElements();
-	document.querySelector('.js-plannings__all').innerHTML = html;
-	deletes = document.querySelectorAll('.js-calendar-delete');
-	ListenToDeletes(deletes);
 };
 const ListenToDeletes = function(deletes) {
 	for (let d of deletes) {
@@ -149,7 +149,7 @@ let ProcessProgressiveSchemes = function(queryResponse) {
 
 	dataArrayPictoId = [];
 	for (var addPictoId of queryResponse) {
-		let PI = addPictoId.pictoId;
+		let PI = addPictoId.pictoFilleName;
 		dataArrayPictoId.push(PI);
 	}
 
@@ -174,6 +174,7 @@ let ProcessProgressiveSchemes = function(queryResponse) {
 		}
 		dataArrayChecked.push(ischecked);
 	}
+
 	//console.log(queryResponse, dataArrayClientFirstName, dataArrayClientLastName, dataArraySchemeName, dataArrayPictoId, dataArrayTime, dataArrayChecked);
 	ShowProgressiveSchemes(queryResponse, dataArrayClientFirstName, dataArrayClientLastName, dataArraySchemeName, dataArrayPictoId, dataArrayTime, dataArrayChecked);
 };

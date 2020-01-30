@@ -88,6 +88,7 @@ const getElements = function() {
 		});
 	} else if (typeof deleteSchedules != 'undefined' && deleteSchedules.length > 0) {
 		console.log(deleteSchedules);
+		console.log('schedule');
 		deleteSchedules.forEach(element => {
 			ListenToDelete(element);
 		});

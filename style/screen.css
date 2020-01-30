@@ -1102,6 +1102,10 @@ body {
 	margin-left: var(--global-whitespace-xs);
 	max-width: 320px;
 }
+.c-submitbuttonMultiple {
+	max-width: none;
+	height: fit-content;
+}
 .c-submitbutton__arrow {
 	width: var(--global-whitespace);
 	height: var(--global-whitespace);
