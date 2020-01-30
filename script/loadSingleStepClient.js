@@ -13,10 +13,6 @@ let progressiveStepPlanEnd = function(isEnd) {
   end = isEnd;
 };
 
-const getClient = function(id) {
-  window.location.href = 'OverviewStepsForClient.html';
-};
-
 const putStepFullFilled = function() {
   let url = `${baseURL}client/progressiveScheme/${clientProgressiveSchemeId}`;
   fetch(url, {
@@ -148,6 +144,17 @@ const getSteps = function(cpsId) {
     });
 };
 
+const closeOverlay = function() {
+  overlay.style.display = 'none';
+};
+
+const openOverlay = function() {
+  let overlay = document.querySelector('.c-overlay');
+  overlay.style.display = 'block';
+  let closeOverlay = document.querySelector('.c-navigation__close');
+  closeOverlay.addEventListener('click', closeOverlay);
+};
+
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DOM loaded - SingleStepsClient');
   clientProgressiveSchemeId = sessionStorage.clientSchemeId;
@@ -160,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let stepsOverview = document.querySelector('.c-stepsOverview__sybmol');
 
   stepsOverview.addEventListener('click', function() {
-    getClient(clientId);
+    openOverlay();
   });
 });
 
