@@ -3267,25 +3267,6 @@ form{
       * Printing Tables:
       * http://css-discuss.incutio.com/wiki/Printing_Tables
       */
-<<<<<<< HEAD
-	thead {
-		display: table-header-group;
-	}
-	tr,
-	img {
-		page-break-inside: avoid;
-	}
-	p,
-	h2,
-	h3 {
-		orphans: 3;
-		widows: 3;
-	}
-	h2,
-	h3 {
-		page-break-after: avoid;
-	}
-=======
   thead {
     display: table-header-group;
   }
@@ -3303,5 +3284,4 @@ form{
   h3 {
     page-break-after: avoid;
   }
->>>>>>> Feature/SmallFixesClient
 }
