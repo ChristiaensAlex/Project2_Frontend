@@ -1,9 +1,12 @@
 let baseURL = 'https://trekjeplan.azurewebsites.net/api/',
 	mentorId,
 	allChosenClients = [],
-	allChosenPs = [];
+	allChosenPs = [],
+	objects,
+	numberClients = 0,
+	numberPs = 0;
 const showClients = function(json, element) {
-	i = 0;
+	let i = 0;
 	let html = '';
 	for (object of json) {
 		html += `<div class="c-search-list__item" data-number="${i}">${object.firstName} ${object.lastName}</div>`;
@@ -15,7 +18,7 @@ const showClients = function(json, element) {
 };
 
 const showProgressiveSchemes = function(json, element) {
-	i = 0;
+	let i = 0;
 	let html = '';
 	for (object of json) {
 		html += `<div class="c-search-list__item" data-number="${i}">${object.name}</div>`;
@@ -107,17 +110,67 @@ const ListenToObjects = function(element) {
 				let chosenClient = json[i];
 				chosenClients = document.querySelector('.js-chosenClients');
 
-				chosenClients.innerHTML += `<div>${chosenClient.firstName} ${chosenClient.lastName} </div>`;
+				chosenClients.innerHTML += `<div class="o-layout o-layout--justify-space-between o-layout--align-center" data-number=${numberClients}>${chosenClient.firstName} ${chosenClient.lastName}  <div class="c-client__delete js-client-delete">
+				<svg xmlns="http://www.w3.org/2000/svg" width="19.492" height="24" viewBox="0 0 19.492 24">
+				  <g id="bin" transform="translate(0.003 0.001)">
+					<path id="Path_316" data-name="Path 316" d="M222.96,154.7a.562.562,0,0,0-.562.562v10.623a.562.562,0,1,0,1.124,0V155.265A.562.562,0,0,0,222.96,154.7Zm0,0" transform="translate(-209.901 -146.009)" fill="#28225f" />
+					<path id="Path_317" data-name="Path 317" d="M104.961,154.7a.562.562,0,0,0-.562.562v10.623a.562.562,0,0,0,1.124,0V155.265A.562.562,0,0,0,104.961,154.7Zm0,0" transform="translate(-98.534 -146.009)" fill="#28225f" />
+					<path id="Path_318" data-name="Path 318" d="M1.593,7.144V20.992a3.1,3.1,0,0,0,.824,2.139A2.768,2.768,0,0,0,4.426,24H15.06a2.767,2.767,0,0,0,2.008-.868,3.1,3.1,0,0,0,.824-2.139V7.144a2.147,2.147,0,0,0-.551-4.222H14.464v-.7A2.208,2.208,0,0,0,12.238,0H7.248a2.208,2.208,0,0,0-2.226,2.22v.7H2.144a2.147,2.147,0,0,0-.551,4.222ZM15.06,22.875H4.426a1.78,1.78,0,0,1-1.709-1.883V7.193H16.769v13.8A1.78,1.78,0,0,1,15.06,22.875ZM6.146,2.219a1.083,1.083,0,0,1,1.1-1.1h4.991a1.083,1.083,0,0,1,1.1,1.1v.7H6.146Zm-4,1.827h15.2a1.012,1.012,0,0,1,0,2.023H2.144a1.012,1.012,0,1,1,0-2.023Zm0,0" transform="translate(0)" fill="#28225f" />
+					<path id="Path_319" data-name="Path 319" d="M163.96,154.7a.562.562,0,0,0-.562.562v10.623a.562.562,0,1,0,1.124,0V155.265A.562.562,0,0,0,163.96,154.7Zm0,0" transform="translate(-154.217 -146.009)" fill="#28225f" />
+				  </g>
+				</svg>
+			  </div></div>`;
 
 				allChosenClients.push(chosenClient);
 				console.log(allChosenClients);
+				let deletes = document.querySelectorAll('.js-client-delete');
+				ListenToDeletes(deletes, 'client');
+				numberClients++;
 			} else if (element == 'progressiveScheme') {
 				let chosenProgressiveScheme = json[i];
 				chosenProgressiveSchemes = document.querySelector('.js-chosenProgressiveSchemes');
 
-				chosenProgressiveSchemes.innerHTML += `<div>${chosenProgressiveScheme.name}</div>`;
+				chosenProgressiveSchemes.innerHTML += `<div class="o-layout o-layout--justify-space-between o-layout--align-center" data-number=${numberPs}>${chosenProgressiveScheme.name}  <div class="c-client__delete js-progressiveScheme-delete">
+				<svg xmlns="http://www.w3.org/2000/svg" width="19.492" height="24" viewBox="0 0 19.492 24">
+				  <g id="bin" transform="translate(0.003 0.001)">
+					<path id="Path_316" data-name="Path 316" d="M222.96,154.7a.562.562,0,0,0-.562.562v10.623a.562.562,0,1,0,1.124,0V155.265A.562.562,0,0,0,222.96,154.7Zm0,0" transform="translate(-209.901 -146.009)" fill="#28225f" />
+					<path id="Path_317" data-name="Path 317" d="M104.961,154.7a.562.562,0,0,0-.562.562v10.623a.562.562,0,0,0,1.124,0V155.265A.562.562,0,0,0,104.961,154.7Zm0,0" transform="translate(-98.534 -146.009)" fill="#28225f" />
+					<path id="Path_318" data-name="Path 318" d="M1.593,7.144V20.992a3.1,3.1,0,0,0,.824,2.139A2.768,2.768,0,0,0,4.426,24H15.06a2.767,2.767,0,0,0,2.008-.868,3.1,3.1,0,0,0,.824-2.139V7.144a2.147,2.147,0,0,0-.551-4.222H14.464v-.7A2.208,2.208,0,0,0,12.238,0H7.248a2.208,2.208,0,0,0-2.226,2.22v.7H2.144a2.147,2.147,0,0,0-.551,4.222ZM15.06,22.875H4.426a1.78,1.78,0,0,1-1.709-1.883V7.193H16.769v13.8A1.78,1.78,0,0,1,15.06,22.875ZM6.146,2.219a1.083,1.083,0,0,1,1.1-1.1h4.991a1.083,1.083,0,0,1,1.1,1.1v.7H6.146Zm-4,1.827h15.2a1.012,1.012,0,0,1,0,2.023H2.144a1.012,1.012,0,1,1,0-2.023Zm0,0" transform="translate(0)" fill="#28225f" />
+					<path id="Path_319" data-name="Path 319" d="M163.96,154.7a.562.562,0,0,0-.562.562v10.623a.562.562,0,1,0,1.124,0V155.265A.562.562,0,0,0,163.96,154.7Zm0,0" transform="translate(-154.217 -146.009)" fill="#28225f" />
+				  </g>
+				</svg>
+			  </div></div>`;
+
 				console.log(progressiveSchemeId);
 				allChosenPs.push(chosenProgressiveScheme);
+				console.log(allChosenPs);
+				let deletes = document.querySelectorAll('.js-progressiveScheme-delete');
+				ListenToDeletes(deletes, 'progressiveScheme');
+				numberPs++;
+			}
+		});
+	}
+};
+
+const ListenToDeletes = function(deletes, element) {
+	for (del of deletes) {
+		del.addEventListener('click', function(e) {
+			console.log(this.parentElement);
+			if (element == 'client') {
+				this.parentElement.classList.add('u-hide');
+
+				number = this.parentElement.dataset.number;
+				objects[number].classList.remove('c-backbutton__text');
+				console.log(number);
+				allChosenClients.splice(number, 1);
+				console.log(allChosenClients);
+			} else if (element == 'progressiveScheme') {
+				this.parentElement.classList.add('u-hide');
+
+				number = this.parentElement.dataset.number;
+				objects[number].classList.remove('c-backbutton__text');
+				console.log(number);
+				allChosenPs.splice(number, 1);
 				console.log(allChosenPs);
 			}
 		});

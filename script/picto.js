@@ -13,7 +13,7 @@ const postMainPicto = function(file, tags) {
     credentials: 'same-origin',
     body: formData
   })
-    .then(res => res.json())
+    .then(res => res.json())                                                                                                                                                                                            
     .then(data => {
       showPictos(data);
     })
