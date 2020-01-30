@@ -1,5 +1,10 @@
 var cacheName = 'trekjeplan-pwa';
 var filesToCache = [
+  // '/',
+  // '/index.html',
+  // '/style/screen.css',
+  // '/script/main.js'
+
   '/',
   '/index.html',
   '/AddClient.html',
@@ -34,9 +39,9 @@ var filesToCache = [
   '/RegistrationMentor2.html',
   '/ResetPassword.html',
   '/SingleStepClient.html',
-  '/add-icon.svg',
+  // '/add-icon.svg',
   '/pig_animation.json',
-  '/profile-icon.svg',
+  // '/profile-icon.svg',
   '/style/normalize.css',
   '/style/screen.css',
   '/style/vanillaCalendar.css',
