@@ -119,6 +119,7 @@ const onHandlerClickedAdd = function(e) {
 			});
 		});
 	}
+	getElements();
 	ListenToRemoveButton();
 };
 

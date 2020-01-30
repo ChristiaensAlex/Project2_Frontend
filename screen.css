@@ -626,6 +626,14 @@
       text-align: center;
     }
   }
+
+  .c-title--contacten {
+    text-align: left;
+    margin-top: 56px;
+    font-size: var(--global-fontsize-xxl);
+
+  }
+
   .c-title__menu {
     display: flex;
     font-size: var(--global-fontsize-md);
@@ -2561,10 +2569,12 @@
     display: grid;
     grid-template-columns: 1fr 24px;
     grid-template-rows: 48px 1fr;
+    margin-bottom: 20px;
   }
   .c-contact__wrapper .c-contact__info{
     display: flex;
     justify-content: space-around;
+    align-items: center;
   }
   .c-contact__wrapper .c-profile :first-child {
   }
@@ -2631,7 +2641,7 @@
   }
 
 
-  .c-upload-image{
+  .c-upload-image {
     position: relative;
     border: none;
     width: 104px;

@@ -24,8 +24,15 @@ const editContacts = function(jsonObject) {
 	html = '';
 	i = 1;
 	for (object of jsonObject) {
-		console.log(object);
-		html += `<div class="js-single-step" data-number="${i}"> 
+		let classPhoto;
+		console.log(object.profilePicture)
+		if(!object.profilePicture.includes('profile-icon.svg')){
+			classPhoto = "c-upload-image c-upload-image--big"
+		}else {
+			classPhoto = "c-upload-image"
+		}
+
+		html += `<div class="js-single-step js-contact" data-number="${i}"> 
         <div class="c-contact__wrapper" >
         <div class="c-profile" >
             <div>
@@ -41,33 +48,15 @@ const editContacts = function(jsonObject) {
                         <path id="Path_319" data-name="Path 319" d="M163.96,154.7a.562.562,0,0,0-.562.562v10.623a.562.562,0,1,0,1.124,0V155.265A.562.562,0,0,0,163.96,154.7Zm0,0" transform="translate(-154.217 -146.009)" fill="#28225f" />
                     </g>
                 </svg>
-            </div>
-            <button class="o-button-reset c-button__addProfilePic">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="96" height="99" viewBox="0 0 96 99">
-                    <defs>
-                        <filter id="Rectangle_20" x="0" y="4" width="95" height="95" filterUnits="userSpaceOnUse">
-                            <feOffset dy="3" input="SourceAlpha" />
-                            <feGaussianBlur stdDeviation="3" result="blur" />
-                            <feFlood flood-opacity="0.161" />
-                            <feComposite operator="in" in2="blur" />
-                            <feComposite in="SourceGraphic" />
-                        </filter>
-                    </defs>
-                    <g id="Group_954" data-name="Group 954" transform="translate(-271.5 -418.679)">
-                        <g transform="matrix(1, 0, 0, 1, 271.5, 418.68)" filter="url(#Rectangle_20)">
-                            <rect id="Rectangle_20-2" data-name="Rectangle 20" width="77" height="77" rx="5" transform="translate(9 10)" fill="#ececf0" />
-                        </g>
-                        <g id="Group_7" data-name="Group 7" transform="translate(293.5 448.679)">
-                            <path id="Path_238" data-name="Path 238" d="M52.208,35.483V28.656A13.656,13.656,0,0,0,38.553,15h-23.9A13.656,13.656,0,0,0,1,28.656v6.828" transform="translate(-1 21.282)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="4.5" />
-                            <ellipse id="Ellipse_70" data-name="Ellipse 70" cx="13.655" cy="13.656" rx="13.655" ry="13.656" transform="translate(12.174 0)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.5" />
-                        </g>
-                        <g id="Group_1088" data-name="Group 1088" transform="translate(239.5 113.679)">
-                            <circle id="Ellipse_140" data-name="Ellipse 140" cx="10" cy="10" r="10" transform="translate(108 305)" fill="#e0dee6" />
-                            <path id="Path_273" data-name="Path 273" d="M827,2271.6l-1.6-1.6-2.4,2.4-2.4-2.4-1.6,1.6,2.4,2.4-2.4,2.4,1.6,1.6,2.4-2.4,2.4,2.4,1.6-1.6-2.4-2.4Z" transform="translate(1144.012 -1874.738) rotate(45)" fill="#fff" />
-                        </g>
-                    </g>
-                </svg>
-            </button>
+			</div>
+			
+
+			<div id="imageUpload" class="js-upload-img ${classPhoto}" style="background-image: url(${object.profilePicture});">
+			  <input class="c-upload-image__input js-input-img" accept="image/x-png,image/jpeg" type="file"	 title="Choose a profile picture">
+			  <div class="c-upload-image__close js-remove-img  c-upload-image__close--icon c-upload-image__select" ></div>
+			</div>
+		  
+
         </div>
 
         <p class="js-firstname-field">
@@ -90,45 +79,26 @@ const editContacts = function(jsonObject) {
 
 	getFormElements();
 	ListenToRemoveButton();
+	getElements();
 	//ListenToPencil(jsonObject);
 };
 const showContacts = function(jsonObject) {
-	console.log('show op profile page');
 	html = '';
 	i = 1;
 	for (object of jsonObject) {
-		console.log(object);
+		let classPhoto;
+		if(object.profilePicture && ! object.profilePicture.includes('profile-icon.svg')){
+			classPhoto = "c-upload-image c-upload-image--big"
+		}else {
+			classPhoto = "c-upload-image"
+		}
 		html += `<div class="js-single-step" data-number="${i}"> 
         <div class="c-contact__wrapper" >
         <div class="c-contact__info" >
          
-           <button class="o-button-reset c-button__addProfilePic">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="96" height="99" viewBox="0 0 96 99">
-                    <defs>
-                        <filter id="Rectangle_20" x="0" y="4" width="95" height="95" filterUnits="userSpaceOnUse">
-                            <feOffset dy="3" input="SourceAlpha" />
-                            <feGaussianBlur stdDeviation="3" result="blur" />
-                            <feFlood flood-opacity="0.161" />
-                            <feComposite operator="in" in2="blur" />
-                            <feComposite in="SourceGraphic" />
-                        </filter>
-                    </defs>
-                    <g id="Group_954" data-name="Group 954" transform="translate(-271.5 -418.679)">
-                        <g transform="matrix(1, 0, 0, 1, 271.5, 418.68)" filter="url(#Rectangle_20)">
-                            <rect id="Rectangle_20-2" data-name="Rectangle 20" width="77" height="77" rx="5" transform="translate(9 10)" fill="#ececf0" />
-                        </g>
-                        <g id="Group_7" data-name="Group 7" transform="translate(293.5 448.679)">
-                            <path id="Path_238" data-name="Path 238" d="M52.208,35.483V28.656A13.656,13.656,0,0,0,38.553,15h-23.9A13.656,13.656,0,0,0,1,28.656v6.828" transform="translate(-1 21.282)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="4.5" />
-                            <ellipse id="Ellipse_70" data-name="Ellipse 70" cx="13.655" cy="13.656" rx="13.655" ry="13.656" transform="translate(12.174 0)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.5" />
-                        </g>
-                        <g id="Group_1088" data-name="Group 1088" transform="translate(239.5 113.679)">
-                            <circle id="Ellipse_140" data-name="Ellipse 140" cx="10" cy="10" r="10" transform="translate(108 305)" fill="#e0dee6" />
-                            <path id="Path_273" data-name="Path 273" d="M827,2271.6l-1.6-1.6-2.4,2.4-2.4-2.4-1.6,1.6,2.4,2.4-2.4,2.4,1.6,1.6,2.4-2.4,2.4,2.4,1.6-1.6-2.4-2.4Z" transform="translate(1144.012 -1874.738) rotate(45)" fill="#fff" />
-                        </g>
-                    </g>
-                </svg>
-            </button>
-        <div>
+		<div class="${classPhoto}" alt="profielfoto" style="background-image: url(${object.profilePicture})" ></div>  
+		<div>
+		
 		<label class="c-label__profile">Voornaam:</label>
 		<p class="c-profile__info ">${object.firstName}</p>
 		<label class="c-label__profile">Telefoonnummer:</label>
@@ -140,6 +110,8 @@ const showContacts = function(jsonObject) {
 		i++;
 	}
 	document.querySelector('.js-all-steps').innerHTML += html;
+	
+
 };
 const getContacts = function(baseURL, id) {
 	let url = `${baseURL}mentor/${id}/contact`;
@@ -150,13 +122,11 @@ const getContacts = function(baseURL, id) {
 			} else {
 				let arr = new Array();
 				arr = response.json();
-				console.log(arr);
 				return arr;
 			}
 		})
 		.then(function(jsonObject) {
 			json = jsonObject;
-			console.log(jsonObject);
 
 			if (submit) {
 				editContacts(jsonObject);
@@ -198,11 +168,9 @@ const EditContact = function(chosenContact) {
 
 const removefromDB = function(i) {
 	i = parseInt(i) - 1;
-	console.log(i);
 	let contactId = json[i].id;
 	//contactId = 0;
 
-	console.log('removed: ' + contactId);
 	let url = `${baseURL}mentor/${mentorId}/contact/${contactId}`;
 	fetch(url, {
 		method: 'DELETE'
@@ -224,30 +192,28 @@ const ListenToSubmit = function(button) {
 		event.preventDefault();
 		let payload = [];
 		allContacts = document.querySelectorAll('.js-contact');
-		console.log(allContacts);
 		//delete allContacts[0];
+		console.log(allContacts)
 		counter = 0;
 		console.log(json);
 
 		for (object of json) {
 			object.firstName = allContacts[counter].querySelector('.js-firstname').value;
 			object.phoneNumber = allContacts[counter].querySelector('.js-phonenumber').value;
-			object.profilePicture = 'string';
-			console.log(object);
+			object.profilePicture = 'profile-icon.svg'
 			payload.push(object);
 			counter++;
 		}
 
-		for (i = 0; i < allContacts.length; i++) {
+		for (i = counter; i < allContacts.length; i++) {
 			let contact = {
 				firstName: allContacts[i].querySelector('.js-firstname').value,
 				phoneNumber: allContacts[i].querySelector('.js-phonenumber').value,
-				profilePicture: 'profilepic'
+				profilePicture: 'profile-icon.svg'
 			};
 
 			payload.push(contact);
 		}
-
 		putContacts(payload, mentorId);
 	});
 };

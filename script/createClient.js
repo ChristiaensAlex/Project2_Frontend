@@ -50,13 +50,11 @@ const putClientInfoAPI = function (url, payload) {
 const showClientInfo = function (json) {
 	console.log(uploadImgDiv)
 
-
-	
 	if(json.profilePicture && json.profilePicture.includes('profile-icon.svg')){
-		uploadImgDiv.classList.remove("c-upload-image--big");
+		uploadImgDiv[0].classList.remove("c-upload-image--big");
 	}else {
-		uploadImgDiv.style.backgroundImage = `url(${json.profilePicture})`;
-		uploadImgDiv.classList.add("c-upload-image--big")
+		uploadImgDiv[0].style.backgroundImage = `url(${json.profilePicture})`;
+		uploadImgDiv[0].classList.add("c-upload-image--big")
 	}
 	
 	firstname.value = json.firstName;
@@ -143,6 +141,7 @@ const ListenToSubmitButton = function (button) {
 		} else {
 			if (!isEmpty(passwordInput.value) && isSamePassword(passwordInput.value, passwordRepeatInput.value) && !isEmpty(username.value)) {
 				console.log('form is good to go');
+				console.log(uploadedImg);
 
 				let payload = {
 					firstName: firstname.value,
@@ -151,7 +150,7 @@ const ListenToSubmitButton = function (button) {
 					password: passwordInput.value,
 					confirmPassword: passwordRepeatInput.value,
 					infoClient: extra.value,
-					profilePicture: uploadedImg
+					profilePicture: uploadedImg[0]
 				};
 				if (button == createClient) {
 					CreateClient(payload, mentorId);
