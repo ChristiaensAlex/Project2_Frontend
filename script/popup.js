@@ -1,12 +1,37 @@
 let deleteClient, background, deleteProgressiveScheme, stepImages, mainImage, divElement;
 
-const removefromDB = function(baseURL, id) {
-	// i = parseInt(i) - 1;
-	// console.log(i);
-	//let contactId = json[i].id;
-	//contactId = 0;
-	console.log('removed: ' + contactId);
-	let url = `${baseURL}/${id}`;
+const OnHandlerClickedCancel = function() {
+	background.classList.remove('c-popup-blur');
+	popup.style.display = 'none';
+};
+
+const onHandlerClickedPopUp = function(picto, element) {
+	//background blurry
+
+	background.classList.add('c-popup-blur');
+	//popup appears
+	popup.style.display = 'block';
+
+	if (document.title == 'Trek Je Plan - Cliënten Overzicht') {
+		document.querySelector('.js-deleteButton').addEventListener('click', function() {
+			console.log(deletedClient);
+			// hier de delete functie aanspreken voor de client
+			removefromDB('client', deletedClient.id);
+		});
+	} else if (document.title == 'Trek Je Plan - Overzicht stappenplan - Mentor') {
+		document.querySelector('.js-deleteButton').addEventListener('click', function() {
+			console.log(deletedProgressiveScheme);
+			// hier de delete functie aanspreken voor progressive scheme
+			removefromDB('progressiveScheme', deletedProgressiveScheme.id);
+		});
+	}
+
+	if (picto == true) {
+		divElement = element;
+	}
+};
+const removefromDB = function(element, id) {
+	let url = `https://trekjeplan.azurewebsites.net/api/${element}/${id}`;
 	fetch(url, {
 		method: 'DELETE'
 	})
@@ -21,41 +46,6 @@ const removefromDB = function(baseURL, id) {
 		// .then(res => res.json())
 		.then(data => console.log(data));
 };
-
-const OnHandlerClickedCancel = function() {
-	background.classList.remove('c-popup-blur');
-	popup.style.display = 'none';
-};
-
-const onHandlerClickedPopUp = function(picto, element) {
-	//background blurry
-
-	background.classList.add('c-popup-blur');
-	//popup appears
-	popup.style.display = 'block';
-
-	// 	if (deleteClient) {
-	// 		document.querySelector('.js-deleteButton').addEventListener('click', function() {
-	// 			console.log(deletedClient);
-	// 			// hier de delete functie aanspreken voor de client
-	// 		});
-	// 	} else if (deleteProgressiveScheme) {
-	// 		document.querySelector('.js-deleteButton').addEventListener('click', function() {
-	// 			console.log(deletedProgressiveScheme);
-	// 			// hier de delete functie aanspreken voor progressive scheme
-	// 		});
-	// 	}
-	// 	document.querySelector('.js-deleteButton').addEventListener('click', function() {
-	// 		console.log(deletedClient.id);
-	// 		let url = 'https://trekjeplan.azurewebsites.net/api/client';
-	// 		removefromDB(url, deletedClient.id);
-	//   });
-
-	if (picto == true) {
-		divElement = element;
-	}
-};
-
 const ListenToDelete = function(element) {
 	element.addEventListener('click', function() {
 		onHandlerClickedPopUp(false, element);
