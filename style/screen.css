@@ -2638,6 +2638,10 @@ form{
   margin-left: var(--global-whitespace-lg);
 }
 
+.c-contact__info{
+  display: flex;
+  justify-content: space-around;
+}
 /*detailinfoclient page
   ---
   mentor can see detail info of client and can choose between calendar, profile info and feedback
