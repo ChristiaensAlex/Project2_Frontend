@@ -1,5 +1,6 @@
 {
- "name": "App",
+    "name": "Trek je plan",
+    "short_name": "Tjp",
  "icons": [
   {
    "src": "\/android-icon-36x36.png",
@@ -37,5 +38,10 @@
    "type": "image\/png",
    "density": "4.0"
   }
- ]
+ ],
+ "lang": "NL",
+ "start_url": "/index.html",
+ "display": "standalone",
+ "background_color": "white",
+ "theme_color": "white"
 }
