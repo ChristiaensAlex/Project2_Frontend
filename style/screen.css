@@ -13,7 +13,6 @@
 	--global-color-beta: #1c5c5c;
 	--global-color-omega: #27255f;
 
-	--global-color-neutral-xxxxx-light: white;
 	--global-color-neutral-xxxx-light: white;
 	--global-color-neutral-xxx-light: #fafaff;
 	--global-color-neutral-xx-light: #ececf0;
@@ -671,6 +670,13 @@ body {
 	align-content: flex-start;
 	margin-top: calc(var(--global-whitespace-md) * -1);
 }
+
+.c-title--contacten {
+  text-align: left;
+  margin-top: 56px;
+  font-size: var(--global-fontsize-xxl);
+
+}
 /*
       Component: card
   */
@@ -1276,7 +1282,8 @@ body {
 	display: flex;
 	justify-self: center;
 	grid-row: 1;
-	position: relative;
+  position: relative;
+  margin-top: 16px;
 }
 
 .c-symbol__clientProfiles-client__name {
