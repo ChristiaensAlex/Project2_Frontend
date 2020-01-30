@@ -1,7 +1,7 @@
 let imgInput;
 let removeImgBtn;
 let uploadImgDiv;
-let uploadedImg = 'profile-icon.svg';
+let uploadedImg = [];
 let selectedimg  = '';
 let isCover = false
 let canvas;
@@ -10,36 +10,56 @@ let file;
 let reader;
 let croppedImg; 
 let profileImg;
+let index;
 
 const getElements = function() {
   
     canvas = document.querySelector(".canvas");
-    ctx = canvas.getContext("2d");
-    canvas.width = 104;
-    canvas.width = 104;
-    uploadImgDiv = document.querySelector('.js-upload-img');
-
-    imgInput = document.querySelector('.js-input-img');
-    imgInput.addEventListener('change', previewProfileImg);
-
-    removeImgBtn = document.querySelector('.js-remove-img');
-    removeImgBtn.addEventListener('click', removeProfileImg);
-
-    uploadedImg = selectedimg;
-    if (selectedimg) {
-      uploadedImg = selectedimg;
-    } else {
-      uploadedImg = 'profile-icon.svg';
-    }
-    if (!uploadedImg.includes('profile-icon.svg')) {
-      isCover = true;
+    if (canvas){
+      ctx = canvas.getContext("2d");
+      canvas.width = 104;
+      canvas.width = 104;
     }
 
-    showUploadImg();
-};
+    uploadImgDiv = document.querySelectorAll('.js-upload-img');
+    imgInput = document.querySelectorAll('.js-input-img');
+    removeImgBtn = document.querySelectorAll('.js-remove-img');
 
+ 
 
-const previewProfileImg =  function(event) {
+    if (uploadImgDiv.length > 0){
+      //uploadedImg = [];
+      imgInput.forEach((element, i) => {
+        //uploadedImg.push('profile-icon.svg')
+        index = i,
+        element.addEventListener('change', event => {
+
+          previewProfileImg(event, i)
+        });
+      });
+      removeImgBtn.forEach((element, i) => {
+        index = i,
+        element.addEventListener('click', () => {
+          removeProfileImg(i);
+        });
+      });    
+      console.log(uploadedImg)  
+
+      uploadedImg[index] = selectedimg;
+      if (selectedimg) {
+        uploadedImg[index] = selectedimg;
+      } else {
+        uploadedImg[index] = 'profile-icon.svg';
+      }
+      if (!uploadedImg[index].includes('profile-icon.svg')) {
+        isCover = true;
+      }
+  
+      showUploadImg(index);
+    }
+  }
+
+const previewProfileImg =  function(event, i) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     file = event.target.files[0];
@@ -53,20 +73,20 @@ const previewProfileImg =  function(event) {
     }
 
     reader.onloadend = () => {
-      uploadedImg =  reader.result;
+      uploadedImg[i] =  reader.result;
       image.crossOrigin = 'Anonymous';
-      image.src = uploadedImg;
-      showUploadImg();
-      checkIsCover();
+      image.src = uploadedImg[i];
+      showUploadImg(i);
+      checkIsCover(i);
 
     };
 
     image.onload = () => {
-      fit(ctx, image, false, canvas.width, canvas.height, image.width, image.height);
+      fit(ctx, image, false, canvas.width, canvas.height, image.width, image.height, i);
     };
   }
 
-  const fit = function(ctx, image, contains, parentWidth, parentHeight, childWidth, childHeight, scale = 1, offsetX = 0.5, offsetY = 0.5) {
+  const fit = function(ctx, image, contains, parentWidth, parentHeight, childWidth, childHeight, i,  scale = 1, offsetX = 0.5, offsetY = 0.5) {
     const childRatio = childWidth / childHeight;
     const parentRatio = parentWidth / parentHeight;
     let width = parentWidth * scale;
@@ -84,42 +104,42 @@ const previewProfileImg =  function(event) {
     ctx.drawImage(image, offsetX, offsetY, width, height);
     croppedImg = canvas.toDataURL('image/png');
 
-    showcroppedImg();
+    showcroppedImg(i);
   }
 
-  const removeProfileImg = function() {
-    uploadImgDiv.classList.remove("c-upload-image--big");
-    uploadedImg = 'profile-icon.svg';
-    showUploadImg();
+  const removeProfileImg = function(i) {
+    uploadImgDiv[i].classList.remove("c-upload-image--big");
+    uploadedImg[i] = 'profile-icon.svg';
+    showUploadImg(i);
     croppedImg = '';
-    showcroppedImg();
+    showcroppedImg(i);
     isCover = false;
-    checkIsCover();
+    checkIsCover(i);
   }
 
 
-  const checkIsCover = function() {
+  const checkIsCover = function(i) {
       if (isCover){
-        uploadImgDiv.classList.add('c-upload--no-image');
+        uploadImgDiv[i].classList.add('c-upload--no-image');
       }else {
-        uploadImgDiv.classList.remove('c-upload--no-image');
+        uploadImgDiv[i].classList.remove('c-upload--no-image');
       }
   
   }
 
-  const showUploadImg = function(){
-    uploadImgDiv.style.backgroundImage = `url(${uploadedImg})`;
+  const showUploadImg = function(i){
+    uploadImgDiv[i].style.backgroundImage = `url(${uploadedImg[index]})`;
   }
 
 
-  const showcroppedImg= function(){
+  const showcroppedImg= function(i){
    
     if(croppedImg == ''){
-      removeImgBtn.classList.remove("c-upload-image__close")
-      removeImgBtn.classList.add("c-upload-image__select")
+      removeImgBtn[i].classList.remove("c-upload-image__close")
+      removeImgBtn[i].classList.add("c-upload-image__select")
     }else {
-      removeImgBtn.classList.add("c-upload-image__close")  
-      removeImgBtn.classList.remove("c-upload-image__select")  
+      removeImgBtn[i].classList.add("c-upload-image__close")  
+      removeImgBtn[i].classList.remove("c-upload-image__select")  
     }
 }
 

@@ -116,6 +116,7 @@ const onHandlerClickedAdd = function(e) {
       });
     });
   }
+  getElements();
   ListenToRemoveButton();
 };
 
@@ -123,6 +124,7 @@ const AddToEditScheme = function(e) {
   e.preventDefault();
   let inpStep = inputStep.cloneNode(true);
   inpStep.classList.remove('u-hide');
+  console.log(inpStep);
   count = document.querySelectorAll('.js-single-step');
   inpStep.dataset.number = count.length;
 
