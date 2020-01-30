@@ -279,7 +279,7 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 
-	max-width: 800px; /* 79.5 * 16px = 1272 */
+	max-width: calc(var(--global-baseline)*100) ;/*800px;*/ /*79.5 * 16px = 1272 */
 	width: 100%;
 }
 
@@ -359,19 +359,19 @@ body {
 
 /* gutter modifiers, these affect o-layout__item too */
 .o-layout--gutter {
-	margin: 0 -12px;
+	margin: 0 calc(var(--global-whitespace-xs)*(-3));/*-12px;*/
 }
 
 .o-layout--gutter > .o-layout__item {
-	padding: 0 12px;
+	padding: 0 calc(var(--global-whitespace-xs)*3);/*12px;*/
 }
 
 .o-layout--gutter-sm {
-	margin: 0 -6px;
+	margin: 0 calc(var(--global-whitespace)/ (-4));/*-6px;*/
 }
 
 .o-layout--gutter-sm > .o-layout__item {
-	padding: 0 6px;
+	padding: 0 calc(var(--global-whitespace)/4);/*6px;*/
 }
 
 .o-layout--gutter-lg {
@@ -499,14 +499,14 @@ body {
 
 @media (min-width: 1200px) {
 	.c-content {
-		width: 1000px;
+		width: calc(var(--global-baseline)*125);/*1000px;*/
 		display: flex;
 		justify-content: space-between;
 	}
 }
 @media (min-width: 1400px) {
 	.c-content {
-		width: 1200px;
+		width: calc(var(--global-baseline)*150);/*1200px;*/
 		display: flex;
 		justify-content: space-between;
 	}
@@ -526,8 +526,9 @@ body {
 }
 
 .c-logo__symbol {
-	height: 36px;
-	width: 36px;
+	--logo-size: calc(var(--global-whitespace-xxl)/2);
+	height: var(--logo-size);
+	width: var(--logo-size);
 }
 
 .c-logo__name {
@@ -559,8 +560,9 @@ body {
 	}
 
 	.c-logo__symbol {
+		--logo-size-large: calc(var(--global-baseline)*30);
 		width: 100%;
-		height: 240px;
+		height: var(--logo-size-large);
 		margin-bottom: var(--global-whitespace);
 	}
 }
@@ -604,9 +606,10 @@ body {
 }
 @media (min-width: 768px) {
 	.c-title.c-reset-description {
+		--logo-size-extra-large: calc(var(--global-baseline)*60);
 		font-size: var(--global-fontsize-xl);
 		text-align: center;
-		width: 480px;
+		width: var(--logo-size-extra-large);
 	}
 }
 @media (min-width: 1200px) {
@@ -673,7 +676,7 @@ body {
 
 .c-title--contacten {
   text-align: left;
-  margin-top: 56px;
+  margin-top: calc(var(--global-baseline)*7);
   font-size: var(--global-fontsize-xxl);
 
 }
@@ -702,7 +705,7 @@ body {
     Everything form related here. Including input, label and button
   */
 .c-form {
-	max-width: 640px;
+	max-width: calc(var(--global-whitespace-lg)*20);
 	height: fit-content;
 	margin: auto;
 }
@@ -752,8 +755,9 @@ body {
 }
 
 .c-spreadPage .c-logo__symbol {
-	height: 36px;
-	width: 36px;
+	--logo-size: calc(var(--global-whitespace-xxl)/2);
+	height: var(--logo-size);
+	width: var(--logo-size);
 }
 .c-spreadPage .c-logo__name {
 	font-size: var(--global-fontsize-md);
@@ -885,11 +889,11 @@ body {
 .c-input-description {
 	height: var(--global-whitespace-xxl);
 	font-size: var(--global-fontsize-sm);
-	line-height: 20px;
+	line-height: calc(var(--global-baseline)*2.5);/*20px;*/
 	padding: var(--global-baseline);
 }
 .c-input-time {
-	width: 90px;
+	width: calc(var(--global-whitespace-xs)*22.5);/*90px;*/
 }
 
 .c-input:hover {
@@ -931,11 +935,12 @@ body {
     border-radius: var(--global-borderRadius);
   } */
 .c-custom-select__symbol {
+	--logo-position: calc(var(--global-whitespace-xs)*3);
 	width: var(--global-whitespace);
 	height: var(--global-whitespace);
 	position: absolute;
-	top: 12px;
-	right: 12px;
+	top: var(--logo-position);
+	right: var(--logo-position);
 	pointer-events: none;
 	fill: var(--global-color-neutral-x-light);
 }
@@ -956,8 +961,8 @@ body {
 }
 .c-search__symbol {
 	position: absolute;
-	right: 8px;
-	top: 8px;
+	right: var(--global-baseline);
+	top: var(--global-baseline);
 
 	width: var(--global-whitespace-lg);
 	height: var(--global-whitespace-lg);
@@ -1031,8 +1036,7 @@ body {
 	display: flex;
 	align-items: center;
 }
-.c-numberOfDays-input {
-}
+
 /*
   
   /*buttons*/
@@ -1041,8 +1045,8 @@ body {
 	justify-content: center;
 	padding-top: var(--global-whitespace-lg);
 	margin-bottom: var(--global-whitespace);
-  max-width: 100%;
-  pointer-events: auto;
+	max-width: 100%;
+	pointer-events: auto;
 }
 
 /*
@@ -1057,8 +1061,8 @@ body {
 	font-size: var(--global-fontsize-md);
 	line-height: calc(var(--global-fontsize-md) * 1.5);
 	display: flex;
-  align-items: center;
-  pointer-events: auto;
+	align-items: center;
+	pointer-events: auto;
 }
 
 .c-backbutton {
@@ -1067,13 +1071,13 @@ body {
 	height: var(--global-whitespace-xl);
 	width: 75%;
 	justify-content: space-around;
-  margin-right: var(--global-whitespace-xs);
-  pointer-events: auto;
+	margin-right: var(--global-whitespace-xs);
+	pointer-events: auto;
 }
 
 .c-backbutton__text {
-  color: var(--global-color-alpha);
-  pointer-events: auto;
+	color: var(--global-color-alpha);
+	pointer-events: auto;
 }
 
 .c-backbutton-long {
@@ -1081,12 +1085,12 @@ body {
 	padding-right: 30%;
 	margin-bottom: calc(var(--global-baseline) * 8);
 	background-color: var(--global-color-alpha);
-  fill: white;
-  pointer-events: auto;
+	fill: white;
+	pointer-events: auto;
 }
 
 .c-backbutton-long .c-backbutton__text {
-  color: white;
+	color: white;
 }
 .c-popup-form--card > .c-backbutton {
 	width: 100%;
@@ -1094,15 +1098,15 @@ body {
 
 @media (min-width: 768px) {
 	.c-backbutton-long {
-		padding-right: 190px;
+		padding-right: calc(var(--global-whitespace-xs)*47.5);/*190px;*/
 	}
 }
 
 .c-backbutton__arrow {
 	width: var(--global-whitespace);
 	height: var(--global-whitespace);
-  fill: var(--global-color-alpha);
-  pointer-events: auto;
+	fill: var(--global-color-alpha);
+	pointer-events: auto;
 }
 
 .c-submitbutton {
@@ -1112,19 +1116,19 @@ body {
 	width: 100%;
 	justify-content: center;
 	margin-left: var(--global-whitespace-xs);
-  max-width: 320px;
-  pointer-events: auto;
+	max-width: calc(var(--global-baseline)*40);/*320px;*/
+	pointer-events: auto;
 }
 .c-submitbutton__arrow {
 	width: var(--global-whitespace);
 	height: var(--global-whitespace);
 	transform: scaleX(-1) translateX(-10px);
-  fill: var(--global-color-neutral-xxxx-light);
-  pointer-events: auto;
+	fill: var(--global-color-neutral-xxxx-light);
+	pointer-events: auto;
 }
 .c-submit-uploadPicto {
 	pointer-events: none;
-  opacity: 0.5;
+	opacity: 0.5;
 }
 .c-popup-form--card > .c-submitbutton {
 	width: 100%;
@@ -1132,20 +1136,20 @@ body {
 	margin-bottom: calc(var(--global-baseline) * 2);
 }
 .c-submitbutton-long {
-  width: 100%;
-  pointer-events: auto;
+	width: 100%;
+	pointer-events: auto;
 }
 .c-button__mainStepImage {
 	display: flex;
-  margin-bottom: var(--global-whitespace);
-  pointer-events: auto;
+	margin-bottom: var(--global-whitespace);
+	pointer-events: auto;
 }
 
 .c-upload {
 	display: flex;
 	justify-content: flex-start;
-  margin: calc(var(--global-whitespace-xs) * 5);
-  pointer-events: auto;
+	margin: calc(var(--global-whitespace-xs) * 5);
+	pointer-events: auto;
 }
 
 .c-uploadbutton {
@@ -1155,20 +1159,20 @@ body {
 	overflow: hidden;
 	position: absolute;
 	z-index: 1;
-  width: 100%;
-  pointer-events: auto;
+	width: 100%;
+	pointer-events: auto;
 }
 
 .c-uploadbutton-design {
 	border: none;
 	color: var(--global-color-neutral-xxx-light);
 	background-color: #438787;
-	height: 36px;
+	height: calc(var(--global-baseline)*4.5);/*36px;*/
 	width: calc(var(--global-whitespace) * 16);
 	position: relative;
 	text-align: center;
-  width: calc(100% - 24px);
-  pointer-events: auto;
+	width: calc(100% - 24px);
+	pointer-events: auto;
 }
 .c-uploadbutton-design__text {
 	display: flex;
@@ -1176,54 +1180,55 @@ body {
 	align-items: center;
 	height: 100%;
 	cursor: pointer;
-  z-index: 10;
-  pointer-events: auto;
+	z-index: 10;
+	pointer-events: auto;
 }
 
 .c-uploadbutton:focus + label {
 	outline: 1px dotted #000;
-  outline: -webkit-focus-ring-color auto 5px;
-  pointer-events: auto;
+	outline: -webkit-focus-ring-color auto 5px;
+	pointer-events: auto;
 }
 .c-uploadbutton__arrowbox {
+	--arow-size: calc(var(--global-baseline)*4.5);
 	border-radius: var(--global-borderRadius);
 	background-color: var(--global-color-beta);
-	width: 36px;
-	height: 36px;
+	width: var(--arow-size);/*36px;*/
+	height: var(--arow-size);/*36px;*/
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	position: absolute;
 	top: 0;
-  right: -18px;
-  pointer-events: auto;
+	right: -18px;
+	pointer-events: auto;
 }
 
 .c-uploadbutton__arrow {
 	width: var(--global-whitespace);
 	height: var(--global-whitespace);
 	transform: rotate(90deg);
-  fill: var(--global-color-neutral-xxx-light);
-  pointer-events: auto;
+	fill: var(--global-color-neutral-xxx-light);
+	pointer-events: auto;
 }
 
 .c-uploadbutton__text {
-  transform: translateX(10px);
-  pointer-events: auto;
+	transform: translateX(10px);
+	pointer-events: auto;
 }
 
 .c-upperAddButton {
 	display: flex;
 	justify-content: center;
-  margin: var(--global-whitespace) 0;
-  pointer-events: auto;
+	margin: var(--global-whitespace) 0;
+	pointer-events: auto;
 }
 .c-upperAddButton .c-submitbutton {
 	padding: 0 var(--global-whitespace-sm);
 }
 .c-rewardButton {
-  margin: var(--global-whitespace-sm) 0 var(--global-whitespace-lg) 0;
-  pointer-events: auto;
+	margin: var(--global-whitespace-sm) 0 var(--global-whitespace-lg) 0;
+	pointer-events: auto;
 }
 /*
     Component: link
@@ -1238,8 +1243,6 @@ body {
 /* Component: choice
     ---
   user can choose role*/
-.c-choices {
-}
 
 .c-choice {
 	border-radius: var(--global-borderRadius-sm);
@@ -1273,7 +1276,7 @@ body {
 	margin: 0 var(--global-whitespace-sm) var(--global-whitespace-sm) var(--global-whitespace-sm);
 	font-size: var(--global-fontsize-xs);
 	display: grid;
-	grid-template-rows: 40px auto;
+	grid-template-rows: calc(var(--global-baseline)*5) auto; /*40px auto;*/
 }
 
 .c-symbol__clientProfiles-client__symbol {
@@ -1282,8 +1285,8 @@ body {
 	display: flex;
 	justify-self: center;
 	grid-row: 1;
-  position: relative;
-  margin-top: 16px;
+	position: relative;
+	margin-top: var(--global-fontsize-md);
 }
 
 .c-symbol__clientProfiles-client__name {
@@ -1310,8 +1313,9 @@ body {
     ---
   */
 .c-navigationClient {
+	--grid-size-client: calc(var(--global-baseline)*7);
 	display: grid;
-	grid-template-columns: 56px 1fr 56px;
+	grid-template-columns: var(--grid-size-client) 1fr var(--grid-size-client);
 	height: var(--global-whitespace-xl);
 	margin: var(--global-whitespace);
 }
@@ -1335,8 +1339,8 @@ body {
 	justify-self: self-end;
 	font-size: var(--global-fontsize-xs);
 	height: 100%;
-  grid-column: 3;
-  pointer-events: auto;
+	grid-column: 3;
+	pointer-events: auto;
 }
 
 .c-logout__symbol {
@@ -1360,20 +1364,19 @@ body {
 }
 
 .c-date .c-icon {
-	width: 60px;
-	height: 60px;
+	--icon-size: calc(var(--global-baseline)*7.5);
+	width: var(--icon-size);
+	height: var(--icon-size);
 }
 
 /*Component: progressive Scheme
   ---
   
   */
-.c-progressiveSchemes {
-}
 
 .c-progressiveSchemes .c-progressiveScheme {
 	background-color: var(--global-color-neutral-x-light-transparent);
-	height: 104px;
+	height: calc(var(--global-baseline)*13);/*104px;*/
 	display: flex;
 	align-items: center;
 	/* display: grid;
@@ -1416,7 +1419,7 @@ body {
 }
 
 .c-button__addClient-text {
-	padding: 0 14px;
+	padding: 0 calc(var(--global-whitespace-xs)*3.5);
 }
 
 .c-button__addClient-symbol {
@@ -1445,58 +1448,7 @@ body {
     align-items: center;
     padding-top: var(--global-whitespace-sm);
   } */
-.c-time__month {
-	text-align: center;
-}
 
-.c-time__month ul {
-	margin: 0;
-	padding: 0;
-}
-
-.c-time__month .prev {
-	float: left;
-	padding-top: 10px;
-}
-
-.c-time__month .next {
-	float: right;
-	padding-top: 10px;
-}
-
-.c-time__week {
-	margin: 0;
-	padding: 10px 0;
-	color: var(--global-color-neutral-x-light);
-}
-
-.c-time__week li {
-	display: inline-block;
-	width: 13.6%;
-	text-align: center;
-}
-
-.c-time__days {
-	padding: 10px 0;
-	margin: 0;
-}
-
-.c-time__days li {
-	list-style-type: none;
-	display: inline-block;
-	width: 13.6%;
-	text-align: center;
-	margin-bottom: 5px;
-	font-size: var(--global-fontsize-sm);
-	color: #777;
-}
-
-/* Highlight the "current" day */
-.c-time__days li .active {
-	padding: 5px;
-	background: var(--global-color-alpha);
-	color: white !important;
-}
 
 /* Component: chooce photo
     ---
@@ -1533,7 +1485,7 @@ body {
 	display: flex;
 	flex-direction: row;
 	padding: var(--global-whitespace-md);
-	max-width: 296px;
+	max-width: calc(var(--global-baseline)*37);/*296px;*/
 }
 
 .c-report-description + .c-report-description {
@@ -1541,7 +1493,7 @@ body {
 }
 
 .c-report-title {
-	margin-bottom: -12px;
+	margin-bottom: calc(var(--global-whitespace-xs)*(-3));/*-12px;*/
 }
 
 .c-report-scheme {
@@ -1561,12 +1513,10 @@ body {
      A mentor has an overview of all his clients
       */
 
-.c-clients {
-}
 
 .c-clients .c-client {
 	display: grid;
-	grid-template-columns: 1fr 20px;
+	grid-template-columns: 1fr calc(var(--global-whitespace-xs)*5); /*20px*/
 	grid-template-rows: auto auto;
 	background-color: var(--global-color-neutral-x-light-transparent);
 	height: calc(var(--global-baseline) * 10);
@@ -1612,12 +1562,12 @@ body {
 	}
 
 	.c-clients .c-client {
-		width: 300px;
+		width: calc(var(--global-baseline)*37.5);/*300px;*/
 	}
 }
 
 .c-ascribeclient-page {
-	max-width: 310px;
+	max-width: calc(var(--global-baseline)*38.75);/*310px;*/
 }
 /*Component: PlanningList
    A mentor has an overview of the planning of today
@@ -1634,12 +1584,9 @@ body {
 	align-items: center;
 }
 
-.c-plannings {
-}
-
 .c-plannings .c-planning {
 	display: grid;
-	grid-template-columns: 64px 1fr 20px;
+	grid-template-columns: calc(var(--global-baseline)*8) 1fr calc(var(--global-whitespace-xs)*5);
 	grid-template-rows: auto auto;
 	background-color: var(--global-color-neutral-x-light-transparent);
 	height: calc(var(--global-baseline) * 10);
@@ -1719,19 +1666,17 @@ body {
 		margin-left: calc(var(--global-baseline) * 8);
 	}
 	.c-plannings .c-planning {
-		width: 300px;
+		width: calc(var(--global-baseline)*37.5);/*300px;*/
 	}
 }
 /*Component: StepplansList
      A mentor has an overview of all his stepplans
       */
-.c-stepplans {
-}
 
 .c-stepplans .c-stepplan {
 	display: grid;
-	grid-template-columns: 1fr 40px;
-	grid-template-rows: 24px 32px;
+	grid-template-columns: 1fr calc(var(--global-baseline)*5);/*40px;*/
+	grid-template-rows: calc(var(--global-whitespace-xs)*5) var(--global-whitespace-lg);/*24px 32px;*/
 	background-color: var(--global-color-neutral-x-light-transparent);
 	height: calc(var(--global-baseline) * 10);
 	margin: var(--global-whitespace) 0 calc(var(--global-baseline) * 11) 0;
@@ -1744,9 +1689,10 @@ body {
 	grid-row: span 2;
 }
 .c-stepplan__picto {
+	--stepplan-picto-size: calc(var(--global-baseline)*7);
 	grid-row: span 2;
-	height: 56px;
-	width: 56px;
+	height: var(--stepplan-picto-size);
+	width: var(--stepplan-picto-size);
 }
 
 .c-picto-container {
@@ -1785,7 +1731,7 @@ body {
 	.c-stepplans {
 		display: grid;
 		grid-template-columns: 1fr 40px;
-		grid-template-rows: 24px 32px;
+		grid-template-rows: calc(var(--global-whitespace-xs)*5) var(--global-whitespace-lg);
 		/*background-color: var(--global-color-neutral-x-light-transparent);*/
 		height: calc(var(--global-baseline) * 10);
 		margin: var(--global-whitespace) 0 calc(var(--global-baseline) * 11) 0;
@@ -1798,9 +1744,10 @@ body {
 		grid-row: span 2;
 	}
 	.c-stepplan__picto {
+		--picto-size: calc(var(--global-baseline)*7);
 		grid-row: span 2;
-		height: 56px;
-		width: 56px;
+		height: var(--picto-size);/*56px;*/
+		width: var(--picto-size);/*56px;*/
 	}
 
 	.c-stepplan__name {
@@ -1825,7 +1772,7 @@ body {
 		display: flex;
 		align-items: center;
 		height: var(--global-whitespace);
-		margin-right: 8px;
+		margin-right: var(--global-baseline);
 	}
 
 	@media (min-width: 992px) {
@@ -1837,7 +1784,7 @@ body {
 		}
 
 		.c-stepplans .c-stepplan {
-			width: 300px;
+			width: calc(var(--global-baseline)*37.5);/*300px;*/
 		}
 	}
 }
@@ -1847,7 +1794,7 @@ body {
       */
 .c-mentor__logout {
 	display: grid;
-	grid-template-columns: 1fr 56px;
+	grid-template-columns: 1fr calc(var(--global-baseline)*7);/*56px;*/
 
 	height: var(--global-whitespace-xl);
 	margin: var(--global-whitespace) var(--global-whitespace) var(--global-whitespace) 0;
@@ -1922,13 +1869,13 @@ body {
 	background-color: var(--global-color-alpha);
 	border-radius: 23px;
 	height: calc(var(--global-baseline) * 7);
-	width: 104px;
+	width: calc(var(--global-baseline)*13);/*104px;*/
 	display: flex;
 	justify-content: flex-end;
 	/*positioning telephone so that it stays in the same spot on the screen no matter how much you scroll*/
 	position: fixed;
-	bottom: 40;
-	left: -20;
+	bottom: calc(var(--global-baseline)*5);/*40;*/
+	left: calc(var(--global-whitespace-xs)*(-5));/*-20;*/
 	padding-right: var(--global-whitespace-md);
 }
 
@@ -1952,7 +1899,7 @@ body {
 	-moz-filter: var(--blur-scheme);
 	-o-filter: var(--blur-scheme);
 	-ms-filter: var(--blur-scheme);
-	filter: var(--blur-scheme);
+	filter: var(--blur-scheme) saturate(0%) opacity(30%);
 	background-color: var(--global-color-neutral-x-light-transparent);
 	pointer-events: none;
 }
@@ -1968,16 +1915,17 @@ body {
 }
 
 .c-step__countsymbol {
+	--countsymbol-position: calc(var(--global-whitespace-xs)*(-3));
 	position: absolute;
-	top: -12px;
-	left: -12px;
+	top: var(--countsymbol-position);
+	left: var(--countsymbol-position);
 }
 
 .c-step__pictowrapper {
 	display: block;
 	position: relative;
-	height: 304px;
-	width: 256px;
+	height: calc(var(--global-whitespace-lg)*9.5);/*304px;*/
+	width: calc(var(--global-whitespace-lg)*9.5);/*256px;*/
 	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
 	border-radius: var(--global-borderRadius-lg);
 	padding: auto;
@@ -2027,7 +1975,7 @@ body {
 	margin-bottom: calc(var(--global-baseline) * 3);
 }
 .c-step__explanation-mentor {
-	width: 256px;
+	width: calc(var(--global-baseline)*32);/*256px;*/
 	text-align: center;
 	font-size: var(--global-fontsize-sm);
 	color: var(--global-color-neutral-x-dark);
@@ -2072,7 +2020,7 @@ body {
 
 .c-footer__navbarClient .c-emergencycall {
 	position: absolute;
-	top: -32px;
+	top: calc(var(--global-whitespace-lg)*(-1));/*-32px;*/
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -2190,14 +2138,13 @@ body {
 		display: flex;
 		height: fit-content;
 		margin: 0 0 calc(var(--global-baseline) * 7) 0;
-		width: 64px;
+		width: calc(var(--global-baseline)*8);/*64px;*/
 	}
 	.c-topLeftLogo .c-logo__symbol {
 		height: var(--global-whitespace-lg);
 		margin: var(--global-whitespace-md);
+
 		z-index: 20;
-	}
-	.c-topLeftLogo .c-logo__symbol .c-icon {
 	}
 
 	/*niet veranderen!!!!*/
@@ -2225,11 +2172,9 @@ body {
 	.c-navbar__tabs {
 		display: flex;
 		flex-direction: column;
-
 		transform: translateY(240px);
 		justify-content: space-around;
 		height: 75%;
-
 		bottom: 0;
 	}
 }
@@ -2268,7 +2213,7 @@ body {
 .c-button__addContact {
 	display: flex;
 	justify-content: space-around;
-	width: 178px;
+	width: calc(var(--global-whitespace-xs)*44.5);/*178px;*/
 	font-size: var(--global-fontsize-sm);
 }
 
@@ -2304,7 +2249,7 @@ body {
 .c-overview__header .c-progressiveScheme__name {
 	font-size: var(--global-fontsize-lg);
 	position: absolute;
-	bottom: -16px;
+	bottom: calc(var(--global-whitespace-md)*(-1));/*-16px;*/
 	left: 0;
 }
 
@@ -2312,7 +2257,7 @@ body {
 	margin: var(--global-whitespace) 0;
 	background-color: var(--global-color-neutral-xxx-light);
 	display: grid;
-	grid-template-columns: 56px 24px 1fr;
+	grid-template-columns: calc(var(--global-baseline)*7) calc(var(--global-whitespace-xs)*5) 1fr;
 	grid-template-rows: 1fr 1fr;
 	grid-column-gap: var(--global-baseline);
 	border-radius: var(--global-borderRadius-md);
@@ -2346,9 +2291,10 @@ body {
 }
 
 .c-checkmark {
+	--checkmark-position: calc(var(--global-baseline)*(-1));
 	position: absolute;
-	top: -8px;
-	right: -8px;
+	top: var(--checkmark-position);
+	right: var(--checkmark-position);
 }
 
 .c-checkmark.c-checkmark__unchecked {
@@ -2397,12 +2343,6 @@ body {
 .c-congrats__text > div {
 	font-size: var(--global-fontsize-lg);
 }
-
-  .c-congrats__img {
-    /* width: 194px;
-    height: 156px; */
-    /* margin-bottom: var(--global-whitespace-lg); */
-  }
 
   .c-congrats__pig {
     width: 550px;
@@ -2497,9 +2437,9 @@ body {
 */
 
 .swiper-pagination-bullet {
-	width: 8px;
-	height: 8px;
-	margin: 0 2px;
+	width: var(--global-baseline);
+	height: var(--global-baseline);
+	margin: 0 calc(var(--global-baseline)/4);
 	display: inline-block;
 	border-radius: 100%;
 	background: #000;
@@ -2558,9 +2498,9 @@ body {
 	display: flex;
 	align-items: center;
 	background-color: var(--global-color-neutral-x-light-transparent);
-	height: 104px;
-	width: 296px;
-	max-width: 640px;
+	height: calc(var(--global-baseline)*13);/*104px;*/
+	width: calc(var(--global-baseline)*37);/*296px;*/
+	max-width: calc(var(--global-baseline)*80);/*640px;*/
 	margin-bottom: var(--global-whitespace);
 	border-radius: var(--global-borderRadius-md);
 }
@@ -2588,21 +2528,21 @@ body {
 /*component: topbar*/
 .c-topbarDetailClient {
 	display: grid;
-	grid-template-columns: 36px 1fr 36px;
-	grid-template-rows: 36px 104px;
+	grid-template-columns: calc(var(--global-baseline)*4.5) 1fr calc(var(--global-baseline)*4.5);
+	grid-template-rows: calc(var(--global-baseline)*4.5) calc(var(--global-baseline)*13);/*104px;*/
 	margin-top: var(--global-whitespace);
 }
 
 .c-topbarDetailProgressiveSteps {
 	display: grid;
-	grid-template-columns: 36px 1fr 36px;
-	grid-template-rows: 36px 32px;
+	grid-template-columns: calc(var(--global-baseline)*4.5) 1fr calc(var(--global-baseline)*4.5);
+	grid-template-rows: calc(var(--global-baseline)*4.5) var(--global-whitespace-lg);
 	margin-top: var(--global-whitespace-xl);
 	min-width: 100%;
 }
 
 .c-topbarDetailProgressiveSteps .c-logo__symbol {
-	height: 36px;
+	height: calc(var(--global-baseline)*4.5);
 }
 .c-topbarDetailProgressiveSteps .c-navigation__close {
 	grid-column: 3;
@@ -2615,8 +2555,8 @@ body {
 }
 
 .c-topbarDetailClient .c-logo__symbol {
-	height: 36px;
-	width: 36px;
+	height: calc(var(--global-baseline)*4.5);
+	width: calc(var(--global-baseline)*4.5);
 }
 
 .c-logo__symbol .c-icon {
@@ -2654,8 +2594,9 @@ body {
 	height: min-content;
 }
 .c-diagram__circle {
-	max-height: 320px;
-	max-width: 320px;
+	--circle-size: calc(var(--global-baseline)*40);/*320px;*/
+	max-height: var(--circle-size);
+	max-width: var(--circle-size);
 	width: 100%;
 	position: relative;
 }
@@ -2698,11 +2639,10 @@ body {
 
 .c-contact__wrapper .c-profile {
 	display: grid;
-	grid-template-columns: 1fr 24px;
-	grid-template-rows: 48px 1fr;
+	grid-template-columns: 1fr calc(var(--global-whitespace-xs)*5);
+	grid-template-rows: var(--global-fontsize-xl) 1fr;
 }
-.c-contact__wrapper .c-profile :first-child {
-}
+
 
 .c-contact__wrapper .c-profile .c-button__addProfilePic {
 	grid-row: 2;
@@ -2740,9 +2680,9 @@ body {
 	background-color: var(--global-color-neutral-xxxx-light);
 	border-radius: var(--global-borderRadius-lg);
 	width: 100%;
-	padding: 36px;
-	max-width: 552px;
-	line-height: 24px; /*inherit*/
+	padding: calc(var(--global-baseline)*4.5);/*36px;*/
+	max-width: calc(var(--global-baseline)*69);/*552px;*/
+	line-height: calc(var(--global-whitespace-xs)*5); /*24px inherit*/
 	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
 }
 
