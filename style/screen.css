@@ -1122,6 +1122,10 @@ form{
 	max-width: calc(var(--global-baseline) * 40); /*320px;*/
 	pointer-events: auto;
 }
+.c-submitbuttonMultiple {
+	max-width: none;
+	height: fit-content;
+}
 .c-submitbutton__arrow {
 	width: var(--global-whitespace);
 	height: var(--global-whitespace);
@@ -2051,16 +2055,16 @@ form{
 }
 
 .c-stepsOverview__sybmol {
-  border: var(--global-borderWidth) solid var(--global-color-omega);
-  border-radius: var(--global-borderRadius-md);
-  box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
-  height: calc(var(--global-baseline) * 5);
-  width: calc(var(--global-baseline) * 5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 3;
-  cursor: pointer;
+	border: var(--global-borderWidth) solid var(--global-color-omega);
+	border-radius: var(--global-borderRadius-md);
+	box-shadow: 0 0 0 1px rgba(200, 200, 204, 0.05), 0 4px 4px rgba(170, 170, 179, 0.75);
+	height: calc(var(--global-baseline) * 5);
+	width: calc(var(--global-baseline) * 5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 3;
+	cursor: pointer;
 }
 
 /*Component: footer
@@ -2092,11 +2096,9 @@ form{
 .c-section_menu {
 	padding: 0 0 calc(var(--global-whitespace-xxl)) 0;
 }
-
 .c-section_menu .c-title {
 	margin-bottom: var(--global-whitespace-lg);
 }
-
 @media (min-width: 768px) {
 	.c-section_menu {
 		padding: 0 calc(var(--global-whitespace-xxl) * 2);

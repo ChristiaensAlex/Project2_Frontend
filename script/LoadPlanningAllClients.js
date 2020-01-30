@@ -1,73 +1,74 @@
 // inkomende datums zijn yyyy-mm-dd format
-let customHeaders = new Headers();
+let customHeaders = new Headers(),
+  json;
 customHeaders.append('Accept', 'application/json');
 
-let now;
+let now, deletedPlan;
 
 MentorId = localStorage.getItem('mentorId');
 URIStart = 'https://trekjeplan.azurewebsites.net/api/clientprogressiveScheme/';
 // console.log(URIClient);
 
 const init = function() {
-	DateToday();
+  DateToday();
 };
 
 const DateToday = function(today) {
-	today = new Date();
-	//"Tue Jan 28 2020 18:31:03 GMT+0100 (Central European Standard Time)"  omzetten naar 28%2F01%2F2020
-	now = ('0' + today.getDate()).slice(-2) + '%2F' + ('0' + (today.getMonth() + 1)).slice(-2) + '%2F' + today.getFullYear();
-	// console.log(now);
-	TitleDay(today);
-	URI = `${URIStart + MentorId}?selectedDate=${now}`;
-	getProgressiveSchemes(URI);
+  today = new Date();
+  //"Tue Jan 28 2020 18:31:03 GMT+0100 (Central European Standard Time)"  omzetten naar 28%2F01%2F2020
+  now = ('0' + today.getDate()).slice(-2) + '%2F' + ('0' + (today.getMonth() + 1)).slice(-2) + '%2F' + today.getFullYear();
+  // console.log(now);
+  TitleDay(today);
+  URI = `${URIStart + MentorId}?selectedDate=${now}`;
+  getProgressiveSchemes(URI);
 };
 
 const DateChoosen = function(date) {
-	clickedDate = ('0' + date.getDate()).slice(-2) + '%2F' + ('0' + (date.getMonth() + 1)).slice(-2) + '%2F' + date.getFullYear();
-	// console.log(clickedDate);
-	URI = `${URIStart + MentorId}?selectedDate=${clickedDate}`;
-	TitleDay(date);
-	getProgressiveSchemes(URI);
+  clickedDate = ('0' + date.getDate()).slice(-2) + '%2F' + ('0' + (date.getMonth() + 1)).slice(-2) + '%2F' + date.getFullYear();
+  // console.log(clickedDate);
+  URI = `${URIStart + MentorId}?selectedDate=${clickedDate}`;
+  TitleDay(date);
+  getProgressiveSchemes(URI);
 };
 
 const TitleDay = function(date) {
-	currentDay = new Date();
-	if (date.getDate() == currentDay.getDate() || date.getDate() == null) {
-		let html = '';
-		html += `<h3>
+  currentDay = new Date();
+  if (date.getDate() == currentDay.getDate() || date.getDate() == null) {
+    let html = '';
+    html += `<h3>
                     Vandaag ${currentDay.getDate() + ' ' + month[date.getMonth()] + ' ' + date.getFullYear()}
                 </h3>`;
 
-		document.querySelector('.js-fullDate').innerHTML = html;
-	} else {
-		let html = '';
+    document.querySelector('.js-fullDate').innerHTML = html;
+  } else {
+    let html = '';
 
-		html += `<h3>
+    html += `<h3>
                     ${weekday[date.getDay()] + ' ' + date.getDate() + ' ' + month[date.getMonth()] + ' ' + date.getFullYear()}
                 </h3>`;
 
-		document.querySelector('.js-fullDate').innerHTML = html;
-	}
+    document.querySelector('.js-fullDate').innerHTML = html;
+  }
 };
 
 let ShowProgressiveSchemes = function(queryResponse, dataArrayClientFirstName, dataArrayClientLastName, dataArraySchemeName, dataArrayPictoId, dataArrayTime, dataArrayChecked) {
-	// console.log(dataArraySchemeName + "------" + dataArrayPictoId + "------" + dataArrayTime + "------" + dataArrayChecked);
-	let html = '';
-	if (dataArraySchemeName === undefined || dataArraySchemeName.length == 0) {
-		html = `<div class="c-title__menu">
+  // console.log(dataArraySchemeName + "------" + dataArrayPictoId + "------" + dataArrayTime + "------" + dataArrayChecked);
+  let html = '';
+  if (dataArraySchemeName === undefined || dataArraySchemeName.length == 0) {
+    html = `<div class="c-title__menu">
             <h3 class="c-hour">
                 Niets gepland deze dag
             </h3>
         </div>`;
-	} else {
-		for (let i = 0; i < dataArraySchemeName.length; i++) {
-			// console.log(dataArrayChecked);
-			html += `<div class="c-planning">
+  } else {
+    for (let i = 0; i < dataArraySchemeName.length; i++) {
+      // console.log(dataArrayChecked);
+      html += `<div class="c-planning" plannr=${i}>
                             <div class="c-hour__specific">
                                 ${dataArrayTime[i]}
                             </div>
                             <div class="c-planning__picto">
-                                <img class="c-planning__picto-icon" src="icon_Chloë.png" alt="profielfoto" />
+                                <img class="c-planning__picto-icon"  alt="profielfoto" />
                             </div>
                             <div class="c-planning__username">
                                 ${dataArrayClientFirstName[i] + '' + dataArrayClientLastName[i]}
@@ -110,79 +111,92 @@ let ShowProgressiveSchemes = function(queryResponse, dataArrayClientFirstName, d
 
                             </div>
                         </div>`;
-		}
-	}
-	document.querySelector('.js-plannings__all').innerHTML = html;
+    }
+    getElements();
+    document.querySelector('.js-plannings__all').innerHTML = html;
+    deletes = document.querySelectorAll('.js-calendar-delete');
+    ListenToDeletes(deletes);
+  }
 };
-
+const ListenToDeletes = function(deletes) {
+  for (let d of deletes) {
+    d.addEventListener('click', function(event) {
+      console.log('vuilbak geklikt');
+      let nr = this.parentElement.parentElement.querySelector('.c-planning').getAttribute('plannr');
+      deletedPlan = json[nr];
+      console.log(deletedPlan);
+    });
+  }
+};
 let ProcessProgressiveSchemes = function(queryResponse) {
-	dataArrayClientFirstName = [];
-	for (var addClientFirstName of queryResponse) {
-		let FN = addClientFirstName.firstName;
-		dataArrayClientFirstName.push(FN);
-	}
+  dataArrayClientFirstName = [];
+  for (var addClientFirstName of queryResponse) {
+    let FN = addClientFirstName.firstName;
+    dataArrayClientFirstName.push(FN);
+  }
 
-	dataArrayClientLastName = [];
-	for (var addClientLastName of queryResponse) {
-		let LN = addClientLastName.lastName;
-		dataArrayClientLastName.push(LN);
-	}
+  dataArrayClientLastName = [];
+  for (var addClientLastName of queryResponse) {
+    let LN = addClientLastName.lastName;
+    dataArrayClientLastName.push(LN);
+  }
 
-	dataArraySchemeName = [];
-	for (var addSchemeName of queryResponse) {
-		let SN = addSchemeName.schemeName;
-		dataArraySchemeName.push(SN);
-	}
+  dataArraySchemeName = [];
+  for (var addSchemeName of queryResponse) {
+    let SN = addSchemeName.schemeName;
+    dataArraySchemeName.push(SN);
+  }
 
-	dataArrayPictoId = [];
-	for (var addPictoId of queryResponse) {
-		let PI = addPictoId.pictoId;
-		dataArrayPictoId.push(PI);
-	}
+  dataArrayPictoId = [];
+  for (var addPictoId of queryResponse) {
+    let PI = addPictoId.pictoFilleName;
+    dataArrayPictoId.push(PI);
+  }
 
-	dataArrayTime = [];
-	for (var addTime of queryResponse) {
-		let simpleTime = addTime.schedule;
-		var ParcedTime = new Date(simpleTime);
-		var H = ParcedTime.getHours();
-		var M = ParcedTime.getMinutes();
-		H = ('0' + H).slice(-2);
-		M = ('0' + M).slice(-2);
-		dataArrayTime.push(`${H}` + ':' + `${M}`);
-	}
+  dataArrayTime = [];
+  for (var addTime of queryResponse) {
+    let simpleTime = addTime.schedule;
+    var ParcedTime = new Date(simpleTime);
+    var H = ParcedTime.getHours();
+    var M = ParcedTime.getMinutes();
+    H = ('0' + H).slice(-2);
+    M = ('0' + M).slice(-2);
+    dataArrayTime.push(`${H}` + ':' + `${M}`);
+  }
 
-	dataArrayChecked = [];
-	for (var addChecked of queryResponse) {
-		let F = addChecked.done;
-		if (F == true) {
-			ischecked = 'c-planning__check c-planning__checked';
-		} else {
-			ischecked = 'c-planning__check';
-		}
-		dataArrayChecked.push(ischecked);
-	}
-	//console.log(queryResponse, dataArrayClientFirstName, dataArrayClientLastName, dataArraySchemeName, dataArrayPictoId, dataArrayTime, dataArrayChecked);
-	ShowProgressiveSchemes(queryResponse, dataArrayClientFirstName, dataArrayClientLastName, dataArraySchemeName, dataArrayPictoId, dataArrayTime, dataArrayChecked);
+  dataArrayChecked = [];
+  for (var addChecked of queryResponse) {
+    let F = addChecked.done;
+    if (F == true) {
+      ischecked = 'c-planning__check c-planning__checked';
+    } else {
+      ischecked = 'c-planning__check';
+    }
+    dataArrayChecked.push(ischecked);
+  }
+
+  //console.log(queryResponse, dataArrayClientFirstName, dataArrayClientLastName, dataArraySchemeName, dataArrayPictoId, dataArrayTime, dataArrayChecked);
+  ShowProgressiveSchemes(queryResponse, dataArrayClientFirstName, dataArrayClientLastName, dataArraySchemeName, dataArrayPictoId, dataArrayTime, dataArrayChecked);
 };
 
 let getProgressiveSchemes = async function(URI) {
-	// Eerst bouwen we onze url op
-	const SERVER_ENDPOINT = `${URI}`;
-	// Met de fetch API proberen we de data op te halen.
-	const response = await fetch(SERVER_ENDPOINT, { headers: customHeaders });
-	const queryResponse = await response.json();
-
-	// console.log(queryResponse);
-	ProcessProgressiveSchemes(queryResponse);
+  // Eerst bouwen we onze url op
+  const SERVER_ENDPOINT = `${URI}`;
+  // Met de fetch API proberen we de data op te halen.
+  const response = await fetch(SERVER_ENDPOINT, { headers: customHeaders });
+  const queryResponse = await response.json();
+  json = queryResponse;
+  // console.log(queryResponse);
+  ProcessProgressiveSchemes(queryResponse);
 };
 
 const fetchData = function(url) {
-	fetch(url, { headers: customHeaders })
-		.then(r => r.json())
-		.then(data => data);
+  fetch(url, { headers: customHeaders })
+    .then(r => r.json())
+    .then(data => data);
 };
 
 document.addEventListener('DOMContentLoaded', function() {
-	console.info('domcontentloaded');
-	init();
+  console.info('domcontentloaded');
+  init();
 });

@@ -35,8 +35,19 @@ const showAllProgressiveSchemes = function(jsonObject) {
     </div>`;
   }
   getElements();
+  deletes = document.querySelectorAll('.js-progressivescheme-delete');
+  ListenToDeletes(deletes);
 };
-
+const ListenToDeletes = function(deletes) {
+  for (let d of deletes) {
+    d.addEventListener('click', function(event) {
+      console.log('vuilbak geklikt');
+      let nr = this.parentElement.querySelector('.c-stepplan__info').getAttribute('plannr');
+      deletedProgressiveScheme = json[nr];
+      console.log(deletedProgressiveScheme);
+    });
+  }
+};
 const ListenToAddClient = function(button) {
   button.addEventListener('click', function(event) {
     window.location.href = 'AddClientToProgressiveScheme.html';
@@ -100,6 +111,7 @@ const getProgressiveSchemes = function() {
       if (progressiveSchemes) {
         showAllProgressiveSchemes(jsonObject);
         console.log(jsonObject);
+        json = jsonObject;
         stepPlans = document.querySelectorAll('.c-stepplan__info');
         for (stepPlan of stepPlans) {
           stepPlan.addEventListener('click', function() {
