@@ -226,20 +226,22 @@ const ListenToObjects = function(element) {
 	for (object of objects) {
 		console.log(object);
 		object.addEventListener('click', function(event) {
+			this.classList.add('c-backbutton__text');
 			console.log(this);
 			i = this.dataset.number;
 			i = parseInt(i);
 			console.log(i);
 			chosenItem = json[i];
 			console.log(json[i]);
-			search.value = `${chosenItem.firstName} ${chosenItem.lastName}`;
+
 			console.log(element);
 			if (element == 'client') {
 				clientId = json[i].id;
-			
+				search.value = `${chosenItem.firstName} ${chosenItem.lastName}`;
 			} else if (element == 'progressiveScheme') {
 				progressiveSchemeId = json[i].id;
 				console.log(progressiveSchemeId);
+				search.value = `${chosenItem.name}`;
 			}
 		});
 	}
