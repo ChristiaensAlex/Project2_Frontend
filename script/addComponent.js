@@ -67,6 +67,7 @@ const onHandlerClickedAdd = function(e) {
   e.preventDefault();
   let inpStep = inputStep.cloneNode(true);
   inpStep.classList.remove('u-hide');
+  inpStep.classList.add('js-contact');
   count = document.querySelectorAll('.js-single-step');
   inpStep.dataset.number = count.length + 1;
   inpStep.style.display = 'block';
